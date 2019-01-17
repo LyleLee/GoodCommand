@@ -1,9 +1,10 @@
-
+ceph测试命令——FS
+================
 ceph相关软件包下载地址  
 https://download.ceph.com/debian-luminous/pool/main/c/ceph/ceph-fuse_12.2.8-1xenial_arm64.deb
 
 1. node1（官方文档中也叫做admin节点）
-	```ssh
+	```sh
 	ceph osd pool create cephfs_data 8
 	ceph osd pool create cephfs_metadata 8
 	ceph osd  pool ls
