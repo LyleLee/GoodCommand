@@ -1,7 +1,9 @@
 site_name: GoodCommand
 nav:
     - Home: index.md
-    - About: about.md
+    - kvm: KVM.md
+    - ceph: ceph测试命令.md
+    - git: git_bash_windows.md
     - kylin: kylin_test.md
-    - usage: 如何使用生成文档.md
+    - 生成文档: 如何使用生成文档.md
 theme: readthedocs
