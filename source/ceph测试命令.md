@@ -1,3 +1,5 @@
+ceph测试命令
+============
 rbd create foo2 --size 4096 --image-feature layering \
 	-m node1 -k /etc/ceph/ceph.client.admin.keyring \
 	-p rbd

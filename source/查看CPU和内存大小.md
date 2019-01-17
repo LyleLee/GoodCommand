@@ -1,3 +1,5 @@
+查看内存大小
+===================
 # 总核数
 总核数 = 物理CPU个数 X 每颗物理CPU的核数
 
@@ -15,7 +17,6 @@ cat /proc/cpuinfo| grep "processor"| wc -l
 
 
 
-D06
 网上显示是32核的
 processor:64
 
