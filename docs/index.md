@@ -1,6 +1,6 @@
 # Welcome to MkDocs
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+For full documentation visit [github:/GoodCommand](https://github.com/LyleLee/GoodCommand).
 
 ## Commands
 
@@ -15,8 +15,6 @@ For full documentation visit [mkdocs.org](https://mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         kylin_test.md # Other markdown pages, images and other files.
-        about.md
-        about.md
         ceph测试命令.md
         ceph测试命令_FS.md
         git_bash_windows.md
