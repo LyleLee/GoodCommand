@@ -3,3 +3,4 @@ nav:
     - Home: index.md
     - linux: linux.md
 theme: readthedocs
+requirements_file: requirements.txt
