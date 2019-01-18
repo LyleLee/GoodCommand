@@ -4,7 +4,7 @@ KVM 常用命令
 有一天需要整点危险的事情，服务器只有一台怕搞坏被集体群殴，起个虚拟机吧。  
 有一天需要装个操作系统看看redhat好还是ubuntu好， 起个虚拟机吧。  
 那就起个虚拟机吧。  怎么起？ 和在window一样装个VMware或者virtualbox，然后挂上ISO。以前都是这么搞的。坏处就是慢、久、坑。还是在linux上搞好一点。  
-咨询一下大佬，KVM啊！  
+咨询一下大佬，用KVM好！  
 具体是参考：[地址](https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/) ，图文教程，感觉还是挺良心的。  
 如果还是懒，参考步骤
 
