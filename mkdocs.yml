@@ -1,7 +1,8 @@
 site_name: GoodCommand
 nav:
     - Home: index.md
-    - kvm: KVM.md
+    - linux: linux.md
+    - kvm: kvm.md
     - ceph: ceph测试命令.md
     - git: git_bash_windows.md
     - kylin: kylin_test.md

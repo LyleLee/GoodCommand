@@ -1,25 +1,18 @@
-# Welcome to MkDocs
+# Welcome to GoodCommand
+
+这是一个知识、经验集合文档，记录了常用工具以及命令的常见用法，避免遇到相同问题时需要从互联网再次查找问题答案。  
+<br />
+通常遇到的问题和计算机设备软硬件环境有很大关系，而版本更新过快，几年前的答案可能已经不再适用于现在，所以不如自己记录常见问题的解决办法  
+<br />
+例如：  
+要给服务器换硬盘，可能之前查过怎么制作文件系统、挂载硬盘，但是过了一段时间后还是忘了，又要网上找，不如直接在自己的使用记录中找来的快
 
 For full documentation visit [github:/GoodCommand](https://github.com/LyleLee/GoodCommand).
 
-## Commands
+## 文档包含的内容
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+* linux常见命令
+* 性能测试工具
+* 开源软件部署与使用
+* 过程经验
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        kylin_test.md # Other markdown pages, images and other files.
-        ceph测试命令.md
-        ceph测试命令_FS.md
-        git_bash_windows.md
-        KVM.md
-        kylin_mem_test.md
-        kylin_test.md
-        查看CPU和内存大小.md
-        如何使用生成文档.md
