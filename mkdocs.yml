@@ -2,8 +2,4 @@ site_name: GoodCommand
 nav:
     - Home: index.md
     - linux: linux.md
-    - kvm: kvm.md
-    - git: git_bash_windows.md
-    - fio: fio.md
-    - kylin: kylin_test.md    
 theme: readthedocs
