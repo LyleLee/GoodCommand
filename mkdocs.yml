@@ -5,4 +5,5 @@ nav:
     - kvm: kvm.md
     - git: git_bash_windows.md
     - fio: fio.md
+    - 计算机存储器: 计算机存储器.md
 theme: readthedocs
