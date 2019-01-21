@@ -191,3 +191,33 @@ sudo xz -d linux-4.4-source-4.4.tar.xz
 tar -xvf linux-4.4-source-4.4.tar   
 sudo tar -xvf linux-4.4-source-4.4.tar
 ```
+## 修改键盘布局
+有时候键盘布局可能不一样，导致按键错误，可以使用命令进行配置.一般选择1-4键盘
+```shell-session
+sudo dpkg-reconfigure keyboard-configuration
+```
+```shell-session
+me@ubuntufio:~$ sudo dpkg-reconfigure keyboard-configuration
+Package configuration
+
+         ┌──────────┤ Configuring keyboard-configuration ├───────────┐
+         │ Please select the model of the keyboard of this machine.  │
+         │                                                           │
+         │ Keyboard model:                                           │
+         │                                                           │
+         │     DTK2000                                            ↑  │
+         │     eMachines m6800 laptop                             ▒  │
+         │     Ennyah DKB-1008                                    ▒  │
+         │     Everex STEPnote                                    ▮  │
+         │     FL90                                               ▒  │
+         │     Fujitsu-Siemens Amilo laptop                       ▒  │
+         │     Generic 101-key PC                                 ▒  │
+         │     Generic 101-key PC (intl.)                         ▒  │
+         │     Generic 104-key PC                                 ▒  │
+         │     Generic 105-key PC (intl.)                         ↓  │
+         │                                                           │
+         │                                                           │
+         │              <Ok>                  <Cancel>               │
+         │                                                           │
+         └───────────────────────────────────────────────────────────┘
+```shell-session
