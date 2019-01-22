@@ -193,40 +193,40 @@ dmidecode|grep "System Information" -A9
 ```
 ## 软件安装
 1. 查找软件包
-```yumsearch ~  ```
+```yum search ~  ```
 
 2. 列出所有可安装的软件包  
->yumlist  
+>yum list  
   
 3. 列出所有可更新的软件包
 >yumlist updates  
   
 4. 列出所有已安装的软件包
->yumlist installed
+>yum list installed
   
 5. 列出所有已安装但不在Yum Repository內的软件包
->yumlist extras
+>yum list extras
 
 6. 列出所指定软件包
->yumlist~
+>yum list~
 
 7. 使用YUM获取软件包信息
->yuminfo~
+>yum info~
 
 8. 列出所有软件包的信息
->yuminfo
+>yum info
 
 9. 列出所有可更新的软件包信息
->yuminfo updates
+>yum info updates
 
 10. 列出所有已安裝的软件包信息
->yuminfo installed
+>yum info installed
 
 11. 列出所有已安裝但不在Yum Repository內的软件包信息
->yuminfo extras
+>yum info extras
 
 12. 列出软件包提供哪些文件
->yumprovides~
+>yum provides~
 
 fdisk -l可以看到多个物理硬盘，做了硬raid只能看到一个硬盘  
 `cat /proc/cpuinfo查看cpu具体的信息`
