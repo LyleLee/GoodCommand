@@ -120,11 +120,61 @@ Capabilities:
 
 ```
 ## 网络操作
-+ 重启网络  
 
-在ubuntu18.04上是
++ 设置IP
+
+建议使用`ip address`命令。ifconfig 可以完成同样配置，ubuntu上使用ifconfig，redhat使用的是ifcfg。`ip address`可以兼容两个系统
 ```
+ip address add 10.0.0.3/24 dev eth0
+ip address add 192.168.2.223/24 dev eth1
+ip address add 192.168.4.223/24 dev eth1
+```
+
++ 网络配置文件
+
+ubuntu
+```shell-session
+me@ceph-client:~$ cat /etc/netplan/01-netcfg.yaml
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+version: 2
+renderer: networkd
+ethernets:
+enp1s0:
+  dhcp4: yes
+me@ceph-client:~$
+``` 
+redhat
+```shell-session
+[me@localhost ~]$ cat /etc/sysconfig/network-scripts/ifcfg-enp1s0
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=dhcp
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=enp1s0
+UUID=8d5bd07f-3342-424c-9a18-ef91be6cf514
+DEVICE=enp1s0
+ONBOOT=yes
+[me@localhost ~]$
+```
+
++ 重启网络 
+ 
+ubuntu18.04
+```shell-session
 sudo systemctl restart systemd-networkd.service
+```
+redhat8.0
+```shell-session
+sudo systemctl restart NetworkManager
 ```
 其他系统上各有不同，即使是ubuntu，也因为版本命令不一样，所以其他发行版请自行搜索。
 

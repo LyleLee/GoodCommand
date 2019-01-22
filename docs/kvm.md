@@ -28,7 +28,7 @@ sudo apt-get install virt-manager
 ## 部署网络
 主要是为了虚拟机起来之后可以直接联网，安装各种软件方便。 也可以先跳过这一步，先部署虚拟机
 参考[参考地址](https://segmentfault.com/a/1190000015418876)
-我选择的是网桥模式，主要是修改好配置文件之后重启网络即可。
+我选择的是网桥模式，主要是修改好配置文件之后重启网络即可。  
 ubuntu18.04修改文件：`/etc/netplan/01-netcfg.yaml`
 ```shell-session
 me@ubuntu:/etc/netplan$ cat 01-netcfg.yaml
