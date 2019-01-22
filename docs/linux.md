@@ -28,7 +28,6 @@ cat /proc/cpuinfo| grep "cpu cores"| uniq
 ```
 cat /proc/cpuinfo| grep "processor"| wc -l
 ```
-
 ## 查询内存信息
 + 查看内存使用情况
 ```shell-session
@@ -39,7 +38,7 @@ Swap:          2.0G         20M        2.0G
 me@ubuntu:~$
 ```
 ## 查询硬盘信息
-### 1.lsblk
+### 1.lsblk  
 可以看到物理盘和逻辑盘以及挂载情况
 ```shell-session
 me@ubuntu:~$ lsblk
@@ -56,8 +55,7 @@ sdb      8:16   0  3.7T  0 disk
 fdisk -l
 #列出所有物理硬盘，做了硬raid只能看到一个硬盘
 ```
-###额外安装
-#### 3. smartctl
+### 3. smartctl
 可以看到硬盘本身的信息：设备型号、序列号，厂家、转速，大小等  
 `smartctl -a /dev/sdb`
 ```shell-session
@@ -82,7 +80,7 @@ SMART support is: Available - device has SMART capability.
 SMART support is: Enabled
 ...........
 ```
-#### 4. hdparm也是一个实用工具
+### 4. hdparm
 ```
 hdparm -I /dev/sdb
 ```
@@ -121,7 +119,7 @@ Capabilities:
 ```
 ## 网络操作
 
-+ 设置IP
+### 设置IP
 
 建议使用`ip address`命令。ifconfig 可以完成同样配置，ubuntu上使用ifconfig，redhat使用的是ifcfg。`ip address`可以兼容两个系统
 ```
@@ -129,8 +127,7 @@ ip address add 10.0.0.3/24 dev eth0
 ip address add 192.168.2.223/24 dev eth1
 ip address add 192.168.4.223/24 dev eth1
 ```
-
-+ 网络配置文件
+### 网络配置文件
 
 ubuntu
 ```shell-session
@@ -166,7 +163,7 @@ ONBOOT=yes
 [me@localhost ~]$
 ```
 
-+ 重启网络 
+### 重启网络 
  
 ubuntu18.04
 ```shell-session
