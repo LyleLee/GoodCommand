@@ -100,10 +100,13 @@ virsh list -all
 ```shell-session
 virsh console ubuntu_1
 ```
-## 停止VM，启动VM
+## 启动VM
+```shell-session
+virsh start ubuntu_2
+```
+## 停止VM，
 ```shell-session
 virsh shutdown ubuntu_2
-virsh start ubuntu_2
 ```
 ## 删除VM
 ```shell-session

@@ -12,7 +12,6 @@ sudo dmidecode -t  connector    #未调查
 sudo dmidecode -t  slot         #含槽位信息
 ```
 ## 查询CPU信息
-
 ```
 总核数     = 物理CPU个数 × 每颗物理CPU的核数  
 总逻辑CPU数= 物理CPU个数 × 每颗物理CPU的核数 X 超线程数
@@ -40,7 +39,8 @@ Swap:          2.0G         20M        2.0G
 me@ubuntu:~$
 ```
 ## 查询硬盘信息
-lsblk 可以看到物理盘和逻辑盘以及挂载情况
+### 1.lsblk
+可以看到物理盘和逻辑盘以及挂载情况
 ```shell-session
 me@ubuntu:~$ lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
@@ -50,7 +50,15 @@ sda      8:0    0  3.7T  0 disk
 sdb      8:16   0  3.7T  0 disk
 └─sdb1   8:17   0  3.7T  0 part /home/data
 ```
-smartctl可以看到硬盘本身的信息：设备型号、序列号，厂家、转速，大小等  
+### 2.fdisk
+系统自带的硬盘工具,可以进行格式化硬盘等操作
+```shell-session
+fdisk -l
+#列出所有物理硬盘，做了硬raid只能看到一个硬盘
+```
+###额外安装
+#### 3. smartctl
+可以看到硬盘本身的信息：设备型号、序列号，厂家、转速，大小等  
 `smartctl -a /dev/sdb`
 ```shell-session
 me@ubuntu:~$ sudo smartctl -a /dev/sdb
@@ -74,7 +82,7 @@ SMART support is: Available - device has SMART capability.
 SMART support is: Enabled
 ...........
 ```
-hdparm也是一个实用工具
+#### 4. hdparm也是一个实用工具
 ```
 hdparm -I /dev/sdb
 ```
@@ -183,6 +191,47 @@ find . -name verbs.h | xargs -n 1 ls -l
 ```
 dmidecode|grep "System Information" -A9
 ```
+## 软件安装
+1. 查找软件包
+```yumsearch ~  ```
+
+2. 列出所有可安装的软件包  
+>yumlist  
+  
+3. 列出所有可更新的软件包
+>yumlist updates  
+  
+4. 列出所有已安装的软件包
+>yumlist installed
+  
+5. 列出所有已安装但不在Yum Repository內的软件包
+>yumlist extras
+
+6. 列出所指定软件包
+>yumlist~
+
+7. 使用YUM获取软件包信息
+>yuminfo~
+
+8. 列出所有软件包的信息
+>yuminfo
+
+9. 列出所有可更新的软件包信息
+>yuminfo updates
+
+10. 列出所有已安裝的软件包信息
+>yuminfo installed
+
+11. 列出所有已安裝但不在Yum Repository內的软件包信息
+>yuminfo extras
+
+12. 列出软件包提供哪些文件
+>yumprovides~
+
+fdisk -l可以看到多个物理硬盘，做了硬raid只能看到一个硬盘  
+`cat /proc/cpuinfo查看cpu具体的信息`
+13. 查找不常见软件包
+>rmadision -S
 ## 安装linux源码
 ```
 sudo apt-get install linux-4.4-source-4.4  
