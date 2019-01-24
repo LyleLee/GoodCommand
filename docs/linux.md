@@ -1,3 +1,4 @@
+# linux常用工具
 ## 查询设备信息
 + 查看服务器型号，bios， 主板，槽位，cpu，内存等
 ```shell-session
@@ -56,6 +57,7 @@ fdisk -l
 #列出所有物理硬盘，做了硬raid只能看到一个硬盘
 ```
 ### 3. smartctl
+smartctl控制ATA-3、ATA later、IDE 和 SCSI-3硬件驱动器的自监测、分析和报告功能。
 可以看到硬盘本身的信息：设备型号、序列号，厂家、转速，大小等  
 `smartctl -a /dev/sdb`
 ```shell-session
@@ -81,6 +83,7 @@ SMART support is: Enabled
 ...........
 ```
 ### 4. hdparm
+hdparm是Linux的命令行程序，用于设置和查看ATA硬盘驱动器的硬件参数和测试性能。它可以设置驱动器缓存，睡眠模式，电源管理，声学管理和DMA设置等参数。
 ```
 hdparm -I /dev/sdb
 ```

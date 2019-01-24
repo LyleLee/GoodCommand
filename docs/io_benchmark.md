@@ -80,7 +80,7 @@ CTRL-C requested. vdbench terminating
 
 The check to make sure you are running java 1.7 or higher has been removed.
 ```
-### ARM共享库问题
+### ARM共享库aarch64.so问题
 在ARM服务器上，会出现共享库不匹配的问题。
 ```shell-session
 me@ubuntu:~$ ./vdbench -t
@@ -122,7 +122,7 @@ java.lang.RuntimeException: Failure loading shared library
 me@ubuntu:~$ file linux/linux64.so
 linux/linux64.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=34a31f32956f21153c372a95e73c02e84ddd29f8, not stripped
 ```
-### 编译ARM版本的linux64.so
+### ARM版本的aarch64.so编译
 下载，解压源码包：
 [下载地址](https://www.oracle.com/technetwork/server-storage/vdbench-source-download-2104625.html) 需要同意license
 ```
