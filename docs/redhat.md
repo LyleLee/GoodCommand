@@ -1,5 +1,8 @@
-## redhat 添加本地源
-复制IOS镜像到本机主目录下，已有的请忽略
+为redhat 添加本地源
+
+<br />
+## 复制IOS镜像到本机
+这里复制到主目录下，已有的请忽略
 ```shell-session
 #在其他机器执行
 scp  RHEL-8.0-20181030.n.0-aarch64-dvd1.iso root@ip:~/
