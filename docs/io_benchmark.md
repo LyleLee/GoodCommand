@@ -5,26 +5,33 @@ Oracle维护的一个磁盘IO性能工具，用于产生磁盘IO 负载测试磁
 下载解压即可使用。一般不需要编译，如果运行环境存在，可以直接运行。当在ARM服务器上执行时会遇到一些问题，这里介绍如何解决。 
 
 测试运行环境：
-```sh
+```shell-session
 #给脚本赋予运行权限
 chmod +x vdbench
 #执行测试
 ./vdbench -t
 ```
-如果执行不成功，请安装运行环境
-```sh
-#vdbench 是c shell script，需要安装csh
-sudo apt install csh
-#vdbench 的测试以来java执行环境
-sudo apt install default-jre
-```
-如果出现csh找不到的问题，需要安装csh。 vdbench 5.04.05的vdbench脚本是c shell script文件。 vdbench 5.04.07是bash script。 建议使用5.04.07。
-```
-me@ubuntu:~/vdbench50407$ file vdbench
-vdbench: Bourne-Again shell script, ASCII text executable
+```shell-session
 me@ubuntu:~/vdbench50407$ ./vdbench -t
 -bash: ./vdbench: /bin/csh: bad interpreter: No such file or directory
 ```
+如果出现csh找不到的问题，需要安装csh。
+
++ vdbench 5.04.05的vdbench脚本是c shell script文件。
++ vdbench 5.04.07是bash script。
+
+建议使用5.04.07。
+```shell-session
+me@ubuntu:~/vdbench50407$ file vdbench
+vdbench: Bourne-Again shell script, ASCII text executable
+
+sudo apt install csh
+```
+如果缺少jre，安装jre
+```shell-session
+sudo apt install default-jre
+```
+
 ### vdbench 5.04.05
 出现java版本检测不合法的问题。
 ```shell-session
