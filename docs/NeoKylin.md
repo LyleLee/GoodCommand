@@ -69,7 +69,7 @@ media.repo  ns7-adv.repo
 [local_media_from_iso]
 baseurl=file:///mnt/cdrom
 ```
-修改好后可以查看到一斤给添加的源
+修改好后可以查看到已经添加的源
 ```shell-session
 [root@kylin yum.repos.d]# yum repolist
 源标识                                                                   源名称                                                                                       状态
