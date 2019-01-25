@@ -11,5 +11,7 @@ nav:
     - 发行版: 
         - redhat: redhat.md
         - ubuntu: ubuntu.md
+        - NeoKylin: NeoKylin.md
     - 计算机存储器: 计算机存储器.md
+    - 计算机终端: terminal.md
 theme: readthedocs

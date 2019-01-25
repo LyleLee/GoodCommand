@@ -1,6 +1,5 @@
-为redhat 添加本地源
+# 为redhat 添加本地源
 
-<br />
 ## 复制IOS镜像到本机
 这里复制到主目录下，已有的请忽略
 ```shell-session
