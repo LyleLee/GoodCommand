@@ -8,6 +8,7 @@ nav:
     - benchmark:
         - cpu: cpu_benchmark.md
         - io: io_benchmark.md
+        - mem: mem_benchmark.md
     - 发行版: 
         - redhat: redhat.md
         - ubuntu: ubuntu.md
