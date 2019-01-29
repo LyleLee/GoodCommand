@@ -11,3 +11,8 @@ fio --ramp_time=10 --runtime=60 --size=10g --ioengine=libaio --filename=/mnt/tes
 ```console
 sudo apt-get install libaio-dev
 ```
++ 限制带宽和IOPS
+```console
+--rate 400k,300k
+```
+把读速率设置为400kB/s， 把写速率设置为300kB/s
