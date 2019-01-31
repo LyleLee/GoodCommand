@@ -79,6 +79,7 @@ sudo virt-install               \
 ```
 ```
 --name ubuntu_1                 是虚拟机的名字，待会儿查看有多少台虚拟机时会列出来的名字，并不是虚拟机的主机名。
+--os-variant "ubuntu18.04"      必须是指定的版本，可以使用命令查询osinfo-query os 如果缺少相应软件包：sudo apt install libosinfo-bin
 --memory                        4096指定虚拟机的内存，以M为单位，这里是4个G。也就是4*1024
 --vcpus 2                       指定虚拟机的CPU数量
 --disk path                     指定虚拟机的硬盘文件，也就是虚拟机的硬盘，大小是50G。
