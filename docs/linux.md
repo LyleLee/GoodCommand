@@ -145,7 +145,7 @@ enp1s0:
   dhcp4: yes
 me@ceph-client:~$
 ``` 
-redhat
+redhat7.5 redhat8.0
 ```shell-session
 [me@localhost ~]$ cat /etc/sysconfig/network-scripts/ifcfg-enp1s0
 TYPE=Ethernet
@@ -165,14 +165,14 @@ DEVICE=enp1s0
 ONBOOT=yes
 [me@localhost ~]$
 ```
-
+主要修改`BOOTPROTO=dhcp`和`ONBOOT=yes`这两个选项
 ### 重启网络 
  
 ubuntu18.04
 ```shell-session
 sudo systemctl restart systemd-networkd.service
 ```
-redhat8.0
+redhat7.5 redhat8.0
 ```shell-session
 sudo systemctl restart NetworkManager
 ```
@@ -282,6 +282,23 @@ fdisk -l可以看到多个物理硬盘，做了硬raid只能看到一个硬盘
 `cat /proc/cpuinfo查看cpu具体的信息`
 13. 查找不常见软件包
 >rmadision -S
+
+## 用户管理
+因为安装系统时没有为用户添加到管理员，所以无法执行sudo命令，系统提示
+```shell-session
+[me@redhat75 ~]$ sudo vim /etc/sysconfig/network-scripts/ifcfg-eth0
+[sudo] password for me:
+me is not in the sudoers file.  This incident will be reported.
+```
+添加用户到sudo组
+```
+[root@redhat75 me]# usermod -a -G sudo me
+usermod: group 'sudo' does not exist
+```
+添加不成功，原因是默认没有sudo组，在安装系统时，账户默认是wheel组，wheel也有sudo权限。
+```
+[root@redhat75 me]# usermod -a -G wheel me
+```
 ## 安装linux源码
 ```
 sudo apt-get install linux-4.4-source-4.4  
