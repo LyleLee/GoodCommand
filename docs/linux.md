@@ -290,6 +290,13 @@ sudo xz -d linux-4.4-source-4.4.tar.xz
 tar -xvf linux-4.4-source-4.4.tar   
 sudo tar -xvf linux-4.4-source-4.4.tar
 ```
+## 校验md5
+计算文件的md5值
+```shell-session
+me@ubuntu:~$ md5sum shrc
+5d17293b5f05e123c50b04e1cd1b9ff7  shrc
+```
+
 ## 修改键盘布局
 有时候键盘布局可能不一样，导致按键错误，可以使用命令进行配置.一般选择1-4键盘
 ```shell-session
