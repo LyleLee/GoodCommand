@@ -14,6 +14,8 @@ nav:
         - redhat: redhat.md
         - ubuntu: ubuntu.md
         - NeoKylin: NeoKylin.md
+    - bug solve:
+        - 1670650: 1670650.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
 theme: readthedocs
