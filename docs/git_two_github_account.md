@@ -71,6 +71,7 @@ ssh -vT git@one.github.com
 ssh -vT git@two.github.com
 #执行结果不出现failure
 ```
+## 仓库配置
 到每个仓库与下设置user.name 和 user.email
 ```git
 #仓库1
