@@ -3,7 +3,8 @@ nav:
     - Home: index.md
     - linux: linux.md
     - kvm: kvm.md
-    - git: git_bash_windows.md
+    - git_two_github_account: git_two_github_account.md
+    - git_bash_windows: git_bash_windows.md
     - fio: fio.md
     - nfs: nfs.md
     - shellcheck: shellcheck.md
