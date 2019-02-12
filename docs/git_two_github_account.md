@@ -19,8 +19,8 @@ git config --global user.email "zhangshan"
 ```
 
 假设这两个账号分别是
-+ one@gmail.com
-+ two@gmail.com
++ tom one@gmail.com
++ sam @gmail.com
 
 ## SSH的配置
 配置ssh的目的是，每次提交代码的时候不需要使用https的方式每次都输入账户和密码。  
@@ -70,6 +70,15 @@ IdentityFile ~/.ssh/id_rsa_two
 ssh -vT git@one.github.com
 ssh -vT git@two.github.com
 #执行结果不出现failure
+```
+到每个仓库与下设置user.name 和 user.email
+```git
+#仓库1
+git config user.name "tom"
+git config user.email "one@gmail.com" 
+#仓库2
+git config user.name "sam"
+git config user.email "two@gmail.com" 
 ```
 到每个仓库下修改，修改远程仓库地址，如果不修改，提交将不成功
 ```git
