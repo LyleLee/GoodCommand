@@ -5,6 +5,9 @@ nav:
     - kvm: kvm.md
     - git: git_bash_windows.md
     - fio: fio.md
+    - nfs: nfs.md
+    - shellcheck: shellcheck.md
+    - tldr: tldr.md
     - benchmark:
         - cpu: cpu_benchmark.md
         - io: io_benchmark.md
