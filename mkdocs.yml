@@ -10,6 +10,8 @@ nav:
     - shellcheck: shellcheck.md
     - tldr: tldr.md
     - netstat: netstat.md
+    - systemd: systemd.md
+    - tzselect: tzselect.md
     - benchmark:
         - cpu: cpu_benchmark.md
         - io: io_benchmark.md
