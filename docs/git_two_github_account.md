@@ -1,7 +1,5 @@
 一台电脑两个github账号设置
 =================
-参考配置教程
-[http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/](http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/)
 
 账户信息配置
 
@@ -19,6 +17,7 @@ git config --global user.email "zhangshan"
 ```
 
 假设这两个账号分别是
+
 + tom one@gmail.com
 + sam @gmail.com
 
@@ -35,7 +34,12 @@ rm id_rsa_*
 ```git
 ssh-add -l
 ```
-如过执行不成功，需要执行
+如果执行不成功
+```
+$ ssh-add -l
+Could not open a connection to your authentication agent.
+```
+需要执行
 ```git
 eval `ssh-agent -s`
 ```
@@ -71,6 +75,17 @@ ssh -vT git@one.github.com
 ssh -vT git@two.github.com
 #执行结果不出现failure
 ```
+教程提到每次重启都要执行：
+```console
+ssh-add ~/.ssh/id_rsa_one
+ssh-add ~/.ssh/id_rsa_two
+```
+可以使用-k避免每次重启都要执行添加动作
+```
+ssh-add -k ~/.ssh/id_rsa_one
+ssh-add -k ~/.ssh/id_rsa_two
+```
+
 ## 仓库配置
 到每个仓库与下设置user.name 和 user.email
 ```git
@@ -96,3 +111,6 @@ origin  git@two.github.com:LyleLee/GoodCommand.git (fetch)
 origin  git@two.github.com:LyleLee/GoodCommand.git (push)
 ```
 这个时候git push origin 就可以了
+
+参考配置教程  
+[http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/](http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/)
