@@ -353,7 +353,7 @@ Flags:                 half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva i
 ```
 
 ## /proc/cpuinfo
-```
+```shell-session
 pi@raspberrypi:~ $ cat /proc/cpuinfo
 processor       : 0
 model name      : ARMv7 Processor rev 4 (v7l)
