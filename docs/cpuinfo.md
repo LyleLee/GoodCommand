@@ -162,7 +162,7 @@ Upgrade           : Other
 
 # 一台x86服务器
 ## lscpu
-```
+```shell-session
 [root@localhost ~]# lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
@@ -319,7 +319,7 @@ CPU revision    : 2
 ```
 这里CPU个数是2，分别是CPU01和CPU02，每个物理CPU核心是32个，每个物理CPU核心线程数量也是32，也就是没有启用超线程。总逻辑CPU数量是64。
 
-# 树莓派 3B
+# 一台树莓派 3B
 官方参数[官网](https://www.raspberrypi.org/magpi/raspberry-pi-3-specs-benchmarks/)
 ```
 Raspberry Pi 3 Specifications
