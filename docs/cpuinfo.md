@@ -319,5 +319,93 @@ CPU revision    : 2
 ```
 这里CPU个数是2，分别是CPU01和CPU02，每个物理CPU核心是32个，每个物理CPU核心线程数量也是32，也就是没有启用超线程。总逻辑CPU数量是64。
 
+# 树莓派 3B
+官方参数[官网](https://www.raspberrypi.org/magpi/raspberry-pi-3-specs-benchmarks/)
+```
+Raspberry Pi 3 Specifications
+SoC: Broadcom BCM2837
+CPU: 4× ARM Cortex-A53, 1.2GHz
+GPU: Broadcom VideoCore IV
+RAM: 1GB LPDDR2 (900 MHz)
+Networking: 10/100 Ethernet, 2.4GHz 802.11n wireless
+Bluetooth: Bluetooth 4.1 Classic, Bluetooth Low Energy
+Storage: microSD
+GPIO: 40-pin header, populated
+Ports: HDMI, 3.5mm analogue audio-video jack, 4× USB 2.0, Ethernet, Camera Serial Interface (CSI), Display Serial Interface (DSI)
+```
+
+## lscpu
+```shell-session
+pi@raspberrypi:~ $ lscpu
+Architecture:          armv7l
+Byte Order:            Little Endian
+CPU(s):                4            #官方 CPU: 4× ARM Cortex-A53, 1.2GHz
+On-line CPU(s) list:   0-3
+Thread(s) per core:    1            #没有超线程
+Core(s) per socket:    4
+Socket(s):             1
+Model:                 4
+Model name:            ARMv7 Processor rev 4 (v7l)
+CPU max MHz:           1200.0000    #和官方的1.2GHZ标称一样，没有买到假货
+CPU min MHz:           600.0000     #和官方一致
+BogoMIPS:              38.40
+Flags:                 half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
+```
+
+## /proc/cpuinfo
+```
+pi@raspberrypi:~ $ cat /proc/cpuinfo
+processor       : 0
+model name      : ARMv7 Processor rev 4 (v7l)
+BogoMIPS        : 38.40
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 4
+
+processor       : 1
+model name      : ARMv7 Processor rev 4 (v7l)
+BogoMIPS        : 38.40
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 4
+
+processor       : 2
+model name      : ARMv7 Processor rev 4 (v7l)
+BogoMIPS        : 38.40
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 4
+
+processor       : 3
+model name      : ARMv7 Processor rev 4 (v7l)
+BogoMIPS        : 38.40
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xd03
+CPU revision    : 4
+
+Hardware        : BCM2835 #这里和官方BCM2837不一样，感觉还是有点坑。
+Revision        : a32082
+Serial          : 0000000076e8446e
+```
+## dmidecode
+```shell-session
+pi@raspberrypi:~ $ sudo dmidecode
+# dmidecode 3.0
+Scanning /dev/mem for entry point.
+# No SMBIOS nor DMI entry point found, sorry.
+```
+不支持demidecode，网上介绍原因是BIOS没有设置DMI data。
 
 **如有问题，欢迎在github上给我留言**
