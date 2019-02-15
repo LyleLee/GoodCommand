@@ -12,10 +12,11 @@ sudo dmidecode -t  cache        #含所有L1、L2、L3缓存信息
 sudo dmidecode -t  connector    #未调查
 sudo dmidecode -t  slot         #含槽位信息
 ```
+请参考[dmidecode例子](cpuinfo.md#dmidecode)查看不同设备的输出
+
 ## 查询CPU信息
 ```
-总核数     = 物理CPU个数 × 每颗物理CPU的核数  
-总逻辑CPU数= 物理CPU个数 × 每颗物理CPU的核数 X 超线程数
+总核数（总逻辑核数）= 物理CPU个数 × 每颗物理CPU的核数 × 超线程数
 ```
 + 查看物理CPU个数
 ```shell-session
@@ -29,6 +30,9 @@ cat /proc/cpuinfo| grep "cpu cores"| uniq
 ```
 cat /proc/cpuinfo| grep "processor"| wc -l
 ```
+另外，可以直接使用lscpu得出CPU概览。  
+<br />
+请参考[解读CPU信息](cpuinfo.md#lscpu)查看不同设备的输出
 ## 查询内存信息
 + 查看内存使用情况
 ```shell-session

@@ -13,7 +13,8 @@ nav:
     - systemd: systemd.md
     - tzselect: tzselect.md
     - benchmark:
-        - cpu: cpu_benchmark.md
+        - cpu information: cpuinfo.md
+        - cpu spec cpu: cpu_benchmark.md
         - io: io_benchmark.md
         - mem: mem_benchmark.md
     - kernel: linux_kernel.md
