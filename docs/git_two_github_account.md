@@ -1,7 +1,7 @@
 一台电脑两个github账号设置
 =================
 
-账户信息配置
+账户信息配置,取消全局账户
 
 ```git
 #查看配置信息
@@ -10,8 +10,9 @@ git config -l
 #如果配置有全局账户，建议取消全局账户，因为我们需要每个不同的仓库使用自己的账户提交代码
 git config --global --unset user.name
 git config --global --unset user.email
-
-#如果想重新配置全局账户
+```
+如果想重新配置全局账户
+```git
 git config --global user.name "zhangshan@gmail.com"
 git config --global user.email "zhangshan"
 ```
@@ -55,6 +56,11 @@ ssh-keygen -t rsa -C "two@gmail.com" -f ~/.ssh/id_rsa_two
 -rw-r--r-- 1 Administrator 197121 1831 2月  12 19:09 id_rsa_two
 -rw-r--r-- 1 Administrator 197121  409 2月  12 19:09 id_rsa_two.pub
 ```
+把id_rsa_one.pub和id_rsa_two.pub的内容添加到github账户的ssh-keys当中
+```shell-session
+cat id_rsa_one.pub
+#复制内容,在浏览器中添加到github账户的ssh-keys当中
+```
 编辑`~/.ssh/config`文件,其中的Host是可以指定的，后面远程仓库的url需要和它一致
 ```config
 #one
@@ -70,11 +76,15 @@ User git
 IdentityFile ~/.ssh/id_rsa_two
 ```
 测试ssh是否成功
+```shell-session
+ssh -T git@one.github.com
+ssh -T git@two.github.com
+#如果没有添加公钥.pub到文件到相应的github账户会出现
+Permission denied (publickey).
+#如果已经添加公钥,会提示成功
+Hi tom! You've successfully authenticated, but GitHub does not provide shell access.
 ```
-ssh -vT git@one.github.com
-ssh -vT git@two.github.com
-#执行结果不出现failure
-```
+
 教程提到每次重启都要执行：
 ```console
 ssh-add ~/.ssh/id_rsa_one
