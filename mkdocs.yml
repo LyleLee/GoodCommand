@@ -26,4 +26,5 @@ nav:
         - 1670650: 1670650.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
+    - raid: raid.md
 theme: readthedocs
