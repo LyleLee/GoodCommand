@@ -50,3 +50,6 @@ pi@raspberrypi:/usr/lib/systemd/system $ rpcinfo -p
     100021    3   tcp  42021  nlockmgr
     100021    4   tcp  42021  nlockmgr
 ```
+
+nfs nat
+[http://blog.sina.com.cn/s/blog_a0aacb430101qv8c.html](http://blog.sina.com.cn/s/blog_a0aacb430101qv8c.html)
