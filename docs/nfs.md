@@ -53,3 +53,98 @@ pi@raspberrypi:/usr/lib/systemd/system $ rpcinfo -p
 
 nfs nat
 [http://blog.sina.com.cn/s/blog_a0aacb430101qv8c.html](http://blog.sina.com.cn/s/blog_a0aacb430101qv8c.html)
+[http://bryanw.tk/2012/specify-nfs-ports-ubuntu-linux/](http://bryanw.tk/2012/specify-nfs-ports-ubuntu-linux/)
+
+config static port
+```shell-session
+pi@raspberrypi:/etc/default $ rpcinfo -p
+   program vers proto   port  service
+    100000    4   tcp    111  portmapper
+    100000    3   tcp    111  portmapper
+    100000    2   tcp    111  portmapper
+    100000    4   udp    111  portmapper
+    100000    3   udp    111  portmapper
+    100000    2   udp    111  portmapper
+    100005    1   udp  41487  mountd
+    100005    1   tcp  41073  mountd
+    100005    2   udp  53337  mountd
+    100005    2   tcp  43843  mountd
+    100005    3   udp  59561  mountd
+    100005    3   tcp  37855  mountd
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100227    3   tcp   2049
+    100003    3   udp   2049  nfs
+    100003    4   udp   2049  nfs
+    100227    3   udp   2049
+    100021    1   udp  47977  nlockmgr
+    100021    3   udp  47977  nlockmgr
+    100021    4   udp  47977  nlockmgr
+    100021    1   tcp  41839  nlockmgr
+    100021    3   tcp  41839  nlockmgr
+    100021    4   tcp  41839  nlockmgr
+pi@raspberrypi:/etc/default $ sudo systemctl restart nfs-service
+Failed to restart nfs-service.service: Unit nfs-service.service not found.
+pi@raspberrypi:/etc/default $ sudo systemctl restart nfs-server
+pi@raspberrypi:/etc/default $ rpcinfo -p
+   program vers proto   port  service
+    100000    4   tcp    111  portmapper
+    100000    3   tcp    111  portmapper
+    100000    2   tcp    111  portmapper
+    100000    4   udp    111  portmapper
+    100000    3   udp    111  portmapper
+    100000    2   udp    111  portmapper
+    100005    1   udp   4002  mountd
+    100005    1   tcp   4002  mountd
+    100005    2   udp   4002  mountd
+    100005    2   tcp   4002  mountd
+    100005    3   udp   4002  mountd
+    100005    3   tcp   4002  mountd
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100227    3   tcp   2049
+    100003    3   udp   2049  nfs
+    100003    4   udp   2049  nfs
+    100227    3   udp   2049
+    100021    1   udp  39718  nlockmgr
+    100021    3   udp  39718  nlockmgr
+    100021    4   udp  39718  nlockmgr
+    100021    1   tcp  39867  nlockmgr
+    100021    3   tcp  39867  nlockmgr
+    100021    4   tcp  39867  nlockmgr
+```
+[https://wiki.debian.org/SecuringNFS](https://wiki.debian.org/SecuringNFS)
+Alternative to kernel parameters: These settings can be put into /etc/sysctl.conf or /etc/sysctl.d/nfs-static-ports.conf:
+
+fs.nfs.nfs_callback_tcpport = 32764
+fs.nfs.nlm_tcpport = 32768
+fs.nfs.nlm_udpport = 32768
+
+```
+pi@raspberrypi:/media/pi $ rpcinfo -p
+   program vers proto   port  service
+    100000    4   tcp    111  portmapper
+    100000    3   tcp    111  portmapper
+    100000    2   tcp    111  portmapper
+    100000    4   udp    111  portmapper
+    100000    3   udp    111  portmapper
+    100000    2   udp    111  portmapper
+    100005    1   udp   4002  mountd
+    100005    1   tcp   4002  mountd
+    100005    2   udp   4002  mountd
+    100005    2   tcp   4002  mountd
+    100005    3   udp   4002  mountd
+    100005    3   tcp   4002  mountd
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100227    3   tcp   2049
+    100003    3   udp   2049  nfs
+    100003    4   udp   2049  nfs
+    100227    3   udp   2049
+    100021    1   udp  32768  nlockmgr
+    100021    3   udp  32768  nlockmgr
+    100021    4   udp  32768  nlockmgr
+    100021    1   tcp  32768  nlockmgr
+    100021    3   tcp  32768  nlockmgr
+    100021    4   tcp  32768  nlockmgr
+```
