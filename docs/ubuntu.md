@@ -64,5 +64,12 @@ me@ubuntu:~$history
  3950  2019-02-18 16:18:32 history --help
  3951  2019-02-18 16:19:45 history
  3952  2019-02-18 16:19:48 history
+```
 
+### cat正常 vim中文乱码
+在.vimrc中添加
+```config
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
 ```
