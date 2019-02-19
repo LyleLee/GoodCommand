@@ -1,4 +1,8 @@
 site_name: GoodCommand
+site_author: lixianfa
+
+repo_url: https://github.com/LyleLee/GoodCommand
+
 nav:
     - Home: index.md
     - linux: linux.md
@@ -6,6 +10,7 @@ nav:
     - git_two_github_account: git_two_github_account.md
     - git_bash_windows: git_bash_windows.md
     - fio: fio.md
+    - vdbench: vdbench.md
     - nfs: nfs.md
     - shellcheck: shellcheck.md
     - tldr: tldr.md
