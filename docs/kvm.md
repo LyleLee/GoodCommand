@@ -30,7 +30,8 @@ sudo apt-get install virt-manager
 参考[参考地址](https://segmentfault.com/a/1190000015418876)
 我选择的是网桥模式，主要是修改好配置文件之后重启网络即可。  
 ubuntu18.04网络配置文件：`/etc/netplan/01-netcfg.yaml`  
-redhat7.5、redhat8.0网络配置文件：`/etc/sysconfig/network-scripts/ifcfg-enp1s0`,参考[linux网络操作](linux.md#_5)
+redhat7.5、redhat8.0网络配置文件：`/etc/sysconfig/network-scripts/ifcfg-enp1s0`,参考[linux网络操作](linux.md#_5)  
+路径一般是对的，文件名有可能不一样。
 ```shell-session
 me@ubuntu:/etc/netplan$ cat 01-netcfg.yaml
 # This file describes the network interfaces available on your system
