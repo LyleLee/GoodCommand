@@ -7,7 +7,7 @@
 例如：  
 要给服务器换硬盘，可能之前查过怎么制作文件系统、挂载硬盘，但是过了一段时间后还是忘了，又要网上找，不如直接在自己的使用记录中找来的快
 
-For full documentation visit [github:/GoodCommand](https://github.com/LyleLee/GoodCommand).
+指出错误，评论请访问github仓库 [github](https://github.com/LyleLee/GoodCommand).
 
 ## 文档包含的内容
 
