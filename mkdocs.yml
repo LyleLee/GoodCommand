@@ -17,6 +17,7 @@ nav:
     - netstat: netstat.md
     - systemd: systemd.md
     - tzselect: tzselect.md
+    - vim: vim.md
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
