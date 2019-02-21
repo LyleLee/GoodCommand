@@ -211,6 +211,7 @@ cd /root/nfs-client-dir
 ```
 
 ## dmesg
+
 ```console
 [root@readhat76 ~/nfs-client-dir]#dmesg
 [75323.323614] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
@@ -228,4 +229,4 @@ cd /root/nfs-client-dir
 [75761.083625] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
 [75797.563616] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
 [75834.043622] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-```console
+```
