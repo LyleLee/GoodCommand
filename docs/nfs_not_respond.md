@@ -34,7 +34,7 @@ Generating testcase 'test5.c ...
 Generating testcase 'test6.c ...
 ```
 demsg输出
-```shell-session
+```console
 [   32.712027] IPv6: ADDRCONF(NETDEV_UP): enp189s0f1: link is not ready
 [   33.786131] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
 [   34.983938] Netfilter messages via NETLINK v0.30.
