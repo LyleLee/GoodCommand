@@ -15,6 +15,7 @@ nav:
     - shellcheck: shellcheck.md
     - tldr: tldr.md
     - netstat: netstat.md
+    - dstat: dstat.md
     - systemd: systemd.md
     - tzselect: tzselect.md
     - vim: vim.md
