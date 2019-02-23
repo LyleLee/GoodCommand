@@ -19,6 +19,7 @@ nav:
     - systemd: systemd.md
     - tzselect: tzselect.md
     - vim: vim.md
+    - vnc: vnc.md
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
