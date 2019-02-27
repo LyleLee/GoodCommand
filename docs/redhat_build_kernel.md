@@ -44,9 +44,13 @@ CONFIG_SYSTEM_TRUSTED_KEYS=""
 ```
 wget https://raw.githubusercontent.com/xin3liang/home-bin/master/build-kernel-natively.sh
 ```
-set rpm name as you line by assign a value to LOCALVERSION
+set rpm name as you like by assign a value to LOCALVERSION
 ```
 export LOCALVERSION="-liuxl-test-`date +%F`"
+```
+## install dependence
+```
+yum install -y ncurses-devel make gcc bc bison flexelfutils-libelf-devel openssl-devel
 ```
 
 ## Run script
