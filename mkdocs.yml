@@ -29,6 +29,7 @@ nav:
     - kernel: linux_kernel.md
     - 发行版: 
         - redhat: redhat.md
+        - redhat build kernel: redhat_build_kernel.md
         - ubuntu: ubuntu.md
         - NeoKylin: NeoKylin.md
     - bug solve:
