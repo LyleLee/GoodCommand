@@ -1,4 +1,6 @@
 dstat
+====================
+dstat 功能丰富，可用于替代vmstat, iostat，netstat 和ifstat。
 ```shell-session
 root@ubuntu:~# dstat
 You did not select any stats, using -cdngy by default.
