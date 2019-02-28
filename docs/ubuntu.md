@@ -1,3 +1,16 @@
+## 设置root密码
+```shell
+sudo passwd
+```
+## 允许root用户登陆
+```
+vim /etc/ssh/ssd_config
+#有一段描述PermitRootLogin probit-passwd,提示设置或者添加 PermitRootLogin yes即可
+PermitRootLogin yes
+#重启服务
+systemctl restart ssh
+```
+
 ## 设置.bash_history
 在命令行使用history可以查看当前用户执行过的命令，可以很方便地帮助我们回忆做了什么事情。history命令的输出其实是在`~/.bash_history`文件中保存的。
 默认情况下保存命令的条数是有限的。可以通过修改一些参数来进行定制。  
