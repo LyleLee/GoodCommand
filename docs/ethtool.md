@@ -23,7 +23,7 @@ Settings for enahisic2i0:
         Link partner advertised pause frame use: No
         Link partner advertised auto-negotiation: Yes
         Link partner advertised FEC modes: Not reported
-        Speed: 1000Mb/s 网口速率
+        Speed: 1000Mb/s #网口速率
         Duplex: Full
         Port: Twisted Pair
         PHYAD: 0
@@ -31,7 +31,7 @@ Settings for enahisic2i0:
         Auto-negotiation: on
         MDI-X: off (auto)
 Cannot get wake-on-lan settings: Operation not permitted
-        Link detected: yes 网线是否连接
+        Link detected: yes #网线是否连接
 
 ```
 
@@ -74,7 +74,7 @@ tcp-segmentation-offload: on
 udp-fragmentation-offload: off
 generic-segmentation-offload: on
 generic-receive-offload: on
-large-receive-offload: off [fixed] fixed 代表默认配置
+large-receive-offload: off [fixed] #fixed 代表默认配置
 rx-vlan-offload: off [fixed]
 tx-vlan-offload: off [fixed]
 ntuple-filters: off [fixed]
