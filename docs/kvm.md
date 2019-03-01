@@ -167,6 +167,47 @@ virsh attach-disk ubuntu_5 /var/lib/libvirt/images/ubuntu_vm5_disk_100G vdb --su
 virsh attach-disk ubuntu_6 /var/lib/libvirt/images/ubuntu_vm6_disk_100G vdb --subdriver=qcow2
 ```
 
+## 网络NAT模式
+前面的网桥模式一般来说可以满足比较普遍的需求。 如果不希望外部网络知道虚机的网络结构，可以选中NAT模式。
+这里涉及两个配置文件,内容差不多，2019年3月1日17:26:03还不知道主要用途。
+```
+1. /usr/share/libvirt/networks/default.xml
+<network>
+  <name>default</name>
+  <bridge name="virbr0"/>
+  <forward/>
+  <ip address="192.168.122.1" netmask="255.255.255.0">
+    <dhcp>
+      <range start="192.168.122.2" end="192.168.122.254"/>
+    </dhcp>
+  </ip>
+</network>
+
+
+2. /etc/libvirt/qemu/networks/default.xml
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit default
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>default</name>
+  <uuid>5b8f9cf9-cbd2-4461-83e6-2ac31ad8f9e6</uuid>
+  <forward mode='nat'/>
+  <bridge name='virbr0' stp='on' delay='0'/>
+  <mac address='52:54:00:fe:91:35'/>
+  <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+    </dhcp>
+  </ip>
+</network>
+
+```
+
+
 ## 报错处理
 无法连接到libvirt-sock
 ```
