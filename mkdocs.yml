@@ -34,6 +34,7 @@ nav:
         - redhat build kernel[cn]: redhat_build_kernel_zh.md
         - ubuntu: ubuntu.md
         - ubuntu 软件源: ubuntu_sources_list.md
+        - ubuntu 软件包: ubuntu_packages.md
         - NeoKylin: NeoKylin.md
     - bug solve:
         - 1670650: 1670650.md
