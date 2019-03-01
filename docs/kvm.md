@@ -166,3 +166,45 @@ virsh attach-disk ubuntu_4 /var/lib/libvirt/images/ubuntu_vm4_disk_100G vdb --su
 virsh attach-disk ubuntu_5 /var/lib/libvirt/images/ubuntu_vm5_disk_100G vdb --subdriver=qcow2
 virsh attach-disk ubuntu_6 /var/lib/libvirt/images/ubuntu_vm6_disk_100G vdb --subdriver=qcow2
 ```
+
+## 报错处理
+无法连接到libvirt-sock
+```
+[root@localhost ~]# ./install_vm.sh
+ERROR    Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such file or directory
+```
+解决
+```
+systemctl start libvirtd
+```
+无法读取iso，权限不对
+
+```
+Starting install...
+Allocating 'suse-02.qcow2'                                                                                                                       |  20 GB  00:00:01
+ERROR    internal error: qemu unexpectedly closed the monitor: 2019-03-01T03:15:50.278936Z qemu-kvm: -drive file=/root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso,format=raw,if=none,id=drive-scsi0-0-0-1,readonly=on: Could not open '/root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso': Permission denied
+Removing disk 'suse-02.qcow2'                                                                                                                    |    0 B  00:00:00
+Domain installation does not appear to have been successful.
+```
+解决办法
+```
+vim /etc/libvirt/qemu.con
+```
+取消`user = "root"`和`group = "root"`前面的注释并重启
+```
+#
+#       user = "qemu"   # A user named "qemu"
+#       user = "+0"     # Super user (uid=0)
+#       user = "100"    # A user named "100" or a user with uid=100
+#
+user = "root"
+
+# The group for QEMU processes run by the system instance. It can be
+# specified in a similar way to user.
+group = "root"
+
+# Whether libvirt should dynamically change file ownership
+```
+```
+systemctl restart libvirtd
+```
