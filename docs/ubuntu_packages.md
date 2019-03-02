@@ -124,7 +124,7 @@ sudo apt --download-only source iperf3
 ```
 sudo apt source ipef3
 ```
-下载并解压
+下载并编译
 ```
 apt --compile source iperf3
 ```
