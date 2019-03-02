@@ -19,6 +19,7 @@ nav:
     - systemd: systemd.md
     - tzselect: tzselect.md
     - ethtool: ethtool.md
+    - nethogs: nethogs.md
     - vim: vim.md
     - gcc: gcc.md
     - vnc: vnc.md
