@@ -133,7 +133,7 @@ apt --compile source iperf3
 Reading package lists... Done
 E: You must put some 'source' URIs in your sources.list
 ```
-在软件源文件中取消dev-src的行,然后执行apt update。 软件源的更多配置，请参考[ubuntu 软件源](ubuntu_sources_list.md)
+在软件源文件中取消dev-src行前的注释,然后执行apt update。 软件源的更多配置，请参考[ubuntu 软件源](ubuntu_sources_list.md)
 
 ## 下载二进制包不安装
 ```
