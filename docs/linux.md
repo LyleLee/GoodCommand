@@ -180,7 +180,13 @@ redhat7.5 redhat8.0
 ```shell-session
 sudo systemctl restart NetworkManager
 ```
+suse 15
+```shell-session
+systemctl restart network
+```
 其他系统上各有不同，即使是ubuntu，也因为版本命令不一样，所以其他发行版请自行搜索。
+
+
 
 + 抓包
 
