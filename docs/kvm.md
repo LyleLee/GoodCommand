@@ -166,7 +166,20 @@ virsh attach-disk ubuntu_4 /var/lib/libvirt/images/ubuntu_vm4_disk_100G vdb --su
 virsh attach-disk ubuntu_5 /var/lib/libvirt/images/ubuntu_vm5_disk_100G vdb --subdriver=qcow2
 virsh attach-disk ubuntu_6 /var/lib/libvirt/images/ubuntu_vm6_disk_100G vdb --subdriver=qcow2
 ```
-
+## 编辑虚拟机配置文件
+```
+virsh edit ubuntu_1
+```
+可以查询到images文件保存的路径为
+```
+/var/lib/libvirt/images
+```
+## 日志文件
+```
+$HOME/.virtinst/virt-install.log        #virt-install tool log file.
+$HOME/.virt-manager/virt-manager.log    #virt-manager tool log file.
+/var/log/libvirt/qemu/                  #VM的运行日志，每个VM一个文件
+```
 ## 网络NAT模式
 前面的网桥模式一般来说可以满足比较普遍的需求。 如果不希望外部网络知道虚机的网络结构，可以选中NAT模式。
 这里涉及两个配置文件,内容差不多，2019年3月1日17:26:03还不知道主要用途。
