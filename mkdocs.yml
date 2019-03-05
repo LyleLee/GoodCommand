@@ -20,6 +20,7 @@ nav:
     - tzselect: tzselect.md
     - ethtool: ethtool.md
     - nethogs: nethogs.md
+    - tcpdump: tcpdump.md
     - vim: vim.md
     - gcc: gcc.md
     - vnc: vnc.md
