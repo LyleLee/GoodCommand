@@ -5,12 +5,12 @@ systemd
 
 ### 配置文件路径
 通常一个服务由一个.service文件指示，路径放置在：`/lib/systemd/system/`  
-由用户创建的.service文件，路径防止在：`/usr/lib/systemd/system/frpc.service`
-命令
+由用户创建的.service文件，路径放置在：`/usr/lib/systemd/system/frpc.service`  
+执行命令，设置开机启动
 ```
 systemctl enable xxx.service
 ```
-会在在路径 `/etc/systemd/system`创建符号链接指向 `/lib/systemd/system/`中的.service文件，如：
+会在路径 `/etc/systemd/system`创建符号链接指向 `/lib/systemd/system/`中的.service文件，如：
 ```
 me@ubuntu:/etc/systemd/system$ tree --charset ascii
 .
