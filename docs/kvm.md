@@ -111,7 +111,6 @@ virt-install \
   --cdrom /root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso
 ```
 
-执行安装：
 使用脚本1：
 ```shell-session
 sudo chmod +x install_ubuntu.sh
