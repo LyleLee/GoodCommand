@@ -24,12 +24,13 @@ nav:
     - vim: vim.md
     - gcc: gcc.md
     - vnc: vnc.md
+    - install os: install_os.md
+    - kernel document: linux_kernel.md
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
         - io: io_benchmark.md
         - mem: mem_benchmark.md
-    - kernel: linux_kernel.md
     - 发行版: 
         - redhat: redhat.md
         - redhat build kernel[en]: redhat_build_kernel.md
