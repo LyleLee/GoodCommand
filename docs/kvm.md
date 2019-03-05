@@ -20,10 +20,15 @@ KVM acceleration can be used
 ```
 
 ## 安装qemu工具
+ubuntu18.04验证通过过
 ```shell-session
 sudo apt-get install qemu-kvm libvirt-bin bridge-utils virtinst
 #如果需要图形化管理界面：
 sudo apt-get install virt-manager
+```
+redhat8.0 arm验证通过
+```shell-session
+yum install qemu-kvm libvirt virt-install
 ```
 ## 部署网络
 主要是为了虚拟机起来之后可以直接联网，安装各种软件方便。 也可以先跳过这一步，先部署虚拟机
@@ -61,7 +66,10 @@ me@ubuntu:/etc/netplan$
 ```
     本人主机上有4个网口，网卡enahisic2i0上有内网IP，安装好kvm工具后会自动生成网桥virbr0，使用`ip a`可以查到，这里是把enahisic2i0加到了网桥上，这样后面加入的虚拟机也会自己挂到这个网桥上，即可和外部网络接通，这里的网关，和nameservers保持和原来主机上的一致即可。
 ## 创建一台虚拟机
-可以想到：需要指定虚拟机的CPU、内存、硬盘，ISO文件等。  命令写成一行装不下，写成多行，把下面的命令保存为文件，添加执行权限，执行即可。例如我保存为install_ubuntu.sh
+可以想到：需要指定虚拟机的CPU、内存、硬盘，ISO文件等。  命令写成一行装不下，写成多行，把下面的命令保存为文件，添加执行权限，执行即可。
+
+例如脚本1：install_ubuntu.sh
+改脚本已经在host机为ubuntu18.04时验证通过，无报错
 ```sh
 #!/bin/bash
 #install_ubuntu.sh
@@ -89,11 +97,36 @@ sudo virt-install               \
 --graphics vnc,listen=0.0.0.0,keymap=en-us  据说可以用VNC看到图形界面， 我没有图形界面环境，没研究什么意思
 --extra-args console=ttyS0      指定登陆虚拟机的串口，非常重要，进入虚拟机有三种方式：SSH、VNS、串口，这里是串口的配置。
 ```
+
+
+例如脚本2：install_vm.sh
+一个可供选择的简单脚本（没有vnc图形界面）。改脚本在redhat8.0上验证通过。。
+```
+#!/bin/bash
+virt-install \
+  --name suse \
+  --memory 2048 \
+  --vcpus 2 \
+  --disk size=20 \
+  --cdrom /root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso
+```
+
+执行安装：
+使用脚本1：
 ```shell-session
-#添加执行权限
-sudo chmod+x install_ubuntu.sh
-#开始安装
+sudo chmod +x install_ubuntu.sh
 ./install_ubuntu.sh
+```
+使用脚本2
+```shell-session
+sudo chmod +x install_vm.sh
+./install_vm.sh
+```
+
+由于redhat和ubuntu环境不同，使用脚本时可能会报两种错误, 解决办法见后文报错处理
+```
+1. Failed to connect socket
+2. Could not open '/root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso': Permission denied
 ```
 ## 查看当前虚拟机
 ```shell-session
@@ -222,7 +255,7 @@ or other application using the libvirt API.
 
 
 ## 报错处理
-无法连接到libvirt-sock
+**无法连接到libvirt-sock**
 ```
 [root@localhost ~]# ./install_vm.sh
 ERROR    Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such file or directory
@@ -231,8 +264,7 @@ ERROR    Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such fi
 ```
 systemctl start libvirtd
 ```
-无法读取iso，权限不对
-
+**无法读取iso，权限不对**
 ```
 Starting install...
 Allocating 'suse-02.qcow2'                                                                                                                       |  20 GB  00:00:01
@@ -242,14 +274,10 @@ Domain installation does not appear to have been successful.
 ```
 解决办法
 ```
-vim /etc/libvirt/qemu.con
+vim /etc/libvirt/qemu.conf
 ```
 取消`user = "root"`和`group = "root"`前面的注释并重启
 ```
-#
-#       user = "qemu"   # A user named "qemu"
-#       user = "+0"     # Super user (uid=0)
-#       user = "100"    # A user named "100" or a user with uid=100
 #
 user = "root"
 
