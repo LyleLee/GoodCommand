@@ -140,6 +140,10 @@ E: You must put some 'source' URIs in your sources.list
 apt download iperf3
 ```
 
+## 获取软件包url
+```
+apt download --print-uris
+```
 ## 搜索并编译软件依赖
 ```
 apt build-dep iperf3
