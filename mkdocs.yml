@@ -7,6 +7,7 @@ nav:
     - Home: index.md
     - linux: linux.md
     - kvm: kvm.md
+    - docker: docker.md
     - git_two_github_account: git_two_github_account.md
     - git_bash_windows: git_bash_windows.md
     - fio: fio.md
@@ -41,10 +42,11 @@ nav:
         - ubuntu 桌面环境: ubuntu_desktop.md
         - NeoKylin: NeoKylin.md
         - suse 软件源: suse_local_repo.md
+    - ARM 存储相关软件: arm_storage_stack.md
     - bug solve:
         - 1670650: 1670650.md
         - nfs_not_respond: nfs_not_respond.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
-    - raid: raid.md
+    - raid级别: raid.md
 theme: readthedocs
