@@ -25,6 +25,7 @@ nav:
     - vim: vim.md
     - gcc: gcc.md
     - vnc: vnc.md
+    - wget: wget.md
     - install os: install_os.md
     - kernel document: linux_kernel.md
     - ARM存储相关软件: arm_storage_stack.md
