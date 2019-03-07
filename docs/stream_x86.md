@@ -96,7 +96,8 @@ REDHAT_SUPPORT_PRODUCT_VERSION="7"
 ```
 ### perf
 stream 5.10 
-```c/* Program: STREAM                                                       */
+```c
+/* Program: STREAM                                                       */
 /* Revision: $Id: stream.c,v 5.10 2013/01/17 16:01:06 mccalpin Exp mccalpin $ */
 /* 
 ```
