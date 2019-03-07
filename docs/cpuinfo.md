@@ -263,34 +263,36 @@ power management:
 
 ## lscpu
 ```shell-session
-[root@CN-1 ~]# lscpu
-Architecture:          aarch64
-Byte Order:            Little Endian
-CPU(s):                64
-On-line CPU(s) list:   0-63
-Thread(s) per core:    1
-Core(s) per socket:    16
-Socket(s):             4
-NUMA node(s):          4
-Model:                 2
-BogoMIPS:              100.00
-L1d cache:             unknown size
-L1i cache:             unknown size
-L2 cache:              unknown size
-NUMA node0 CPU(s):     0-15
-NUMA node1 CPU(s):     16-31
-NUMA node2 CPU(s):     32-47
-NUMA node3 CPU(s):     48-63
-Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-```
-```shell-session
-CPU(s):                64  总核数64 或者 逻辑核数64
-Socket(s):             4   物理核4
-Core(s) per socket:    16  每个物理核封装4个核心  
-Thread(s) per core:    1   每个核心开启1个超线程
+root@ubuntu:~# lscpu
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              64
+On-line CPU(s) list: 0-63
+Thread(s) per core:  1
+Core(s) per socket:  32
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           ARM
+Model:               2
+Model name:          Cortex-A72
+Stepping:            r0p2
+BogoMIPS:            100.00
+L1d cache:           32K
+L1i cache:           48K
+L2 cache:            1024K
+L3 cache:            16384K
+NUMA node0 CPU(s):   0-15
+NUMA node1 CPU(s):   16-31
+NUMA node2 CPU(s):   32-47
+NUMA node3 CPU(s):   48-63
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
+root@ubuntu:~#
 ```
 总核数（逻辑核数）64 = 物理核数16 × 每个物理封装核心4 × 2超线程  
 实际上这台ARM服务器是2个物理核，即2个chip，每个chip含2个socket，每个socket含16个核心。
+
+如果ARM服务器上lscpu显示不正确，请考虑升级固件，参考[ARM 服务器更新固件](firmware_update.md)
+
 ## /proc/cpuinfo
 ARM服务器的cpuinfo没有相应的 physical id，cpu core，processor字段。所以不能按照intel系统上的查询方式查询信息。
 
