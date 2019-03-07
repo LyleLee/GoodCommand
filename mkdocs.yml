@@ -31,8 +31,9 @@ nav:
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
+        - mem information: meminfo.md
+        - mem stream: stream.md
         - io: io_benchmark.md
-        - mem: mem_benchmark.md
     - 发行版: 
         - redhat: redhat.md
         - redhat build kernel[en]: redhat_build_kernel.md
