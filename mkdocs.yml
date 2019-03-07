@@ -27,7 +27,8 @@ nav:
     - vnc: vnc.md
     - install os: install_os.md
     - kernel document: linux_kernel.md
-    - ARM 存储相关软件: arm_storage_stack.md
+    - ARM存储相关软件: arm_storage_stack.md
+    - ARM服务器升级固件: firmware_update.md
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
