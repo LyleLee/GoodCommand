@@ -1,6 +1,11 @@
 x86 stream测试结果
 ====================
 
+1. 查询[GNU compiler](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) 得知 `-O`和`-O1`优化级别相同。stream测试结果也相同。
+2. `-O`和`-O1`测试结果较好，stream官方例子带`-o`
+3. 不指定编译优化选项，或者指定编译优化选项为`-O0`时，测试结果最差
+4. stream官方要求数组大小使每个数组大于cache的4倍。数组大小满足这个需求之后，增大数组，cache-misses增加，但是性能测试结果不变
+
 ## 硬件信息
 
 cpu
@@ -37,7 +42,7 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 
 内存
 
-`32G*16条 = 512G内存` 频率2133MT/s
+32G*16条 = 512G内存 频率2133MT/s
 
 
 ```
@@ -75,7 +80,7 @@ Swap:          4.0G          0B        4.0G
 
 ## 软件信息
 
-### OS
+### OS centos 7
 ```
 [root@localhost ~]# cat /etc/os-release
 NAME="CentOS Linux"
@@ -94,14 +99,15 @@ CENTOS_MANTISBT_PROJECT_VERSION="7"
 REDHAT_SUPPORT_PRODUCT="centos"
 REDHAT_SUPPORT_PRODUCT_VERSION="7"
 ```
-### perf
-stream 5.10 
+### stream 5.10
+
 ```c
 /* Program: STREAM                                                       */
 /* Revision: $Id: stream.c,v 5.10 2013/01/17 16:01:06 mccalpin Exp mccalpin $ */
 /* 
 ```
-perf 3.10.0
+### perf 3.10.0
+
 ```
 Installed Packages
 Name        : perf
@@ -117,7 +123,7 @@ License     : GPLv2
 Description : This package contains the perf tool, which enables performance monitoring
             : of the Linux kernel.
 ```
-### gcc
+### gcc 4.8.5
 ```
 [root@localhost stream]# gcc -v
 Using built-in specs.
@@ -131,11 +137,10 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
 
 ## 执行结果 
 
-### 默认编译选项
+### 数组10000000，选项无
+
 ```
-gcc stream.c -o stream
-```
-```
+[root@localhost stream]# gcc stream.c -o stream 
 [root@localhost stream]# perf stat -e cache-misses ./stream
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
@@ -177,13 +182,13 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 
 
 
-### 指定数组大小 
+### 数组20000000，选项无
 ```
 gcc -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
 ```
 为了让数组大小大于L3cache的4倍,应该设置20000000个数组元素
 ```
-200000000*8/1024/1024 = 152 GB
+200000000*8/1024/1024 = 152 MB
 ```
 
 ```
@@ -230,7 +235,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 ```
 结果相差不多，默认数组大小在x86上执行结果正确。
 
-## 指定编译优化级别 -O
+## 数组20000000，选项-O1
 指导文档使用-O，经查，等于-O1
 ```
 gcc -O -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
@@ -277,7 +282,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 
 [root@localhost stream]#
 ```
-## 指定编译优化级别
+## 数组20000000，选项-O1
 ```
 [root@localhost stream]# gcc -O1 -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
 [root@localhost stream]# perf stat -e cache-misses ./stream
@@ -321,7 +326,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 [root@localhost stream]#
 ```
 
-## 指定编译优化级别 -O2
+## 数组20000000，选项-O2
 ```
 [root@localhost stream]# gcc -O2 -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
 [root@localhost stream]# perf stat -e cache-misses ./stream
@@ -363,7 +368,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
        1.761638820 seconds time elapsed
 ```
 
-## 指定优化级别 -O3
+## 数组20000000，选项-O3
 ```
 [root@localhost stream]# gcc -O3 -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
 [root@localhost stream]# perf stat -e cache-misses ./stream
@@ -407,7 +412,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 [root@localhost stream]#
 ```
 
-## 指定编译优化级别 -O0
+## 数组20000000，选项-O0
 ```
 [root@localhost stream]# perf stat -e cache-misses ./stream
 -------------------------------------------------------------
@@ -448,4 +453,182 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
        2.581445722 seconds time elapsed
 
 [root@localhost stream]#
+```
+
+## 数组30000000，选项-O
+
+```
+[root@localhost stream]# gcc -O -DSTREAM_ARRAY_SIZE=30000000 stream.c -o stream
+[root@localhost stream]# perf stat -e cache-misses ./stream
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 30000000 (elements), Offset = 0 (elements)
+Memory per array = 228.9 MiB (= 0.2 GiB).
+Total memory required = 686.6 MiB (= 0.7 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 26309 microseconds.
+   (= 26309 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           10593.9     0.045330     0.045309     0.045347
+Scale:          10608.0     0.045292     0.045249     0.045328
+Add:            11352.4     0.063469     0.063423     0.063617
+Triad:          11288.3     0.063819     0.063783     0.063925
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+
+ Performance counter stats for './stream':
+
+       249,967,744      cache-misses
+
+       2.531537686 seconds time elapsed
+
+```
+
+## 数组40000000，选项-O
+
+```
+[root@localhost stream]# gcc -O -DSTREAM_ARRAY_SIZE=40000000 stream.c -o stream
+[root@localhost stream]# perf stat -e cache-misses ./stream
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 40000000 (elements), Offset = 0 (elements)
+Memory per array = 305.2 MiB (= 0.3 GiB).
+Total memory required = 915.5 MiB (= 0.9 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 35411 microseconds.
+   (= 35411 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           10221.9     0.062669     0.062611     0.062891
+Scale:          10435.7     0.061434     0.061328     0.061619
+Add:            10980.6     0.087577     0.087427     0.087796
+Triad:          11013.6     0.087207     0.087165     0.087377
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+
+ Performance counter stats for './stream':
+
+       334,073,899      cache-misses
+
+       3.469917205 seconds time elapsed
+
+```
+
+## 数组50000000，选项-O
+
+```
+[root@localhost stream]# gcc -O -DSTREAM_ARRAY_SIZE=50000000 stream.c -o stream
+[root@localhost stream]# perf stat -e cache-misses ./stream
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 50000000 (elements), Offset = 0 (elements)
+Memory per array = 381.5 MiB (= 0.4 GiB).
+Total memory required = 1144.4 MiB (= 1.1 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 44100 microseconds.
+   (= 44100 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           10957.6     0.073081     0.073009     0.073334
+Scale:          10329.6     0.077563     0.077447     0.077736
+Add:            11045.7     0.108870     0.108640     0.109140
+Triad:          11196.7     0.107286     0.107175     0.107587
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+
+ Performance counter stats for './stream':
+
+       426,955,169      cache-misses
+
+       4.245849035 seconds time elapsed
+
+```
+
+## 数组60000000，选项-O
+
+```
+[root@localhost stream]# gcc -O -DSTREAM_ARRAY_SIZE=60000000 stream.c -o stream
+[root@localhost stream]# perf stat -e cache-misses ./stream
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 60000000 (elements), Offset = 0 (elements)
+Memory per array = 457.8 MiB (= 0.4 GiB).
+Total memory required = 1373.3 MiB (= 1.3 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 52796 microseconds.
+   (= 52796 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           10130.0     0.094858     0.094768     0.095173
+Scale:          10631.8     0.090408     0.090295     0.090570
+Add:            11216.3     0.128531     0.128385     0.128746
+Triad:          11289.0     0.127709     0.127558     0.127884
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+
+ Performance counter stats for './stream':
+
+       495,551,653      cache-misses
+
+       5.104867523 seconds time elapsed
+
+[root@localhost stream]#
+
 ```

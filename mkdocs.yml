@@ -36,6 +36,7 @@ nav:
         - mem information: meminfo.md
         - mem stream: stream.md
         - mem stream_x86: stream_x86.md
+        - mem stream_arm: stream_arm.md
         - io: io_benchmark.md
     - 发行版: 
         - redhat: redhat.md
