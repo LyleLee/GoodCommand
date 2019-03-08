@@ -10,8 +10,6 @@ nav:
     - docker: docker.md
     - git_two_github_account: git_two_github_account.md
     - git_bash_windows: git_bash_windows.md
-    - fio: fio.md
-    - vdbench: vdbench.md
     - nfs: nfs.md
     - shellcheck: shellcheck.md
     - tldr: tldr.md
@@ -28,8 +26,12 @@ nav:
     - wget: wget.md
     - install os: install_os.md
     - kernel document: linux_kernel.md
-    - ARM存储相关软件: arm_storage_stack.md
-    - ARM服务器升级固件: firmware_update.md
+    - ARM storage software: arm_storage_stack.md
+    - ARM server firmware_update: firmware_update.md
+    - benchmark tool:
+        - fio: fio.md
+        - vdbench: vdbench.md
+        - perf: perf.md
     - benchmark:
         - cpu information: cpuinfo.md
         - cpu spec cpu: cpu_benchmark.md
