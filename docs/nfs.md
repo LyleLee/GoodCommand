@@ -13,6 +13,13 @@ redhat官方教程
 ```
 yum install nfs-utils
 ```
+
+ubuntu客户端：
+```
+apt install nfs-common
+```
+
+
 ## 配置
 
 先配置共享文件夹,使用配置文件/etc/exports
@@ -45,7 +52,12 @@ mount -o vers=3 192.168.1.227:/root/nfs-test-dir ./1620-mount-point/
 # 192.168.1.227:/root/nfs-test-di 表示挂载服务器下，由前面exports指定的目录
 # ./1620-mount-point/   表示本机目录，在本机目录上的操作等同于操作远程目录
 ```
-
+在客户端卸载
+```
+umount /root/1620-mount-point/
+#如果出现 umount.nfs: /root/1620-mount-point: device is busy，可以使用-f选项
+umount -f /root/1620-mount-point/
+```
 
 ## 查看共享
 ```
