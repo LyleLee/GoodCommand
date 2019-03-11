@@ -8,8 +8,14 @@ arm生态，存储相关软件
 |3        |NFS      |已使能    |1.3.4    |[软件源](https://mirrors.huaweicloud.com/ubuntu-ports/pool/main/n/nfs-utils)|
 |4        |HDFS     |已使能    |java     |[官网](https://hadoop.apache.org/releases.html)|
 |5        |fio      |已使能    |fio-3.11 |[软件源](https://mirrors.huaweicloud.com/ubuntu-ports/pool/universe/f/fio/)|
-|6        |vdbench  |未使能    |5.04.07  |[官网](https://www.oracle.com/technetwork/server-storage/vdbench-source-download-2104625.html)|
+|6        |vdbench  |已使能    |5.04.07  |[官网](https://www.oracle.com/technetwork/server-storage/vdbench-source-download-2104625.html)|
 
+待核实
+
+1. tabaofs
+2. lizardfs [官网](https://lizardfs.com/)
+3. mossefs
+4. googlefs
 
 ## ubuntu官方不支持ceph-fuse
 ```shell-session
