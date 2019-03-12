@@ -137,7 +137,7 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
 
 ## 执行结果 
 
-### 数组10000000，选项无
+## 数组10000000，选项无
 
 ```
 [root@localhost stream]# gcc stream.c -o stream 
@@ -182,7 +182,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 
 
 
-### 数组20000000，选项无
+## 数组20000000，选项无
 ```
 gcc -DSTREAM_ARRAY_SIZE=20000000 stream.c -o stream
 ```

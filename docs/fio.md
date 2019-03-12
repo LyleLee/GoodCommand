@@ -1,4 +1,35 @@
 
+./configure 提示一些fio特性会依赖zlib
+```
+yum install zlib-devel.aarch64
+```
+
+编译安装好之后，version还是不对，需要重新登录系统才会生效。
+```
+[root@localhost fio-fio-3.13]# fio -v
+fio-3.7
+[root@localhost ~]# which fio
+/usr/local/bin/fio
+[root@localhost ~]# /usr/local/bin/fio -v
+fio-3.13
+[root@localhost ~]# 
+```
+
+
+```
+[root@localhost fio-fio-3.13]# make install
+install -m 755 -d /usr/local/bin
+install fio t/fio-genzipf t/fio-btrace2fio t/fio-dedupe t/fio-verify-state ./tools/fio_generate_plots ./tools/plot/fio2gnuplot ./tools/genfio ./tools/fiologparser.py ./tools/hist/fiologparser_hist.py ./tools/fio_jsonplus_clat2csv /usr/local/bin
+install -m 755 -d /usr/local/man/man1
+install -m 644 ./fio.1 /usr/local/man/man1
+install -m 644 ./tools/fio_generate_plots.1 /usr/local/man/man1
+install -m 644 ./tools/plot/fio2gnuplot.1 /usr/local/man/man1
+install -m 644 ./tools/hist/fiologparser_hist.py.1 /usr/local/man/man1
+install -m 755 -d /usr/local/share/fio
+install -m 644 ./tools/plot/*gpm /usr/local/share/fio/
+```
+
+
 
 fio --ramp_time=10 --runtime=60 --size=10g --ioengine=libaio --filename=/mnt/testfile.doc --name=4k_read --rw=read --bs=4k
 
