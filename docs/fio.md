@@ -29,12 +29,23 @@ install -m 755 -d /usr/local/share/fio
 install -m 644 ./tools/plot/*gpm /usr/local/share/fio/
 ```
 
+编译安装后发现libaio无法加载
+```
+[root@localhost fio_scripts]# perf record -ag -o fio_symbol.data fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sdb --name=4k_read --numjobs=1 --rw=read --bs=4k --direct=1
+fio: engine libaio not loadable
+fio: engine libaio not loadable
+fio: failed to load engine
+```
 
+查看当前系统支持的io引擎
+```
+fio -enghelp
+```
 
 fio --ramp_time=10 --runtime=60 --size=10g --ioengine=libaio --filename=/mnt/testfile.doc --name=4k_read --rw=read --bs=4k
 
 问题：
-+ 缺少libaio库
++ ubuntu下缺少libaio库
 ```console
 4k_read: No I/O performed by libaio, perhaps try --debug=io option for details?
 ```
