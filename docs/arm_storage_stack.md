@@ -12,10 +12,14 @@ arm生态，存储相关软件
 
 待核实
 
-1. tabaofs
+1. TFS
 2. lizardfs [官网](https://lizardfs.com/)
 3. mossefs
-4. googlefs
+4. GFS
+5. GridFS
+6. mogileFS
+7. FastDFS
+
 
 ## ubuntu官方不支持ceph-fuse
 ```shell-session
