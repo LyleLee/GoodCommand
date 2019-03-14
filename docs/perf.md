@@ -197,6 +197,22 @@ collect2: error: ld returned 1 exit status
 -mcmodel=medium
 ```
 
+
+## perf record 出现错误
+```
+[root@localhost perf_data]# perf record -ag fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sda --name=4k_read --numjobs=1 --iodepth=128 --rw=randread --bs=4k --direct=1
+failed to mmap with 12 (Cannot allocate memory)
+```
+
+解决办法
+```
+[root@localhost perf_data]# sysctl -w vm.max_map_count=1048576
+vm.max_map_count = 1048576
+[root@localhost perf_data]#
+
+```
+
+
 ## 最优编译选项下对比x86和ARM的差别
 
 gcc -mcmodel=medium -O -DSTREAM_ARRAY_SIZE=100000000 stream.c -o option_O_100M_stream
