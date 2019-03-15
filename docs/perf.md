@@ -2,8 +2,12 @@ perf 观察机器性能
 ====================
 
 在内核源码当中散落有一些hook， 叫做Tracepoint的，当内核运行到Tracepoint时，会产生事件通知，这个时候Perf收集这些事件，生成报告，根据报告可以了解程序运行时的内核细节
-```安装
-apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
+
+## 安装
+ubuntu
+```
+sudo apt install linux-tools-common
+sudo apt install linux-tools-4.15.0-46-generic
 ```
 列出所有能触发perf采样点的事件  
     perf list  
@@ -215,8 +219,9 @@ vm.max_map_count = 1048576
 
 ## 最优编译选项下对比x86和ARM的差别
 
+```
 gcc -mcmodel=medium -O -DSTREAM_ARRAY_SIZE=100000000 stream.c -o option_O_100M_stream
-
+```
 
 ## ARM不支持perf mem
 arm不支持
@@ -237,3 +242,10 @@ ldlat-loads  : available
 ldlat-stores : available
 [root@localhost stream]#
 ```
+
+## perf 的cache-misses 是统计哪一层的
+
+
+## 为什么perf统计的LDR指令比STR指令耗时更多
+
+
