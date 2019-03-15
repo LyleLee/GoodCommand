@@ -168,4 +168,24 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 me@Board:~/stream$ lscpu
 ```
 
-## 高级功能
+## 静态数组内存大小限制
+当设置的数组大小比较大时，编译器会给出报警。
+```
+[root@localhost stream]# gcc -DSTREAM_ARRAY_SIZE=100000000  stream.c -o option_no_100M_stream
+/tmp/ccTzV1dQ.o: In function `main':
+stream.c:(.text+0x546): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x57a): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x5f9): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x62e): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x65e): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x6a0): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x6b9): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x6c5): relocation truncated to fit: R_X86_64_32S against `.bss'
+stream.c:(.text+0x6dd): relocation truncated to fit: R_X86_64_32S against `.bss'
+collect2: error: ld returned 1 exit status
+[root@localhost stream]#
+```
+解决办法是添加编译选项
+```
+-mcmodel=medium
+```
