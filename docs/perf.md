@@ -179,27 +179,6 @@ perf list | awk -F: '/Tracepoint event/ { lib[$1]++ } END {
     for (l in lib) { printf "  %-16.16s %d\n", l, lib[l] } }' | sort | column
 ```
 
-## 内存静态数组大小限制
-
-```
-[root@localhost stream]# gcc -DSTREAM_ARRAY_SIZE=100000000  stream.c -o option_no_100M_stream
-/tmp/ccTzV1dQ.o: In function `main':
-stream.c:(.text+0x546): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x57a): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x5f9): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x62e): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x65e): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x6a0): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x6b9): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x6c5): relocation truncated to fit: R_X86_64_32S against `.bss'
-stream.c:(.text+0x6dd): relocation truncated to fit: R_X86_64_32S against `.bss'
-collect2: error: ld returned 1 exit status
-[root@localhost stream]#
-```
-解决办法是添加编译选项
-```
--mcmodel=medium
-```
 
 
 ## perf record 出现错误
@@ -245,7 +224,40 @@ ldlat-stores : available
 
 ## perf 的cache-misses 是统计哪一层的
 
+perf 支持下面cache相关的事件：
+
+```
+cache-misses            [Hardware event]        cache失效。指内存访问不由cache提供服务的事件。 
+cache-references        [Hardware event]        cache命中。 
+L1-dcache-load-misses   [Hardware cache event]  L1 数据取miss
+L1-dcache-loads         [Hardware cache event]  L1 数据取命中
+L1-dcache-store-misses  [Hardware cache event]  L1 数据存miss
+L1-dcache-stores        [Hardware cache event]  L1 数据存命中
+L1-icache-load-misses   [Hardware cache event]  L1 指令miss
+L1-icache-loads         [Hardware cache event]  L1 指令命中
+```
+cache-misses [参考](https://stackoverflow.com/questions/12601474/what-are-perf-cache-events-meaning/15283379)
+内存访问不是由cache提供的记为cache-misses。含L1，L2，L3。 
+
 
 ## 为什么perf统计的LDR指令比STR指令耗时更多
 
+```asm
+         :              for (j=0; j<STREAM_ARRAY_SIZE; j++)
+    0.00 :        1054:       mov     x0, #0x0                        // #0
+         :                  b[j] = scalar*c[j];
+   19.14 :        1058:       ldr     d0, [x19, x0, lsl #3]
+    0.00 :        105c:       fmul    d0, d0, d8
+    0.10 :        1060:       str     d0, [x21, x0, lsl #3]
 
+```
+
+可能的原因：
+
+1. 根据Cortex-A57的[文档](http://infocenter.arm.com/help/topic/com.arm.doc.uan0015b/Cortex_A57_Software_Optimization_Guide_external.pdf) , stream代码中的LDR需要至少4或2个指令周期。STR需要1个或2个指令周期来完成  (ps:没有找到A72的文档)  
+2. STR可以写入cache，并不像LDR只能从内存读取，因为stream的数组大，cache是不命中的。
+
+|Instruction Group|AArch64 Instructions|Exec Latency
+|:----------------|:-------------------|:-----------|
+|Load，scaled register post-indexed|LDR,LDRSW,PRFM|4(2)|
+|Store,scaled register post-indexed|STR{T},STRB{T}|1(2)|
