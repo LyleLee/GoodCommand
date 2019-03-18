@@ -7,6 +7,19 @@ NFS网络文件系统,可以使不同系统之间共享文件或者目录。
 
 ubuntu官方教程  
 [https://help.ubuntu.com/lts/serverguide/network-file-system.html.en](https://help.ubuntu.com/lts/serverguide/network-file-system.html.en)
+```
+apt install nfs-kernel-server
+```
+配置
+```
+/ubuntu *(ro,sync,no_root_squash)
+/home   *(rw,sync,no_root_squash)
+```
+重启
+```
+systemctl start nfs-kernel-server.service
+```
+
 
 redhat官方教程
 
@@ -154,3 +167,24 @@ pi@raspberrypi:/media/pi $ rpcinfo -p
     100021    3   tcp  32768  nlockmgr
     100021    4   tcp  32768  nlockmgr
 ```
+
+### 只启用NFSv4
+```
+vim /etc/default/nfs-kernel-server
+#修改
+RPCMOUNTDOPTS="--manage-gids"
+#变为
+RPCMOUNTDOPTS="--manage-gids -N 2 -N 3"
+#重启服务
+sudo systemctl restart nfs-kernel-server
+```
+
+设置之后在客户端可以观察到只有v4成功
+```
+ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=3 192.168.1.201:/home/me/syncfile dir_name
+mount.nfs: requested NFS version or transport protocol is not supported
+ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=2 192.168.1.201:/home/me/syncfile dir_name
+mount.nfs: Protocol not supported
+ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=4 192.168.1.201:/home/me/syncfile dir_name
+```
+
