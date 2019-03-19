@@ -26,6 +26,7 @@ nav:
     - wget: wget.md
     - install os: install_os.md
     - kernel document: linux_kernel.md
+    - shell_program: shell_program.md
     - ARM storage software: arm_storage_stack.md
     - ARM server firmware_update: firmware_update.md
     - update-alternatives.md: update-alternatives.md
@@ -40,7 +41,7 @@ nav:
         - mem stream: stream.md
         - mem stream_x86: stream_x86.md
         - mem stream_arm: stream_arm.md
-        - io: io_benchmark.md
+        - io fio: io_fio_benchmark.md
         - io disk imformation: disk_information.md
     - 发行版: 
         - redhat: redhat.md

@@ -5,7 +5,7 @@ fio是多线程IO负载生成测试工具，是测试服务器硬盘性能的优
 ## 对比测试参数
 X86  
 ```
-fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sda --name=4k_read --numjobs=1 --iodepth=64 --rw=read --bs=4k --direct=1
+fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sdb --name=4k_read --numjobs=1 --iodepth=64 --rw=read --bs=4k --direct=1
 ```
 
 ARM
@@ -83,13 +83,6 @@ fio-3.7
 fio-3.13
 [root@localhost ~]# 
 ```
-root@ubuntu:~/app/fio-fio-3.13# fio -v
-fio-3.1
-root@ubuntu:~/app/fio-fio-3.13#
-
-
-
-
 
 ```
 [root@localhost fio-fio-3.13]# make install
@@ -103,7 +96,6 @@ install -m 644 ./tools/hist/fiologparser_hist.py.1 /usr/local/man/man1
 install -m 755 -d /usr/local/share/fio
 install -m 644 ./tools/plot/*gpm /usr/local/share/fio/
 ```
-
 编译安装后发现libaio无法加载
 ```
 [root@localhost fio_scripts]# perf record -ag -o fio_symbol.data fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sdb --name=4k_read --numjobs=1 --rw=read --bs=4k --direct=1
