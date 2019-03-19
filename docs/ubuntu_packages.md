@@ -30,7 +30,6 @@ nfs-ganesha-gluster
 nfs-ganesha-vfs
 nfs-ganesha-xfs
 libnfs11
-nfs-ganesha-ceph
 libnfsidmap-dev
 nfs4-acl-tools
 fai-nfsroot
