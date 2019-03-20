@@ -16,7 +16,7 @@ nav:
     - netstat: netstat.md
     - dstat: dstat.md
     - systemd: systemd.md
-    - tzselect: tzselect.md
+    - time: time.md
     - ethtool: ethtool.md
     - nethogs: nethogs.md
     - tcpdump: tcpdump.md

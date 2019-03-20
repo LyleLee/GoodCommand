@@ -1,5 +1,7 @@
-tzselect
+tzselect timedatectl设置系统时间
 ==========
+
+## ubuntu tzselect设置过程
 选择系统所在时区。  
 有时候服务器在全球各地，虽然安装地点不一样，时区已经自动设置好，但是希望显示的时候按照亚洲时区来显示，好知道什么时间发生了什么事。  
 <br />
@@ -74,3 +76,17 @@ root@ubuntu:~#
 ```
 发现已经变成了东8区
 
+## RedHat timedatectl 设置过程
+
+选择时区：
+参考[[官方手册]](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-configuring_the_date_and_time)
+```shell
+timedatectl list-timezones
+set-timezone Asia/Shanghai
+
+#redhat 8.0 chrony作为NTP客户端使用如下命令查看ntp同步状态
+#查看服务
+systemctl status chronyd
+#查看同步状态
+chronyc sourcestats
+```
