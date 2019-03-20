@@ -83,7 +83,7 @@ fio --ramp_time=5 --runtime=15 --size=20g --ioengine=libaio --filename=/dev/sdb 
 ```
 测试脚本如下：
 
-[fio script](resources/fio_all.md)
+[fio script](resources/fio_all.sh)
 
 测试log如下：  
 [x86](resources/excel_x86.txt)  
@@ -93,6 +93,30 @@ fio --ramp_time=5 --runtime=15 --size=20g --ioengine=libaio --filename=/dev/sdb 
 测试时间较短，可靠行不足。
 可以考虑绑核以提升性能
 
+指定`--size 20g` 或者10g，测试结果偏好，应该只指定runtime更接近真实情况。
+
+```
+numactl -C 0-7 -m 0 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
+```
+
+numactl -C 54-63 -m 1 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
+
+numactl -C 48-56 -m 1 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
+
+0-15    0
+16-31   1
+32-47   2
+48-63   3
+
+32-40 -m 0 674
+32-40 -m 1 665
+32-40 -m 2 655
+32-40 -m 3 630
+
+48-56 -m 0 515
+48-56 -m 1 543
+48-56 -m 2 495
+48-56 -m 3 540
 
 ### 结论
 
