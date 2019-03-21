@@ -34,7 +34,7 @@ git apply ~/patch/0010-net-hns3-add-8-BD-limit-for-tx-flow.patch
 ```shell-session
 cp /boot/config-4.14.0-115.el7a.aarch64 ./.config
 ```
-把config中的CONFIG_SYSTEM_TRUSTED_KEYS变量枝为空串
+**把config中的CONFIG_SYSTEM_TRUSTED_KEYS变量枝为空串**
 ```config
 CONFIG_SYSTEM_TRUSTED_KEYS=""
 ```

@@ -1,88 +1,8 @@
-nfs not responding,flock 问题跟踪
+nfs not responding,8BD问题
 =============
-复现过程
-```shell-session
-[root@readhat76 /tmp]#showmount -e localhost
-Export list for localhost:
-/root/nfs-test-dir *
-[root@readhat76 /tmp]#df -h
-Filesystem                       Size  Used Avail Use% Mounted on
-devtmpfs                         256G     0  256G   0% /dev
-tmpfs                            256G     0  256G   0% /dev/shm
-tmpfs                            256G   40M  256G   1% /run
-tmpfs                            256G     0  256G   0% /sys/fs/cgroup
-/dev/mapper/rhel_readhat76-root   50G  5.1G   45G  11% /
-/dev/sdb2                       1014M  125M  890M  13% /boot
-/dev/sdb1                        200M  7.8M  193M   4% /boot/efi
-/dev/mapper/rhel_readhat76-home  3.6T   33M  3.6T   1% /home
-tmpfs                             52G     0   52G   0% /run/user/0
-/dev/loop0                       3.0G  3.0G     0 100% /mnt/cd_redhat7.6
-localhost:/root/nfs-test-dir      50G  5.1G   45G  11% /tmp
-[root@readhat76 /tmp]#ls
-gen_test.py  Makefile
-[root@readhat76 /tmp]#python gen_test.py 48 4096
-Generating testcase 'test1.c ...
+## 复现过程
 
-Generating testcase 'test2.c ...
-
-Generating testcase 'test3.c ...
-
-Generating testcase 'test4.c ...
-
-Generating testcase 'test5.c ...
-
-Generating testcase 'test6.c ...
-```
-demsg输出
-```console
-[   32.712027] IPv6: ADDRCONF(NETDEV_UP): enp189s0f1: link is not ready
-[   33.786131] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
-[   34.983938] Netfilter messages via NETLINK v0.30.
-[   35.017919] ip_set: protocol 6
-[   39.130824] nr_pdflush_threads exported in /proc is scheduled for removal
-[   40.530250] sctp: Hash tables configured (bind 8192/8192)
-[   40.794992] MACsec IEEE 802.1AE
-[ 3775.563634] hns3 0000:bd:00.1 enp189s0f1: link up
-[ 3775.568350] IPv6: ADDRCONF(NETDEV_CHANGE): enp189s0f1: link becomes ready
-[ 3775.578137] hns3 0000:bd:00.1 enp189s0f1: link down
-[ 3775.583009] warning: `NetworkManager' uses legacy ethtool link settings API, link modes are only partially reported
-[ 5531.853606] usb 1-2.3: new high-speed USB device number 5 using ehci-pci
-[ 5532.062999] usb 1-2.3: New USB device found, idVendor=12d1, idProduct=0001
-[ 5532.069876] usb 1-2.3: New USB device strings: Mfr=1, Product=2, SerialNumber=0
-[ 5532.077183] usb 1-2.3: Product: DVD-ROM VM 1.1.0
-[ 5532.118490] usb-storage 1-2.3:1.0: USB Mass Storage device detected
-[ 5532.125043] scsi host3: usb-storage 1-2.3:1.0
-[ 5532.129552] usbcore: registered new interface driver usb-storage
-[ 5533.210907] scsi 3:0:0:0: CD-ROM            Virtual  DVD-ROM VM 1.1.0  225 PQ: 0 ANSI: 0 CCS
-[ 5533.219925] scsi 3:0:0:0: Attached scsi generic sg3 type 5
-[ 5533.267759] sr 3:0:0:0: [sr0] scsi3-mmc drive: 0x/0x caddy
-[ 5533.273232] cdrom: Uniform CD-ROM driver Revision: 3.20
-[ 5533.279123] sr 3:0:0:0: Attached scsi CD-ROM sr0
-[ 5618.554367] usb 1-2.3: USB disconnect, device number 5
-[ 6807.702162] loop: module loaded
-[ 6807.802313] ISO 9660 Extensions: Microsoft Joliet Level 3
-[ 6807.802587] ISO 9660 Extensions: Microsoft Joliet Level 3
-[ 6807.830170] ISO 9660 Extensions: RRIP_1991A
-[ 7806.737833] Ebtables v2.0 unregistered
-[54305.878513] RPC: Registered named UNIX socket transport module.
-[54305.884439] RPC: Registered udp transport module.
-[54305.889132] RPC: Registered tcp transport module.
-[54305.893839] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[54305.969982] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
-[54306.096858] NFSD: starting 90-second grace period (net ffff000008e7c480)
-[54385.596831] FS-Cache: Loaded
-[54385.628479] FS-Cache: Netfs 'nfs' registered for caching
-[59831.572637] Key type dns_resolver registered
-[59831.612984] NFS: Registering the id_resolver key type
-[59831.618046] Key type id_resolver registered
-[59831.622217] Key type id_legacy registered
-[root@readhat76 /tmp]#
-```
-
-
-# 复现过程
-
-## 系统信息：
+系统信息：
 ```
 [root@readhat76 ~]#lscpu
 Architecture:          aarch64
@@ -131,12 +51,15 @@ REDHAT_SUPPORT_PRODUCT_VERSION="7.6"
 ```
 
 
-## nfs设置
+## nfs 服务端设置
 ```shell-session
 [root@readhat76 ~]#cat /etc/exports
 /root/nfs-test-dir *(rw,sync,no_root_squash)
+```
 
-[root@readhat76 ~]#mount -o vers=3 localhost:/root/nfs-test-dir /root/nfs-client-dir
+## nfs 客户端设置
+```
+[root@readhat76 ~]#mount -o vers=3 root@192.168.1.215:/root/nfs-test-dir /root/nfs-client-dir
 
 [root@readhat76 ~]#df
 Filesystem                       1K-blocks     Used  Available Use% Mounted on
@@ -153,80 +76,85 @@ tmpfs                             53569216        0   53569216   0% /run/user/0
 localhost:/root/nfs-test-dir      52403200 12392448   40010752  24% /root/nfs-client-dir
 ```
 
-## 安装GCC
+## 在nfs客户段目录下编译内核源码
 ```
-[root@readhat76 ~]# makedir gcc8
-[root@readhat76 ~]# cd gcc8
-[root@readhat76 ~/gcc8]#wget http://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.gz
-[root@readhat76 ~/gcc8]#tar xzf gcc-8.1.0.tar.gz
-[root@readhat76 ~/gcc8/gcc-8.1.0]#./configure -prefix=/root/nfs-test-dir/gcc8
-[root@readhat76 ~/gcc8/gcc-8.1.0]make -j96
-[root@readhat76 ~/gcc8/gcc-8.1.0]make install
-[root@readhat76 ~/nfs-test-dir]#ls gcc8/bin/
-aarch64-unknown-linux-gnu-c++  aarch64-unknown-linux-gnu-gcc-8.1.0  aarch64-unknown-linux-gnu-gcc-ranlib  cpp  gcc-ar      gcov       gfortran
-aarch64-unknown-linux-gnu-g++  aarch64-unknown-linux-gnu-gcc-ar     aarch64-unknown-linux-gnu-gfortran    g++  gcc-nm      gcov-dump
-aarch64-unknown-linux-gnu-gcc  aarch64-unknown-linux-gnu-gcc-nm     c++                                   gcc  gcc-ranlib  gcov-tool
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.0.3.tar.xz
+xz -d linux-5.0.3.tar.xz
+
+make defconfig
+
+make -j48
 ```
 
-## 更改脚本
-```python
-[root@readhat76 ~/nfs-test-dir]#cat gen_test.py
-#!/usr/bin/env python
+## 复现成功
 
 
-    for i in range(1,jnum + 1):
-        fpComp.write("(cd $WORKDIR ;")
-        #gcc 改为 /root/nfs-client-dir/gcc8/bin/gcc
-        fpComp.write("/root/nfs-client-dir/gcc8/bin/gcc -o test"+str(i) + ".o -fPIC -O3 -std=c99 -w -c ")
-        fpComp.write("-I$INC test" + str(i) + ".c )&\n")
-    fpComp.write("wait\n")
+
+在nfs客户端编译停止
+```
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$ sudo make -j48
+  WRAP    arch/arm64/include/generated/uapi/asm/kvm_para.h
+  WRAP    arch/arm64/include/generated/uapi/asm/errno.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ioctl.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ioctls.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ipcbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/mman.h
+  WRAP    arch/arm64/include/generated/uapi/asm/msgbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/poll.h
+  WRAP    arch/arm64/include/generated/uapi/asm/resource.h
+  WRAP    arch/arm64/include/generated/uapi/asm/sembuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/shmbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/siginfo.h
+  UPD     include/config/kernel.release
+  WRAP    arch/arm64/include/generated/uapi/asm/socket.h
+  WRAP    arch/arm64/include/generated/uapi/asm/sockios.h
+  WRAP    arch/arm64/include/generated/uapi/asm/swab.h
+  WRAP    arch/arm64/include/generated/uapi/asm/termbits.h
+  WRAP    arch/arm64/include/generated/uapi/asm/termios.h
+  WRAP    arch/arm64/include/generated/uapi/asm/types.h
+  UPD     include/generated/uapi/linux/version.h
 
 ```
 
-## 执行测试
-```shell-session
-[root@readhat76 ~]# cd nfs-client-dir
-[root@readhat76 ~/nfs-client-dir]#make gen_test
-[root@readhat76 ~/nfs-client-dir]#make test
-[root@readhat76 ~/nfs-client-dir]#make test
-rm -rf test*.o
-./comp_parallel
-set WORKDIR=`pwd`
-pwd
-set INC=/root/nfs-client-dir/include
-[1] 64435
-cd /root/nfs-client-dir
-[2] 64436
-/root/nfs-client-dir/gcc8/bin/gcc -o test1.o -fPIC -O3 -std=c99 -w -c -I/root/nfs-client-dir/include test1.c
-cd /root/nfs-client-dir
-[3] 64437
-/root/nfs-client-dir/gcc8/bin/gcc -o test2.o -fPIC -O3 -std=c99 -w -c -I/root/nfs-client-dir/include test2.c
-cd /root/nfs-client-dir
-[4] 64438
-/root/nfs-client-dir/gcc8/bin/gcc -o test3.o -fPIC -O3 -std=c99 -w -c -I/root/nfs-client-dir/include test3.c
-cd /root/nfs-client-dir
-[5] 64439
-/root/nfs-client-dir/gcc8/bin/gcc -o test4.o -fPIC -O3 -std=c99 -w -c -I/root/nfs-client-dir/include test4.c
-cd /root/nfs-client-dir
+在nfs客户端出现
+```
+me@ubuntu:~$ dmesg -T
+[Thu Mar 21 15:17:02 2019] nfsacl: server 192.168.1.215 not responding, still trying
+[Thu Mar 21 15:17:02 2019] nfsacl: server 192.168.1.215 not responding, still trying
 ```
 
-## dmesg
+在nfs服务端出现
+```
+[root@redhat76 linux-5.0.3]# dmesg -T
+[Thu Mar 21 15:19:36 2019] rpc-srv/tcp: nfsd: got error -11 when sending 116 bytes - shutting down socket
+[Thu Mar 21 15:21:15 2019] rpc-srv/tcp: nfsd: got error -11 when sending 116 bytes - shutting down socket
+```
 
-```console
-[root@readhat76 ~/nfs-client-dir]#dmesg
-[75323.323614] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75359.803614] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75396.283622] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75432.763610] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75469.243613] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75505.723623] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75542.203619] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75578.683613] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75615.163620] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75651.643625] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75688.123613] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75724.603616] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75761.083625] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75797.563616] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
-[75834.043622] rpc-srv/tcp: nfsd: got error -11 when sending 140 bytes - shutting down socket
+
+## 问题1 plex not found 
+```
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$ sudo make defconfig
+  LEX     scripts/kconfig/zconf.lex.c
+/bin/sh: 1: flex: not found
+scripts/Makefile.lib:193: recipe for target 'scripts/kconfig/zconf.lex.c' failed
+make[1]: *** [scripts/kconfig/zconf.lex.c] Error 127
+Makefile:538: recipe for target 'defconfig' failed
+make: *** [defconfig] Error 2
+```
+解决办法是：
+```
+apt install plex
+```
+
+## 问题2 bison: not found
+```
+apt install bison
+```
+
+## 问题3 openssl not found
+```
+scripts/extract-cert.c:21:25: fatal error: openssl/bio.h: No such file or directory
+ #include <openssl/bio.h>
+                         ^
+compilation terminated.
 ```
