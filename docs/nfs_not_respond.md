@@ -130,7 +130,38 @@ me@ubuntu:~$ dmesg -T
 [Thu Mar 21 15:21:15 2019] rpc-srv/tcp: nfsd: got error -11 when sending 116 bytes - shutting down socket
 ```
 
+## 编译内核进行验证
+根据 [[redhat 编译内核]](redhat_build_kernel_zh.md) 编译新内核并安装。
 
+
+## 重新验证
+成功编译内核
+```shell-session
+  LD [M]  sound/soc/meson/snd-soc-meson-axg-tdm-formatter.ko
+  LD [M]  sound/soc/meson/snd-soc-meson-axg-tdm-interface.ko
+  LD [M]  sound/soc/meson/snd-soc-meson-axg-tdmin.ko
+  LD [M]  sound/soc/meson/snd-soc-meson-axg-tdmout.ko
+  LD [M]  sound/soc/meson/snd-soc-meson-axg-toddr.ko
+  LD [M]  sound/soc/rockchip/snd-soc-rk3399-gru-sound.ko
+  LD [M]  sound/soc/rockchip/snd-soc-rockchip-i2s.ko
+  LD [M]  sound/soc/rockchip/snd-soc-rockchip-pcm.ko
+  LD [M]  sound/soc/rockchip/snd-soc-rockchip-rt5645.ko
+  LD [M]  sound/soc/rockchip/snd-soc-rockchip-spdif.ko
+  LD [M]  sound/soc/sh/rcar/snd-soc-rcar.ko
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$ ls
+arch   built-in.a  COPYING  crypto         drivers   fs       init  Kbuild   kernel  LICENSES     Makefile  modules.builtin  Module.symvers  README   scripts   sound       tools  virt     vmlinux.o
+block  certs       CREDITS  Documentation  firmware  include  ipc   Kconfig  lib     MAINTAINERS  mm        modules.order    net             samples  security  System.map  usr    vmlinux
+```
+没有出现nfs server not respond
+```
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$ dmesg -T
+me@ubuntu:~/nfs-client-dir/linux-5.0.3$
+```
+
+复现问题过程的问题
 ## 问题1 plex not found 
 ```
 me@ubuntu:~/nfs-client-dir/linux-5.0.3$ sudo make defconfig
@@ -158,3 +189,4 @@ scripts/extract-cert.c:21:25: fatal error: openssl/bio.h: No such file or direct
                          ^
 compilation terminated.
 ```
+解决办法

@@ -413,7 +413,7 @@ Red Hat Enterprise Linux Server release 7.6 (Maipo)
 ```
 重新验证成功
 ```
-[root@redhat76 ~]# ./test.sh /tmp
+[root@redhat76 ~]#bash -x ./test.sh /tmp
 + for directory in '$@'
 + test_file=/tmp/flock-user-test.9916
 + printf '\nTest locking file: %s\n' /tmp/flock-user-test.9916
