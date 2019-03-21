@@ -54,7 +54,7 @@ nav:
         - NeoKylin: NeoKylin.md
         - suse 软件源: suse_local_repo.md
     - bug solve:
-        - nfs lock 1670650: 1670650.md
+        - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
