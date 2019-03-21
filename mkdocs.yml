@@ -41,8 +41,8 @@ nav:
         - mem stream: stream.md
         - mem stream_x86: stream_x86.md
         - mem stream_arm: stream_arm.md
-        - io fio: io_fio_benchmark.md
         - io disk imformation: disk_information.md
+        - io fio benchmark: io_fio_benchmark.md
     - 发行版: 
         - redhat: redhat.md
         - redhat build kernel[en]: redhat_build_kernel.md
@@ -54,7 +54,7 @@ nav:
         - NeoKylin: NeoKylin.md
         - suse 软件源: suse_local_repo.md
     - bug solve:
-        - 1670650: 1670650.md
+        - nfs lock 1670650: 1670650.md
         - nfs_not_respond: nfs_not_respond.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md

@@ -1,0 +1,560 @@
+  0 4k read        1   1 numactl -C 0-0  -m 0   9690 39.7MB/s   3.63% 15.30%
+  1 4k read        1   8 numactl -C 0-0  -m 0  45.4k  186MB/s  16.25% 70.92%
+  2 4k read        1  16 numactl -C 0-0  -m 0  51.5k  211MB/s  17.90% 81.92%
+  3 4k read        1  32 numactl -C 0-0  -m 0  50.9k  208MB/s  16.92% 82.90%
+  4 4k read        1  64 numactl -C 0-0  -m 0  51.3k  210MB/s  17.52% 82.31%
+  5 4k read        1 128 numactl -C 0-0  -m 0  51.6k  211MB/s  17.12% 82.69%
+  6 4k read        1 256 numactl -C 0-0  -m 0  51.2k  210MB/s  17.96% 81.86%
+  7 4k read        8   1 numactl -C 0-7  -m 0  68.7k  281MB/s   4.07% 22.21%
+  8 4k read        8   8 numactl -C 0-7  -m 0   149k  612MB/s   6.90% 92.33%
+  9 4k read        8  16 numactl -C 0-7  -m 0   150k  612MB/s   6.70% 92.78%
+ 10 4k read        8  32 numactl -C 0-7  -m 0   153k  628MB/s   7.06% 88.23%
+ 11 4k read        8  64 numactl -C 0-7  -m 0   212k  868MB/s   8.41% 48.41%
+ 12 4k read        8 128 numactl -C 0-7  -m 0   248k 1014MB/s   9.64% 34.49%
+ 13 4k read        8 256 numactl -C 0-7  -m 0   262k 1072MB/s   9.57% 32.31%
+ 14 4k read       16   1 numactl -C 0-15 -m 0   115k  470MB/s   3.52% 31.42%
+ 15 4k read       16   8 numactl -C 0-15 -m 0   139k  569MB/s   3.19% 96.35%
+ 16 4k read       16  16 numactl -C 0-15 -m 0   153k  625MB/s   3.24% 81.71%
+ 17 4k read       16  32 numactl -C 0-15 -m 0   193k  790MB/s   3.93% 53.74%
+ 18 4k read       16  64 numactl -C 0-15 -m 0   251k 1029MB/s   4.94% 18.76%
+ 19 4k read       16 128 numactl -C 0-15 -m 0   262k 1072MB/s   5.09% 16.67%
+ 20 4k read       16 256 numactl -C 0-15 -m 0   269k 1102MB/s   4.99% 15.21%
+ 21 4k read       32   1 numactl -C 0-31 -m 0   115k  472MB/s   1.64% 22.23%
+ 22 4k read       32   8 numactl -C 0-31 -m 0   219k  898MB/s   2.30% 11.87%
+ 23 4k read       32  16 numactl -C 0-31 -m 0   244k  999MB/s   2.43% 10.18%
+ 24 4k read       32  32 numactl -C 0-31 -m 0   258k 1056MB/s   2.33%  8.84%
+ 25 4k read       32  64 numactl -C 0-31 -m 0   266k 1088MB/s   2.43%  8.21%
+ 26 4k read       32 128 numactl -C 0-31 -m 0   269k 1104MB/s   2.40%  8.11%
+ 27 4k read       32 256 numactl -C 0-31 -m 0   272k 1113MB/s   2.40%  8.73%
+ 28 4k read       64   1 numactl -C 0-63 -m 0  64.8k  265MB/s   0.52% 44.70%
+ 29 4k read       64   8 numactl -C 0-63 -m 0   185k  758MB/s   1.05% 27.56%
+ 30 4k read       64  16 numactl -C 0-63 -m 0   203k  834MB/s   1.01% 53.17%
+ 31 4k read       64  32 numactl -C 0-63 -m 0   260k 1066MB/s   1.24% 16.30%
+ 32 4k read       64  64 numactl -C 0-63 -m 0   268k 1099MB/s   1.25% 12.68%
+ 33 4k read       64 128 numactl -C 0-63 -m 0   271k 1111MB/s   1.19%  8.95%
+ 34 4k read       64 256 numactl -C 0-63 -m 0   273k 1121MB/s   1.30%  8.29%
+ 35 4k write       1   1 numactl -C 0-0  -m 0  10.4k 42.6MB/s   4.24% 16.25%
+ 36 4k write       1   8 numactl -C 0-0  -m 0  50.7k  208MB/s  17.78% 81.59%
+ 37 4k write       1  16 numactl -C 0-0  -m 0  50.2k  206MB/s  17.82% 81.88%
+ 38 4k write       1  32 numactl -C 0-0  -m 0  50.9k  209MB/s  18.02% 81.75%
+ 39 4k write       1  64 numactl -C 0-0  -m 0  50.7k  208MB/s  19.02% 80.76%
+ 40 4k write       1 128 numactl -C 0-0  -m 0  50.5k  207MB/s  17.92% 81.87%
+ 41 4k write       1 256 numactl -C 0-0  -m 0  50.6k  207MB/s  18.29% 81.52%
+ 42 4k write       8   1 numactl -C 0-7  -m 0  86.7k  355MB/s   5.41% 32.39%
+ 43 4k write       8   8 numactl -C 0-7  -m 0  99.5k  408MB/s   5.17% 60.42%
+ 44 4k write       8  16 numactl -C 0-7  -m 0   108k  443MB/s   5.16% 43.29%
+ 45 4k write       8  32 numactl -C 0-7  -m 0   123k  505MB/s   5.58% 26.68%
+ 46 4k write       8  64 numactl -C 0-7  -m 0   133k  545MB/s   5.91% 21.85%
+ 47 4k write       8 128 numactl -C 0-7  -m 0   145k  592MB/s   5.89% 20.58%
+ 48 4k write       8 256 numactl -C 0-7  -m 0   156k  641MB/s   6.72% 23.65%
+ 49 4k write      16   1 numactl -C 0-15 -m 0   102k  420MB/s   3.70% 32.58%
+ 50 4k write      16   8 numactl -C 0-15 -m 0   104k  428MB/s   2.71% 50.50%
+ 51 4k write      16  16 numactl -C 0-15 -m 0   126k  515MB/s   2.84% 15.62%
+ 52 4k write      16  32 numactl -C 0-15 -m 0   136k  556MB/s   2.96% 12.58%
+ 53 4k write      16  64 numactl -C 0-15 -m 0   148k  605MB/s   3.05% 11.55%
+ 54 4k write      16 128 numactl -C 0-15 -m 0   159k  652MB/s   3.27% 10.93%
+ 55 4k write      16 256 numactl -C 0-15 -m 0   170k  697MB/s   3.37%  9.86%
+ 56 4k write      32   1 numactl -C 0-31 -m 0   104k  425MB/s   1.73% 23.16%
+ 57 4k write      32   8 numactl -C 0-31 -m 0   126k  517MB/s   1.34%  6.23%
+ 58 4k write      32  16 numactl -C 0-31 -m 0   140k  574MB/s   1.43%  5.60%
+ 59 4k write      32  32 numactl -C 0-31 -m 0   151k  618MB/s   1.54%  6.59%
+ 60 4k write      32  64 numactl -C 0-31 -m 0   158k  648MB/s   1.54%  4.98%
+ 61 4k write      32 128 numactl -C 0-31 -m 0   167k  686MB/s   1.70%  6.14%
+ 62 4k write      32 256 numactl -C 0-31 -m 0   176k  722MB/s   1.75%  4.95%
+ 63 4k write      64   1 numactl -C 0-63 -m 0  64.8k  265MB/s   0.61% 46.27%
+ 64 4k write      64   8 numactl -C 0-63 -m 0   140k  575MB/s   0.93% 53.84%
+ 65 4k write      64  16 numactl -C 0-63 -m 0   146k  598MB/s   0.81% 29.04%
+ 66 4k write      64  32 numactl -C 0-63 -m 0   163k  667MB/s   0.87%  7.51%
+ 67 4k write      64  64 numactl -C 0-63 -m 0   170k  698MB/s   0.84%  4.01%
+ 68 4k write      64 128 numactl -C 0-63 -m 0   174k  714MB/s   0.98%  4.01%
+ 69 4k write      64 256 numactl -C 0-63 -m 0   176k  720MB/s   0.97%  3.33%
+ 70 4k randread    1   1 numactl -C 0-0  -m 0   9980 40.9MB/s   4.01% 15.67%
+ 71 4k randread    1   8 numactl -C 0-0  -m 0  50.6k  207MB/s  18.17% 80.71%
+ 72 4k randread    1  16 numactl -C 0-0  -m 0  50.7k  208MB/s  18.47% 81.28%
+ 73 4k randread    1  32 numactl -C 0-0  -m 0  50.7k  208MB/s  18.55% 81.26%
+ 74 4k randread    1  64 numactl -C 0-0  -m 0  50.0k  209MB/s  18.72% 81.09%
+ 75 4k randread    1 128 numactl -C 0-0  -m 0  50.9k  209MB/s  18.35% 81.45%
+ 76 4k randread    1 256 numactl -C 0-0  -m 0  50.5k  207MB/s  18.70% 81.11%
+ 77 4k randread    8   1 numactl -C 0-7  -m 0  83.5k  342MB/s   5.36% 29.64%
+ 78 4k randread    8   8 numactl -C 0-7  -m 0   148k  608MB/s   7.54% 91.16%
+ 79 4k randread    8  16 numactl -C 0-7  -m 0  89.4k  366MB/s   4.13% 18.32%
+ 80 4k randread    8  32 numactl -C 0-7  -m 0  91.7k  376MB/s   4.17% 19.71%
+ 81 4k randread    8  64 numactl -C 0-7  -m 0  92.0k  377MB/s   4.38% 20.59%
+ 82 4k randread    8 128 numactl -C 0-7  -m 0  92.9k  381MB/s   4.35% 21.47%
+ 83 4k randread    8 256 numactl -C 0-7  -m 0  92.9k  381MB/s   4.30% 21.52%
+ 84 4k randread   16   1 numactl -C 0-15 -m 0   125k  513MB/s   4.46% 38.95%
+ 85 4k randread   16   8 numactl -C 0-15 -m 0  80.2k  329MB/s   1.84%  7.73%
+ 86 4k randread   16  16 numactl -C 0-15 -m 0  88.3k  362MB/s   2.00% 10.45%
+ 87 4k randread   16  32 numactl -C 0-15 -m 0  89.9k  368MB/s   2.02% 10.33%
+ 88 4k randread   16  64 numactl -C 0-15 -m 0  90.1k  369MB/s   2.11% 10.73%
+ 89 4k randread   16 128 numactl -C 0-15 -m 0  90.5k  371MB/s   2.00% 11.13%
+ 90 4k randread   16 256 numactl -C 0-15 -m 0  90.4k  370MB/s   2.08% 11.27%
+ 91 4k randread   32   1 numactl -C 0-31 -m 0   116k  473MB/s   1.80% 22.95%
+ 92 4k randread   32   8 numactl -C 0-31 -m 0  81.4k  334MB/s   0.94%  4.50%
+ 93 4k randread   32  16 numactl -C 0-31 -m 0  88.0k  361MB/s   0.99%  5.46%
+ 94 4k randread   32  32 numactl -C 0-31 -m 0  89.5k  367MB/s   1.05%  5.49%
+ 95 4k randread   32  64 numactl -C 0-31 -m 0  89.8k  368MB/s   1.06%  5.68%
+ 96 4k randread   32 128 numactl -C 0-31 -m 0  89.6k  367MB/s   1.05%  5.77%
+ 97 4k randread   32 256 numactl -C 0-31 -m 0  89.8k  368MB/s   1.06%  5.67%
+ 98 4k randread   64   1 numactl -C 0-63 -m 0  63.9k  262MB/s   0.55% 45.14%
+ 99 4k randread   64   8 numactl -C 0-63 -m 0  56.3k  231MB/s   0.37% 32.71%
+100 4k randread   64  16 numactl -C 0-63 -m 0  58.1k  238MB/s   0.40% 17.69%
+101 4k randread   64  32 numactl -C 0-63 -m 0  60.5k  248MB/s   0.39% 15.97%
+102 4k randread   64  64 numactl -C 0-63 -m 0  60.1k  246MB/s   0.41% 11.99%
+103 4k randread   64 128 numactl -C 0-63 -m 0  62.9k  258MB/s   0.42% 12.55%
+104 4k randread   64 256 numactl -C 0-63 -m 0  60.5k  249MB/s   0.42% 11.36%
+105 4k randwrite   1   1 numactl -C 0-0  -m 0  10.3k 42.3MB/s   4.13% 16.34%
+106 4k randwrite   1   8 numactl -C 0-0  -m 0  49.2k  202MB/s  18.68% 79.94%
+107 4k randwrite   1  16 numactl -C 0-0  -m 0  49.7k  203MB/s  18.87% 80.68%
+108 4k randwrite   1  32 numactl -C 0-0  -m 0  49.8k  204MB/s  19.39% 80.36%
+109 4k randwrite   1  64 numactl -C 0-0  -m 0  49.1k  201MB/s  18.63% 81.16%
+110 4k randwrite   1 128 numactl -C 0-0  -m 0  49.9k  204MB/s  18.40% 81.36%
+111 4k randwrite   1 256 numactl -C 0-0  -m 0  50.1k  205MB/s  18.91% 80.86%
+112 4k randwrite   8   1 numactl -C 0-7  -m 0  85.5k  350MB/s   5.83% 31.48%
+113 4k randwrite   8   8 numactl -C 0-7  -m 0  97.0k  397MB/s   5.15% 61.55%
+114 4k randwrite   8  16 numactl -C 0-7  -m 0  95.5k  391MB/s   4.73% 23.73%
+115 4k randwrite   8  32 numactl -C 0-7  -m 0  97.0k  397MB/s   4.77% 26.12%
+116 4k randwrite   8  64 numactl -C 0-7  -m 0  97.5k  399MB/s   5.07% 27.48%
+117 4k randwrite   8 128 numactl -C 0-7  -m 0  96.6k  396MB/s   4.86% 27.75%
+118 4k randwrite   8 256 numactl -C 0-7  -m 0  96.1k  394MB/s   4.86% 27.20%
+119 4k randwrite  16   1 numactl -C 0-15 -m 0   104k  428MB/s   3.70% 31.41%
+120 4k randwrite  16   8 numactl -C 0-15 -m 0  93.7k  384MB/s   2.25% 10.28%
+121 4k randwrite  16  16 numactl -C 0-15 -m 0  96.6k  396MB/s   2.30% 12.69%
+122 4k randwrite  16  32 numactl -C 0-15 -m 0  96.6k  396MB/s   2.36% 14.37%
+123 4k randwrite  16  64 numactl -C 0-15 -m 0  96.6k  396MB/s   2.35% 12.43%
+124 4k randwrite  16 128 numactl -C 0-15 -m 0  95.7k  392MB/s   2.27% 12.57%
+125 4k randwrite  16 256 numactl -C 0-15 -m 0  94.0k  389MB/s   2.34% 12.44%
+126 4k randwrite  32   1 numactl -C 0-31 -m 0   104k  426MB/s   1.92% 23.16%
+127 4k randwrite  32   8 numactl -C 0-31 -m 0  93.9k  385MB/s   1.15%  5.94%
+128 4k randwrite  32  16 numactl -C 0-31 -m 0  96.0k  393MB/s   1.15%  6.65%
+129 4k randwrite  32  32 numactl -C 0-31 -m 0  95.8k  392MB/s   1.16%  6.45%
+130 4k randwrite  32  64 numactl -C 0-31 -m 0  95.8k  393MB/s   1.20%  6.55%
+131 4k randwrite  32 128 numactl -C 0-31 -m 0  94.6k  388MB/s   1.21%  6.46%
+132 4k randwrite  32 256 numactl -C 0-31 -m 0  94.2k  386MB/s   1.23%  6.51%
+133 4k randwrite  64   1 numactl -C 0-63 -m 0  64.7k  265MB/s   0.62% 46.06%
+134 4k randwrite  64   8 numactl -C 0-63 -m 0  56.8k  233MB/s   0.40% 29.84%
+135 4k randwrite  64  16 numactl -C 0-63 -m 0  58.6k  240MB/s   0.43% 17.55%
+136 4k randwrite  64  32 numactl -C 0-63 -m 0  59.4k  243MB/s   0.44% 14.24%
+137 4k randwrite  64  64 numactl -C 0-63 -m 0  59.9k  246MB/s   0.45% 11.78%
+138 4k randwrite  64 128 numactl -C 0-63 -m 0  62.0k  255MB/s   0.49% 11.75%
+139 4k randwrite  64 256 numactl -C 0-63 -m 0  60.4k  248MB/s   0.49% 10.08%
+140 8k read        1   1 numactl -C 0-0  -m 0   6625 54.3MB/s   2.69% 10.54%
+141 8k read        1   8 numactl -C 0-0  -m 0  31.8k  260MB/s  11.43% 48.26%
+142 8k read        1  16 numactl -C 0-0  -m 0  49.5k  405MB/s  15.82% 80.77%
+143 8k read        1  32 numactl -C 0-0  -m 0  50.3k  412MB/s  18.04% 81.77%
+144 8k read        1  64 numactl -C 0-0  -m 0  50.5k  414MB/s  17.45% 82.36%
+145 8k read        1 128 numactl -C 0-0  -m 0  50.3k  412MB/s  17.45% 82.37%
+146 8k read        1 256 numactl -C 0-0  -m 0  50.7k  415MB/s  16.98% 82.83%
+147 8k read        8   1 numactl -C 0-7  -m 0  39.5k  324MB/s   2.33% 12.01%
+148 8k read        8   8 numactl -C 0-7  -m 0   108k  885MB/s   5.97% 41.09%
+149 8k read        8  16 numactl -C 0-7  -m 0   102k  839MB/s   4.65% 24.84%
+150 8k read        8  32 numactl -C 0-7  -m 0   110k  905MB/s   4.81% 20.74%
+151 8k read        8  64 numactl -C 0-7  -m 0   119k  975MB/s   5.09% 19.11%
+152 8k read        8 128 numactl -C 0-7  -m 0   130k 1065MB/s   5.28% 17.15%
+153 8k read        8 256 numactl -C 0-7  -m 0   131k 1076MB/s   4.77% 14.90%
+154 8k read       16   1 numactl -C 0-15 -m 0  70.3k  576MB/s   2.01% 13.76%
+155 8k read       16   8 numactl -C 0-15 -m 0   103k  844MB/s   2.50% 16.36%
+156 8k read       16  16 numactl -C 0-15 -m 0   117k  958MB/s   2.63% 12.44%
+157 8k read       16  32 numactl -C 0-15 -m 0   125k 1028MB/s   2.62% 10.07%
+158 8k read       16  64 numactl -C 0-15 -m 0   130k 1069MB/s   2.64%  8.82%
+159 8k read       16 128 numactl -C 0-15 -m 0   135k 1102MB/s   2.54%  7.99%
+160 8k read       16 256 numactl -C 0-15 -m 0   134k 1099MB/s   2.53%  7.63%
+161 8k read       32   1 numactl -C 0-31 -m 0   100k  820MB/s   1.44% 11.62%
+162 8k read       32   8 numactl -C 0-31 -m 0   120k  984MB/s   1.26%  5.87%
+163 8k read       32  16 numactl -C 0-31 -m 0   129k 1058MB/s   1.23%  4.60%
+164 8k read       32  32 numactl -C 0-31 -m 0   133k 1090MB/s   1.22%  4.02%
+165 8k read       32  64 numactl -C 0-31 -m 0   135k 1103MB/s   1.21%  3.93%
+166 8k read       32 128 numactl -C 0-31 -m 0   136k 1113MB/s   1.23%  4.06%
+167 8k read       32 256 numactl -C 0-31 -m 0   135k 1104MB/s   1.27%  4.02%
+168 8k read       64   1 numactl -C 0-63 -m 0  64.7k  530MB/s   0.53% 35.66%
+169 8k read       64   8 numactl -C 0-63 -m 0   127k 1044MB/s   0.72% 11.50%
+170 8k read       64  16 numactl -C 0-63 -m 0   132k 1080MB/s   0.69%  4.23%
+171 8k read       64  32 numactl -C 0-63 -m 0   134k 1096MB/s   0.66%  3.53%
+172 8k read       64  64 numactl -C 0-63 -m 0   136k 1116MB/s   0.66%  3.03%
+173 8k read       64 128 numactl -C 0-63 -m 0   136k 1119MB/s   0.65%  2.82%
+174 8k read       64 256 numactl -C 0-63 -m 0   136k 1118MB/s   0.66%  5.69%
+175 8k write       1   1 numactl -C 0-0  -m 0  10.3k 84.3MB/s   4.12% 16.76%
+176 8k write       1   8 numactl -C 0-0  -m 0  49.3k  404MB/s  17.87% 80.15%
+177 8k write       1  16 numactl -C 0-0  -m 0  50.4k  413MB/s  17.82% 81.09%
+178 8k write       1  32 numactl -C 0-0  -m 0  49.7k  407MB/s  18.01% 81.35%
+179 8k write       1  64 numactl -C 0-0  -m 0  50.1k  410MB/s  17.82% 81.56%
+180 8k write       1 128 numactl -C 0-0  -m 0  50.0k  410MB/s  17.99% 81.44%
+181 8k write       1 256 numactl -C 0-0  -m 0  49.7k  408MB/s  19.28% 80.09%
+182 8k write       8   1 numactl -C 0-7  -m 0  66.6k  545MB/s   4.21% 26.40%
+183 8k write       8   8 numactl -C 0-7  -m 0  60.9k  499MB/s   3.54% 27.64%
+184 8k write       8  16 numactl -C 0-7  -m 0  65.1k  533MB/s   3.26% 14.19%
+185 8k write       8  32 numactl -C 0-7  -m 0  68.7k  563MB/s   3.27% 12.45%
+186 8k write       8  64 numactl -C 0-7  -m 0  72.7k  596MB/s   3.25% 11.60%
+187 8k write       8 128 numactl -C 0-7  -m 0  79.5k  652MB/s   3.43% 10.78%
+188 8k write       8 256 numactl -C 0-7  -m 0  86.3k  707MB/s   3.87% 11.99%
+189 8k write      16   1 numactl -C 0-15 -m 0  58.3k  478MB/s   1.86% 13.46%
+190 8k write      16   8 numactl -C 0-15 -m 0  66.1k  542MB/s   1.75%  9.26%
+191 8k write      16  16 numactl -C 0-15 -m 0  70.3k  576MB/s   1.67%  6.81%
+192 8k write      16  32 numactl -C 0-15 -m 0  75.8k  621MB/s   1.78%  7.55%
+193 8k write      16  64 numactl -C 0-15 -m 0  81.1k  665MB/s   1.88%  6.96%
+194 8k write      16 128 numactl -C 0-15 -m 0  85.5k  701MB/s   1.90%  6.48%
+195 8k write      16 256 numactl -C 0-15 -m 0  88.7k  727MB/s   1.96%  6.16%
+196 8k write      32   1 numactl -C 0-31 -m 0  59.2k  485MB/s   0.90%  6.57%
+197 8k write      32   8 numactl -C 0-31 -m 0  72.8k  597MB/s   0.80%  3.22%
+198 8k write      32  16 numactl -C 0-31 -m 0  77.8k  637MB/s   0.82%  2.74%
+199 8k write      32  32 numactl -C 0-31 -m 0  82.6k  677MB/s   0.85%  2.59%
+200 8k write      32  64 numactl -C 0-31 -m 0  85.4k  700MB/s   0.89%  2.55%
+201 8k write      32 128 numactl -C 0-31 -m 0  89.4k  733MB/s   0.94%  2.59%
+202 8k write      32 256 numactl -C 0-31 -m 0  88.6k  727MB/s   0.97%  2.53%
+203 8k write      64   1 numactl -C 0-63 -m 0  64.4k  528MB/s   0.65% 43.32%
+204 8k write      64   8 numactl -C 0-63 -m 0  77.6k  636MB/s   0.53% 13.85%
+205 8k write      64  16 numactl -C 0-63 -m 0  82.5k  676MB/s   0.51%  2.77%
+206 8k write      64  32 numactl -C 0-63 -m 0  85.1k  697MB/s   0.49%  1.88%
+207 8k write      64  64 numactl -C 0-63 -m 0  89.5k  733MB/s   0.55%  1.48%
+208 8k write      64 128 numactl -C 0-63 -m 0  88.5k  726MB/s   0.58%  1.51%
+209 8k write      64 256 numactl -C 0-63 -m 0  88.0k  731MB/s   0.57%  1.62%
+210 8k randread    1   1 numactl -C 0-0  -m 0   7498 61.4MB/s   3.21% 11.97%
+211 8k randread    1   8 numactl -C 0-0  -m 0  36.7k  300MB/s  13.90% 55.39%
+212 8k randread    1  16 numactl -C 0-0  -m 0  48.9k  401MB/s  17.87% 80.76%
+213 8k randread    1  32 numactl -C 0-0  -m 0  49.7k  407MB/s  18.28% 81.52%
+214 8k randread    1  64 numactl -C 0-0  -m 0  49.8k  408MB/s  17.36% 82.44%
+215 8k randread    1 128 numactl -C 0-0  -m 0  49.9k  409MB/s  17.47% 82.33%
+216 8k randread    1 256 numactl -C 0-0  -m 0  49.3k  404MB/s  17.71% 82.07%
+217 8k randread    8   1 numactl -C 0-7  -m 0  45.0k  369MB/s   2.85% 13.38%
+218 8k randread    8   8 numactl -C 0-7  -m 0   108k  888MB/s   6.18% 39.79%
+219 8k randread    8  16 numactl -C 0-7  -m 0  44.6k  365MB/s   1.97%  8.19%
+220 8k randread    8  32 numactl -C 0-7  -m 0  45.9k  376MB/s   2.04%  7.67%
+221 8k randread    8  64 numactl -C 0-7  -m 0  46.2k  379MB/s   2.12%  8.06%
+222 8k randread    8 128 numactl -C 0-7  -m 0  47.3k  388MB/s   2.12%  8.60%
+223 8k randread    8 256 numactl -C 0-7  -m 0  47.2k  387MB/s   2.10%  8.44%
+224 8k randread   16   1 numactl -C 0-15 -m 0  78.1k  640MB/s   2.50% 16.30%
+225 8k randread   16   8 numactl -C 0-15 -m 0  49.5k  405MB/s   1.29%  4.73%
+226 8k randread   16  16 numactl -C 0-15 -m 0  44.8k  367MB/s   1.04%  3.97%
+227 8k randread   16  32 numactl -C 0-15 -m 0  45.8k  375MB/s   1.04%  4.04%
+228 8k randread   16  64 numactl -C 0-15 -m 0  45.9k  376MB/s   1.02%  4.12%
+229 8k randread   16 128 numactl -C 0-15 -m 0  46.5k  381MB/s   1.07%  4.20%
+230 8k randread   16 256 numactl -C 0-15 -m 0  46.5k  381MB/s   1.08%  4.25%
+231 8k randread   32   1 numactl -C 0-31 -m 0   105k  861MB/s   1.66% 13.26%
+232 8k randread   32   8 numactl -C 0-31 -m 0  51.9k  425MB/s   0.71%  2.64%
+233 8k randread   32  16 numactl -C 0-31 -m 0  44.9k  368MB/s   0.53%  2.03%
+234 8k randread   32  32 numactl -C 0-31 -m 0  45.9k  376MB/s   0.54%  2.04%
+235 8k randread   32  64 numactl -C 0-31 -m 0  46.0k  377MB/s   0.55%  2.08%
+236 8k randread   32 128 numactl -C 0-31 -m 0  46.2k  379MB/s   0.52%  2.13%
+237 8k randread   32 256 numactl -C 0-31 -m 0  46.3k  380MB/s   0.55%  2.12%
+238 8k randread   64   1 numactl -C 0-63 -m 0  65.4k  536MB/s   0.56% 35.11%
+239 8k randread   64   8 numactl -C 0-63 -m 0  47.1k  386MB/s   0.34%  2.89%
+240 8k randread   64  16 numactl -C 0-63 -m 0  42.9k  352MB/s   0.28%  1.37%
+241 8k randread   64  32 numactl -C 0-63 -m 0  43.1k  354MB/s   0.28%  1.16%
+242 8k randread   64  64 numactl -C 0-63 -m 0  43.1k  353MB/s   0.28%  1.29%
+243 8k randread   64 128 numactl -C 0-63 -m 0  43.4k  356MB/s   0.29%  1.28%
+244 8k randread   64 256 numactl -C 0-63 -m 0  43.4k  358MB/s   0.29%  1.53%
+245 8k randwrite   1   1 numactl -C 0-0  -m 0  10.3k 84.3MB/s   4.37% 16.54%
+246 8k randwrite   1   8 numactl -C 0-0  -m 0  48.3k  396MB/s  18.08% 79.70%
+247 8k randwrite   1  16 numactl -C 0-0  -m 0  48.9k  401MB/s  18.41% 80.65%
+248 8k randwrite   1  32 numactl -C 0-0  -m 0  49.3k  404MB/s  18.15% 81.17%
+249 8k randwrite   1  64 numactl -C 0-0  -m 0  49.2k  403MB/s  19.29% 80.11%
+250 8k randwrite   1 128 numactl -C 0-0  -m 0  49.3k  404MB/s  19.49% 79.95%
+251 8k randwrite   1 256 numactl -C 0-0  -m 0  49.0k  402MB/s  19.42% 80.03%
+252 8k randwrite   8   1 numactl -C 0-7  -m 0  66.0k  541MB/s   4.48% 25.68%
+253 8k randwrite   8   8 numactl -C 0-7  -m 0  60.6k  497MB/s   3.89% 28.17%
+254 8k randwrite   8  16 numactl -C 0-7  -m 0  59.9k  491MB/s   2.99% 14.03%
+255 8k randwrite   8  32 numactl -C 0-7  -m 0  59.8k  490MB/s   3.03% 13.98%
+256 8k randwrite   8  64 numactl -C 0-7  -m 0  59.9k  491MB/s   3.15% 14.85%
+257 8k randwrite   8 128 numactl -C 0-7  -m 0  59.7k  489MB/s   3.11% 14.75%
+258 8k randwrite   8 256 numactl -C 0-7  -m 0  59.6k  489MB/s   3.13% 14.77%
+259 8k randwrite  16   1 numactl -C 0-15 -m 0  58.4k  479MB/s   1.92% 11.91%
+260 8k randwrite  16   8 numactl -C 0-15 -m 0  63.8k  523MB/s   1.64%  7.41%
+261 8k randwrite  16  16 numactl -C 0-15 -m 0  59.7k  489MB/s   1.48%  6.63%
+262 8k randwrite  16  32 numactl -C 0-15 -m 0  59.7k  489MB/s   1.53%  7.45%
+263 8k randwrite  16  64 numactl -C 0-15 -m 0  59.5k  487MB/s   1.57%  7.56%
+264 8k randwrite  16 128 numactl -C 0-15 -m 0  59.7k  489MB/s   1.53%  6.49%
+265 8k randwrite  16 256 numactl -C 0-15 -m 0  60.2k  493MB/s   1.63%  6.66%
+266 8k randwrite  32   1 numactl -C 0-31 -m 0  58.8k  482MB/s   0.94%  6.25%
+267 8k randwrite  32   8 numactl -C 0-31 -m 0  62.0k  516MB/s   0.79%  3.29%
+268 8k randwrite  32  16 numactl -C 0-31 -m 0  60.5k  495MB/s   0.72%  3.44%
+269 8k randwrite  32  32 numactl -C 0-31 -m 0  59.7k  489MB/s   0.75%  3.32%
+270 8k randwrite  32  64 numactl -C 0-31 -m 0  59.9k  491MB/s   0.77%  3.39%
+271 8k randwrite  32 128 numactl -C 0-31 -m 0  60.3k  495MB/s   0.81%  3.42%
+272 8k randwrite  32 256 numactl -C 0-31 -m 0  60.3k  495MB/s   0.82%  3.46%
+273 8k randwrite  64   1 numactl -C 0-63 -m 0  64.1k  525MB/s   0.71% 43.10%
+274 8k randwrite  64   8 numactl -C 0-63 -m 0  55.8k  457MB/s   0.43% 26.27%
+275 8k randwrite  64  16 numactl -C 0-63 -m 0  58.1k  476MB/s   0.44%  7.47%
+276 8k randwrite  64  32 numactl -C 0-63 -m 0  60.5k  496MB/s   0.53%  5.69%
+277 8k randwrite  64  64 numactl -C 0-63 -m 0  58.8k  482MB/s   0.52%  4.91%
+278 8k randwrite  64 128 numactl -C 0-63 -m 0  57.9k  475MB/s   0.50%  5.09%
+279 8k randwrite  64 256 numactl -C 0-63 -m 0  59.3k  488MB/s   0.55%  4.16%
+280 1m read        1   1 numactl -C 0-0  -m 0    244  257MB/s   0.10%  1.32%
+281 1m read        1   8 numactl -C 0-0  -m 0   1059 1111MB/s   0.52%  6.50%
+282 1m read        1  16 numactl -C 0-0  -m 0   1066 1119MB/s   0.57%  6.93%
+283 1m read        1  32 numactl -C 0-0  -m 0   1066 1119MB/s   0.48%  7.25%
+284 1m read        1  64 numactl -C 0-0  -m 0   1066 1119MB/s   0.67%  6.57%
+285 1m read        1 128 numactl -C 0-0  -m 0   1066 1120MB/s   0.38%  5.87%
+286 1m read        1 256 numactl -C 0-0  -m 0   1066 1122MB/s   0.42%  5.86%
+287 1m read        8   1 numactl -C 0-7  -m 0   1045 1096MB/s   0.06%  0.74%
+288 1m read        8   8 numactl -C 0-7  -m 0    836  878MB/s   0.06%  0.58%
+289 1m read        8  16 numactl -C 0-7  -m 0   1064 1118MB/s   0.04%  0.71%
+290 1m read        8  32 numactl -C 0-7  -m 0   1048 1104MB/s   0.05%  0.70%
+291 1m read        8  64 numactl -C 0-7  -m 0   1063 1124MB/s   0.05%  0.71%
+292 1m read        8 128 numactl -C 0-7  -m 0   1061 1131MB/s   0.04%  0.75%
+293 1m read        8 256 numactl -C 0-7  -m 0   1064 1152MB/s   0.04%  0.74%
+294 1m read       16   1 numactl -C 0-15 -m 0   1066 1119MB/s   0.03%  0.39%
+295 1m read       16   8 numactl -C 0-15 -m 0    869  914MB/s   0.03%  0.30%
+296 1m read       16  16 numactl -C 0-15 -m 0   1025 1080MB/s   0.03%  0.35%
+297 1m read       16  32 numactl -C 0-15 -m 0   1043 1103MB/s   0.03%  0.36%
+298 1m read       16  64 numactl -C 0-15 -m 0   1054 1123MB/s   0.02%  0.37%
+299 1m read       16 128 numactl -C 0-15 -m 0   1049 1136MB/s   0.03%  0.36%
+300 1m read       16 256 numactl -C 0-15 -m 0   1059 1182MB/s   0.02%  0.37%
+301 1m read       32   1 numactl -C 0-31 -m 0   1067 1119MB/s   0.02%  0.21%
+302 1m read       32   8 numactl -C 0-31 -m 0    950 1001MB/s   0.01%  0.16%
+303 1m read       32  16 numactl -C 0-31 -m 0   1002 1060MB/s   0.01%  0.17%
+304 1m read       32  32 numactl -C 0-31 -m 0   1038 1107MB/s   0.01%  0.18%
+305 1m read       32  64 numactl -C 0-31 -m 0   1044 1131MB/s   0.01%  0.21%
+306 1m read       32 128 numactl -C 0-31 -m 0   1042 1163MB/s   0.01%  0.20%
+307 1m read       32 256 numactl -C 0-31 -m 0   1050 1179MB/s   0.01%  0.31%
+308 1m read       64   1 numactl -C 0-63 -m 0    772  810MB/s   0.01%  0.06%
+309 1m read       64   8 numactl -C 0-63 -m 0    938  993MB/s   0.01%  0.08%
+310 1m read       64  16 numactl -C 0-63 -m 0   1001 1068MB/s   0.01%  0.09%
+311 1m read       64  32 numactl -C 0-63 -m 0   1001 1085MB/s   0.01%  0.09%
+312 1m read       64  64 numactl -C 0-63 -m 0   1032 1151MB/s   0.01%  0.10%
+313 1m read       64 128 numactl -C 0-63 -m 0   1018 1141MB/s   0.01%  0.16%
+314 1m read       64 256 numactl -C 0-63 -m 0   1047 1171MB/s   0.01%  0.29%
+315 1m write       1   1 numactl -C 0-0  -m 0    702  737MB/s   1.91%  3.04%
+316 1m write       1   8 numactl -C 0-0  -m 0    750  787MB/s   2.96%  3.58%
+317 1m write       1  16 numactl -C 0-0  -m 0    772  811MB/s   4.55%  3.94%
+318 1m write       1  32 numactl -C 0-0  -m 0    787  826MB/s   6.08%  4.25%
+319 1m write       1  64 numactl -C 0-0  -m 0    786  825MB/s   7.05%  3.35%
+320 1m write       1 128 numactl -C 0-0  -m 0    782  823MB/s   6.22%  3.68%
+321 1m write       1 256 numactl -C 0-0  -m 0    785  828MB/s   6.43%  3.40%
+322 1m write       8   1 numactl -C 0-7  -m 0    749  786MB/s   0.31%  0.51%
+323 1m write       8   8 numactl -C 0-7  -m 0    725  762MB/s   0.55%  0.38%
+324 1m write       8  16 numactl -C 0-7  -m 0    785  826MB/s   0.81%  0.46%
+325 1m write       8  32 numactl -C 0-7  -m 0    782  825MB/s   0.78%  0.54%
+326 1m write       8  64 numactl -C 0-7  -m 0    786  834MB/s   0.81%  0.46%
+327 1m write       8 128 numactl -C 0-7  -m 0    781  838MB/s   0.82%  0.44%
+328 1m write       8 256 numactl -C 0-7  -m 0    787  861MB/s   0.81%  0.46%
+329 1m write      16   1 numactl -C 0-15 -m 0    775  813MB/s   0.24%  0.26%
+330 1m write      16   8 numactl -C 0-15 -m 0    783  824MB/s   0.40%  0.26%
+331 1m write      16  16 numactl -C 0-15 -m 0    778  820MB/s   0.41%  0.23%
+332 1m write      16  32 numactl -C 0-15 -m 0    782  829MB/s   0.41%  0.24%
+333 1m write      16  64 numactl -C 0-15 -m 0    786  842MB/s   0.41%  0.23%
+334 1m write      16 128 numactl -C 0-15 -m 0    784  859MB/s   0.40%  0.24%
+335 1m write      16 256 numactl -C 0-15 -m 0    784  890MB/s   0.39%  0.24%
+336 1m write      32   1 numactl -C 0-31 -m 0    789  828MB/s   0.19%  0.13%
+337 1m write      32   8 numactl -C 0-31 -m 0    782  824MB/s   0.20%  0.13%
+338 1m write      32  16 numactl -C 0-31 -m 0    786  833MB/s   0.20%  0.12%
+339 1m write      32  32 numactl -C 0-31 -m 0    785  841MB/s   0.22%  0.13%
+340 1m write      32  64 numactl -C 0-31 -m 0    779  853MB/s   0.20%  0.12%
+341 1m write      32 128 numactl -C 0-31 -m 0    788  893MB/s   0.21%  0.13%
+342 1m write      32 256 numactl -C 0-31 -m 0    779  883MB/s   0.20%  0.12%
+343 1m write      64   1 numactl -C 0-63 -m 0    725  761MB/s   0.13%  0.05%
+344 1m write      64   8 numactl -C 0-63 -m 0    782  829MB/s   0.16%  0.12%
+345 1m write      64  16 numactl -C 0-63 -m 0    785  841MB/s   0.13%  0.09%
+346 1m write      64  32 numactl -C 0-63 -m 0    776  850MB/s   0.10%  0.07%
+347 1m write      64  64 numactl -C 0-63 -m 0    777  878MB/s   0.11%  0.07%
+348 1m write      64 128 numactl -C 0-63 -m 0    777  880MB/s   0.11%  0.06%
+349 1m write      64 256 numactl -C 0-63 -m 0    778  881MB/s   0.11%  0.07%
+350 1m randread    1   1 numactl -C 0-0  -m 0    538  565MB/s   0.23%  2.88%
+351 1m randread    1   8 numactl -C 0-0  -m 0   1060 1112MB/s   0.48%  6.54%
+352 1m randread    1  16 numactl -C 0-0  -m 0   1066 1119MB/s   0.51%  6.94%
+353 1m randread    1  32 numactl -C 0-0  -m 0   1066 1119MB/s   0.46%  7.25%
+354 1m randread    1  64 numactl -C 0-0  -m 0   1065 1119MB/s   0.70%  6.55%
+355 1m randread    1 128 numactl -C 0-0  -m 0   1065 1120MB/s   0.44%  6.01%
+356 1m randread    1 256 numactl -C 0-0  -m 0   1065 1122MB/s   0.38%  6.02%
+357 1m randread    8   1 numactl -C 0-7  -m 0   1060 1112MB/s   0.04%  0.78%
+358 1m randread    8   8 numactl -C 0-7  -m 0   1040 1093MB/s   0.05%  0.73%
+359 1m randread    8  16 numactl -C 0-7  -m 0   1025 1077MB/s   0.05%  0.69%
+360 1m randread    8  32 numactl -C 0-7  -m 0   1026 1081MB/s   0.05%  0.70%
+361 1m randread    8  64 numactl -C 0-7  -m 0   1026 1085MB/s   0.04%  0.75%
+362 1m randread    8 128 numactl -C 0-7  -m 0   1026 1095MB/s   0.06%  0.72%
+363 1m randread    8 256 numactl -C 0-7  -m 0   1026 1113MB/s   0.05%  0.73%
+364 1m randread   16   1 numactl -C 0-15 -m 0   1066 1119MB/s   0.02%  0.39%
+365 1m randread   16   8 numactl -C 0-15 -m 0   1023 1075MB/s   0.03%  0.34%
+366 1m randread   16  16 numactl -C 0-15 -m 0   1025 1080MB/s   0.03%  0.35%
+367 1m randread   16  32 numactl -C 0-15 -m 0   1027 1086MB/s   0.03%  0.36%
+368 1m randread   16  64 numactl -C 0-15 -m 0   1025 1093MB/s   0.03%  0.36%
+369 1m randread   16 128 numactl -C 0-15 -m 0   1025 1111MB/s   0.02%  0.37%
+370 1m randread   16 256 numactl -C 0-15 -m 0   1026 1148MB/s   0.03%  0.36%
+371 1m randread   32   1 numactl -C 0-31 -m 0   1066 1118MB/s   0.02%  0.21%
+372 1m randread   32   8 numactl -C 0-31 -m 0   1023 1077MB/s   0.01%  0.18%
+373 1m randread   32  16 numactl -C 0-31 -m 0   1026 1085MB/s   0.01%  0.19%
+374 1m randread   32  32 numactl -C 0-31 -m 0   1026 1094MB/s   0.01%  0.19%
+375 1m randread   32  64 numactl -C 0-31 -m 0   1026 1112MB/s   0.01%  0.19%
+376 1m randread   32 128 numactl -C 0-31 -m 0   1024 1145MB/s   0.01%  0.19%
+377 1m randread   32 256 numactl -C 0-31 -m 0   1025 1166MB/s   0.01%  0.25%
+378 1m randread   64   1 numactl -C 0-63 -m 0   1046 1097MB/s   0.01%  0.15%
+379 1m randread   64   8 numactl -C 0-63 -m 0   1024 1083MB/s   0.01%  0.10%
+380 1m randread   64  16 numactl -C 0-63 -m 0   1027 1095MB/s   0.01%  0.17%
+381 1m randread   64  32 numactl -C 0-63 -m 0   1026 1112MB/s   0.01%  0.10%
+382 1m randread   64  64 numactl -C 0-63 -m 0   1028 1148MB/s   0.01%  0.11%
+383 1m randread   64 128 numactl -C 0-63 -m 0   1025 1166MB/s   0.01%  0.13%
+384 1m randread   64 256 numactl -C 0-63 -m 0   1025 1167MB/s   0.01%  0.24%
+385 1m randwrite   1   1 numactl -C 0-0  -m 0    719  755MB/s   1.91%  3.20%
+386 1m randwrite   1   8 numactl -C 0-0  -m 0    755  793MB/s   3.00%  3.56%
+387 1m randwrite   1  16 numactl -C 0-0  -m 0    772  810MB/s   4.61%  3.94%
+388 1m randwrite   1  32 numactl -C 0-0  -m 0    788  827MB/s   6.45%  4.02%
+389 1m randwrite   1  64 numactl -C 0-0  -m 0    781  820MB/s   6.95%  3.36%
+390 1m randwrite   1 128 numactl -C 0-0  -m 0    784  825MB/s   6.15%  3.77%
+391 1m randwrite   1 256 numactl -C 0-0  -m 0    784  827MB/s   6.36%  3.49%
+392 1m randwrite   8   1 numactl -C 0-7  -m 0    746  783MB/s   0.35%  0.41%
+393 1m randwrite   8   8 numactl -C 0-7  -m 0    718  754MB/s   0.47%  0.41%
+394 1m randwrite   8  16 numactl -C 0-7  -m 0    722  760MB/s   0.76%  0.47%
+395 1m randwrite   8  32 numactl -C 0-7  -m 0    725  765MB/s   0.80%  0.41%
+396 1m randwrite   8  64 numactl -C 0-7  -m 0    720  764MB/s   0.76%  0.44%
+397 1m randwrite   8 128 numactl -C 0-7  -m 0    726  779MB/s   0.75%  0.46%
+398 1m randwrite   8 256 numactl -C 0-7  -m 0    721  792MB/s   0.77%  0.44%
+399 1m randwrite  16   1 numactl -C 0-15 -m 0    774  812MB/s   0.27%  0.24%
+400 1m randwrite  16   8 numactl -C 0-15 -m 0    725  762MB/s   0.39%  0.24%
+401 1m randwrite  16  16 numactl -C 0-15 -m 0    722  763MB/s   0.36%  0.24%
+402 1m randwrite  16  32 numactl -C 0-15 -m 0    726  771MB/s   0.40%  0.22%
+403 1m randwrite  16  64 numactl -C 0-15 -m 0    722  776MB/s   0.39%  0.22%
+404 1m randwrite  16 128 numactl -C 0-15 -m 0    724  796MB/s   0.39%  0.22%
+405 1m randwrite  16 256 numactl -C 0-15 -m 0    722  822MB/s   0.38%  0.22%
+406 1m randwrite  32   1 numactl -C 0-31 -m 0    787  826MB/s   0.20%  0.13%
+407 1m randwrite  32   8 numactl -C 0-31 -m 0    722  762MB/s   0.20%  0.11%
+408 1m randwrite  32  16 numactl -C 0-31 -m 0    721  766MB/s   0.19%  0.12%
+409 1m randwrite  32  32 numactl -C 0-31 -m 0    731  785MB/s   0.20%  0.11%
+410 1m randwrite  32  64 numactl -C 0-31 -m 0    721  792MB/s   0.20%  0.12%
+411 1m randwrite  32 128 numactl -C 0-31 -m 0    725  824MB/s   0.20%  0.11%
+412 1m randwrite  32 256 numactl -C 0-31 -m 0    721  822MB/s   0.20%  0.10%
+413 1m randwrite  64   1 numactl -C 0-63 -m 0    785  824MB/s   0.16%  0.07%
+414 1m randwrite  64   8 numactl -C 0-63 -m 0    720  765MB/s   0.10%  0.06%
+415 1m randwrite  64  16 numactl -C 0-63 -m 0    724  778MB/s   0.10%  0.06%
+416 1m randwrite  64  32 numactl -C 0-63 -m 0    727  798MB/s   0.10%  0.06%
+417 1m randwrite  64  64 numactl -C 0-63 -m 0    718  817MB/s   0.11%  0.06%
+418 1m randwrite  64 128 numactl -C 0-63 -m 0    722  822MB/s   0.10%  0.06%
+419 1m randwrite  64 256 numactl -C 0-63 -m 0    716  817MB/s   0.11%  0.07%
+420 4m read        1   1 numactl -C 0-0  -m 0    182  766MB/s   0.05%  3.33%
+421 4m read        1   8 numactl -C 0-0  -m 0    265 1116MB/s   0.12%  5.72%
+422 4m read        1  16 numactl -C 0-0  -m 0    266 1120MB/s   0.15%  4.51%
+423 4m read        1  32 numactl -C 0-0  -m 0    266 1121MB/s   0.13%  5.15%
+424 4m read        1  64 numactl -C 0-0  -m 0    266 1123MB/s   0.11%  5.13%
+425 4m read        1 128 numactl -C 0-0  -m 0    266 1128MB/s   0.15%  5.15%
+426 4m read        1 256 numactl -C 0-0  -m 0    266 1137MB/s   0.11%  5.16%
+427 4m read        8   1 numactl -C 0-7  -m 0    264 1111MB/s   0.02%  0.66%
+428 4m read        8   8 numactl -C 0-7  -m 0    261 1102MB/s   0.02%  0.62%
+429 4m read        8  16 numactl -C 0-7  -m 0    249 1054MB/s   0.01%  0.61%
+430 4m read        8  32 numactl -C 0-7  -m 0    257 1096MB/s   0.02%  0.62%
+431 4m read        8  64 numactl -C 0-7  -m 0    263 1140MB/s   0.02%  0.63%
+432 4m read        8 128 numactl -C 0-7  -m 0    260 1164MB/s   0.01%  0.62%
+433 4m read        8 256 numactl -C 0-7  -m 0    248 1124MB/s   0.01%  0.89%
+434 4m read       16   1 numactl -C 0-15 -m 0    208  874MB/s   0.01%  0.19%
+435 4m read       16   8 numactl -C 0-15 -m 0    242 1027MB/s   0.01%  0.29%
+436 4m read       16  16 numactl -C 0-15 -m 0    243 1041MB/s   0.00%  0.30%
+437 4m read       16  32 numactl -C 0-15 -m 0    249 1082MB/s   0.01%  0.30%
+438 4m read       16  64 numactl -C 0-15 -m 0    245 1103MB/s   0.01%  0.30%
+439 4m read       16 128 numactl -C 0-15 -m 0    245 1107MB/s   0.01%  0.46%
+440 4m read       16 256 numactl -C 0-15 -m 0    253 1139MB/s   0.01%  0.83%
+441 4m read       32   1 numactl -C 0-31 -m 0    178  749MB/s   0.01%  0.11%
+442 4m read       32   8 numactl -C 0-31 -m 0    229  979MB/s   0.00%  0.14%
+443 4m read       32  16 numactl -C 0-31 -m 0    239 1040MB/s   0.00%  0.17%
+444 4m read       32  32 numactl -C 0-31 -m 0    234 1053MB/s   0.01%  0.14%
+445 4m read       32  64 numactl -C 0-31 -m 0    243 1095MB/s   0.00%  0.25%
+446 4m read       32 128 numactl -C 0-31 -m 0    246 1104MB/s   0.00%  0.43%
+447 4m read       32 256 numactl -C 0-31 -m 0     72  346MB/s   0.00%  2.18%
+448 4m read       64   1 numactl -C 0-63 -m 0    164  691MB/s   0.00%  0.07%
+449 4m read       64   8 numactl -C 0-63 -m 0    220  960MB/s   0.00%  0.07%
+450 4m read       64  16 numactl -C 0-63 -m 0    224 1012MB/s   0.00%  0.07%
+451 4m read       64  32 numactl -C 0-63 -m 0    235 1060MB/s   0.00%  0.14%
+452 4m read       64  64 numactl -C 0-63 -m 0    232 1052MB/s   0.00%  0.24%
+453 4m read       64 128 numactl -C 0-63 -m 0    101  452MB/s   0.00%  1.52%
+454 4m read       64 256 numactl -C 0-63 -m 0     87  353MB/s   0.00%  9.66%
+455 4m write       1   1 numactl -C 0-0  -m 0    176  742MB/s   1.66%  2.73%
+456 4m write       1   8 numactl -C 0-0  -m 0    197  828MB/s   5.46%  3.54%
+457 4m write       1  16 numactl -C 0-0  -m 0    195  823MB/s   5.87%  2.92%
+458 4m write       1  32 numactl -C 0-0  -m 0    196  826MB/s   5.57%  3.62%
+459 4m write       1  64 numactl -C 0-0  -m 0    195  823MB/s   5.70%  3.35%
+460 4m write       1 128 numactl -C 0-0  -m 0    196  832MB/s   5.96%  3.10%
+461 4m write       1 256 numactl -C 0-0  -m 0    195  837MB/s   6.18%  2.87%
+462 4m write       8   1 numactl -C 0-7  -m 0    198  832MB/s   0.71%  0.37%
+463 4m write       8   8 numactl -C 0-7  -m 0    195  826MB/s   0.78%  0.40%
+464 4m write       8  16 numactl -C 0-7  -m 0    194  827MB/s   0.74%  0.43%
+465 4m write       8  32 numactl -C 0-7  -m 0    196  840MB/s   0.76%  0.41%
+466 4m write       8  64 numactl -C 0-7  -m 0    195  854MB/s   0.77%  0.39%
+467 4m write       8 128 numactl -C 0-7  -m 0    195  888MB/s   0.79%  0.37%
+468 4m write       8 256 numactl -C 0-7  -m 0    193  877MB/s   0.73%  0.41%
+469 4m write      16   1 numactl -C 0-15 -m 0    179  755MB/s   0.29%  0.12%
+470 4m write      16   8 numactl -C 0-15 -m 0    196  832MB/s   0.38%  0.22%
+471 4m write      16  16 numactl -C 0-15 -m 0    194  835MB/s   0.41%  0.19%
+472 4m write      16  32 numactl -C 0-15 -m 0    196  858MB/s   0.39%  0.20%
+473 4m write      16  64 numactl -C 0-15 -m 0    195  887MB/s   0.38%  0.20%
+474 4m write      16 128 numactl -C 0-15 -m 0    194  885MB/s   0.40%  0.19%
+475 4m write      16 256 numactl -C 0-15 -m 0    196  889MB/s   0.39%  0.19%
+476 4m write      32   1 numactl -C 0-31 -m 0    195  820MB/s   0.21%  0.10%
+477 4m write      32   8 numactl -C 0-31 -m 0    195  836MB/s   0.21%  0.11%
+478 4m write      32  16 numactl -C 0-31 -m 0    194  853MB/s   0.21%  0.12%
+479 4m write      32  32 numactl -C 0-31 -m 0    192  874MB/s   0.21%  0.13%
+480 4m write      32  64 numactl -C 0-31 -m 0    195  887MB/s   0.20%  0.09%
+481 4m write      32 128 numactl -C 0-31 -m 0    195  886MB/s   0.20%  0.11%
+482 4m write      32 256 numactl -C 0-31 -m 0     82  455MB/s   0.09%  0.39%
+483 4m write      64   1 numactl -C 0-63 -m 0    194  819MB/s   0.10%  0.05%
+484 4m write      64   8 numactl -C 0-63 -m 0    194  851MB/s   0.11%  0.05%
+485 4m write      64  16 numactl -C 0-63 -m 0    193  874MB/s   0.12%  0.08%
+486 4m write      64  32 numactl -C 0-63 -m 0    193  883MB/s   0.10%  0.05%
+487 4m write      64  64 numactl -C 0-63 -m 0    195  889MB/s   0.18%  0.14%
+488 4m write      64 128 numactl -C 0-63 -m 0    175  838MB/s   0.30%  0.89%
+489 4m write      64 256 numactl -C 0-63 -m 0    142  684MB/s   0.36%  0.62%
+490 4m randread    1   1 numactl -C 0-0  -m 0    204  857MB/s   0.09%  3.68%
+491 4m randread    1   8 numactl -C 0-0  -m 0    266 1117MB/s   0.15%  5.70%
+492 4m randread    1  16 numactl -C 0-0  -m 0    266 1119MB/s   0.18%  4.58%
+493 4m randread    1  32 numactl -C 0-0  -m 0    266 1120MB/s   0.13%  5.25%
+494 4m randread    1  64 numactl -C 0-0  -m 0    266 1123MB/s   0.19%  5.19%
+495 4m randread    1 128 numactl -C 0-0  -m 0    266 1127MB/s   0.13%  5.40%
+496 4m randread    1 256 numactl -C 0-0  -m 0    266 1136MB/s   0.18%  5.28%
+497 4m randread    8   1 numactl -C 0-7  -m 0    265 1115MB/s   0.02%  0.68%
+498 4m randread    8   8 numactl -C 0-7  -m 0    248 1048MB/s   0.01%  0.59%
+499 4m randread    8  16 numactl -C 0-7  -m 0    248 1053MB/s   0.02%  0.61%
+500 4m randread    8  32 numactl -C 0-7  -m 0    248 1060MB/s   0.01%  0.62%
+501 4m randread    8  64 numactl -C 0-7  -m 0    248 1079MB/s   0.02%  0.62%
+502 4m randread    8 128 numactl -C 0-7  -m 0    248 1116MB/s   0.02%  0.59%
+503 4m randread    8 256 numactl -C 0-7  -m 0    248 1132MB/s   0.02%  0.86%
+504 4m randread   16   1 numactl -C 0-15 -m 0    247 1038MB/s   0.01%  0.23%
+505 4m randread   16   8 numactl -C 0-15 -m 0    248 1052MB/s   0.01%  0.31%
+506 4m randread   16  16 numactl -C 0-15 -m 0    248 1062MB/s   0.01%  0.32%
+507 4m randread   16  32 numactl -C 0-15 -m 0    248 1079MB/s   0.01%  0.31%
+508 4m randread   16  64 numactl -C 0-15 -m 0    248 1115MB/s   0.01%  0.30%
+509 4m randread   16 128 numactl -C 0-15 -m 0    248 1131MB/s   0.01%  0.44%
+510 4m randread   16 256 numactl -C 0-15 -m 0    248 1133MB/s   0.01%  0.79%
+511 4m randread   32   1 numactl -C 0-31 -m 0    247 1037MB/s   0.01%  0.15%
+512 4m randread   32   8 numactl -C 0-31 -m 0    248 1062MB/s   0.00%  0.16%
+513 4m randread   32  16 numactl -C 0-31 -m 0    249 1080MB/s   0.00%  0.18%
+514 4m randread   32  32 numactl -C 0-31 -m 0    248 1115MB/s   0.01%  0.17%
+515 4m randread   32  64 numactl -C 0-31 -m 0    249 1134MB/s   0.00%  0.25%
+516 4m randread   32 128 numactl -C 0-31 -m 0    249 1134MB/s   0.00%  0.41%
+517 4m randread   32 256 numactl -C 0-31 -m 0    154  708MB/s   0.00%  2.69%
+518 4m randread   64   1 numactl -C 0-63 -m 0    246 1038MB/s   0.00%  0.10%
+519 4m randread   64   8 numactl -C 0-63 -m 0    249 1082MB/s   0.00%  0.11%
+520 4m randread   64  16 numactl -C 0-63 -m 0    249 1116MB/s   0.00%  0.11%
+521 4m randread   64  32 numactl -C 0-63 -m 0    249 1137MB/s   0.00%  0.12%
+522 4m randread   64  64 numactl -C 0-63 -m 0    249 1137MB/s   0.00%  0.22%
+523 4m randread   64 128 numactl -C 0-63 -m 0    101  459MB/s   0.00%  1.77%
+524 4m randread   64 256 numactl -C 0-63 -m 0     65  260MB/s   0.00%  8.47%
+525 4m randwrite   1   1 numactl -C 0-0  -m 0    179  753MB/s   1.98%  2.37%
+526 4m randwrite   1   8 numactl -C 0-0  -m 0    197  827MB/s   5.33%  3.41%
+527 4m randwrite   1  16 numactl -C 0-0  -m 0    196  824MB/s   5.97%  2.70%
+528 4m randwrite   1  32 numactl -C 0-0  -m 0    195  822MB/s   5.79%  3.34%
+529 4m randwrite   1  64 numactl -C 0-0  -m 0    195  824MB/s   6.06%  3.04%
+530 4m randwrite   1 128 numactl -C 0-0  -m 0    195  830MB/s   6.02%  3.10%
+531 4m randwrite   1 256 numactl -C 0-0  -m 0    194  836MB/s   6.07%  2.90%
+532 4m randwrite   8   1 numactl -C 0-7  -m 0    198  832MB/s   0.69%  0.36%
+533 4m randwrite   8   8 numactl -C 0-7  -m 0    178  754MB/s   0.74%  0.37%
+534 4m randwrite   8  16 numactl -C 0-7  -m 0    181  769MB/s   0.77%  0.34%
+535 4m randwrite   8  32 numactl -C 0-7  -m 0    181  777MB/s   0.71%  0.40%
+536 4m randwrite   8  64 numactl -C 0-7  -m 0    179  787MB/s   0.75%  0.35%
+537 4m randwrite   8 128 numactl -C 0-7  -m 0    179  819MB/s   0.72%  0.38%
+538 4m randwrite   8 256 numactl -C 0-7  -m 0    179  819MB/s   0.75%  0.35%
+539 4m randwrite  16   1 numactl -C 0-15 -m 0    185  776MB/s   0.29%  0.13%
+540 4m randwrite  16   8 numactl -C 0-15 -m 0    179  761MB/s   0.38%  0.18%
+541 4m randwrite  16  16 numactl -C 0-15 -m 0    180  775MB/s   0.38%  0.19%
+542 4m randwrite  16  32 numactl -C 0-15 -m 0    179  788MB/s   0.38%  0.18%
+543 4m randwrite  16  64 numactl -C 0-15 -m 0    180  823MB/s   0.38%  0.17%
+544 4m randwrite  16 128 numactl -C 0-15 -m 0    180  822MB/s   0.38%  0.18%
+545 4m randwrite  16 256 numactl -C 0-15 -m 0    179  820MB/s   0.38%  0.17%
+546 4m randwrite  32   1 numactl -C 0-31 -m 0    183  771MB/s   0.17%  0.10%
+547 4m randwrite  32   8 numactl -C 0-31 -m 0    179  770MB/s   0.20%  0.11%
+548 4m randwrite  32  16 numactl -C 0-31 -m 0    179  790MB/s   0.20%  0.09%
+549 4m randwrite  32  32 numactl -C 0-31 -m 0    179  817MB/s   0.19%  0.09%
+550 4m randwrite  32  64 numactl -C 0-31 -m 0    181  826MB/s   0.20%  0.09%
+551 4m randwrite  32 128 numactl -C 0-31 -m 0    179  818MB/s   0.19%  0.09%
+552 4m randwrite  32 256 numactl -C 0-31 -m 0     47  259MB/s   0.07%  1.75%
+553 4m randwrite  64   1 numactl -C 0-63 -m 0    182  770MB/s   0.18%  0.15%
+554 4m randwrite  64   8 numactl -C 0-63 -m 0    180  794MB/s   0.10%  0.06%
+555 4m randwrite  64  16 numactl -C 0-63 -m 0    181  828MB/s   0.09%  0.05%
+556 4m randwrite  64  32 numactl -C 0-63 -m 0    178  818MB/s   0.09%  0.05%
+557 4m randwrite  64  64 numactl -C 0-63 -m 0    179  821MB/s   0.10%  0.05%
+558 4m randwrite  64 128 numactl -C 0-63 -m 0    102  462MB/s   0.45%  1.02%
+559 4m randwrite  64 256 numactl -C 0-63 -m 0     55  273MB/s   0.36%  1.07%

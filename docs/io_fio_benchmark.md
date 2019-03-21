@@ -83,11 +83,11 @@ fio --ramp_time=5 --runtime=15 --size=20g --ioengine=libaio --filename=/dev/sdb 
 ```
 测试脚本如下：
 
-[fio script](resources/fio_all.sh)
+[/src/io_all.sh](resources/io_all.sh)
 
 测试log如下：  
-[x86](resources/excel_x86.txt)  
-[ARM](resources/excel_arm.txt)
+[x86](resources/x86_fio_simple.txt)  
+[ARM](resources/arm_fio_simple.txt)
 
 这个测试还有影响测试的因素，一个前后两个测试之间还有影响， 导致手动执行时结果更好。
 测试时间较短，可靠行不足。
@@ -95,19 +95,24 @@ fio --ramp_time=5 --runtime=15 --size=20g --ioengine=libaio --filename=/dev/sdb 
 
 指定`--size 20g` 或者10g，测试结果偏好，应该只指定runtime更接近真实情况。
 
+### 绑核的影响
+
+绑核性能可以提升一倍。
+测试命令
+```shell
+numactl -C 0-7 -m 0 fio -name=iops -rw=read -bs=4k -runtime=1000 -iodepth=64 -numjobs=8 -filename=/dev/sdc -ioengine=libaio -direct=1 -group_reporting
+fio -name=iops -rw=read -bs=4k -runtime=1000 -iodepth=64 -numjobs=8 -filename=/dev/sdc -ioengine=libaio -direct=1 -group_reporting
 ```
+
+
+### numa的影响
+使用如下命令观察numactl设置对测试结果的影响
+```shell
 numactl -C 0-7 -m 0 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
-```
-
-numactl -C 54-63 -m 1 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
-
 numactl -C 48-56 -m 1 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=64 --numjobs=8 --filename=/dev/sdc --ioengine=libaio --direct=1 --group_reporting
-
-0-15    0
-16-31   1
-32-47   2
-48-63   3
-
+```
+测试结果，前面的CPU测试结果偏好，内存区域0测试结果较好
+```
 32-40 -m 0 674
 32-40 -m 1 665
 32-40 -m 2 655
@@ -117,6 +122,16 @@ numactl -C 48-56 -m 1 fio --name=iops --rw=read --bs=4k --runtime=60 --iodepth=6
 48-56 -m 1 543
 48-56 -m 2 495
 48-56 -m 3 540
+```
 
-### 结论
+### 选项`--size`的影响
+不建议设置size，因为fio会尝试对指定size的文件或者硬盘进行这个区域内的循环读写。裸盘测试不建议设置size。
+
+### hdparm -t可以简单对硬盘进行测试，测试结果待分析
+```
+sudo hdparm -t /dev/sdc
+
+/dev/sdc:
+ Timing buffered disk reads: 782 MB in  3.01 seconds = 260.07 MB/sec
+```
 
