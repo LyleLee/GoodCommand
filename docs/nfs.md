@@ -7,54 +7,57 @@ NFS网络文件系统,可以使不同系统之间共享文件或者目录。
 
 ubuntu官方教程  
 [https://help.ubuntu.com/lts/serverguide/network-file-system.html.en](https://help.ubuntu.com/lts/serverguide/network-file-system.html.en)
-```
+```shell-session
+# ubuntu服务端
 apt install nfs-kernel-server
+# ubuntu客户端
+apt install nfs-common
 ```
-配置
-```
-/ubuntu *(ro,sync,no_root_squash)
-/home   *(rw,sync,no_root_squash)
-```
-重启
-```
-systemctl start nfs-kernel-server.service
-```
-
-
 redhat官方教程
-
 ```
 yum install nfs-utils
 ```
-
-ubuntu客户端：
-```
-apt install nfs-common
-```
-
-
 ## 配置
-
-先配置共享文件夹,使用配置文件/etc/exports
+配置共享文件路径，配置文件是
 ```
+/etc/exports
+```
+参考内容：
+```shell-session
 [root@readhat76 ~]# cat /etc/exports
+/ubuntu *(ro,sync,no_root_squash)
+/home   *(rw,sync,no_root_squash)
 /root/nfs-test-dir *(rw,sync,no_root_squash)
 ```
-重启服务
+修改配置文件后，可能需要执行命令以使配置文件生效
 ```
+exportfs -r
+```
+
+## 重启服务
+```shell-session
+# redhat
 systemctl restart nfs-server
+# ubuntu
+systemctl start nfs-kernel-server.service
 ```
+
+## 查看共享
+```shell-session
+showmount -e ip
+# 在服务端使用showmount查看是否exports成功
+showmount -e localhost
+```
+
 可以使用systemctl查看服务的名字。
 
 **注意**redhat需要关闭防火墙或者配置防火墙之后才才可以mount  
 **注意**redhat需要关闭防火墙或者配置防火墙之后才才可以mount  
 **注意**redhat需要关闭防火墙或者配置防火墙之后才才可以mount  
 
-在服务端使用showmount查看是否exports成功
 
-```
-showmount -e localhost
-```
+
+## 挂载
 
 在客户端挂载
 ```shell-session
@@ -72,10 +75,7 @@ umount /root/1620-mount-point/
 umount -f /root/1620-mount-point/
 ```
 
-## 查看共享
-```
-showmount -e ip
-```
+
 ## 查看nfs服务
 ```shell-session
 pi@raspberrypi:/usr/lib/systemd/system $ rpcinfo -p
@@ -139,7 +139,7 @@ pi@raspberrypi:/etc/default $ rpcinfo -p
 ```
 ubuntu或者树莓派，请参考debian的教程：[https://wiki.debian.org/SecuringNFS](https://wiki.debian.org/SecuringNFS)  
 设置完之后的效果
-```
+```shell-session
 pi@raspberrypi:/media/pi $ rpcinfo -p
    program vers proto   port  service
     100000    4   tcp    111  portmapper
@@ -168,8 +168,9 @@ pi@raspberrypi:/media/pi $ rpcinfo -p
     100021    4   tcp  32768  nlockmgr
 ```
 
-### 只启用NFSv4
-```
+## 只启用NFSv4
+有时候希望只启用NFSv4
+```shell-session
 vim /etc/default/nfs-kernel-server
 #修改
 RPCMOUNTDOPTS="--manage-gids"
@@ -180,7 +181,7 @@ sudo systemctl restart nfs-kernel-server
 ```
 
 设置之后在客户端可以观察到只有v4成功
-```
+```shell-session
 ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=3 192.168.1.201:/home/me/syncfile dir_name
 mount.nfs: requested NFS version or transport protocol is not supported
 ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=2 192.168.1.201:/home/me/syncfile dir_name
