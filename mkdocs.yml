@@ -44,7 +44,7 @@ nav:
         - io disk imformation: disk_information.md
         - io fio benchmark: io_fio_benchmark.md
     - 发行版: 
-        - redhat: redhat.md
+        - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
         - redhat build kernel[cn]: redhat_build_kernel_zh.md
         - ubuntu: ubuntu.md
