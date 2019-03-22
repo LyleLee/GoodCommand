@@ -90,4 +90,5 @@ sudo sed -i "s/mirrorlist/#mirrorlist/g" /etc/yum.repos.d/epel.repo
 sudo sed -i "s@http://download.fedoraproject.org/pub@https://mirrors.huaweicloud.com@g" /etc/yum.repos.d/epel.repo
 ```
 
+[[epel 官方文档]](https://fedoraproject.org/wiki/EPEL/zh-cn)
 
