@@ -168,7 +168,7 @@ pi@raspberrypi:/media/pi $ rpcinfo -p
     100021    4   tcp  32768  nlockmgr
 ```
 
-## 只启用NFSv4
+### 只启用NFSv4
 有时候希望只启用NFSv4
 ```shell-session
 vim /etc/default/nfs-kernel-server
@@ -189,3 +189,16 @@ mount.nfs: Protocol not supported
 ubuntu@ubuntu:~$ sudo mount -t nfs -o vers=4 192.168.1.201:/home/me/syncfile dir_name
 ```
 
+### 问题1 Stale file handle
+```
+[root@redhat76 fio-test-dir]# rm config-bash: cannot create temp file for here-document: Stale file handle
+^C
+```
+可能原因有多个，我遇到的情况是因为在之前使用
+```
+mount -t nfs -ver=3 locahost:/roo/test-dir /tmp
+```
+然后没有卸载，导致系统认为/tmp满了，解决办法是
+```
+umount /tmp
+```

@@ -2,17 +2,34 @@ fio 测试硬盘性能
 ========================
 fio是多线程IO负载生成测试工具，是测试服务器硬盘性能的优秀工具。
 
-## 对比测试参数
-X86  
-```
+## 参数
+
+命令行参数： 
+```shell
 fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sdb --name=4k_read --numjobs=1 --iodepth=64 --rw=read --bs=4k --direct=1
 ```
+配置文件参数：
+```config
+; -- start job file including.fio --
+[global]
+filename=/tmp/test
+filesize=1m
+include glob-include.fio
 
-ARM
+[test]
+rw=randread
+bs=4k
+time_based=1
+runtime=10
+include test-include.fio
+; -- end job file including.fio --
 ```
-fio --ramp_time=5 --runtime=60 --size=10g --ioengine=libaio --filename=/dev/sdc --name=4k_read --numjobs=1 --iodepth=64 --rw=read --bs=4k --direct=1
-```
+详细说明可以参考[[官方文档]](https://fio.readthedocs.io/en/latest/index.html)
 
+配置文件参数可以转化成命令行的写法：
+```
+fio configfile --showcmd
+```
 
 ## 一些基础知识
 
