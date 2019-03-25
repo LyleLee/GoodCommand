@@ -8,8 +8,9 @@ nav:
     - linux: linux.md
     - kvm: kvm.md
     - docker: docker.md
-    - git_two_github_account: git_two_github_account.md
-    - git_bash_windows: git_bash_windows.md
+    - git two github account: git_two_github_account.md
+    - git bash windows: git_bash_windows.md
+    - git command : git_command.md
     - nfs: nfs.md
     - shellcheck: shellcheck.md
     - tldr: tldr.md
