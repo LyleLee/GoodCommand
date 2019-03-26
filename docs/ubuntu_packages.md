@@ -73,6 +73,11 @@ Description: Internet Protocol bandwidth measuring tool
  .
  This package contains the command line utility.
 ```
+
+## 查看dep包信息
+```
+dpkg --info dpkg --info ceph_12.2.11-0ubuntu0.18.04.1_arm64.deb
+```
 ## 查看命令对应的软件包
 有时候我们知道一个命令，想要知道哪个软件包提供这个命令。
 ```shell-session
@@ -106,26 +111,17 @@ sudo apt install iperf3
 sudo apt intall vsftpd=2.3.5-3ubuntu1
 ```
 ## 卸载软件
-卸载软件，但是不会删除配置。
 ```
-sudo apt remove iperf3
+sudo apt remove iperf3 #卸载软件，但是不会删除配置
+sudo apt purge ipef3 #purge会卸载软件的同时删除所有配置
 ```
-purge会卸载软件的同时删除所有配置
+## 下载源码
+
 ```
-sudo apt purge ipef3
-```
-##只安装软件源码
-下载不解压
-```
-sudo apt --download-only source iperf3
-```
-下载并解压
-```
-sudo apt source ipef3
-```
-下载并编译
-```
-apt --compile source iperf3
+sudo apt --download-only source iperf3  #下载不解压
+sudo apt source ipef3                   #下载并解压
+apt --compile source iperf3             #下载并编译
+
 ```
 如果没有在sources.list中设置软包url会出现：
 ```
@@ -134,14 +130,13 @@ E: You must put some 'source' URIs in your sources.list
 ```
 在软件源文件中取消dev-src行前的注释,然后执行apt update。 软件源的更多配置，请参考[ubuntu 软件源](ubuntu_sources_list.md)
 
-## 下载二进制包不安装
+## 下载二进制包
 ```
 apt download iperf3
-```
+apt download --print-uris  iperf3 #显示软件包下载地址，获取url
 
-## 获取软件包url
-```
-apt download --print-uris
+sudo apt install --download-only python-pecan #下载所有二进制包，包含依赖，不安装。下载位置是/var/cache/apt/archives
+
 ```
 ## 搜索并编译软件依赖
 ```

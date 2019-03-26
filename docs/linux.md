@@ -259,6 +259,19 @@ find . -name verbs.h | xargs -n 1 ls -l
 ```
 dmidecode|grep "System Information" -A9
 ```
++ 复制文件
+```
+scp /home/a.txt root@192.168.1.199:/home/code/b.c
+```
++ 复制文件夹
+```
+scp -r /home/code-project root@192.168.1.1991:/home/code-project
+```
++ 同步文件
+```
+rsync -avzP /path/to/source/ user@192.168.1.5:/path/to/dest/
+```
+
 ## 软件安装
 1. 查找软件包
 ```yum search ~  ```
