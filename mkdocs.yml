@@ -22,6 +22,7 @@ nav:
     - nethogs: nethogs.md
     - tcpdump: tcpdump.md
     - vim: vim.md
+    - tmux: tmux.md
     - gcc: gcc.md
     - vnc: vnc.md
     - wget: wget.md
