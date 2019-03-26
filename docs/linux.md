@@ -194,6 +194,14 @@ systemctl restart network
 ```
 tcpdump -v icmp -i eth0
 ```
+
+### http代理
+有时候服务器需要经过代理服务器访问网络
+```
+export http_proxy=http://192.168.1.212:8118
+```
+这个命令只对当前终端有效，关闭终端，或者重启机器都会失效。
+
 ## 文件操作
 + 修改文件所有者和文件所在组
 ```
