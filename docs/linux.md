@@ -134,6 +134,15 @@ ip address add 10.0.0.3/24 dev eth0
 ip address add 192.168.2.223/24 dev eth1
 ip address add 192.168.4.223/24 dev eth1
 ```
+
+### dhcp
+有时候不需要配置网络接口文件，希望各个网络接口使用dhcp自动获取IP地址。  
+redhat7 8
+```
+dhclient
+```
+会在可用的网络接口下自动获取IP
+
 ### 网络配置文件
 
 ubuntu
