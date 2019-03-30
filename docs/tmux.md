@@ -15,7 +15,13 @@ tmux是终端复用工具，是终端中的神器。 使用tmux可以把一个�
 ```
 tmux show -g > a.txt
 ```
-
+我的配置文件：
+```
+set -g default-terminal "screen-256color"
+set-option -g allow-rename off
+set -g status-right "#{=21:pane_title} #(date \"+%Y-%m-%d %H:%M:%S\")"
+setw -g mode-keys vi
+```
 ## 交换窗口顺序
 
 3号窗口交换到1号窗口
@@ -51,6 +57,11 @@ tmux attach
 tmux a -t 0
 tmux attach-session -t 0 #这几个命令等效，挂接session 0，包含5个windows
 ```
+结束session
+```
+ctrl b; :kill-session          #在tmux界面，进入tmux交互，输入kill-session
+tmux kill-session -t 会话名    #在shell界面，指定要kill的session
+```
 重命名session
 ```
 # 在tmux界面
@@ -63,8 +74,14 @@ tmux rename-session [-t current-name] [new-name]
 ```
 ctrl b
 :choose-session
-上下箭头选择
+上下箭头选择，横向选中
 enter
+```
+新建session：
+```
+ctrl b
+new -s sname        #在tmux界面，新建session
+tmux new -s sname   #在shell界面新建session
 ```
 
 ## 问题
@@ -76,6 +93,8 @@ set -g mouse on
 
 
 ## 参考
-两个非常有用的教程：  
+tmux 命令：  
+[http://hyperpolyglot.org/multiplexers](http://hyperpolyglot.org/multiplexers)  
+两个非常有用的教程：
 https://wiki.ipfire.org/addons/tmux/start  
 https://gist.github.com/dbeckham/655da225f1243b2db5da
