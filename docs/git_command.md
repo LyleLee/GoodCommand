@@ -111,3 +111,7 @@ git checkout -b sf origin/serverfix
 ```
 git checkout --track origin/serverfix
 ```
+
+```
+git checkout --patch master include/uapi/linux/mii.h    #把master分支的指定文件合并到当前分支
+```

@@ -85,6 +85,21 @@ Permission denied (publickey).
 Hi tom! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
+```
+me@ubuntu:~/.ssh$ ssh -T git@goodcommand.github.com
+Enter passphrase for key '/home/me/.ssh/id_rsa_github':
+
+me@ubuntu:~/.ssh$ eval `ssh-agent`
+Agent pid 50820
+me@ubuntu:~/.ssh$ ssh-add ~/.ssh/id_rsa_github
+Enter passphrase for /home/me/.ssh/id_rsa_github:
+Identity added: /home/me/.ssh/id_rsa_github (/home/me/.ssh/id_rsa_github)
+me@ubuntu:~/.ssh$
+me@ubuntu:~/.ssh$
+me@ubuntu:~/.ssh$ ssh -T git@goodcommand.github.com
+Hi LyleLee! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
 教程提到每次重启都要执行：
 ```console
 ssh-add ~/.ssh/id_rsa_one
@@ -124,3 +139,7 @@ origin  git@two.github.com:LyleLee/GoodCommand.git (push)
 
 参考配置教程  
 [http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/](http://summertreee.github.io/blog/2017/10/16/yi-tai-dian-nao-she-zhi-duo-ge-githubzhang-hao/)
+
+## 更换电脑，指定ssh使用的私钥
+
+[https://blog.csdn.net/SCHOLAR_II/article/details/72191042](https://blog.csdn.net/SCHOLAR_II/article/details/72191042)
