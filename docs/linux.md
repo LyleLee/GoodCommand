@@ -254,12 +254,24 @@ grep ibv_open_device -rn .
 ```
 grep -E "http"  . -R --exclude=*.{java,js}
 ```
++ 查找时忽略tag文件
+```
+grep show_interrupts . -rn --exclude-dir={.git} --exclude=tags --binary-files=without-match
+grep ibv_context -rn --exclude={GPATH,GRTAGS,GTAGS,tags}
+```
 + 查找时忽略目录`.git`,`res`,`bin`
 ```
 grep -E "http"  . -R --exclude-dir={.git,res,bin}
-grep ibv_context -rn --exclude={GPATH,GRTAGS,GTAGS,tags}
+```
++ 设置环境变量排除目录或者文件
+```
 export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
 ```
++ 查找时忽略二进制文件
+```
+grep rtc_init . -rn --exclude-dir={.git} --binary-files=without-match
+```
+
 + 查找文件并且ls
 ```
 find . -name verbs.h | xargs -n 1 ls -l
