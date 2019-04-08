@@ -2,21 +2,12 @@ git 常用命令
 
 ## 文件操作
 
-删除文件， 但是文件还保存在暂存区\
-```
-rm readme.md	
-```
-从暂存区删除文件，以后不再追踪，从工作目录删除文件 
-```
-git rm readme.md 
-```
-从暂存区删除文件，但是仍然保留在工作区
-```
-git rm --cached README	
-```
-删除log目录下的所有.log文件，由于git有自己的展开，所以不需要shell进行展开
-```
-git rm log/\*.log	
+```.language-bash
+rm readme.md            #删除文件， 但是文件还保存在暂存区
+git rm readme.md        #从暂存区删除文件，以后不再追踪，从工作目录删除文件
+git rm --cached README  #从暂存区删除文件，但是仍然保留在工作区
+git rm log/\*.log       #删除log目录下的所有.log文件，由于git有自己的展开，所以不需要shell进行展开
+git archive --format=zip --output ../kernel-alt-4.14.0-115.6.1.el7a.zip kernel-alt-4.14.0-115.6.1.el7a  #打包代码
 ```
 
 ## 提交和历史
@@ -43,6 +34,10 @@ git reset HEAD CONTRIBUTING.md
 ```
 git log -p -2	-p 
 ```
+查看远程仓库的历史
+```
+git log --pretty=oneline pb/master
+```
 
 ## 远程仓库远程分支
 显示远程仓库
@@ -67,11 +62,11 @@ git remote add pb https://github.com/paulboone/ticgit
 ```
 git remote show origin	
 ```
-重命名远程分支
+重命名远程仓库
 ```
 git remote rename pb paul	
 ```
-查看远程分支的更多信息
+查看远程库更多信息
 ```
 git ls-remote	
 ```
@@ -81,6 +76,11 @@ git ls-remote
 git checkout -b iss53 or: 
 git branch iss53 
 git checkout iss53	
+```
+查看所有远程分支，所有分支
+```
+git branch -r
+git branch -a
 ```
 删除分支
 ```
