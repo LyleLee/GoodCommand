@@ -143,3 +143,10 @@ origin  git@two.github.com:LyleLee/GoodCommand.git (push)
 ## 更换电脑，指定ssh使用的私钥
 
 [https://blog.csdn.net/SCHOLAR_II/article/details/72191042](https://blog.csdn.net/SCHOLAR_II/article/details/72191042)
+
+
+## 待确认问题
+```
+ssh-keygen -f "/home/me/.ssh/known_hosts" -R "192.168.1.215"
+```
+这个命令是什么意思
