@@ -13,7 +13,7 @@ tar -xf linux-4.14.0-115.el7a.tar
 cd linux-4.14.0-115.el7a/
 ```
 
-## 打上patch
+## 打上patch(没有可忽略)
 假设patch文件放在 `~/patch/`
 在源码目录下顺序执行以下命令
 ```shell-session
@@ -68,3 +68,30 @@ kernel-headers-4.14.0_liuxl_test_2019_02_27-1.aarch64.rpm
 yum install kernel-4.14.0_liuxl_test_2019_02_27-1.aarch64.rpm
 ```
 重启选择新内核启动
+
+## 编译问题解决
+
+1、缺少openssl库：
+```shell-session
+scripts/extract-cert.c:21:25: fatal error: openssl/bio.h: No such file or directory
+ #include <openssl/bio.h>
+                         ^
+compilation terminated.
+scripts/sign-file.c:25:30: fatal error: openssl/opensslv.h: No such file or directory
+ #include <openssl/opensslv.h>
+                              ^
+compilation terminated.
+  CHK     scripts/mod/devicetable-offsets.h
+make[1]: *** [scripts/extract-cert] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [scripts/sign-file] Error 1
+make: *** [scripts] Error 2
+make: *** Waiting for unfinished jobs....
+```
+解决办法：
+```
+yum install openssl-devel
+```
+注意openssl-devel在redhat的软件源中有，但是在epel中是没有的。[[点击查看详细]](resources/redhat_openssl_error.md)
+
+2、
