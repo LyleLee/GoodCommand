@@ -65,6 +65,3 @@ nav:
     - 计算机终端: terminal.md
     - raid级别: raid.md
 theme: readthedocs
-markdown_extensions:
-    - markdown_include.include:
-        base_path: docs
