@@ -43,7 +43,7 @@ MODULE_DESCRIPTION("A Hello, World Module");
 ```Makefile
 obj-m += fishing.o
 ```
-修改char的Makefile，文章末尾添加
+修改drivers/char/Makefile，文章末尾添加
 ```Makefile
 #add by fishing module accroding to book
 obj-m                           += fishing/
@@ -53,7 +53,7 @@ obj-m                           += fishing/
 [root@localhost linux]# ls -al drivers/char/fishing/fishing.ko
 -rw-r--r--. 1 root root 58336 Apr  8 23:26 drivers/char/fishing/fishing.ko
 ```
-其实可以单独便宜fishing模块，也可以单独clean这个模块
+其实可以单独编译fishing模块，也可以单独clean这个模块
 ```shell-session
 make drivers/char/fishing/fishing.ko
 make drivers/char/fishing/fishing.ko clean
@@ -70,14 +70,14 @@ rmmod drivers/char/fishing/fishing.ko
 [536808.157762] Out, out, brief candle!
 ```
 ## 在内核代码树外构建模块
-模块代码放置在/home/201-code/fishing.c路径下。  
-模块的Makefile仅有一句，放置在/home/201-code/Makefile路径下。
+模块代码放置在/home/201-code/fishing/fishing.c路径下。  
+模块的Makefile仅有一句，放置在/home/201-code/fishing/Makefile路径下。
 ```
 obj-m += fishing.o
 ```
 编译模块
 ```
-cd home/201-code
+cd home/201-code/fishing
 make -C ../linux SUBDIRS=$PWD modules
 ```
 ../linux是源码树的路径
