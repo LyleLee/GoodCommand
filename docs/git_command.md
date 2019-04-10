@@ -2,7 +2,7 @@ git 常用命令
 
 ## 文件操作
 
-```.language-bash
+```log
 rm readme.md            #删除文件， 但是文件还保存在暂存区
 git rm readme.md        #从暂存区删除文件，以后不再追踪，从工作目录删除文件
 git rm --cached README  #从暂存区删除文件，但是仍然保留在工作区
@@ -13,7 +13,12 @@ git archive --format=zip --output ../kernel-alt-4.14.0-115.6.1.el7a.zip kernel-a
 ## 提交和历史
 显示提交信息
 ```
-git log --pretty=oneline --graph
+git log                             #当前分支的提交历史
+git log --pretty=oneline --graph    #图形显示提交历史
+git log --pretty=oneline pb/master  #远程仓库pb下的master提交历史
+git log nfs-revert-and-hang         #查看某分支nfs-revert-and-hang的log
+git log --name-only                 #仅仅显示修改的文件
+git log --name-status               #仅仅显示修改的文件，和文件状态
 ```
 显示HEAD指针和分支指向的提交对象
 ```
@@ -32,11 +37,7 @@ git reset HEAD CONTRIBUTING.md
 ```
 展开显示每次提交差异， -2 只显示最近两次更新git	
 ```
-git log -p -2	-p 
-```
-查看远程仓库的历史
-```
-git log --pretty=oneline pb/master
+git log -p -2
 ```
 
 ## 远程仓库远程分支
