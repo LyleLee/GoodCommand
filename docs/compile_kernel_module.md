@@ -37,7 +37,7 @@ MODULE_DESCRIPTION("A Hello, World Module");
 ```
 
 
-## 在内核代码树内构建模块
+## 在内核代码树内构建模块【不使用编译选项】
 模块代码fishing.c放置在linux内核源码的drivers/char/fishing/fishing.c路径下。  
 模块的Makefile仅有一句，文件放置在linux内核源码的drivers/char/fishing/Makefile路径下
 ```Makefile
@@ -69,7 +69,73 @@ rmmod drivers/char/fishing/fishing.ko
 [536435.655464] I bear a charmed life.
 [536808.157762] Out, out, brief candle!
 ```
-## 在内核代码树外构建模块
+## 在内核代码树内构建模块【使用编译选项】
+模块代码放置在/home/201-code/fishing/fishing.c路径下。
+模块的Makefile仅有一句，放置在/home/201-code/fishing/Makefile路径下。
+```Makefile
+obj-(CONFIG_FISHING_POLE) += fishing.o
+```
+修改上一级模块的Makefile，即drivers/char/Makefile
+```
+obj-$(CONFIG_FISHING_POLE)      += fishing/
+```
+修改上一级模块的Kconfig，即
+```config
+source "drivers/char/fishing/Kconfig"
+```
+详细请查看
+```Diff
+diff --git a/drivers/char/Kconfig b/drivers/char/Kconfig
+index e2e66a40c7f2..73f53caa2dd8 100644
+--- a/drivers/char/Kconfig
++++ b/drivers/char/Kconfig
+@@ -591,6 +591,7 @@ config TILE_SROM
+ 	  how to partition a single ROM for multiple purposes.
+ 
+ source "drivers/char/xillybus/Kconfig"
++source "drivers/char/fishing/Kconfig"
+ 
+ endmenu
+ 
+diff --git a/drivers/char/Makefile b/drivers/char/Makefile
+index bfb988a68c7a..169455628796 100644
+--- a/drivers/char/Makefile
++++ b/drivers/char/Makefile
+@@ -62,3 +62,7 @@ obj-$(CONFIG_XILLYBUS)		+= xillybus/
+ obj-$(CONFIG_POWERNV_OP_PANEL)	+= powernv-op-panel.o
+ 
+ obj-$(CONFIG_CRASH)            += crash.o
++
++#add by fishing module accroding to book
++#obj-m				+= fishing/
++obj-$(CONFIG_FISHING_POLE)	+= fishing/
+diff --git a/drivers/char/fishing/Kconfig b/drivers/char/fishing/Kconfig
+new file mode 100644
+index 000000000000..68560cda570d
+--- /dev/null
++++ b/drivers/char/fishing/Kconfig
+@@ -0,0 +1,10 @@
++config FISHING_POLE
++       tristate "Fish Master 3000 support"
++       default m
++       help
++	       If you say Y here, support for the Firsh Master 3000 with computer
++               interface will be compiled into the kernel and accessible via a device
++               node. You can also say M here and the driver will be built as a module named fishing.ko
++
++               if unsure, say N
++
+diff --git a/drivers/char/fishing/Makefile b/drivers/char/fishing/Makefile
+new file mode 100644
+index 000000000000..35e53bd6a136
+--- /dev/null
++++ b/drivers/char/fishing/Makefile
+@@ -0,0 +1,2 @@
++#obj-m += fishing.o
++obj-$(CONFIG_FISHING_POLE) += fishing.o
+```
+
+## 在内核代码树外构建模块【使用编译选项】
 模块代码放置在/home/201-code/fishing/fishing.c路径下。  
 模块的Makefile仅有一句，放置在/home/201-code/fishing/Makefile路径下。
 ```
@@ -81,6 +147,7 @@ cd home/201-code/fishing
 make -C ../linux SUBDIRS=$PWD modules
 ```
 ../linux是源码树的路径
+
 
 
 ## 问题 modprobe ko not found
