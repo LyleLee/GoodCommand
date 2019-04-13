@@ -1,34 +1,21 @@
 nfs not responding,8BD问题
 =============
 ## 复现过程
+8DB问题复现的条件是： cpu20-RHEL7.6作为服务端，内核小版本为7.1以下。 客户端是另一台服务器、另一台是ubuntu或者RHEL7.1以下。
+
+kernel-alt-4.14.0-115.el7a  
+kernel-alt-4.14.0-115.1.1.el7a  
+kernel-alt-4.14.0-115.2.1.el7a  
+kernel-alt-4.14.0-115.3.1.el7a  
+kernel-alt-4.14.0-115.4.1.el7a  
+kernel-alt-4.14.0-115.5.1.el7a  
+kernel-alt-4.14.0-115.6.1.el7a  
+kernel-alt-4.14.0-115.7.1.el7a  
+
+
 
 系统信息：
 ```
-[root@readhat76 ~]#lscpu
-Architecture:          aarch64
-Byte Order:            Little Endian
-CPU(s):                96
-On-line CPU(s) list:   0-95
-Thread(s) per core:    1
-Core(s) per socket:    48
-Socket(s):             2
-NUMA node(s):          4
-Model:                 0
-CPU max MHz:           2000.0000
-CPU min MHz:           200.0000
-BogoMIPS:              200.00
-L1d cache:             64K
-L1i cache:             64K
-L2 cache:              512K
-L3 cache:              32768K
-NUMA node0 CPU(s):     0-23
-NUMA node1 CPU(s):     24-47
-NUMA node2 CPU(s):     48-71
-NUMA node3 CPU(s):     72-95
-Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
-[root@readhat76 ~]#
-
-
 [root@readhat76 ~]#cat /etc/os-release
 NAME="Red Hat Enterprise Linux Server"
 VERSION="7.6 (Maipo)"
@@ -76,7 +63,8 @@ tmpfs                             53569216        0   53569216   0% /run/user/0
 localhost:/root/nfs-test-dir      52403200 12392448   40010752  24% /root/nfs-client-dir
 ```
 
-## 在nfs客户段目录下编译内核源码
+## 在nfs客户段编译内核源码
+源码需要位于挂载的目录下
 ```
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.0.3.tar.xz
 xz -d linux-5.0.3.tar.xz
@@ -129,6 +117,39 @@ me@ubuntu:~$ dmesg -T
 [Thu Mar 21 15:19:36 2019] rpc-srv/tcp: nfsd: got error -11 when sending 116 bytes - shutting down socket
 [Thu Mar 21 15:21:15 2019] rpc-srv/tcp: nfsd: got error -11 when sending 116 bytes - shutting down socket
 ```
+
+其中make的call stack是：
+```
+[Sat Apr 13 17:50:11 2019] [<ffff000008085e24>] __switch_to+0x8c/0xa8
+[Sat Apr 13 17:50:11 2019] [<ffff000008828f18>] __schedule+0x328/0x860
+[Sat Apr 13 17:50:11 2019] [<ffff000008829484>] schedule+0x34/0x8c
+[Sat Apr 13 17:50:11 2019] [<ffff000000ef009c>] rpc_wait_bit_killable+0x2c/0xb8 [sunrpc]
+[Sat Apr 13 17:50:11 2019] [<ffff000008829a7c>] __wait_on_bit+0xac/0xe0
+[Sat Apr 13 17:50:11 2019] [<ffff000008829b58>] out_of_line_wait_on_bit+0xa8/0xcc
+[Sat Apr 13 17:50:11 2019] [<ffff000000ef132c>] __rpc_execute+0x114/0x468 [sunrpc]
+[Sat Apr 13 17:50:11 2019] [<ffff000000ef1a58>] rpc_execute+0x7c/0x10c [sunrpc]
+[Sat Apr 13 17:50:11 2019] [<ffff000000ee1150>] rpc_run_task+0x118/0x168 [sunrpc]
+[Sat Apr 13 17:50:11 2019] [<ffff000000ee3b44>] rpc_call_sync+0x6c/0xc0 [sunrpc]
+[Sat Apr 13 17:50:11 2019] [<ffff000000de09dc>] nfs3_rpc_wrapper.constprop.11+0x78/0xd4 [nfsv3]
+[Sat Apr 13 17:50:11 2019] [<ffff000000de1fd4>] nfs3_proc_getattr+0x70/0xec [nfsv3]
+[Sat Apr 13 17:50:11 2019] [<ffff000002c7c114>] __nfs_revalidate_inode+0xf8/0x384 [nfs]
+[Sat Apr 13 17:50:11 2019] [<ffff000002c755dc>] nfs_do_access+0x194/0x430 [nfs]
+[Sat Apr 13 17:50:11 2019] [<ffff000002c75a48>] nfs_permission+0x15c/0x21c [nfs]
+[Sat Apr 13 17:50:11 2019] [<ffff0000082adf08>] __inode_permission+0x98/0xf4
+[Sat Apr 13 17:50:11 2019] [<ffff0000082adf94>] inode_permission+0x30/0x6c
+[Sat Apr 13 17:50:11 2019] [<ffff0000082b10e4>] link_path_walk+0x7c/0x4ac
+[Sat Apr 13 17:50:11 2019] [<ffff0000082b164c>] path_lookupat+0xac/0x230
+[Sat Apr 13 17:50:11 2019] [<ffff0000082b29a4>] filename_lookup+0x90/0x158
+[Sat Apr 13 17:50:11 2019] [<ffff0000082b2b9c>] user_path_at_empty+0x58/0x64
+[Sat Apr 13 17:50:11 2019] [<ffff0000082a7b08>] vfs_statx+0x98/0x108
+[Sat Apr 13 17:50:11 2019] [<ffff0000082a810c>] SyS_newfstatat+0x50/0x88
+```
+获取call_stack的办法是：
+```
+echo "w" > /proc/sysrq-trigger
+dmesg
+```
+完整的log可以查看[[8DB]](resources/8DB_call_stack.txt)
 
 ## 编译内核进行验证
 根据 [[redhat 编译内核]](redhat_build_kernel_zh.md) 编译新内核并安装。
