@@ -60,6 +60,7 @@ nav:
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
     - interrupts: interrupts.md
+    - sysrq: sysrq.md
     - kernel_module: compile_kernel_module.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
