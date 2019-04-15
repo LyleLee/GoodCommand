@@ -4,7 +4,7 @@ hardware_software_conf=$HOME_DIR"/out_hardware_software_conf.txt"
 
 echo "export system hardware and software configuration"
 
-if [ -e "$LOG_DETAIL" ];then
+if [ -e "hardware_software_conf" ];then
     echo "" > $hardware_software_conf
 fi
 
@@ -47,6 +47,7 @@ printf "\n\n****************\n" | tee -a $hardware_software_conf
 echo "dmidecode" | tee -a $hardware_software_conf
 typ=("bios" "system" "baseboard" "chassis" "processor" "memory" "cache" "connector" "slot")
 for t in "${typ[@]}" ; do
+    printf "dmidecode -t $s \n" $t |tee -a $hardware_software_conf
     dmidecode -t $t >> $hardware_software_conf
     wait
 done
