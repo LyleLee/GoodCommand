@@ -16,6 +16,7 @@ nav:
     - tldr: tldr.md
     - netstat: netstat.md
     - dstat: dstat.md
+    - nmap : nmap.md
     - systemd: systemd.md
     - time: time.md
     - ethtool: ethtool.md
