@@ -1,7 +1,7 @@
 # linux常用工具
 ## 查询设备信息
 + 查看服务器型号，bios， 主板，槽位，cpu，内存等
-```shell-session
+```cs
 sudo dmidecode -t  bios         #含厂商、版本等
 sudo dmidecode -t  system       #含服务器型号、厂商，发布日期等
 sudo dmidecode -t  baseboard    #含厂商，序列号等
