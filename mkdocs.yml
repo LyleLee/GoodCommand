@@ -60,6 +60,7 @@ nav:
     - bug solve:
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
+        - hdd_broken_drive: hdd_broken_drive.md
     - interrupts: interrupts.md
     - sysrq: sysrq.md
     - kernel_module: compile_kernel_module.md
