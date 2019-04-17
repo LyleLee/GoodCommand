@@ -22,11 +22,11 @@ redhat7.6及以下软件源配置文件如下：
 [root@readhat76 ~]# cat /etc/yum.repos.d/local_iso.repo
 [localiso]
 name=redhatapp
-baseurl=file:///mnt/cd_redhat7.6/
+baseurl=file:///mnt/cd_redhat/
 enable=1
 gpgcheck=0
 ```
-`baseurl=file:///mnt/cd_redhat7.6/`刚才创建的挂载目录
+`baseurl=file:///mnt/cd_redhat/`刚才创建的挂载目录
 
 
 redhat8.0及以上软件源配置文件如下：
@@ -68,12 +68,20 @@ repolist: 3,713
 yum install gcc
 ```
 ## 二、添加epel软件源。
-
-随便一个镜像站，打开网址。找到epel-release-latest-7.noarch.rpm文件下载安装到本地就可以了。如果你的是RHEL6，那么请下载epel-release-latest-6.noarch.rpm以华为镜像站为例：  
-浏览器打开[https://mirrors.huaweicloud.com](https://mirrors.huaweicloud.com) 找到epel。  
+添加epel软件源最简单的办法就是到镜像站下载一个epel源安装包进行安装就可以了。 随便一个镜像站，打开镜像站网址。找到epel-release-latest-7.noarch.rpm文件下载安装。  
+以华为镜像站为例：  
 浏览器打开[https://mirrors.huaweicloud.com/epel/](https://mirrors.huaweicloud.com/epel/) 找到epel-release-latest-7
 ```
+wget https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
 rpm -ivh epel-release-latest-7.noarch.rpm
+```
+同时引入key，KEY是官方发布软件包的验证极致，这里使用官方的公钥安装到本地，当下载软件包时可以验证包的安全性。
+```
+wegt https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
+rpm --import RPM-GPG-KEY-EPEL-7
+```
+如果是RHEL6，请安装epel-release-latest-6.noarch.rpm和RPM-GPG-KEY-EPEL-6
+
 ```
 这个时候会在`/etc/yum.repo.d/`下面多了一个epel.repo的文件。
 ```
@@ -91,6 +99,15 @@ sudo sed -i "s@http://download.fedoraproject.org/pub@https://mirrors.huaweicloud
 ```
 
 [[epel 官方文档]](https://fedoraproject.org/wiki/EPEL/zh-cn)
+
+## 下载二进制软件包
+```shell
+yum --downloadonly [package_name]               #只下载软件包.   这个命令有时候并不工作，在8.0上测试过
+
+yum install yum-utils                           #或者使用yum install dnf-utils
+yumdownloader --downloadonly [package_name]     #只下载软件包
+```
+
 
 ## 三、常用命令
 ```shell
