@@ -7,7 +7,7 @@ interrupts
 不同设备的中断：
 
 [[树莓派的中断]](resources/pi.proc.interrupts.md)  
-[[x86云主机的中断]](resources/cloude.proc.interrupts.md)  
+[[x86云主机的中断]](resources/cloud.proc.interrupts.md)  
 [[x86服务器的中断]](resources/x86.proc.interrupts.md)  
 [[arm服务器的中断]](resources/arm.proc.interrupts.md)
 
@@ -88,7 +88,7 @@ int show_interrupts(struct seq_file *p, void *v)
 
 ```
 `dwc_otg, dwc_otg_pcd, dwc_otg_hcd:usb1`代表以太网或者USB中断
-[[x86云主机的中断]](resources/cloude.proc.interrupts.md)中的`i8042`代表键盘控制器中断
+[[x86云主机的中断]](resources/cloud.proc.interrupts.md)中的`i8042`代表键盘控制器中断
 ##术语
 IRQ 中断请求
 ISR Interrupt Service Routine 中断服务例程
