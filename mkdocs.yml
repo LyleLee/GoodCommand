@@ -19,6 +19,7 @@ nav:
         - io disk imformation: disk_information.md
         - io fio benchmark: io_fio_benchmark.md
     - bug solve:
+        - hdd broken drive: hdd_broken_drive.md
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
     - docker: docker.md
