@@ -27,84 +27,85 @@ for (( ; ; ));do
     dmesg -C
     
     
-    #chip0
-    #L3D
-    {devmem 0x90141030 32
-    devmem 0x90151030 32 
-    devmem 0x90161030 32 
-    devmem 0x90171030 32
-    #L3T
-    devmem 0x90181030 32
-    devmem 0x90191030 32
-    devmem 0x901a1030 32
-    devmem 0x901b1030 32
-    devmem 0x901c1030 32
-    devmem 0x901d1030 32
-    devmem 0x901e1030 32
-    devmem 0x901f1030 32
-    #HHA
-    devmem 0x90121000 32
-    devmem 0x90121000 32
-    #MN
-    devmem 0x90331030 32
-    #L3D
-    devmem 0x98141030 32
-    devmem 0x98151030 32
-    devmem 0x98161030 32
-    devmem 0x98171030 32
-    #L3T
-    devmem 0x98181030 32
-    devmem 0x98191030 32
-    devmem 0x981a1030 32
-    devmem 0x981b1030 32
-    devmem 0x981c1030 32
-    devmem 0x981d1030 32
-    devmem 0x981e1030 32
-    devmem 0x981f1030 32
-    #HHA
-    devmem 0x98121000 32
-    devmem 0x98121000 32
-    #MN
-    devmem 0x98331030 32
-    #chip1
-    #L3D
-    devmem 0x400090141030 32
-    devmem 0x400090151030 32
-    devmem 0x400090161030 32
-    devmem 0x400090171030 32
-    #L3T
-    devmem 0x400090181030 32
-    devmem 0x400090191030 32
-    devmem 0x4000901a1030 32
-    devmem 0x4000901b1030 32
-    devmem 0x4000901c1030 32
-    devmem 0x4000901d1030 32
-    devmem 0x4000901e1030 32
-    devmem 0x4000901f1030 32
-    #HHA
-    devmem 0x400090121000 32
-    devmem 0x400090121000 32
-    #MN
-    devmem 0x400090331030 32
-    #L3D
-    devmem 0x400098141030 32
-    devmem 0x400098151030 32
-    devmem 0x400098161030 32
-    devmem 0x400098171030 32
-    #L3T
-    devmem 0x400098181030 32
-    devmem 0x400098191030 32
-    devmem 0x4000981a1030 32
-    devmem 0x4000981b1030 32
-    devmem 0x4000981c1030 32
-    devmem 0x4000981d1030 32
-    devmem 0x4000981e1030 32
-    devmem 0x4000981f1030 32
-    #HHA
-    devmem 0x400098121000 32
-    devmem 0x400098121000 32
-    #MN
-    devmem 0x400098331030 32} >> $register_file
+    echo "  #chip0	    #chip0                  $(                    ) "    >> $register_file
+    echo "  #L3D	    #L3D                    $(                    ) "    >> $register_file
+    echo "  devmem 0x90141030 32  	            $(devmem 0x90141030 32) "    >> $register_file
+    echo "  devmem 0x90151030 32 	            $(devmem 0x90151030 32) "    >> $register_file
+    echo "  devmem 0x90161030 32 	            $(devmem 0x90161030 32) "    >> $register_file
+    echo "  devmem 0x90171030 32	            $(devmem 0x90171030 32) "    >> $register_file
+    echo "  #L3T	    #L3T                    $(                    ) "    >> $register_file
+    echo "  devmem 0x90181030 32	            $(devmem 0x90181030 32) "    >> $register_file
+    echo "  devmem 0x90191030 32	            $(devmem 0x90191030 32) "    >> $register_file
+    echo "  devmem 0x901a1030 32	            $(devmem 0x901a1030 32) "    >> $register_file
+    echo "  devmem 0x901b1030 32	            $(devmem 0x901b1030 32) "    >> $register_file
+    echo "  devmem 0x901c1030 32	            $(devmem 0x901c1030 32) "    >> $register_file
+    echo "  devmem 0x901d1030 32	            $(devmem 0x901d1030 32) "    >> $register_file
+    echo "  devmem 0x901e1030 32	            $(devmem 0x901e1030 32) "    >> $register_file
+    echo "  devmem 0x901f1030 32	            $(devmem 0x901f1030 32) "    >> $register_file
+    echo "  #HHA	    #HHA                    $(                    ) "    >> $register_file
+    echo "  devmem 0x90121000 32	            $(devmem 0x90121000 32) "    >> $register_file
+    echo "  devmem 0x90121000 32	            $(devmem 0x90121000 32) "    >> $register_file
+    echo "  #MN	    #MN                         $(                    ) "    >> $register_file
+    echo "  devmem 0x90331030 32	            $(devmem 0x90331030 32) "    >> $register_file
+    echo "  #L3D	    #L3D                    $(                    ) "    >> $register_file
+    echo "  devmem 0x98141030 32	            $(devmem 0x98141030 32) "    >> $register_file
+    echo "  devmem 0x98151030 32	            $(devmem 0x98151030 32) "    >> $register_file
+    echo "  devmem 0x98161030 32	            $(devmem 0x98161030 32) "    >> $register_file
+    echo "  devmem 0x98171030 32	            $(devmem 0x98171030 32) "    >> $register_file
+    echo "  #L3T	    #L3T                    $(                    ) "    >> $register_file
+    echo "  devmem 0x98181030 32	            $(devmem 0x98181030 32) "    >> $register_file
+    echo "  devmem 0x98191030 32	            $(devmem 0x98191030 32) "    >> $register_file
+    echo "  devmem 0x981a1030 32	            $(devmem 0x981a1030 32) "    >> $register_file
+    echo "  devmem 0x981b1030 32	            $(devmem 0x981b1030 32) "    >> $register_file
+    echo "  devmem 0x981c1030 32	            $(devmem 0x981c1030 32) "    >> $register_file
+    echo "  devmem 0x981d1030 32	            $(devmem 0x981d1030 32) "    >> $register_file
+    echo "  devmem 0x981e1030 32	            $(devmem 0x981e1030 32) "    >> $register_file
+    echo "  devmem 0x981f1030 32	            $(devmem 0x981f1030 32) "    >> $register_file
+    echo "  #HHA	    #HHA                    $(                    ) "    >> $register_file
+    echo "  devmem 0x98121000 32	            $(devmem 0x98121000 32) "    >> $register_file
+    echo "  devmem 0x98121000 32	            $(devmem 0x98121000 32) "    >> $register_file
+    echo "  #MN	    #MN                         $(                    ) "    >> $register_file
+    echo "  devmem 0x98331030 32	            $(devmem 0x98331030 32) "    >> $register_file
+    echo "  #chip1	    #chip1                                        "      >> $register_file
+    echo "  #L3D	    #L3D                                          "      >> $register_file
+    echo "  devmem 0x400090141030 32	   $(devmem 0x400090141030 32)  "    >> $register_file
+    echo "  devmem 0x400090151030 32	   $(devmem 0x400090151030 32)  "    >> $register_file
+    echo "  devmem 0x400090161030 32	   $(devmem 0x400090161030 32)  "    >> $register_file
+    echo "  devmem 0x400090171030 32	   $(devmem 0x400090171030 32)  "    >> $register_file
+    echo "  #L3T	    #L3T               $(                        )  "    >> $register_file
+    echo "  devmem 0x400090181030 32	   $(devmem 0x400090181030 32)  "    >> $register_file
+    echo "  devmem 0x400090191030 32	   $(devmem 0x400090191030 32)  "    >> $register_file
+    echo "  devmem 0x4000901a1030 32	   $(devmem 0x4000901a1030 32)  "    >> $register_file
+    echo "  devmem 0x4000901b1030 32	   $(devmem 0x4000901b1030 32)  "    >> $register_file
+    echo "  devmem 0x4000901c1030 32	   $(devmem 0x4000901c1030 32)  "    >> $register_file
+    echo "  devmem 0x4000901d1030 32	   $(devmem 0x4000901d1030 32)  "    >> $register_file
+    echo "  devmem 0x4000901e1030 32	   $(devmem 0x4000901e1030 32)  "    >> $register_file
+    echo "  devmem 0x4000901f1030 32	   $(devmem 0x4000901f1030 32)  "    >> $register_file
+    echo "  #HHA	    #HHA               $(                        )  "    >> $register_file
+    echo "  devmem 0x400090121000 32	   $(devmem 0x400090121000 32)  "    >> $register_file
+    echo "  devmem 0x400090121000 32	   $(devmem 0x400090121000 32)  "    >> $register_file
+    echo "  #MN	    #MN                    $(                        )  "    >> $register_file
+    echo "  devmem 0x400090331030 32	   $(devmem 0x400090331030 32)  "    >> $register_file
+    echo "  #L3D	    #L3D               $(                        )  "    >> $register_file
+    echo "  devmem 0x400098141030 32	   $(devmem 0x400098141030 32)  "    >> $register_file
+    echo "  devmem 0x400098151030 32	   $(devmem 0x400098151030 32)  "    >> $register_file
+    echo "  devmem 0x400098161030 32	   $(devmem 0x400098161030 32)  "    >> $register_file
+    echo "  devmem 0x400098171030 32	   $(devmem 0x400098171030 32)  "    >> $register_file
+    echo "  #L3T	    #L3T               $(                        )  "    >> $register_file
+    echo "  devmem 0x400098181030 32	   $(devmem 0x400098181030 32)  "    >> $register_file
+    echo "  devmem 0x400098191030 32	   $(devmem 0x400098191030 32)  "    >> $register_file
+    echo "  devmem 0x4000981a1030 32	   $(devmem 0x4000981a1030 32)  "    >> $register_file
+    echo "  devmem 0x4000981b1030 32	   $(devmem 0x4000981b1030 32)  "    >> $register_file
+    echo "  devmem 0x4000981c1030 32	   $(devmem 0x4000981c1030 32)  "    >> $register_file
+    echo "  devmem 0x4000981d1030 32	   $(devmem 0x4000981d1030 32)  "    >> $register_file
+    echo "  devmem 0x4000981e1030 32	   $(devmem 0x4000981e1030 32)  "    >> $register_file
+    echo "  devmem 0x4000981f1030 32	   $(devmem 0x4000981f1030 32)  "    >> $register_file
+    echo "  #HHA	    #HHA               $(                        )  "    >> $register_file
+    echo "  devmem 0x400098121000 32	   $(devmem 0x400098121000 32)  "    >> $register_file
+    echo "  devmem 0x400098121000 32	   $(devmem 0x400098121000 32)  "    >> $register_file
+    echo "  #MN	    #MN                    $(                        )  "    >> $register_file
+    echo "  devmem 0x400098331030 32	   $(devmem 0x400098331030 32)  "    >> $register_file
+    echo "  ----------------------------------------------------------- "    >> $register_file 
     
     sleep 5s
 done
