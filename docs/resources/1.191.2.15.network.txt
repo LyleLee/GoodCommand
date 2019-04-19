@@ -1,0 +1,224 @@
+  *-network
+       description: Ethernet interface
+       product: Hi1822 Family (4*25GE)
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:03:00.0
+       logical name: enp3s0
+       version: 45
+       serial: 10:c1:72:8f:7b:18
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msi msix pm vpd bus_master cap_list rom ethernet physical autonegotiation
+       configuration: autonegotiation=off broadcast=yes driver=hinic latency=0 link=no multicast=yes port=twisted pair
+       resources: iomemory:8000-7fff iomemory:8000-7fff iomemory:8000-7fff irq:0 memory:80003d00000-80003d1ffff memory:800044a0000-800044a7fff memory:80000000000-800000fffff memory:e3000000-e30fffff memory:80003d20000-800040dffff memory:800040e0000-8000449ffff memory:80000100000-80003cfffff
+  *-network
+       description: Ethernet interface
+       product: Hi1822 Family (4*25GE)
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:04:00.0
+       logical name: enp4s0
+       version: 45
+       serial: 10:c1:72:8f:7b:19
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msi msix pm vpd bus_master cap_list rom ethernet physical autonegotiation
+       configuration: autonegotiation=off broadcast=yes driver=hinic latency=0 link=no multicast=yes port=twisted pair
+       resources: iomemory:8000-7fff iomemory:8000-7fff iomemory:8000-7fff irq:0 memory:80008200000-8000821ffff memory:800089a0000-800089a7fff memory:80004500000-800045fffff memory:e3100000-e31fffff memory:80008220000-800085dffff memory:800085e0000-8000899ffff memory:80004600000-800081fffff
+  *-network
+       description: Ethernet interface
+       product: Hi1822 Family (4*25GE)
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:05:00.0
+       logical name: eno5
+       version: 45
+       serial: 10:c1:72:8f:7b:1a
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msi msix pm vpd bus_master cap_list rom ethernet physical autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=hinic duplex=full latency=0 link=yes multicast=yes port=twisted pair
+       resources: iomemory:8000-7fff iomemory:8000-7fff iomemory:8000-7fff irq:0 memory:8000c700000-8000c71ffff memory:8000cea0000-8000cea7fff memory:80008a00000-80008afffff memory:e3200000-e32fffff memory:8000c720000-8000cadffff memory:8000cae0000-8000ce9ffff memory:80008b00000-8000c6fffff
+  *-network
+       description: Ethernet interface
+       product: Hi1822 Family (4*25GE)
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:06:00.0
+       logical name: enp6s0
+       version: 45
+       serial: 10:c1:72:8f:7b:1b
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msi msix pm vpd bus_master cap_list rom ethernet physical autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=hinic duplex=full latency=0 link=yes multicast=yes port=twisted pair
+       resources: iomemory:8000-7fff iomemory:8000-7fff iomemory:8000-7fff irq:0 memory:80010c00000-80010c1ffff memory:800113a0000-800113a7fff memory:8000cf00000-8000cffffff memory:e3300000-e33fffff memory:80010c20000-80010fdffff memory:80010fe0000-8001139ffff memory:8000d000000-80010bfffff
+  *-network:0
+       description: Ethernet interface
+       product: HNS GE/10GE/25GE RDMA Network Controller
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:7d:00.0
+       logical name: eno1
+       version: 21
+       serial: 00:18:2d:00:00:34
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+       configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-74.el8.aarch64 SMP mod_u duplex=full firmware=0xb0690317 latency=0 link=yes multicast=yes port=fibre
+       resources: iomemory:10-f iomemory:10-f irq:0 memory:122000000-12200ffff memory:120000000-1200fffff memory:122010000-1220effff memory:120100000-120efffff
+  *-network:1
+       description: Ethernet interface
+       product: HNS GE/10GE/25GE RDMA Network Controller
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0.1
+       bus info: pci@0000:7d:00.1
+       logical name: eno2
+       version: 21
+       serial: 00:18:2d:01:00:34
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+       configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-74.el8.aarch64 SMP mod_u duplex=full firmware=0xb0690317 latency=0 link=yes multicast=yes port=fibre
+       resources: iomemory:10-f iomemory:10-f irq:0 memory:1220f0000-1220fffff memory:120f00000-120ffffff memory:122100000-1221dffff memory:121000000-121dfffff
+  *-network:2
+       description: Ethernet interface
+       product: HNS GE/10GE/25GE Network Controller
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0.2
+       bus info: pci@0000:7d:00.2
+       logical name: eno3
+       version: 21
+       serial: 00:18:2d:02:00:34
+       size: 1Gbit/s
+       capacity: 1Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msix pm bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=hns3 driverversion=4.18.0-74.el8.aarch64 SMP mod_u duplex=full firmware=0xb0690317 latency=0 link=yes multicast=yes port=MII speed=1Gbit/s
+       resources: iomemory:10-f iomemory:10-f irq:0 memory:1221e0000-1221effff memory:121e00000-121efffff
+  *-network:3
+       description: Ethernet interface
+       product: HNS GE/10GE/25GE Network Controller
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0.3
+       bus info: pci@0000:7d:00.3
+       logical name: eno4
+       version: 21
+       serial: 00:18:2d:03:00:34
+       size: 1Gbit/s
+       capacity: 1Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msix pm bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=hns3 driverversion=4.18.0-74.el8.aarch64 SMP mod_u duplex=full firmware=0xb0690317 latency=0 link=yes multicast=yes port=MII speed=1Gbit/s
+       resources: iomemory:10-f iomemory:10-f irq:0 memory:1221f0000-1221fffff memory:121f00000-121ffffff
+  *-network:0
+       description: Ethernet interface
+       product: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+       vendor: Intel Corporation
+       physical id: 0
+       bus info: pci@0000:81:00.0
+       logical name: enp129s0f0
+       version: 01
+       serial: 28:41:c6:aa:53:2c
+       size: 10Gbit/s
+       capacity: 10Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress vpd bus_master cap_list rom ethernet physical fibre 10000bt-fd
+       configuration: autonegotiation=off broadcast=yes driver=ixgbe driverversion=5.1.0-k duplex=full firmware=0x800003df latency=0 link=yes multicast=yes port=fibre speed=10Gbit/s
+       resources: iomemory:28000-27fff iomemory:28000-27fff irq:38 memory:280000000000-2800003fffff ioport:10000(size=32) memory:280001800000-280001803fff memory:f0000000-f03fffff memory:280000800000-280000bfffff memory:280000c00000-280000ffffff
+  *-network:1
+       description: Ethernet interface
+       product: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+       vendor: Intel Corporation
+       physical id: 0.1
+       bus info: pci@0000:81:00.1
+       logical name: enp129s0f1
+       version: 01
+       serial: 28:41:c6:aa:53:2d
+       size: 10Gbit/s
+       capacity: 10Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress vpd bus_master cap_list rom ethernet physical fibre 10000bt-fd
+       configuration: autonegotiation=off broadcast=yes driver=ixgbe driverversion=5.1.0-k duplex=full firmware=0x800003df latency=0 link=yes multicast=yes port=fibre speed=10Gbit/s
+       resources: iomemory:28000-27fff iomemory:28000-27fff irq:256 memory:280000400000-2800007fffff ioport:10020(size=32) memory:280001804000-280001807fff memory:f0400000-f07fffff memory:280001000000-2800013fffff memory:280001400000-2800017fffff
+  *-network:0
+       description: Ethernet interface
+       product: I350 Gigabit Network Connection
+       vendor: Intel Corporation
+       physical id: 0
+       bus info: pci@0000:84:00.0
+       logical name: enp132s0f0
+       version: 01
+       serial: e8:4d:d0:ca:80:0b
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress bus_master cap_list rom ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=igb driverversion=5.4.0-k duplex=full firmware=1.63, 0x800009fa ip=192.168.2.15 latency=0 link=yes multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:38 memory:f0800000-f08fffff memory:f0e00000-f0e03fff memory:f0900000-f09fffff memory:280001a00000-280001a7ffff memory:280001a80000-280001afffff
+  *-network:1
+       description: Ethernet interface
+       product: I350 Gigabit Network Connection
+       vendor: Intel Corporation
+       physical id: 0.1
+       bus info: pci@0000:84:00.1
+       logical name: enp132s0f1
+       version: 01
+       serial: e8:4d:d0:ca:80:0c
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress bus_master cap_list rom ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=igb driverversion=5.4.0-k firmware=1.63, 0x800009fa latency=0 link=no multicast=yes port=twisted pair
+       resources: irq:256 memory:f0a00000-f0afffff memory:f0e04000-f0e07fff memory:f0b00000-f0bfffff memory:280001b00000-280001b7ffff memory:280001b80000-280001bfffff
+  *-network:2
+       description: Ethernet interface
+       product: I350 Gigabit Network Connection
+       vendor: Intel Corporation
+       physical id: 0.2
+       bus info: pci@0000:84:00.2
+       logical name: enp132s0f2
+       version: 01
+       serial: e8:4d:d0:ca:80:0d
+       size: 1Gbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=igb driverversion=5.4.0-k duplex=full firmware=1.63, 0x800009fa latency=0 link=yes multicast=yes port=twisted pair speed=1Gbit/s
+       resources: irq:266 memory:f0c00000-f0cfffff memory:f0e08000-f0e0bfff memory:280001c00000-280001c7ffff memory:280001c80000-280001cfffff
+  *-network:3
+       description: Ethernet interface
+       product: I350 Gigabit Network Connection
+       vendor: Intel Corporation
+       physical id: 0.3
+       bus info: pci@0000:84:00.3
+       logical name: enp132s0f3
+       version: 01
+       serial: e8:4d:d0:ca:80:0e
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi msix pciexpress bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=igb driverversion=5.4.0-k firmware=1.63, 0x800009fa latency=0 link=no multicast=yes port=twisted pair
+       resources: irq:601 memory:f0d00000-f0dfffff memory:f0e0c000-f0e0ffff memory:280001d00000-280001d7ffff memory:280001d80000-280001dfffff
+  *-network
+       description: Ethernet interface
+       product: HNS GE/10GE/25GE/50GE/100GE RDMA Network Controller
+       vendor: Huawei Technologies Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:bd:00.0
+       logical name: enp189s0f0
+       version: 21
+       serial: 00:18:2d:04:00:34
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+       configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-74.el8.aarch64 SMP mod_u firmware=0xb0690317 latency=0 link=no multicast=yes port=fibre
+       resources: iomemory:20010-2000f iomemory:20010-2000f irq:0 memory:200122000000-20012200ffff memory:200120000000-2001200fffff memory:200122010000-2001221fffff memory:200120100000-200121ffffff

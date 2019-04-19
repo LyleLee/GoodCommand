@@ -90,3 +90,17 @@ systemctl status chronyd
 #查看同步状态
 chronyc sourcestats
 ```
+```
+[root@localhost linux]# timedatectl
+      Local time: Thu 2019-04-11 16:33:46 CST
+  Universal time: Thu 2019-04-11 08:33:46 UTC
+        RTC time: Thu 2019-04-11 08:33:47
+       Time zone: Asia/Shanghai (CST, +0800)
+     NTP enabled: yes
+NTP synchronized: yes
+ RTC in local TZ: no
+      DST active: n/a
+[root@localhost linux]#
+```
+
+RTC时间写如后，可以保证/var/log/message和/var/log/dmesg的时间在每次重启后对的。

@@ -5,35 +5,6 @@ repo_url: https://github.com/LyleLee/GoodCommand
 
 nav:
     - Home: index.md
-    - linux: linux.md
-    - kvm: kvm.md
-    - docker: docker.md
-    - git two github account: git_two_github_account.md
-    - git bash windows: git_bash_windows.md
-    - git command : git_command.md
-    - nfs: nfs.md
-    - shellcheck: shellcheck.md
-    - tldr: tldr.md
-    - netstat: netstat.md
-    - dstat: dstat.md
-    - nmap : nmap.md
-    - systemd: systemd.md
-    - time: time.md
-    - ethtool: ethtool.md
-    - hostnamectl: hostnamectl.md
-    - nethogs: nethogs.md
-    - tcpdump: tcpdump.md
-    - vim: vim.md
-    - tmux: tmux.md
-    - gcc: gcc.md
-    - vnc: vnc.md
-    - wget: wget.md
-    - install os: install_os.md
-    - kernel document: linux_kernel.md
-    - shell_program: shell_program.md
-    - ARM storage software: arm_storage_stack.md
-    - ARM server firmware_update: firmware_update.md
-    - update-alternatives.md: update-alternatives.md
     - benchmark tool:
         - fio: fio.md
         - vdbench: vdbench.md
@@ -47,6 +18,41 @@ nav:
         - mem stream_arm: stream_arm.md
         - io disk imformation: disk_information.md
         - io fio benchmark: io_fio_benchmark.md
+    - bug solve:
+        - nfs lock 1670650: nfs_lock.md
+        - nfs_not_respond: nfs_not_respond.md
+    - docker: docker.md
+    - dstat: dstat.md
+    - ethtool: ethtool.md
+    - gcc: gcc.md
+    - git bash windows: git_bash_windows.md
+    - git command : git_command.md
+    - git two github account: git_two_github_account.md
+    - hostnamectl: hostnamectl.md
+    - install os: install_os.md
+    - interrupts: interrupts.md
+    - ipmitool: ipmitool.md
+    - kernel document: linux_kernel.md
+    - kernel_module: compile_kernel_module.md
+    - kvm: kvm.md
+    - linux: linux.md
+    - nethogs: nethogs.md
+    - netstat: netstat.md
+    - nfs: nfs.md
+    - nmap : nmap.md
+    - raid级别: raid.md
+    - shell_program: shell_program.md
+    - shellcheck: shellcheck.md
+    - sysrq: sysrq.md
+    - systemd: systemd.md
+    - tcpdump: tcpdump.md
+    - time: time.md
+    - tldr: tldr.md
+    - tmux: tmux.md
+    - update-alternatives: update-alternatives.md
+    - vim: vim.md
+    - vnc: vnc.md
+    - wget: wget.md
     - 发行版: 
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
@@ -57,13 +63,9 @@ nav:
         - ubuntu 桌面环境: ubuntu_desktop.md
         - NeoKylin: NeoKylin.md
         - suse 软件源: suse_local_repo.md
-    - bug solve:
-        - nfs lock 1670650: nfs_lock.md
-        - nfs_not_respond: nfs_not_respond.md
-    - interrupts: interrupts.md
-    - sysrq: sysrq.md
-    - kernel_module: compile_kernel_module.md
+    - 服务器:
+        - ARM server firmware_update: firmware_update.md
+        - ARM storage software: arm_storage_stack.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
-    - raid级别: raid.md
 theme: readthedocs

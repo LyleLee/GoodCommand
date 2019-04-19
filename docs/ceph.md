@@ -17,7 +17,51 @@ google-perftools
 libleveldb1
 ```
 
+## 手动部署
 
+ubuntu node1 mon 
+
+
+生成uuid。
+```
+root@ubuntu:~# uuidgen
+8b9fb887-8b58-4391-b002-a7e5fa5947e2
+```
+
+ceph.conf
+```
+fsid = 8b9fb887-8b58-4391-b002-a7e5fa5947e2
+#设置node1(ubuntu)为mon节点
+mon initial members = ubuntu
+#设置mon节点地址
+mon host = 192.168.1.10
+public network = 192.168.1.0/24
+auth cluster required = cephx
+auth service required = cephx
+auth client required = cephx
+osd journal size = 1024
+#设置副本数
+osd pool default size = 3
+#设置最小副本数
+osd pool default min size = 1
+osd pool default pg num = 64
+osd pool default pgp num = 64
+osd crush chooseleaf type = 1
+osd_mkfs_type = xfs
+max mds = 5
+mds max file size = 100000000000000
+mds cache size = 1000000
+#设置osd节点down后900s，把此osd节点逐出ceph集群，把之前映射到此节点的数据映射到其他节点。
+mon osd down out interval = 900
+
+[mon]
+#把时钟偏移设置成0.5s，默认是0.05s,由于ceph集群中存在异构PC，导致时钟偏移总是大于0.05s，为了方便同步直接把时钟偏移设置成0.5s
+mon clock drift allowed = .50
+```
+
+## 下载二进制包
+
+ubuntu
 ```
 wget -q http://download.ceph.com/debian-{release}/pool/main/c/ceph/ceph_{version}{distro}_{arch}.deb
 wget -q http://download.ceph.com/debian-luminouse/pool/main/c/ceph/ceph_13.2.0bionic_x86_64.deb
@@ -39,6 +83,10 @@ uid           [ unknown] Ceph.com (release key) <security@ceph.com>
 ```
 echo deb https://download.ceph.com/debian-luminouse/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
 ```
+
+redhat
+
+rpm --import 'https://download.ceph.com/keys/release.asc'
 
 
 ## 问题

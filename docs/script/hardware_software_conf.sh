@@ -29,6 +29,7 @@ echo "smartctl" | tee -a $hardware_software_conf
 for disk in {a..l};do
     if [ -b "/dev/sd${disk}" ];then
         echo "/dev/sd${disk}"
+        echo "smartctl -a /dev/sd${disk}" | tee -a $hardware_software_conf
         smartctl -a "/dev/sd${disk}" >> $hardware_software_conf
         wait
     fi
@@ -47,7 +48,7 @@ printf "\n\n****************\n" | tee -a $hardware_software_conf
 echo "dmidecode" | tee -a $hardware_software_conf
 typ=("bios" "system" "baseboard" "chassis" "processor" "memory" "cache" "connector" "slot")
 for t in "${typ[@]}" ; do
-    printf "dmidecode -t $s \n" $t |tee -a $hardware_software_conf
+    printf "dmidecode -t %s \n" $t |tee -a $hardware_software_conf
     dmidecode -t $t >> $hardware_software_conf
     wait
 done

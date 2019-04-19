@@ -1,16 +1,14 @@
 nfs not responding,8BD问题
 =============
 ## 复现过程
-8DB问题复现的条件是： cpu20-RHEL7.6作为服务端，内核小版本为7.1以下。 客户端是另一台服务器、另一台是ubuntu或者RHEL7.1以下。
-
-kernel-alt-4.14.0-115.el7a  
-kernel-alt-4.14.0-115.1.1.el7a  
-kernel-alt-4.14.0-115.2.1.el7a  
-kernel-alt-4.14.0-115.3.1.el7a  
-kernel-alt-4.14.0-115.4.1.el7a  
-kernel-alt-4.14.0-115.5.1.el7a  
-kernel-alt-4.14.0-115.6.1.el7a  
-kernel-alt-4.14.0-115.7.1.el7a  
+8DB问题复现的条件是：
+ 
+|  nfs服务端                                 | nfs客户端                               |现象       |
+|:-------------------------------------------|:------------------------------------------   |:----------|
+|cpu20-RHEL7.6 kernel-alt-4.14.0-115.el7a    | cpu16 ubuntu 18.04                           |出现       |
+|cpu20-RHEL7.6 kernel-alt-4.14.0-115.7.1.el7a| cpu16 ubuntu 18.04                           |不出现     |
+|cpu16-RHEL7.6 kernel-alt-4.14.0-115.el7a    | cpu20 RHEL7.6 kernel-alt-4.14.0-115.el7a     |出现       |
+|cpu16-RHEL7.6 kernel-alt-4.14.0-115.el7a    | cpu20 RHEL7.6 kernel-alt-4.14.0-115.7.1.el7a |不出现     |
 
 
 
