@@ -46,6 +46,7 @@ nav:
     - shellcheck: shellcheck.md
     - sysrq: sysrq.md
     - systemd: systemd.md
+    - tar: tar.md
     - tcpdump: tcpdump.md
     - time: time.md
     - tldr: tldr.md
