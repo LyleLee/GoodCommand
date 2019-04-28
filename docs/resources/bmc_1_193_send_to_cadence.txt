@@ -1,0 +1,2675 @@
+lscpu
+Architecture:          aarch64
+Byte Order:            Little Endian
+CPU(s):                128
+On-line CPU(s) list:   0-127
+Thread(s) per core:    1
+Core(s) per socket:    64
+Socket(s):             2
+NUMA node(s):          4
+Model:                 0
+CPU max MHz:           2600.0000
+CPU min MHz:           200.0000
+BogoMIPS:              200.00
+L1d cache:             64K
+L1i cache:             64K
+L2 cache:              512K
+L3 cache:              32768K
+NUMA node0 CPU(s):     0-31
+NUMA node1 CPU(s):     32-63
+NUMA node2 CPU(s):     64-95
+NUMA node3 CPU(s):     96-127
+Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+
+
+****************
+lsblk
+NAME          MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sdb             8:16   0 745.2G  0 disk 
+loop0           7:0    0     3G  1 loop /mnt/iso
+sda             8:0    0 745.2G  0 disk 
+├─sda2          8:2    0     1G  0 part /boot
+├─sda3          8:3    0   744G  0 part 
+│ ├─rhel-swap 253:1    0     4G  0 lvm  [SWAP]
+│ ├─rhel-home 253:2    0   690G  0 lvm  /home
+│ └─rhel-root 253:0    0    50G  0 lvm  /
+└─sda1          8:1    0   200M  0 part /boot/efi
+
+
+****************
+df
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               256G     0  256G   0% /dev
+tmpfs                  256G     0  256G   0% /dev/shm
+tmpfs                  256G   61M  256G   1% /run
+tmpfs                  256G     0  256G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   50G   11G   39G  22% /
+/dev/mapper/rhel-home  690G   33M  690G   1% /home
+/dev/sda2             1014M  293M  722M  29% /boot
+/dev/loop0             3.0G  3.0G     0 100% /mnt/iso
+/dev/sda1              200M  7.8M  193M   4% /boot/efi
+tmpfs                   52G     0   52G   0% /run/user/0
+
+
+****************
+smartctl
+smartctl -a /dev/sda
+smartctl 6.5 2016-05-07 r4318 [aarch64-linux-4.14.0-115.el7a.aarch64] (local build)
+Copyright (C) 2002-16, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF INFORMATION SECTION ===
+Vendor:               HUAWEI
+Product:              HWE32SS3008M001N
+Revision:             2774
+Compliance:           SPC-4
+User Capacity:        800,166,076,416 bytes [800 GB]
+Logical block size:   512 bytes
+Physical block size:  4096 bytes
+LU is resource provisioned, LBPRZ=1
+Rotation Rate:        Solid State Device
+Form Factor:          2.5 inches
+Logical Unit id:      0x5d0efc1ff0589002
+Serial number:        2102311TNB10J8000464
+Device type:          disk
+Transport protocol:   SAS (SPL-3)
+Local Time is:        Mon Apr 22 04:54:21 2019 EDT
+SMART support is:     Available - device has SMART capability.
+SMART support is:     Enabled
+Temperature Warning:  Enabled
+
+=== START OF READ SMART DATA SECTION ===
+SMART Health Status: OK
+
+Percentage used endurance indicator: 0%
+Current Drive Temperature:     32 C
+Drive Trip Temperature:        78 C
+
+Manufactured in week 31 of year 2018
+Specified cycle count over device lifetime:  0
+Accumulated start-stop cycles:  0
+Specified load-unload count over device lifetime:  0
+Accumulated load-unload cycles:  0
+Elements in grown defect list: 0
+
+Error counter log:
+           Errors Corrected by           Total   Correction     Gigabytes    Total
+               ECC          rereads/    errors   algorithm      processed    uncorrected
+           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+read:          0        0         0         0          0          2.772           0
+write:         0        0         0         0          0         16.576           0
+
+Non-medium error count:        0
+
+No self-tests have been logged
+
+smartctl -a /dev/sdb
+smartctl 6.5 2016-05-07 r4318 [aarch64-linux-4.14.0-115.el7a.aarch64] (local build)
+Copyright (C) 2002-16, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF INFORMATION SECTION ===
+Vendor:               HUAWEI
+Product:              HWE32SS3008M001N
+Revision:             2774
+Compliance:           SPC-4
+User Capacity:        800,166,076,416 bytes [800 GB]
+Logical block size:   512 bytes
+Physical block size:  4096 bytes
+LU is resource provisioned, LBPRZ=1
+Rotation Rate:        Solid State Device
+Form Factor:          2.5 inches
+Logical Unit id:      0x5d0efc1ff04fd002
+Serial number:        2102311TNB10J8000450
+Device type:          disk
+Transport protocol:   SAS (SPL-3)
+Local Time is:        Mon Apr 22 04:54:21 2019 EDT
+SMART support is:     Available - device has SMART capability.
+SMART support is:     Enabled
+Temperature Warning:  Enabled
+
+=== START OF READ SMART DATA SECTION ===
+SMART Health Status: OK
+
+Percentage used endurance indicator: 0%
+Current Drive Temperature:     30 C
+Drive Trip Temperature:        78 C
+
+Manufactured in week 31 of year 2018
+Specified cycle count over device lifetime:  0
+Accumulated start-stop cycles:  0
+Specified load-unload count over device lifetime:  0
+Accumulated load-unload cycles:  0
+Elements in grown defect list: 0
+
+Error counter log:
+           Errors Corrected by           Total   Correction     Gigabytes    Total
+               ECC          rereads/    errors   algorithm      processed    uncorrected
+           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+read:          0        0         0         0          0         71.548           0
+write:         0        0         0         0          0         30.731           0
+
+Non-medium error count:        0
+
+No self-tests have been logged
+
+
+
+****************
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eno1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:00:00:33 brd ff:ff:ff:ff:ff:ff
+3: eno2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:18:2d:01:00:33 brd ff:ff:ff:ff:ff:ff
+4: eno3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:02:00:33 brd ff:ff:ff:ff:ff:ff
+5: eno4: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:03:00:33 brd ff:ff:ff:ff:ff:ff
+6: enp189s0f0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:04:00:33 brd ff:ff:ff:ff:ff:ff
+7: enp132s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 28:41:c6:07:cd:29 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.187/24 brd 192.168.2.255 scope global dynamic enp132s0f0
+       valid_lft 68685sec preferred_lft 68685sec
+8: enp132s0f1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2a brd ff:ff:ff:ff:ff:ff
+9: enp132s0f2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2b brd ff:ff:ff:ff:ff:ff
+10: enp132s0f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2c brd ff:ff:ff:ff:ff:ff
+
+
+****************
+lspci
+-+-[0000:bc]---00.0-[bd]----00.0  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE/50GE/100GE RDMA Network Controller
+ +-[0000:bb]---00.0  Huawei Technologies Co., Ltd. HiSilicon Embedded DMA Engine
+ +-[0000:ba]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 1.1 Host Controller
+ |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
+ +-[0000:b8]-+-00.0-[b9]----00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
+ |           \-01.0  Huawei Technologies Co., Ltd. HiSilicon RDE Engine
+ +-[0000:b4]-+-00.0-[b5]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine
+ |           \-01.0-[b6]----00.0  Huawei Technologies Co., Ltd. HiSilicon SEC Engine
+ +-[0000:80]-+-00.0-[81]--
+ |           +-08.0-[82]--
+ |           +-0c.0-[83]--
+ |           \-10.0-[84]--+-00.0  Intel Corporation I350 Gigabit Network Connection
+ |                        +-00.1  Intel Corporation I350 Gigabit Network Connection
+ |                        +-00.2  Intel Corporation I350 Gigabit Network Connection
+ |                        \-00.3  Intel Corporation I350 Gigabit Network Connection
+ +-[0000:7c]---00.0-[7d]--+-00.0  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        +-00.1  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        +-00.2  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE Network Controller
+ |                        \-00.3  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE Network Controller
+ +-[0000:7b]---00.0  Huawei Technologies Co., Ltd. HiSilicon Embedded DMA Engine
+ +-[0000:7a]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 1.1 Host Controller
+ |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
+ +-[0000:78]-+-00.0-[79]----00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
+ |           \-01.0  Huawei Technologies Co., Ltd. HiSilicon RDE Engine
+ +-[0000:74]-+-00.0-[75]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine
+ |           +-01.0-[76]----00.0  Huawei Technologies Co., Ltd. HiSilicon SEC Engine
+ |           +-02.0  Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA
+ |           +-03.0  Huawei Technologies Co., Ltd. HiSilicon AHCI HBA
+ |           \-04.0  Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA
+ \-[0000:00]-+-00.0-[01]--
+             +-04.0-[02]--
+             +-08.0-[03]--
+             +-0c.0-[04]--
+             +-10.0-[05]----00.0  Huawei Technologies Co., Ltd. Hi1710 [iBMC Intelligent Management system chip w/VGA support]
+             \-12.0-[06]--
+
+
+****************
+dmidecode
+dmidecode -t bios 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0000, DMI type 0, 26 bytes
+BIOS Information
+	Vendor: Huawei Corp.
+	Version: TA BIOS 2280-A CS V2.16.01
+	Release Date: 03/16/2019
+	Address: 0x7F000
+	Runtime Size: 516 kB
+	ROM Size: 4096 kB
+	Characteristics:
+		PCI is supported
+		BIOS is upgradeable
+		BIOS shadowing is allowed
+		Boot from CD is supported
+		Selectable boot is supported
+		EDD is supported
+		Japanese floppy for NEC 9800 1.2 MB is supported (int 13h)
+		Japanese floppy for Toshiba 1.2 MB is supported (int 13h)
+		5.25"/360 kB floppy services are supported (int 13h)
+		5.25"/1.2 MB floppy services are supported (int 13h)
+		3.5"/720 kB floppy services are supported (int 13h)
+		3.5"/2.88 MB floppy services are supported (int 13h)
+		8042 keyboard services are supported (int 9h)
+		CGA/mono video services are supported (int 10h)
+		ACPI is supported
+		USB legacy is supported
+		BIOS boot specification is supported
+		Targeted content distribution is supported
+		UEFI is supported
+	BIOS Revision: 0.0
+
+Handle 0x0004, DMI type 13, 22 bytes
+BIOS Language Information
+	Language Description Format: Long
+	Installable Languages: 1
+		en|US|iso8859-1
+	Currently Installed Language: en|US|iso8859-1
+
+dmidecode -t system 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+	Manufacturer: Huawei
+	Product Name: TaiShan 2280 V2
+	Version: V200R002C00
+	Serial Number: To be filled by O.E.M.
+	UUID: 3171b158-1dd2-11b2-8f56-0018e1c5d866
+	Wake-up Type: Power Switch
+	SKU Number: To be filled by O.E.M.
+	Family: To be filled by O.E.M.
+
+Handle 0x0005, DMI type 32, 11 bytes
+System Boot Information
+	Status: No errors detected
+
+dmidecode -t baseboard 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0003, DMI type 2, 17 bytes
+Base Board Information
+	Manufacturer: Huawei
+	Product Name: BC82AMDA
+	Version: V200R002C00
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis: To Be Filled By O.E.M.
+	Chassis Handle: 0x0002
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0033, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM1
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:7d:00.0
+
+Handle 0x0034, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM2
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 2
+	Bus Address: 0000:7d:00.1
+
+Handle 0x0035, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM3
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 3
+	Bus Address: 0000:7d:00.2
+
+Handle 0x0036, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM4
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 4
+	Bus Address: 0000:7d:00.3
+
+Handle 0x0037, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: VGA
+	Type: Video
+	Status: Enabled
+	Type Instance: 5
+	Bus Address: 0000:05:00.0
+
+Handle 0x0038, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: ScsiController
+	Type: SCSI Controller
+	Status: Enabled
+	Type Instance: 6
+	Bus Address: 0000:74:02.0
+
+Handle 0x0039, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: ScsiController
+	Type: SCSI Controller
+	Status: Enabled
+	Type Instance: 7
+	Bus Address: 0000:74:04.0
+
+Handle 0x003A, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: Embeded SATA Controller
+	Type: SATA Controller
+	Status: Enabled
+	Type Instance: 8
+	Bus Address: 0000:74:03.0
+
+dmidecode -t chassis 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0002, DMI type 3, 25 bytes
+Chassis Information
+	Manufacturer: Huawei
+	Type: Main Server Chassis
+	Lock: Not Present
+	Version: To be filled by O.E.M.
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Boot-up State: Safe
+	Power Supply State: Safe
+	Thermal State: Safe
+	Security Status: None
+	OEM Information: 0x00000000
+	Height: 2 U
+	Number Of Power Cords: 1
+	Contained Elements: 0
+	SKU Number: Not Specified
+
+dmidecode -t processor 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x002C, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: CPU01
+	Type: Central Processor
+	Family: ARM
+	Manufacturer: Hisilicon
+	ID: 10 D0 1F 48 00 00 00 00
+	Signature: Implementor 0x48, Variant 0x1, Architecture 15, Part 0xd01, Revision 0
+	Version: Hisilicon 1620
+	Voltage: 0.9 V
+	External Clock: 100 MHz
+	Max Speed: 2600 MHz
+	Current Speed: 2600 MHz
+	Status: Populated, Enabled
+	Upgrade: Unknown
+	L1 Cache Handle: 0x0029
+	L2 Cache Handle: 0x002A
+	L3 Cache Handle: 0x002B
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Part Number: To be filled by O.E.M.
+	Core Count: 64
+	Core Enabled: 64
+	Thread Count: 64
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+Handle 0x0031, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: CPU02
+	Type: Central Processor
+	Family: ARM
+	Manufacturer: Hisilicon
+	ID: 10 D0 1F 48 00 00 00 00
+	Signature: Implementor 0x48, Variant 0x1, Architecture 15, Part 0xd01, Revision 0
+	Version: Hisilicon 1620
+	Voltage: 0.9 V
+	External Clock: 100 MHz
+	Max Speed: 2600 MHz
+	Current Speed: 2600 MHz
+	Status: Populated, Enabled
+	Upgrade: Unknown
+	L1 Cache Handle: 0x002E
+	L2 Cache Handle: 0x002F
+	L3 Cache Handle: 0x0030
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Part Number: To be filled by O.E.M.
+	Core Count: 64
+	Core Enabled: 64
+	Thread Count: 64
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+dmidecode -t memory 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0006, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 8 TB
+	Error Information Handle: Not Provided
+	Number Of Devices: 32
+
+Handle 0x0008, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM000 J27
+	Bank Locator: SOCKET 0 CHANNEL 0 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40631025
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0009, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM001 J28
+	Bank Locator: SOCKET 0 CHANNEL 0 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000A, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM010 J21
+	Bank Locator: SOCKET 0 CHANNEL 1 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E2663E
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000B, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM011 J22
+	Bank Locator: SOCKET 0 CHANNEL 1 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000C, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM020 J19
+	Bank Locator: SOCKET 0 CHANNEL 2 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E2564F
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000D, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM021 J20
+	Bank Locator: SOCKET 0 CHANNEL 2 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000E, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM030 J13
+	Bank Locator: SOCKET 0 CHANNEL 3 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E262B5
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000F, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM031 J14
+	Bank Locator: SOCKET 0 CHANNEL 3 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0010, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM040 J25
+	Bank Locator: SOCKET 0 CHANNEL 4 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E245A8
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0011, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM041 J26
+	Bank Locator: SOCKET 0 CHANNEL 4 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0012, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM050 J23
+	Bank Locator: SOCKET 0 CHANNEL 5 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E26584
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0013, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM051 J24
+	Bank Locator: SOCKET 0 CHANNEL 5 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0014, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM060 J17
+	Bank Locator: SOCKET 0 CHANNEL 6 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x4062821B
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0015, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM061 J18
+	Bank Locator: SOCKET 0 CHANNEL 6 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0016, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM070 J15
+	Bank Locator: SOCKET 0 CHANNEL 7 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40630D54
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0017, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM071 J16
+	Bank Locator: SOCKET 0 CHANNEL 7 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0018, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM100 J43
+	Bank Locator: SOCKET 1 CHANNEL 0 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E2611F
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0019, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM101 J44
+	Bank Locator: SOCKET 1 CHANNEL 0 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001A, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM110 J37
+	Bank Locator: SOCKET 1 CHANNEL 1 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E260FF
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001B, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM111 J38
+	Bank Locator: SOCKET 1 CHANNEL 1 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001C, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM120 J35
+	Bank Locator: SOCKET 1 CHANNEL 2 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x4062E663
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001D, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM121 J36
+	Bank Locator: SOCKET 1 CHANNEL 2 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001E, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM130 J29
+	Bank Locator: SOCKET 1 CHANNEL 3 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40E26606
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001F, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM131 J30
+	Bank Locator: SOCKET 1 CHANNEL 3 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0020, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM140 J41
+	Bank Locator: SOCKET 1 CHANNEL 4 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x4062821D
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0021, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM141 J42
+	Bank Locator: SOCKET 1 CHANNEL 4 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0022, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM150 J39
+	Bank Locator: SOCKET 1 CHANNEL 5 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x4062D2A0
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0023, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM151 J40
+	Bank Locator: SOCKET 1 CHANNEL 5 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0024, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM160 J33
+	Bank Locator: SOCKET 1 CHANNEL 6 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x40631235
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0025, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM161 J34
+	Bank Locator: SOCKET 1 CHANNEL 6 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0026, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM170 J31
+	Bank Locator: SOCKET 1 CHANNEL 7 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Samsung
+	Serial Number: 0x4062EA37
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
+	Rank: 2
+	Configured Clock Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0027, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM171 J32
+	Bank Locator: SOCKET 1 CHANNEL 7 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Clock Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+dmidecode -t cache 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0028, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Instruction Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 4096 kB
+	Maximum Size: 4096 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Instruction
+	Associativity: 8-way Set-associative
+
+Handle 0x0029, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Data Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 4096 kB
+	Maximum Size: 4096 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Data
+	Associativity: 8-way Set-associative
+
+Handle 0x002A, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 32768 kB
+	Maximum Size: 32768 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 8-way Set-associative
+
+Handle 0x002B, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3 Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 61440 kB
+	Maximum Size: 61440 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x002D, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Instruction Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 4096 kB
+	Maximum Size: 4096 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Instruction
+	Associativity: 8-way Set-associative
+
+Handle 0x002E, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Data Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 4096 kB
+	Maximum Size: 4096 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Data
+	Associativity: 8-way Set-associative
+
+Handle 0x002F, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 32768 kB
+	Maximum Size: 32768 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 8-way Set-associative
+
+Handle 0x0030, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3 Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 61440 kB
+	Maximum Size: 61440 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+dmidecode -t connector 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+dmidecode -t slot 
+# dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x003B, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot1
+	Type: x16 PCI Express x16
+	Current Usage: Available
+	Length: Other
+	ID: 1
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003C, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot2
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 2
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003D, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot3
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 3
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003E, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot4
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 4
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003F, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot5
+	Type: x16 PCI Express x16
+	Current Usage: Available
+	Length: Other
+	ID: 5
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x0040, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot5409
+	Type: x8 PCI Express x8
+	Current Usage: In Use
+	Length: Other
+	ID: 33
+	Characteristics: None
+	Bus Address: 0000:84:00.0
+
+Handle 0x0041, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot7
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 7
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x0042, DMI type 9, 17 bytes
+System Slot Information
+	Designation: PCIE Slot8
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 8
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+
+
+****************
+cat /proc/cupinfo
+processor	: 0
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 1
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 2
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 3
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 4
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 5
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 6
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 7
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 8
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 9
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 10
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 11
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 12
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 13
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 14
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 15
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 16
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 17
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 18
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 19
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 20
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 21
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 22
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 23
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 24
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 25
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 26
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 27
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 28
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 29
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 30
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 31
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 32
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 33
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 34
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 35
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 36
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 37
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 38
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 39
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 40
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 41
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 42
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 43
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 44
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 45
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 46
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 47
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 48
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 49
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 50
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 51
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 52
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 53
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 54
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 55
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 56
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 57
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 58
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 59
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 60
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 61
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 62
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 63
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 64
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 65
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 66
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 67
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 68
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 69
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 70
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 71
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 72
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 73
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 74
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 75
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 76
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 77
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 78
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 79
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 80
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 81
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 82
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 83
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 84
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 85
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 86
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 87
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 88
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 89
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 90
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 91
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 92
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 93
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 94
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 95
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 96
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 97
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 98
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 99
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 100
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 101
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 102
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 103
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 104
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 105
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 106
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 107
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 108
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 109
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 110
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 111
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 112
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 113
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 114
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 115
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 116
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 117
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 118
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 119
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 120
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 121
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 122
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 123
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 124
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 125
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 126
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 127
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x1
+CPU part	: 0xd01
+CPU revision	: 0
+
+
+
+****************
+cat /proc/meminfo
+MemTotal:       535422144 kB
+MemFree:        520667712 kB
+MemAvailable:   482636032 kB
+Buffers:            5632 kB
+Cached:          4945664 kB
+SwapCached:            0 kB
+Active:          2574208 kB
+Inactive:        2551360 kB
+Active(anon):     224768 kB
+Inactive(anon):    11840 kB
+Active(file):    2349440 kB
+Inactive(file):  2539520 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       4194240 kB
+SwapFree:        4194240 kB
+Dirty:              8640 kB
+Writeback:             0 kB
+AnonPages:        174912 kB
+Mapped:            41792 kB
+Shmem:             61760 kB
+Slab:            1076096 kB
+SReclaimable:     217344 kB
+SUnreclaim:       858752 kB
+KernelStack:       85312 kB
+PageTables:         5888 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    271905280 kB
+Committed_AS:     621760 kB
+VmallocTotal:   133009637312 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:     524288 kB
+
+
+****************
