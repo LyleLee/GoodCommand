@@ -1,0 +1,5 @@
+[localiso]
+name=RHEL7.6_local_iso_repo
+baseurl=file:///mnt/cd_redhat/
+enable=1
+gpgcheck=0
