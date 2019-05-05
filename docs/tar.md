@@ -14,3 +14,9 @@ depth=2
 ```
 tar --exclude="*/*/*" -tf file.tar
 ```
+
+解压命令
+```
+tar -zxvf xx.tar.gz
+tar -jxvf xx.tar.bz2
+```
