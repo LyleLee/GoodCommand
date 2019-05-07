@@ -1,32 +1,22 @@
 #!/bin/bash
 
-HOME_DIR=$(cd $(dirname $0);pwd)
-LOG_DETAIL=$HOME_DIR"/fio_detail.log"
-LOG_SIMPLE=""
-DEV_NAME=""
-if [ "$(uname -m)" = "x86_64" ]; then
-    LOG_DETAIL=$HOME_DIR"/x86_fio_detail.log"
-    LOG_SIMPLE=$HOME_DIR"/x86_fio_simple.log"
-    DEV_NAME="/dev/sdb"
-    echo "x86_64 set $DEV_NAME"
-    
-elif [ "$(uname -m)" = "aarch64" ]; then
-    LOG_DETAIL=$HOME_DIR"/arm_fio_detail.log"
-    LOG_SIMPLE=$HOME_DIR"/arm_fio_simple.log"
-    DEV_NAME="/dev/sdc"
-    echo "aarch64 set $DEV_NAME"
-else
-    echo "unrecognize system when using uname -m"
-    exit
-fi
+#config here you disk you want to run fio
+
+DISK="/dev/sdb"
+SDX="${DISK##*/}" #get sdb. delete charactor from left to right until meet /
+
+HOME_DIR=$(cd "$(dirname "$0")";pwd)
+LOG_DETAIL="${HOME_DIR}/$(uname -m)_${SDX}_fio_detail.txt"
+LOG_SIMPLE="${HOME_DIR}/$(uname -m)_${SDX}_fio_SIMPLE.txt"
+
 
 
 if [ -e $LOG_DETAIL ]; then
-	rm $LOG_DETAIL
+	echo "" > $LOG_DETAIL
 fi
 
 if [ -e $LOG_SIMPLE ]; then
-	rm $LOG_SIMPLE
+	echo "" > $LOG_SIMPLE
 fi
 
 bs=(4k 8k 1m 4m)
@@ -35,11 +25,14 @@ numjob=(1 8 16 32 64)
 iodepth=(1 8 16 32 64 128 256)
 
 count=0
+
+printf "number\t  block_size\t numjobs\t iodepth\t iops\t bandwith\t lat\t cpu_user\t cpu_sys\n" >> $LOG_SIMPLE
+
 for b in ${bs[@]}; do
     for ro in ${rw[@]}; do
 		for n in ${numjob[@]}; do
 			for d in ${iodepth[@]}; do
-                printf "%d\t %s\t %s\t %s\t %d\t " $count $b $ro $n $d | tee -a $LOG_SIMPLE -a $LOG_DETAIL #输出到屏幕同时到文件
+                printf "%d\t %s\t %-10s\t %s\t %d\t " $count $b $ro $n $d | tee -a $LOG_SIMPLE -a $LOG_DETAIL #输出到屏幕同时到文件
 				echo " -----------------------------------------------------" >> $LOG_DETAIL
                 
                 if [ $(uname -m) = "aarch64" ]; then
@@ -48,7 +41,7 @@ for b in ${bs[@]}; do
                 else
                     numa=""
                 fi
-                result=$(${numa} fio --ramp_time=5 --runtime=60 --ioengine=libaio --filename=$DEV_NAME --name="$count-$b-$ro-$n-$d" --bs=$b \
+                result=$(${numa} fio --ramp_time=5 --runtime=60 --ioengine=libaio --filename=$DISK --name="$count-$b-$ro-$n-$d" --bs=$b \
                         --rw=$ro \
                         --numjobs=$n \
                         --iodepth=$d \
