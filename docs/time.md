@@ -85,10 +85,10 @@ timedatectl list-timezones
 set-timezone Asia/Shanghai
 
 #redhat 8.0 chrony作为NTP客户端使用如下命令查看ntp同步状态
-#查看服务
-systemctl status chronyd
-#查看同步状态
-chronyc sourcestats
+systemctl status chronyd    #查看服务
+systemctl enable chronyd    #开机启动
+systemctl start chronyd     #启动服务
+chronyc sourcestats     #查看同步状态
 ```
 ```
 [root@localhost linux]# timedatectl
@@ -104,3 +104,10 @@ NTP synchronized: yes
 ```
 
 RTC时间写如后，可以保证/var/log/message和/var/log/dmesg的时间在每次重启后对的。
+
+local时间写入RTC
+```
+timedatectl set-local-rtc 1
+```
+参考教程
+[https://www.maketecheasier.com/timedatectl-control-system-time-date-linux/](https://www.maketecheasier.com/timedatectl-control-system-time-date-linux/)

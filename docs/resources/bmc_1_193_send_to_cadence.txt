@@ -1,268 +1,155 @@
 lscpu
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              128
-On-line CPU(s) list: 0-127
-Thread(s) per core:  1
-Core(s) per socket:  64
-Socket(s):           2
-NUMA node(s):        4
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-CPU max MHz:         2600.0000
-CPU min MHz:         200.0000
-BogoMIPS:            200.00
-L1d cache:           64K
-L1i cache:           64K
-L2 cache:            512K
-L3 cache:            32768K
-NUMA node0 CPU(s):   0-31
-NUMA node1 CPU(s):   32-63
-NUMA node2 CPU(s):   64-95
-NUMA node3 CPU(s):   96-127
-Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Architecture:          aarch64
+Byte Order:            Little Endian
+CPU(s):                128
+On-line CPU(s) list:   0-127
+Thread(s) per core:    1
+Core(s) per socket:    64
+Socket(s):             2
+NUMA node(s):          4
+Model:                 0
+CPU max MHz:           2600.0000
+CPU min MHz:           200.0000
+BogoMIPS:              200.00
+L1d cache:             64K
+L1i cache:             64K
+L2 cache:              512K
+L3 cache:              32768K
+NUMA node0 CPU(s):     0-31
+NUMA node1 CPU(s):     32-63
+NUMA node2 CPU(s):     64-95
+NUMA node3 CPU(s):     96-127
+Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 
 
 ****************
 lsblk
-NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-loop0           7:0    0  4.8G  1 loop /mnt/iso
-sda             8:0    0  3.7T  0 disk 
-├─sda1          8:1    0   20G  0 part 
-├─sda2          8:2    0  600M  0 part /boot/efi
-├─sda3          8:3    0    1G  0 part /boot
-└─sda4          8:4    0  3.6T  0 part 
-  ├─rhel-root 253:0    0   50G  0 lvm  /
-  ├─rhel-swap 253:1    0    4G  0 lvm  [SWAP]
-  └─rhel-home 253:2    0  3.6T  0 lvm  /home
-sdb             8:16   0  3.7T  0 disk 
-└─sdb1          8:17   0    2T  0 part 
+NAME          MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sdb             8:16   0 745.2G  0 disk 
+loop0           7:0    0     3G  1 loop /mnt/iso
+sda             8:0    0 745.2G  0 disk 
+├─sda2          8:2    0     1G  0 part /boot
+├─sda3          8:3    0   744G  0 part 
+│ ├─rhel-swap 253:1    0     4G  0 lvm  [SWAP]
+│ ├─rhel-home 253:2    0   690G  0 lvm  /home
+│ └─rhel-root 253:0    0    50G  0 lvm  /
+└─sda1          8:1    0   200M  0 part /boot/efi
 
 
 ****************
 df
 Filesystem             Size  Used Avail Use% Mounted on
-devtmpfs               128G     0  128G   0% /dev
-tmpfs                  128G     0  128G   0% /dev/shm
-tmpfs                  128G   54M  128G   1% /run
-tmpfs                  128G     0  128G   0% /sys/fs/cgroup
-/dev/mapper/rhel-root   50G  8.8G   42G  18% /
-/dev/loop0             4.8G  4.8G     0 100% /mnt/iso
-/dev/mapper/rhel-home  3.6T   26G  3.6T   1% /home
-/dev/sda3             1014M  148M  867M  15% /boot
-/dev/sda2              599M  6.2M  593M   2% /boot/efi
-tmpfs                   26G     0   26G   0% /run/user/0
+devtmpfs               256G     0  256G   0% /dev
+tmpfs                  256G     0  256G   0% /dev/shm
+tmpfs                  256G   61M  256G   1% /run
+tmpfs                  256G     0  256G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   50G   11G   39G  22% /
+/dev/mapper/rhel-home  690G   33M  690G   1% /home
+/dev/sda2             1014M  293M  722M  29% /boot
+/dev/loop0             3.0G  3.0G     0 100% /mnt/iso
+/dev/sda1              200M  7.8M  193M   4% /boot/efi
+tmpfs                   52G     0   52G   0% /run/user/0
 
 
 ****************
 smartctl
-smartctl 6.6 2017-11-05 r4594 [aarch64-linux-4.18.0-64.el8.aarch64] (local build)
-Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+smartctl -a /dev/sda
+smartctl 6.5 2016-05-07 r4318 [aarch64-linux-4.14.0-115.el7a.aarch64] (local build)
+Copyright (C) 2002-16, Bruce Allen, Christian Franke, www.smartmontools.org
 
 === START OF INFORMATION SECTION ===
-Model Family:     Seagate Enterprise Capacity 3.5 HDD
-Device Model:     ST4000NM0035-1V4107
-Serial Number:    ZC14RZHH
-LU WWN Device Id: 5 000c50 0a60706f1
-Firmware Version: TN03
-User Capacity:    4,000,787,030,016 bytes [4.00 TB]
-Sector Size:      512 bytes logical/physical
-Rotation Rate:    7200 rpm
-Form Factor:      3.5 inches
-Device is:        In smartctl database [for details use: -P show]
-ATA Version is:   ACS-3 T13/2161-D revision 5
-SATA Version is:  SATA 3.1, 6.0 Gb/s (current: 6.0 Gb/s)
-Local Time is:    Fri Jun 22 07:17:09 2018 EDT
-SMART support is: Available - device has SMART capability.
-SMART support is: Enabled
+Vendor:               HUAWEI
+Product:              HWE32SS3008M001N
+Revision:             2774
+Compliance:           SPC-4
+User Capacity:        800,166,076,416 bytes [800 GB]
+Logical block size:   512 bytes
+Physical block size:  4096 bytes
+LU is resource provisioned, LBPRZ=1
+Rotation Rate:        Solid State Device
+Form Factor:          2.5 inches
+Logical Unit id:      0x5d0efc1ff0589002
+Serial number:        2102311TNB10J8000464
+Device type:          disk
+Transport protocol:   SAS (SPL-3)
+Local Time is:        Mon Apr 22 04:54:21 2019 EDT
+SMART support is:     Available - device has SMART capability.
+SMART support is:     Enabled
+Temperature Warning:  Enabled
 
 === START OF READ SMART DATA SECTION ===
-SMART overall-health self-assessment test result: PASSED
+SMART Health Status: OK
 
-General SMART Values:
-Offline data collection status:  (0x82)	Offline data collection activity
-					was completed without error.
-					Auto Offline Data Collection: Enabled.
-Self-test execution status:      (   0)	The previous self-test routine completed
-					without error or no self-test has ever 
-					been run.
-Total time to complete Offline 
-data collection: 		(  584) seconds.
-Offline data collection
-capabilities: 			 (0x7b) SMART execute Offline immediate.
-					Auto Offline data collection on/off support.
-					Suspend Offline collection upon new
-					command.
-					Offline surface scan supported.
-					Self-test supported.
-					Conveyance Self-test supported.
-					Selective Self-test supported.
-SMART capabilities:            (0x0003)	Saves SMART data before entering
-					power-saving mode.
-					Supports SMART auto save timer.
-Error logging capability:        (0x01)	Error logging supported.
-					General Purpose Logging supported.
-Short self-test routine 
-recommended polling time: 	 (   1) minutes.
-Extended self-test routine
-recommended polling time: 	 ( 433) minutes.
-Conveyance self-test routine
-recommended polling time: 	 (   2) minutes.
-SCT capabilities: 	       (0x50bd)	SCT Status supported.
-					SCT Error Recovery Control supported.
-					SCT Feature Control supported.
-					SCT Data Table supported.
+Percentage used endurance indicator: 0%
+Current Drive Temperature:     32 C
+Drive Trip Temperature:        78 C
 
-SMART Attributes Data Structure revision number: 10
-Vendor Specific SMART Attributes with Thresholds:
-ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
-  1 Raw_Read_Error_Rate     0x000f   081   067   044    Pre-fail  Always       -       115892141
-  3 Spin_Up_Time            0x0003   093   093   000    Pre-fail  Always       -       0
-  4 Start_Stop_Count        0x0032   100   100   020    Old_age   Always       -       43
-  5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
-  7 Seek_Error_Rate         0x000f   078   060   045    Pre-fail  Always       -       65190238
-  9 Power_On_Hours          0x0032   100   100   000    Old_age   Always       -       847 (124 104 0)
- 10 Spin_Retry_Count        0x0013   100   100   097    Pre-fail  Always       -       0
- 12 Power_Cycle_Count       0x0032   100   100   020    Old_age   Always       -       38
-184 End-to-End_Error        0x0032   100   100   099    Old_age   Always       -       0
-187 Reported_Uncorrect      0x0032   100   100   000    Old_age   Always       -       0
-188 Command_Timeout         0x0032   100   100   000    Old_age   Always       -       0 0 0
-189 High_Fly_Writes         0x003a   100   100   000    Old_age   Always       -       0
-190 Airflow_Temperature_Cel 0x0022   065   060   040    Old_age   Always       -       35 (Min/Max 34/36)
-191 G-Sense_Error_Rate      0x0032   100   100   000    Old_age   Always       -       127
-192 Power-Off_Retract_Count 0x0032   100   100   000    Old_age   Always       -       11
-193 Load_Cycle_Count        0x0032   100   100   000    Old_age   Always       -       1061
-194 Temperature_Celsius     0x0022   035   040   000    Old_age   Always       -       35 (0 23 0 0 0)
-195 Hardware_ECC_Recovered  0x001a   010   001   000    Old_age   Always       -       115892141
-197 Current_Pending_Sector  0x0012   100   100   000    Old_age   Always       -       0
-198 Offline_Uncorrectable   0x0010   100   100   000    Old_age   Offline      -       0
-199 UDMA_CRC_Error_Count    0x003e   200   200   000    Old_age   Always       -       0
-240 Head_Flying_Hours       0x0000   100   253   000    Old_age   Offline      -       114h+15m+27.510s
-241 Total_LBAs_Written      0x0000   100   253   000    Old_age   Offline      -       839789435
-242 Total_LBAs_Read         0x0000   100   253   000    Old_age   Offline      -       16876607
+Manufactured in week 31 of year 2018
+Specified cycle count over device lifetime:  0
+Accumulated start-stop cycles:  0
+Specified load-unload count over device lifetime:  0
+Accumulated load-unload cycles:  0
+Elements in grown defect list: 0
 
-SMART Error Log Version: 1
-No Errors Logged
+Error counter log:
+           Errors Corrected by           Total   Correction     Gigabytes    Total
+               ECC          rereads/    errors   algorithm      processed    uncorrected
+           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+read:          0        0         0         0          0          2.772           0
+write:         0        0         0         0          0         16.576           0
 
-SMART Self-test log structure revision number 1
-Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Short offline       Completed without error       00%       746         -
-# 2  Short offline       Completed without error       00%       721         -
-# 3  Short offline       Completed without error       00%       717         -
+Non-medium error count:        0
 
-SMART Selective self-test log data structure revision number 1
- SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS
-    1        0        0  Not_testing
-    2        0        0  Not_testing
-    3        0        0  Not_testing
-    4        0        0  Not_testing
-    5        0        0  Not_testing
-Selective self-test flags (0x0):
-  After scanning selected spans, do NOT read-scan remainder of disk.
-If Selective self-test is pending on power-up, resume after 0 minute delay.
+No self-tests have been logged
 
-smartctl 6.6 2017-11-05 r4594 [aarch64-linux-4.18.0-64.el8.aarch64] (local build)
-Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+smartctl -a /dev/sdb
+smartctl 6.5 2016-05-07 r4318 [aarch64-linux-4.14.0-115.el7a.aarch64] (local build)
+Copyright (C) 2002-16, Bruce Allen, Christian Franke, www.smartmontools.org
 
 === START OF INFORMATION SECTION ===
-Model Family:     Seagate Enterprise Capacity 3.5 HDD
-Device Model:     ST4000NM0035-1V4107
-Serial Number:    ZC14RZJD
-LU WWN Device Id: 5 000c50 0a607257d
-Firmware Version: TN03
-User Capacity:    4,000,787,030,016 bytes [4.00 TB]
-Sector Size:      512 bytes logical/physical
-Rotation Rate:    7200 rpm
-Form Factor:      3.5 inches
-Device is:        In smartctl database [for details use: -P show]
-ATA Version is:   ACS-3 T13/2161-D revision 5
-SATA Version is:  SATA 3.1, 6.0 Gb/s (current: 6.0 Gb/s)
-Local Time is:    Fri Jun 22 07:17:09 2018 EDT
-SMART support is: Available - device has SMART capability.
-SMART support is: Enabled
+Vendor:               HUAWEI
+Product:              HWE32SS3008M001N
+Revision:             2774
+Compliance:           SPC-4
+User Capacity:        800,166,076,416 bytes [800 GB]
+Logical block size:   512 bytes
+Physical block size:  4096 bytes
+LU is resource provisioned, LBPRZ=1
+Rotation Rate:        Solid State Device
+Form Factor:          2.5 inches
+Logical Unit id:      0x5d0efc1ff04fd002
+Serial number:        2102311TNB10J8000450
+Device type:          disk
+Transport protocol:   SAS (SPL-3)
+Local Time is:        Mon Apr 22 04:54:21 2019 EDT
+SMART support is:     Available - device has SMART capability.
+SMART support is:     Enabled
+Temperature Warning:  Enabled
 
 === START OF READ SMART DATA SECTION ===
-SMART overall-health self-assessment test result: PASSED
+SMART Health Status: OK
 
-General SMART Values:
-Offline data collection status:  (0x82)	Offline data collection activity
-					was completed without error.
-					Auto Offline Data Collection: Enabled.
-Self-test execution status:      (   0)	The previous self-test routine completed
-					without error or no self-test has ever 
-					been run.
-Total time to complete Offline 
-data collection: 		(  575) seconds.
-Offline data collection
-capabilities: 			 (0x7b) SMART execute Offline immediate.
-					Auto Offline data collection on/off support.
-					Suspend Offline collection upon new
-					command.
-					Offline surface scan supported.
-					Self-test supported.
-					Conveyance Self-test supported.
-					Selective Self-test supported.
-SMART capabilities:            (0x0003)	Saves SMART data before entering
-					power-saving mode.
-					Supports SMART auto save timer.
-Error logging capability:        (0x01)	Error logging supported.
-					General Purpose Logging supported.
-Short self-test routine 
-recommended polling time: 	 (   1) minutes.
-Extended self-test routine
-recommended polling time: 	 ( 420) minutes.
-Conveyance self-test routine
-recommended polling time: 	 (   2) minutes.
-SCT capabilities: 	       (0x50bd)	SCT Status supported.
-					SCT Error Recovery Control supported.
-					SCT Feature Control supported.
-					SCT Data Table supported.
+Percentage used endurance indicator: 0%
+Current Drive Temperature:     30 C
+Drive Trip Temperature:        78 C
 
-SMART Attributes Data Structure revision number: 10
-Vendor Specific SMART Attributes with Thresholds:
-ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
-  1 Raw_Read_Error_Rate     0x000f   081   081   044    Pre-fail  Always       -       139978018
-  3 Spin_Up_Time            0x0003   093   093   000    Pre-fail  Always       -       0
-  4 Start_Stop_Count        0x0032   100   100   020    Old_age   Always       -       27
-  5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
-  7 Seek_Error_Rate         0x000f   066   060   045    Pre-fail  Always       -       3860302
-  9 Power_On_Hours          0x0032   097   097   000    Old_age   Always       -       3170 (126 36 0)
- 10 Spin_Retry_Count        0x0013   100   100   097    Pre-fail  Always       -       0
- 12 Power_Cycle_Count       0x0032   100   100   020    Old_age   Always       -       27
-184 End-to-End_Error        0x0032   100   100   099    Old_age   Always       -       0
-187 Reported_Uncorrect      0x0032   100   100   000    Old_age   Always       -       0
-188 Command_Timeout         0x0032   100   100   000    Old_age   Always       -       0 0 0
-189 High_Fly_Writes         0x003a   100   100   000    Old_age   Always       -       0
-190 Airflow_Temperature_Cel 0x0022   064   062   040    Old_age   Always       -       36 (Min/Max 34/36)
-191 G-Sense_Error_Rate      0x0032   100   100   000    Old_age   Always       -       21
-192 Power-Off_Retract_Count 0x0032   100   100   000    Old_age   Always       -       10
-193 Load_Cycle_Count        0x0032   100   100   000    Old_age   Always       -       217
-194 Temperature_Celsius     0x0022   036   040   000    Old_age   Always       -       36 (0 23 0 0 0)
-195 Hardware_ECC_Recovered  0x001a   019   019   000    Old_age   Always       -       139978018
-197 Current_Pending_Sector  0x0012   100   100   000    Old_age   Always       -       0
-198 Offline_Uncorrectable   0x0010   100   100   000    Old_age   Offline      -       0
-199 UDMA_CRC_Error_Count    0x003e   200   200   000    Old_age   Always       -       0
-240 Head_Flying_Hours       0x0000   100   253   000    Old_age   Offline      -       57h+13m+53.147s
-241 Total_LBAs_Written      0x0000   100   253   000    Old_age   Offline      -       139097910
-242 Total_LBAs_Read         0x0000   100   253   000    Old_age   Offline      -       880108
+Manufactured in week 31 of year 2018
+Specified cycle count over device lifetime:  0
+Accumulated start-stop cycles:  0
+Specified load-unload count over device lifetime:  0
+Accumulated load-unload cycles:  0
+Elements in grown defect list: 0
 
-SMART Error Log Version: 1
-No Errors Logged
+Error counter log:
+           Errors Corrected by           Total   Correction     Gigabytes    Total
+               ECC          rereads/    errors   algorithm      processed    uncorrected
+           fast | delayed   rewrites  corrected  invocations   [10^9 bytes]  errors
+read:          0        0         0         0          0         71.548           0
+write:         0        0         0         0          0         30.731           0
 
-SMART Self-test log structure revision number 1
-No self-tests have been logged.  [To run self-tests, use: smartctl -t]
+Non-medium error count:        0
 
-SMART Selective self-test log data structure revision number 1
- SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS
-    1        0        0  Not_testing
-    2        0        0  Not_testing
-    3        0        0  Not_testing
-    4        0        0  Not_testing
-    5        0        0  Not_testing
-Selective self-test flags (0x0):
-  After scanning selected spans, do NOT read-scan remainder of disk.
-If Selective self-test is pending on power-up, resume after 0 minute delay.
+No self-tests have been logged
 
 
 
@@ -274,91 +161,40 @@ ip a
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
-2: enp132s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether e8:4d:d0:ca:80:0b brd ff:ff:ff:ff:ff:ff
-    inet 192.168.2.15/24 brd 192.168.2.255 scope global noprefixroute enp132s0f0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::2127:ca8:8246:98cd/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-3: enp132s0f1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
-    link/ether e8:4d:d0:ca:80:0c brd ff:ff:ff:ff:ff:ff
-4: enp129s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 28:41:c6:aa:53:2c brd ff:ff:ff:ff:ff:ff
-    inet 192.168.40.10/24 brd 192.168.40.255 scope global noprefixroute enp129s0f0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::4b70:1b96:66f3:ca9a/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-5: enp132s0f2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether e8:4d:d0:ca:80:0d brd ff:ff:ff:ff:ff:ff
-    inet 192.168.22.10/24 brd 192.168.22.255 scope global noprefixroute enp132s0f2
-       valid_lft forever preferred_lft forever
-    inet6 fe80::54d2:4a9e:8ffc:abca/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-6: enp132s0f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
-    link/ether e8:4d:d0:ca:80:0e brd ff:ff:ff:ff:ff:ff
-7: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 00:18:2d:00:00:34 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.10.10/24 brd 192.168.10.255 scope global noprefixroute eno1
-       valid_lft forever preferred_lft forever
-    inet6 fe80::d1d2:693:ccad:4c55/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-8: eno2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 00:18:2d:01:00:34 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.11.10/24 brd 192.168.11.255 scope global noprefixroute eno2
-       valid_lft forever preferred_lft forever
-    inet6 fe80::d17:1afc:66d1:5038/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-9: eno3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 00:18:2d:02:00:34 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.13.10/24 brd 192.168.13.255 scope global noprefixroute eno3
-       valid_lft forever preferred_lft forever
-    inet6 fe80::9367:a37e:2856:24a3/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-10: enp129s0f1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 28:41:c6:aa:53:2d brd ff:ff:ff:ff:ff:ff
-    inet 192.168.41.10/24 brd 192.168.41.255 scope global noprefixroute enp129s0f1
-       valid_lft forever preferred_lft forever
-    inet6 fe80::18af:dc6a:6bbc:aa24/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-11: enp3s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
-    link/ether 10:c1:72:8f:7b:18 brd ff:ff:ff:ff:ff:ff
-12: eno4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 00:18:2d:03:00:34 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.12.10/24 brd 192.168.12.255 scope global noprefixroute eno4
-       valid_lft forever preferred_lft forever
-    inet6 fe80::3508:ddc7:998e:6fc7/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-13: enp189s0f0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
-    link/ether 00:18:2d:04:00:34 brd ff:ff:ff:ff:ff:ff
-14: enp4s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
-    link/ether 10:c1:72:8f:7b:19 brd ff:ff:ff:ff:ff:ff
-15: eno5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 10:c1:72:8f:7b:1a brd ff:ff:ff:ff:ff:ff
-    inet 192.168.32.10/24 brd 192.168.32.255 scope global noprefixroute eno5
-       valid_lft forever preferred_lft forever
-    inet6 fe80::e91:cd96:f2b8:28cb/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-16: enp6s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether 10:c1:72:8f:7b:1b brd ff:ff:ff:ff:ff:ff
-    inet 192.168.33.10/24 brd 192.168.33.255 scope global noprefixroute enp6s0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::ccc3:4e49:750b:9db1/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
+2: eno1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:00:00:33 brd ff:ff:ff:ff:ff:ff
+3: eno2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:18:2d:01:00:33 brd ff:ff:ff:ff:ff:ff
+4: eno3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:02:00:33 brd ff:ff:ff:ff:ff:ff
+5: eno4: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:03:00:33 brd ff:ff:ff:ff:ff:ff
+6: enp189s0f0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:2d:04:00:33 brd ff:ff:ff:ff:ff:ff
+7: enp132s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 28:41:c6:07:cd:29 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.187/24 brd 192.168.2.255 scope global dynamic enp132s0f0
+       valid_lft 68685sec preferred_lft 68685sec
+8: enp132s0f1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2a brd ff:ff:ff:ff:ff:ff
+9: enp132s0f2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2b brd ff:ff:ff:ff:ff:ff
+10: enp132s0f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 28:41:c6:07:cd:2c brd ff:ff:ff:ff:ff:ff
 
 
 ****************
 lspci
 -+-[0000:bc]---00.0-[bd]----00.0  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE/50GE/100GE RDMA Network Controller
  +-[0000:bb]---00.0  Huawei Technologies Co., Ltd. HiSilicon Embedded DMA Engine
- +-[0000:ba]-+-00.0  Huawei Technologies Co., Ltd. Device a23b
+ +-[0000:ba]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 1.1 Host Controller
  |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
  |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
  +-[0000:b8]-+-00.0-[b9]----00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
  |           \-01.0  Huawei Technologies Co., Ltd. HiSilicon RDE Engine
  +-[0000:b4]-+-00.0-[b5]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine
  |           \-01.0-[b6]----00.0  Huawei Technologies Co., Ltd. HiSilicon SEC Engine
- +-[0000:80]-+-00.0-[81]--+-00.0  Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection
- |           |            \-00.1  Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection
+ +-[0000:80]-+-00.0-[81]--
  |           +-08.0-[82]--
  |           +-0c.0-[83]--
  |           \-10.0-[84]--+-00.0  Intel Corporation I350 Gigabit Network Connection
@@ -370,7 +206,7 @@ lspci
  |                        +-00.2  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE Network Controller
  |                        \-00.3  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE Network Controller
  +-[0000:7b]---00.0  Huawei Technologies Co., Ltd. HiSilicon Embedded DMA Engine
- +-[0000:7a]-+-00.0  Huawei Technologies Co., Ltd. Device a23b
+ +-[0000:7a]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 1.1 Host Controller
  |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
  |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
  +-[0000:78]-+-00.0-[79]----00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
@@ -380,20 +216,18 @@ lspci
  |           +-02.0  Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA
  |           +-03.0  Huawei Technologies Co., Ltd. HiSilicon AHCI HBA
  |           \-04.0  Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA
- \-[0000:00]-+-00.0-[01-06]----00.0-[02-06]--+-00.0-[03]----00.0  Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE)
-             |                               +-01.0-[04]----00.0  Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE)
-             |                               +-02.0-[05]----00.0  Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE)
-             |                               \-03.0-[06]----00.0  Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE)
-             +-04.0-[07]--
-             +-08.0-[08]--
-             +-0c.0-[09]--
-             +-10.0-[0a]----00.0  Huawei Technologies Co., Ltd. Hi1710 [iBMC Intelligent Management system chip w/VGA support]
-             \-12.0-[0b]--
+ \-[0000:00]-+-00.0-[01]--
+             +-04.0-[02]--
+             +-08.0-[03]--
+             +-0c.0-[04]--
+             +-10.0-[05]----00.0  Huawei Technologies Co., Ltd. Hi1710 [iBMC Intelligent Management system chip w/VGA support]
+             \-12.0-[06]--
 
 
 ****************
 dmidecode
-# dmidecode 3.2
+dmidecode -t bios 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -434,7 +268,8 @@ BIOS Language Information
 		en|US|iso8859-1
 	Currently Installed Language: en|US|iso8859-1
 
-# dmidecode 3.2
+dmidecode -t system 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -444,7 +279,7 @@ System Information
 	Product Name: TaiShan 2280 V2
 	Version: V200R002C00
 	Serial Number: To be filled by O.E.M.
-	UUID: 3175829c-1dd2-11b2-b890-0018e1c5d866
+	UUID: 3171b158-1dd2-11b2-8f56-0018e1c5d866
 	Wake-up Type: Power Switch
 	SKU Number: To be filled by O.E.M.
 	Family: To be filled by O.E.M.
@@ -453,7 +288,8 @@ Handle 0x0005, DMI type 32, 11 bytes
 System Boot Information
 	Status: No errors detected
 
-# dmidecode 3.2
+dmidecode -t baseboard 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -536,7 +372,8 @@ Onboard Device
 	Type Instance: 8
 	Bus Address: 0000:74:03.0
 
-# dmidecode 3.2
+dmidecode -t chassis 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -558,7 +395,8 @@ Chassis Information
 	Contained Elements: 0
 	SKU Number: Not Specified
 
-# dmidecode 3.2
+dmidecode -t processor 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -624,7 +462,8 @@ Processor Information
 		Enhanced Virtualization
 		Power/Performance Control
 
-# dmidecode 3.2
+dmidecode -t memory 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -643,7 +482,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM000 J27
@@ -651,12 +490,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38366
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40631025
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -680,7 +519,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -691,7 +530,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM010 J21
@@ -699,12 +538,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE383C1
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E2663E
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -728,7 +567,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -739,7 +578,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM020 J19
@@ -747,12 +586,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38AAF
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E2564F
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -776,7 +615,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -787,7 +626,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM030 J13
@@ -795,12 +634,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38A5A
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E262B5
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -824,7 +663,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -835,7 +674,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM040 J25
@@ -843,12 +682,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE383E4
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E245A8
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -872,7 +711,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -883,7 +722,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM050 J23
@@ -891,12 +730,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38D54
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E26584
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -920,7 +759,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -931,7 +770,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM060 J17
@@ -939,12 +778,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38AD5
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x4062821B
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -968,7 +807,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -979,7 +818,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM070 J15
@@ -987,12 +826,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE383AD
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40630D54
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1016,7 +855,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1027,7 +866,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM100 J43
@@ -1035,12 +874,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38B48
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E2611F
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1064,7 +903,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1075,7 +914,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM110 J37
@@ -1083,12 +922,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38B28
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E260FF
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1112,7 +951,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1123,7 +962,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM120 J35
@@ -1131,12 +970,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE382DC
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x4062E663
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1160,7 +999,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1171,7 +1010,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM130 J29
@@ -1179,12 +1018,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE382E6
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40E26606
+	Asset Tag: 1840
+	Part Number: M393A4K40BB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1208,7 +1047,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1219,7 +1058,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM140 J41
@@ -1227,12 +1066,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38DCC
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x4062821D
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1256,7 +1095,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1267,7 +1106,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM150 J39
@@ -1275,12 +1114,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38AF8
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x4062D2A0
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1304,7 +1143,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1315,7 +1154,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM160 J33
@@ -1323,12 +1162,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE383C4
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x40631235
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1352,7 +1191,7 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
@@ -1363,7 +1202,7 @@ Memory Device
 	Error Information Handle: Not Provided
 	Total Width: 72 bits
 	Data Width: 64 bits
-	Size: 16384 MB
+	Size: 32 GB
 	Form Factor: DIMM
 	Set: None
 	Locator: DIMM170 J31
@@ -1371,12 +1210,12 @@ Memory Device
 	Type: DDR4
 	Type Detail: Synchronous Registered (Buffered)
 	Speed: 2666 MT/s
-	Manufacturer: Micron
-	Serial Number: 0x1CE38B35
-	Asset Tag: 1824
-	Part Number: 18ASF2G72PDZ-2G6D1  
+	Manufacturer: Samsung
+	Serial Number: 0x4062EA37
+	Asset Tag: 1834
+	Part Number: M393A4K40CB2-CTD    
 	Rank: 2
-	Configured Memory Speed: 2666 MT/s
+	Configured Clock Speed: 2666 MT/s
 	Minimum Voltage: 1.2 V
 	Maximum Voltage: 2.0 V
 	Configured Voltage: 1.2 V
@@ -1400,12 +1239,13 @@ Memory Device
 	Asset Tag: NO DIMM
 	Part Number: NO DIMM
 	Rank: Unknown
-	Configured Memory Speed: Unknown
+	Configured Clock Speed: Unknown
 	Minimum Voltage: Unknown
 	Maximum Voltage: Unknown
 	Configured Voltage: Unknown
 
-# dmidecode 3.2
+dmidecode -t cache 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
@@ -1537,23 +1377,25 @@ Cache Information
 	System Type: Unified
 	Associativity: 16-way Set-associative
 
-# dmidecode 3.2
+dmidecode -t connector 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
-# dmidecode 3.2
+dmidecode -t slot 
+# dmidecode 3.1
 Getting SMBIOS data from sysfs.
 SMBIOS 3.1.1 present.
 
 Handle 0x003B, DMI type 9, 17 bytes
 System Slot Information
-	Designation: PCIE Slot14110
+	Designation: PCIE Slot1
 	Type: x16 PCI Express x16
-	Current Usage: In Use
+	Current Usage: Available
 	Length: Other
-	ID: 30
+	ID: 1
 	Characteristics: None
-	Bus Address: 0000:01:00.0
+	Bus Address: 0000:00:00.0
 
 Handle 0x003C, DMI type 9, 17 bytes
 System Slot Information
@@ -1567,23 +1409,23 @@ System Slot Information
 
 Handle 0x003D, DMI type 9, 17 bytes
 System Slot Information
-	Designation: PCIE Slot6178
+	Designation: PCIE Slot3
 	Type: x8 PCI Express x8
-	Current Usage: In Use
+	Current Usage: Available
 	Length: Other
-	ID: 34
+	ID: 3
 	Characteristics: None
-	Bus Address: 0000:04:00.0
+	Bus Address: 0000:00:00.0
 
 Handle 0x003E, DMI type 9, 17 bytes
 System Slot Information
-	Designation: PCIE Slot4347
+	Designation: PCIE Slot4
 	Type: x8 PCI Express x8
-	Current Usage: In Use
+	Current Usage: Available
 	Length: Other
-	ID: 251
+	ID: 4
 	Characteristics: None
-	Bus Address: 0000:81:00.0
+	Bus Address: 0000:00:00.0
 
 Handle 0x003F, DMI type 9, 17 bytes
 System Slot Information
@@ -1631,7 +1473,7 @@ System Slot Information
 cat /proc/cupinfo
 processor	: 0
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1640,7 +1482,7 @@ CPU revision	: 0
 
 processor	: 1
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1649,7 +1491,7 @@ CPU revision	: 0
 
 processor	: 2
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1658,7 +1500,7 @@ CPU revision	: 0
 
 processor	: 3
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1667,7 +1509,7 @@ CPU revision	: 0
 
 processor	: 4
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1676,7 +1518,7 @@ CPU revision	: 0
 
 processor	: 5
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1685,7 +1527,7 @@ CPU revision	: 0
 
 processor	: 6
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1694,7 +1536,7 @@ CPU revision	: 0
 
 processor	: 7
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1703,7 +1545,7 @@ CPU revision	: 0
 
 processor	: 8
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1712,7 +1554,7 @@ CPU revision	: 0
 
 processor	: 9
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1721,7 +1563,7 @@ CPU revision	: 0
 
 processor	: 10
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1730,7 +1572,7 @@ CPU revision	: 0
 
 processor	: 11
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1739,7 +1581,7 @@ CPU revision	: 0
 
 processor	: 12
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1748,7 +1590,7 @@ CPU revision	: 0
 
 processor	: 13
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1757,7 +1599,7 @@ CPU revision	: 0
 
 processor	: 14
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1766,7 +1608,7 @@ CPU revision	: 0
 
 processor	: 15
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1775,7 +1617,7 @@ CPU revision	: 0
 
 processor	: 16
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1784,7 +1626,7 @@ CPU revision	: 0
 
 processor	: 17
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1793,7 +1635,7 @@ CPU revision	: 0
 
 processor	: 18
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1802,7 +1644,7 @@ CPU revision	: 0
 
 processor	: 19
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1811,7 +1653,7 @@ CPU revision	: 0
 
 processor	: 20
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1820,7 +1662,7 @@ CPU revision	: 0
 
 processor	: 21
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1829,7 +1671,7 @@ CPU revision	: 0
 
 processor	: 22
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1838,7 +1680,7 @@ CPU revision	: 0
 
 processor	: 23
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1847,7 +1689,7 @@ CPU revision	: 0
 
 processor	: 24
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1856,7 +1698,7 @@ CPU revision	: 0
 
 processor	: 25
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1865,7 +1707,7 @@ CPU revision	: 0
 
 processor	: 26
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1874,7 +1716,7 @@ CPU revision	: 0
 
 processor	: 27
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1883,7 +1725,7 @@ CPU revision	: 0
 
 processor	: 28
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1892,7 +1734,7 @@ CPU revision	: 0
 
 processor	: 29
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1901,7 +1743,7 @@ CPU revision	: 0
 
 processor	: 30
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1910,7 +1752,7 @@ CPU revision	: 0
 
 processor	: 31
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1919,7 +1761,7 @@ CPU revision	: 0
 
 processor	: 32
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1928,7 +1770,7 @@ CPU revision	: 0
 
 processor	: 33
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1937,7 +1779,7 @@ CPU revision	: 0
 
 processor	: 34
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1946,7 +1788,7 @@ CPU revision	: 0
 
 processor	: 35
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1955,7 +1797,7 @@ CPU revision	: 0
 
 processor	: 36
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1964,7 +1806,7 @@ CPU revision	: 0
 
 processor	: 37
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1973,7 +1815,7 @@ CPU revision	: 0
 
 processor	: 38
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1982,7 +1824,7 @@ CPU revision	: 0
 
 processor	: 39
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -1991,7 +1833,7 @@ CPU revision	: 0
 
 processor	: 40
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2000,7 +1842,7 @@ CPU revision	: 0
 
 processor	: 41
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2009,7 +1851,7 @@ CPU revision	: 0
 
 processor	: 42
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2018,7 +1860,7 @@ CPU revision	: 0
 
 processor	: 43
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2027,7 +1869,7 @@ CPU revision	: 0
 
 processor	: 44
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2036,7 +1878,7 @@ CPU revision	: 0
 
 processor	: 45
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2045,7 +1887,7 @@ CPU revision	: 0
 
 processor	: 46
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2054,7 +1896,7 @@ CPU revision	: 0
 
 processor	: 47
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2063,7 +1905,7 @@ CPU revision	: 0
 
 processor	: 48
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2072,7 +1914,7 @@ CPU revision	: 0
 
 processor	: 49
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2081,7 +1923,7 @@ CPU revision	: 0
 
 processor	: 50
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2090,7 +1932,7 @@ CPU revision	: 0
 
 processor	: 51
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2099,7 +1941,7 @@ CPU revision	: 0
 
 processor	: 52
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2108,7 +1950,7 @@ CPU revision	: 0
 
 processor	: 53
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2117,7 +1959,7 @@ CPU revision	: 0
 
 processor	: 54
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2126,7 +1968,7 @@ CPU revision	: 0
 
 processor	: 55
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2135,7 +1977,7 @@ CPU revision	: 0
 
 processor	: 56
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2144,7 +1986,7 @@ CPU revision	: 0
 
 processor	: 57
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2153,7 +1995,7 @@ CPU revision	: 0
 
 processor	: 58
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2162,7 +2004,7 @@ CPU revision	: 0
 
 processor	: 59
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2171,7 +2013,7 @@ CPU revision	: 0
 
 processor	: 60
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2180,7 +2022,7 @@ CPU revision	: 0
 
 processor	: 61
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2189,7 +2031,7 @@ CPU revision	: 0
 
 processor	: 62
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2198,7 +2040,7 @@ CPU revision	: 0
 
 processor	: 63
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2207,7 +2049,7 @@ CPU revision	: 0
 
 processor	: 64
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2216,7 +2058,7 @@ CPU revision	: 0
 
 processor	: 65
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2225,7 +2067,7 @@ CPU revision	: 0
 
 processor	: 66
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2234,7 +2076,7 @@ CPU revision	: 0
 
 processor	: 67
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2243,7 +2085,7 @@ CPU revision	: 0
 
 processor	: 68
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2252,7 +2094,7 @@ CPU revision	: 0
 
 processor	: 69
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2261,7 +2103,7 @@ CPU revision	: 0
 
 processor	: 70
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2270,7 +2112,7 @@ CPU revision	: 0
 
 processor	: 71
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2279,7 +2121,7 @@ CPU revision	: 0
 
 processor	: 72
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2288,7 +2130,7 @@ CPU revision	: 0
 
 processor	: 73
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2297,7 +2139,7 @@ CPU revision	: 0
 
 processor	: 74
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2306,7 +2148,7 @@ CPU revision	: 0
 
 processor	: 75
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2315,7 +2157,7 @@ CPU revision	: 0
 
 processor	: 76
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2324,7 +2166,7 @@ CPU revision	: 0
 
 processor	: 77
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2333,7 +2175,7 @@ CPU revision	: 0
 
 processor	: 78
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2342,7 +2184,7 @@ CPU revision	: 0
 
 processor	: 79
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2351,7 +2193,7 @@ CPU revision	: 0
 
 processor	: 80
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2360,7 +2202,7 @@ CPU revision	: 0
 
 processor	: 81
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2369,7 +2211,7 @@ CPU revision	: 0
 
 processor	: 82
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2378,7 +2220,7 @@ CPU revision	: 0
 
 processor	: 83
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2387,7 +2229,7 @@ CPU revision	: 0
 
 processor	: 84
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2396,7 +2238,7 @@ CPU revision	: 0
 
 processor	: 85
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2405,7 +2247,7 @@ CPU revision	: 0
 
 processor	: 86
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2414,7 +2256,7 @@ CPU revision	: 0
 
 processor	: 87
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2423,7 +2265,7 @@ CPU revision	: 0
 
 processor	: 88
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2432,7 +2274,7 @@ CPU revision	: 0
 
 processor	: 89
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2441,7 +2283,7 @@ CPU revision	: 0
 
 processor	: 90
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2450,7 +2292,7 @@ CPU revision	: 0
 
 processor	: 91
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2459,7 +2301,7 @@ CPU revision	: 0
 
 processor	: 92
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2468,7 +2310,7 @@ CPU revision	: 0
 
 processor	: 93
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2477,7 +2319,7 @@ CPU revision	: 0
 
 processor	: 94
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2486,7 +2328,7 @@ CPU revision	: 0
 
 processor	: 95
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2495,7 +2337,7 @@ CPU revision	: 0
 
 processor	: 96
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2504,7 +2346,7 @@ CPU revision	: 0
 
 processor	: 97
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2513,7 +2355,7 @@ CPU revision	: 0
 
 processor	: 98
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2522,7 +2364,7 @@ CPU revision	: 0
 
 processor	: 99
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2531,7 +2373,7 @@ CPU revision	: 0
 
 processor	: 100
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2540,7 +2382,7 @@ CPU revision	: 0
 
 processor	: 101
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2549,7 +2391,7 @@ CPU revision	: 0
 
 processor	: 102
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2558,7 +2400,7 @@ CPU revision	: 0
 
 processor	: 103
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2567,7 +2409,7 @@ CPU revision	: 0
 
 processor	: 104
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2576,7 +2418,7 @@ CPU revision	: 0
 
 processor	: 105
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2585,7 +2427,7 @@ CPU revision	: 0
 
 processor	: 106
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2594,7 +2436,7 @@ CPU revision	: 0
 
 processor	: 107
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2603,7 +2445,7 @@ CPU revision	: 0
 
 processor	: 108
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2612,7 +2454,7 @@ CPU revision	: 0
 
 processor	: 109
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2621,7 +2463,7 @@ CPU revision	: 0
 
 processor	: 110
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2630,7 +2472,7 @@ CPU revision	: 0
 
 processor	: 111
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2639,7 +2481,7 @@ CPU revision	: 0
 
 processor	: 112
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2648,7 +2490,7 @@ CPU revision	: 0
 
 processor	: 113
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2657,7 +2499,7 @@ CPU revision	: 0
 
 processor	: 114
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2666,7 +2508,7 @@ CPU revision	: 0
 
 processor	: 115
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2675,7 +2517,7 @@ CPU revision	: 0
 
 processor	: 116
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2684,7 +2526,7 @@ CPU revision	: 0
 
 processor	: 117
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2693,7 +2535,7 @@ CPU revision	: 0
 
 processor	: 118
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2702,7 +2544,7 @@ CPU revision	: 0
 
 processor	: 119
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2711,7 +2553,7 @@ CPU revision	: 0
 
 processor	: 120
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2720,7 +2562,7 @@ CPU revision	: 0
 
 processor	: 121
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2729,7 +2571,7 @@ CPU revision	: 0
 
 processor	: 122
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2738,7 +2580,7 @@ CPU revision	: 0
 
 processor	: 123
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2747,7 +2589,7 @@ CPU revision	: 0
 
 processor	: 124
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2756,7 +2598,7 @@ CPU revision	: 0
 
 processor	: 125
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2765,7 +2607,7 @@ CPU revision	: 0
 
 processor	: 126
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2774,7 +2616,7 @@ CPU revision	: 0
 
 processor	: 127
 BogoMIPS	: 200.00
-Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 CPU implementer	: 0x48
 CPU architecture: 8
 CPU variant	: 0x1
@@ -2785,37 +2627,37 @@ CPU revision	: 0
 
 ****************
 cat /proc/meminfo
-MemTotal:       267236992 kB
-MemFree:        246172864 kB
-MemAvailable:   226166528 kB
-Buffers:            6528 kB
-Cached:           310784 kB
+MemTotal:       535422144 kB
+MemFree:        520667712 kB
+MemAvailable:   482636032 kB
+Buffers:            5632 kB
+Cached:          4945664 kB
 SwapCached:            0 kB
-Active:           301312 kB
-Inactive:         221888 kB
-Active(anon):     214208 kB
-Inactive(anon):    46400 kB
-Active(file):      87104 kB
-Inactive(file):   175488 kB
+Active:          2574208 kB
+Inactive:        2551360 kB
+Active(anon):     224768 kB
+Inactive(anon):    11840 kB
+Active(file):    2349440 kB
+Inactive(file):  2539520 kB
 Unevictable:           0 kB
 Mlocked:               0 kB
 SwapTotal:       4194240 kB
 SwapFree:        4194240 kB
-Dirty:               448 kB
+Dirty:              8640 kB
 Writeback:             0 kB
-AnonPages:        216128 kB
-Mapped:            82048 kB
-Shmem:             54528 kB
-Slab:            1768000 kB
-SReclaimable:     222400 kB
-SUnreclaim:      1545600 kB
-KernelStack:       97408 kB
-PageTables:        20544 kB
+AnonPages:        174912 kB
+Mapped:            41792 kB
+Shmem:             61760 kB
+Slab:            1076096 kB
+SReclaimable:     217344 kB
+SUnreclaim:       858752 kB
+KernelStack:       85312 kB
+PageTables:         5888 kB
 NFS_Unstable:          0 kB
 Bounce:                0 kB
 WritebackTmp:          0 kB
-CommitLimit:    137812736 kB
-Committed_AS:    1893632 kB
+CommitLimit:    271905280 kB
+Committed_AS:     621760 kB
 VmallocTotal:   133009637312 kB
 VmallocUsed:           0 kB
 VmallocChunk:          0 kB
@@ -2828,7 +2670,6 @@ HugePages_Free:        0
 HugePages_Rsvd:        0
 HugePages_Surp:        0
 Hugepagesize:     524288 kB
-Hugetlb:               0 kB
 
 
 ****************

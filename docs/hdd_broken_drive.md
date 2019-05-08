@@ -6,7 +6,7 @@ HDD broken 硬盘损坏
 硬盘为系统盘，使用scp拷贝数据时，在dmesg出现print_req_error，提示硬盘有损坏。安装gcc时，提示print_req_error。
 之后工作不正常。无法使用ls命令。
 
-```CS
+```
 [ 1522.788557] print_req_error: I/O error, dev sda, sector 7799367864 flags 80700
 [ 1522.795796] sd 2:0:0:0: [sda] tag#728 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_SENSE
 [ 1522.804227] sd 2:0:0:0: [sda] tag#728 Sense Key : Not Ready [current]

@@ -1,0 +1,11 @@
+[base]
+name=baseos
+baseurl=file:///mnt/cd_redhat/BaseOS
+enable=1
+gpgcheck=0
+
+[app]
+name=app
+baseurl=file:///mnt/cd_redhat/AppStream
+enable=1
+gpgcheck=0

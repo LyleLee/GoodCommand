@@ -12,3 +12,9 @@ Adminpasscode 是密码
 ```
 ipmitool -I lanplus -H 192.168.2.151 -U Administrator -P Adminpasscode sol deactivate
 ```
+
+打印传感器数值，如CPU温度、电压等
+
+```
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode sdr list
+```

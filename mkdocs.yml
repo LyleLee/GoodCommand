@@ -18,9 +18,12 @@ nav:
         - mem stream_arm: stream_arm.md
         - io disk imformation: disk_information.md
         - io fio benchmark: io_fio_benchmark.md
+    - BMC : BMC.md
     - bug solve:
+        - hdd broken drive: hdd_broken_drive.md
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
+    - dns: dns.md
     - docker: docker.md
     - dstat: dstat.md
     - ethtool: ethtool.md
@@ -28,6 +31,7 @@ nav:
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
     - git two github account: git_two_github_account.md
+    - grub : grub.md
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
@@ -45,6 +49,7 @@ nav:
     - shellcheck: shellcheck.md
     - sysrq: sysrq.md
     - systemd: systemd.md
+    - tar: tar.md
     - tcpdump: tcpdump.md
     - time: time.md
     - tldr: tldr.md
