@@ -12,12 +12,29 @@ Adminpasscode 是密码
 ```
 ipmitool -I lanplus -H 192.168.2.151 -U Administrator -P Adminpasscode sol deactivate
 ```
+如果ipmitool 连接到了目标单板但是没有输出。有两种设置方法：
 
-打印传感器数值，如CPU温度、电压等
-
+方法一：修改BIOS设置
 ```
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode sdr list
+BIOS -> Device Manager -> Console Preference Selection -> Preferred console Serial
 ```
+方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200
+```
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgg
+b quiet console=ttyAMA0,115200"
+GRUB_DISABLE_RECOVERY="true"
+```
+更新grub.cfg文件：
+```
+grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+```
+请注意不同的OS有不同的更新方式，请参考[[grub]](grub.md)
 
 以下所有命令需要先执行：
 ```
@@ -99,6 +116,8 @@ ipmitool enable       <user id>　　			#使能某用户
 ipmitool priv         <user id> <privilegelevel> [<channel number>]　#修改某用户在某通道上的权限
 ipmitool test         <user id> <16|20>[<password]>　#测试用户
 ```
+
+# Board_connect
 
 其他命令请参考：
 ```
