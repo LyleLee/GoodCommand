@@ -19,7 +19,7 @@ GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=true
 GRUB_TERMINAL_OUTPUT="console"
 GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgg
-b quiet console=ttyAMA0,115200"
+b quiet"
 GRUB_DISABLE_RECOVERY="true"
 ```
 grub2-mkconfig 使用/etc/grub.d下的模板和/etc/default/grub配置创建/boot/efi/EFI/redhat/grub.cfg，所以设置完之后执行命令， 使用生成的grub.cfg替换掉原来的grub.cfg
