@@ -27,6 +27,14 @@ grub2-mkconfig 使用/etc/grub.d下的模板和/etc/default/grub配置创建/boo
 grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 ```
 
+ubuntu 18.04 LTS的修改方法为：
+
+编辑/etc/default/grub，然后更新/boot/grub/grub.cfg
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+
 
 查看系统已有的开机启动项：
 ```CS
