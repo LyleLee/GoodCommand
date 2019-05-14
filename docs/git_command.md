@@ -112,7 +112,13 @@ git checkout -b sf origin/serverfix
 ```
 git checkout --track origin/serverfix
 ```
-
 ```
 git checkout --patch master include/uapi/linux/mii.h    #把master分支的指定文件合并到当前分支
+```
+
+## 如果错误向github提交了敏感信息如密码：
+包含敏感信息的文件为server_start_up_log.txt
+```
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch docs/resources/server_start_up_log.txt' --prune-empty --tag-name-filter cat -- --all
+git push origin master --force
 ```
