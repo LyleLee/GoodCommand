@@ -27,6 +27,7 @@ nav:
     - docker: docker.md
     - dstat: dstat.md
     - ethtool: ethtool.md
+    - edac-util: edac-util.md
     - gcc: gcc.md
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
