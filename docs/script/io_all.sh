@@ -66,7 +66,7 @@ for b in "${bs[@]}"; do
 				echo " -----------------------------------------------------" >> "$LOG_DETAIL"
                 
                 if [ "$(uname -m)" = "aarch64" ]; then
-                    numa="numactl -C 0-"$(( $n-1 ))" -m 0 "
+                    numa="numactl -C 0-"$(( n-1 ))" -m 0 "
                     printf "%s\t" "$numa" | tee -a "$LOG_SIMPLE"
                 else
                     numa=""
@@ -88,11 +88,10 @@ for b in "${bs[@]}"; do
                 lat=$(echo "$result" | grep "\ lat.*avg"| awk -F, '{print $3}'|awk -F= '{print $2}')
                 cpu_user=$(echo "$result" | grep cpu |awk -F '[:,=]' '{print $3}')
                 cpu_sys=$(echo "$result" | grep cpu |awk -F '[:,=]' '{print $5}')
-                printf "%s\t %s\t %-10s\t %s\t %s\t\n" "$iops" "$bandwith" "$lat" "$cpu_user" "$cpu_sys" | tee -a "$LOG_SIMPLE"
+                printf "%s\t %s\t %10s\t %s\t %s\t\n" "$iops" "$bandwith" "$lat" "$cpu_user" "$cpu_sys" | tee -a "$LOG_SIMPLE"
                 echo "" >> "$LOG_DETAIL"
                 (( count++ ))
 			done
 		done
 	done
 done
-
