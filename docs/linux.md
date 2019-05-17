@@ -248,9 +248,22 @@ find . -name “*.in” | xargs grep “thermcontact”
 ```
 find /usr/lib/ -name *.h | xargs grep "getopt_long"
 ```
-+ 查找指定目录
++ 查找指定指定文件类型
 ```
 find . -type d -name debug*
+
+b   block (buffered) special
+c   character (unbuffered) special
+d   directory
+p   named pipe (FIFO)
+f   regular file
+l   symbolic link
+s   socket
+D   door (Solaris)
+```
++ 设置深度
+```
+find . -maxdepth 2
 ```
 + 查找当前目录下所有文件中包含ibv_open_device的文件和行
 ```
@@ -349,6 +362,7 @@ fdisk -l可以看到多个物理硬盘，做了硬raid只能看到一个硬盘
 me is not in the sudoers file.  This incident will be reported.
 ```
 添加用户到sudo组
+方法一：
 ```
 [root@redhat75 me]# usermod -a -G sudo me
 usermod: group 'sudo' does not exist
@@ -357,6 +371,14 @@ usermod: group 'sudo' does not exist
 ```
 [root@redhat75 me]# usermod -a -G wheel me
 ```
+方法二：
+```
+visudo
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+me      ALL=(ALL)       ALL
+```
+
 ## 安装linux源码
 ```
 sudo apt-get install linux-4.4-source-4.4  
