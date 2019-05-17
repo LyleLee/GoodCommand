@@ -4,7 +4,7 @@ edac-util
 
 正常的输出：
 ```CS
-[root@hs-es1 home]# edac-util -v
+[root@hs home]# edac-util -v
 mc0: 0 Uncorrected Errors with no DIMM info
 mc0: 0 Corrected Errors with no DIMM info
 mc0: csrow0: 0 Uncorrected Errors
@@ -43,7 +43,7 @@ mc0: csrow8: mc#0memory#8: 0 Corrected Errors
 ```
 异常的设备上的输出：
 ```CS
-[root@hisilicon11 xinghui]# edac-util -v
+[root@hisilicon11 ]# edac-util -v
 mc0: 0 Uncorrected Errors with no DIMM info
 mc0: 15 Corrected Errors with no DIMM info
 mc0: csrow0: 0 Uncorrected Errors

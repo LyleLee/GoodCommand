@@ -1,6 +1,26 @@
 Hardware Corrected Errors
 ======================
-在服务器串口上发现上报Hareware error，最后发现是内存条有问题。设备可以正常启动OS
+在服务器串口上发现上报Hareware error，最后发现是内存条有问题。设备可以正常启动OS，但是运行一段时间后会自动重启。
+
+在message中查看到重启记录
+```CS
+May 13 15:05:20 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May 13 15:05:20 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May 13 15:05:20 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May 13 15:05:21 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May 13 15:05:21 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May 13 15:05:21 hisilicon11 kernel: EDAC MC0: 1 CE reserved error (16) on unknown label (node:0 rank:0 bank:0 row:0 col:0 page:0x400000 offset:0x300 grain:0 syndrome:0x0)
+May  5 18:18:46 hisilicon11 journal: Runtime journal is using 8.0M (max allowed 4.0G, trying to leave 4.0G free of 255.5G available → current limit 4.0G).
+May  5 18:18:46 hisilicon11 kernel: Booting Linux on physical CPU 0x0000080000 [0x481fd010]
+May  5 18:18:46 hisilicon11 kernel: Linux version 4.19.28.3-2019-05-13 (lixianfa@ubuntu) (gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.10)) #2 SMP Mon May 13 10:20:47 CST 2019
+May  5 18:18:46 hisilicon11 kernel: efi: Getting EFI parameters from FDT:
+May  5 18:18:46 hisilicon11 kernel: efi: EFI v2.70 by EDK II
+May  5 18:18:46 hisilicon11 kernel: efi:  SMBIOS 3.0=0x3f0f0000  ACPI 2.0=0x39cb0000  MEMATTR=0x3b4bc018  ESRT=0x3f11bc98  RNG=0x3f11bd98  MEMRESERVE=0x39bb4d18 
+May  5 18:18:46 hisilicon11 kernel: efi: seeding entropy pool
+May  5 18:18:46 hisilicon11 kernel: esrt: Reserving ESRT space from 0x000000003f11bc98 to 0x000000003f11bcd0.
+May  5 18:18:46 hisilicon11 kernel: crashkernel: memory value expected
+May  5 18:18:46 hisilicon
+```
 
 在BIOS启动日子打印NOTICE 可纠正错误
 ```CS
