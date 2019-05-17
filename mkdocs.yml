@@ -23,6 +23,7 @@ nav:
         - hdd broken drive: hdd_broken_drive.md
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
+        - hardware_error_corrected: Hardware_error_corrected.md
     - dns: dns.md
     - docker: docker.md
     - dstat: dstat.md
