@@ -25,6 +25,7 @@ nav:
         - nfs_not_respond: nfs_not_respond.md
         - hardware_error_corrected: Hardware_error_corrected.md
     - dns: dns.md
+    - diff: diff.md
     - docker: docker.md
     - dstat: dstat.md
     - ethtool: ethtool.md
