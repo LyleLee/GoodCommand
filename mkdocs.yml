@@ -48,6 +48,7 @@ nav:
     - nfs: nfs.md
     - nmap : nmap.md
     - raid级别: raid.md
+    - script: script.md
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
     - sysrq: sysrq.md
