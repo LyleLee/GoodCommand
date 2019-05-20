@@ -2,3 +2,5 @@ build/
 site/
 docs/p/
 task_list.txt
+*.tar
+*.tar.gz
