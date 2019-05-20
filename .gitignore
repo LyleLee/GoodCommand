@@ -1,6 +1,6 @@
 build/
 site/
-docs/p/
+docs/person/
 task_list.txt
 *.tar
 *.tar.gz
