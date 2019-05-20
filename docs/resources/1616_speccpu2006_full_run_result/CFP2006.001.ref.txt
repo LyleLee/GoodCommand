@@ -1,0 +1,320 @@
+##############################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+#                                                                            #
+# Your run was marked invalid because it has one or more flags in the        #
+# "unknown" category. You might be able to resolve this problem without      #
+# re-running your test; see                                                  #
+#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #
+# for more information.                                                      #
+#                                                                            #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+##############################################################################
+                           SPEC(R) CFP2006 Summary
+                       System Vendor System Model Name
+         Test Sponsor: Test Sponsor (Optional, defaults to hw_vendor)
+                           Thu May 16 00:56:34 2019
+
+CPU2006 License: 0                                       Test date: May-2019
+Test sponsor: Test Sponsor (Optional, defaults to hw_vendor)  Hardware availability: Dec-9999
+Tested by:    (Optional, defaults to hw_vendor)  Software availability: May-2010
+
+                                  Estimated                       Estimated
+                Base     Base       Base        Peak     Peak       Peak
+Benchmarks     Copies  Run Time     Rate       Copies  Run Time     Rate 
+-------------- ------  ---------  ---------    ------  ---------  ---------
+410.bwaves         64       2839        306 S                                  
+410.bwaves         64       2842        306 *                                  
+410.bwaves         64       2844        306 S                                  
+416.gamess         64       4217        297 *                                  
+416.gamess         64       4204        298 S                                  
+416.gamess         64       4224        297 S                                  
+433.milc           64       2756        213 S                                  
+433.milc           64       2767        212 S                                  
+433.milc           64       2758        213 *                                  
+434.zeusmp         64       1184        492 *                                  
+434.zeusmp         64       1186        491 S                                  
+434.zeusmp         64       1181        493 S                                  
+435.gromacs        64        484        945 *                                  
+435.gromacs        64        481        951 S                                  
+435.gromacs        64        490        933 S                                  
+436.cactusADM      64       1495        511 *                                  
+436.cactusADM      64       1493        512 S                                  
+436.cactusADM      64       1497        511 S                                  
+437.leslie3d       64       2946        204 S                                  
+437.leslie3d       64       2942        204 S                                  
+437.leslie3d       64       2944        204 *                                  
+444.namd           64        567        904 S                                  
+444.namd           64        566        906 S                                  
+444.namd           64        567        905 *                                  
+447.dealII         64        960        763 S                                  
+447.dealII         64        962        761 *                                  
+447.dealII         64        973        753 S                                  
+450.soplex         64       3127        171 S                                  
+450.soplex         64       3198        167 *                                  
+450.soplex         64       3202        167 S                                  
+453.povray         64        350        973 S                                  
+453.povray         64        354        962 *                                  
+453.povray         64        354        962 S                                  
+454.calculix       64       1256        420 S                                  
+454.calculix       64       1235        428 S                                  
+454.calculix       64       1238        426 *                                  
+459.GemsFDTD       64       4105        165 S                                  
+459.GemsFDTD       64       4094        166 S                                  
+459.GemsFDTD       64       4096        166 *                                  
+465.tonto          64       1030        611 S                                  
+465.tonto          64       1034        609 *                                  
+465.tonto          64       1035        608 S                                  
+470.lbm            64       5183        170 *                                  
+470.lbm            64       5183        170 S                                  
+470.lbm            64       5182        170 S                                  
+481.wrf            64       1933        370 *                                  
+481.wrf            64       1935        370 S                                  
+481.wrf            64       1932        370 S                                  
+482.sphinx3        64       4134        302 S                                  
+482.sphinx3        64       4247        294 *                                  
+482.sphinx3        64       4327        288 S                                  
+==============================================================================
+410.bwaves         64       2842        306 *                                  
+416.gamess         64       4217        297 *                                  
+433.milc           64       2758        213 *                                  
+434.zeusmp         64       1184        492 *                                  
+435.gromacs        64        484        945 *                                  
+436.cactusADM      64       1495        511 *                                  
+437.leslie3d       64       2944        204 *                                  
+444.namd           64        567        905 *                                  
+447.dealII         64        962        761 *                                  
+450.soplex         64       3198        167 *                                  
+453.povray         64        354        962 *                                  
+454.calculix       64       1238        426 *                                  
+459.GemsFDTD       64       4096        166 *                                  
+465.tonto          64       1034        609 *                                  
+470.lbm            64       5183        170 *                                  
+481.wrf            64       1933        370 *                                  
+482.sphinx3        64       4247        294 *                                  
+ Est. SPECfp(R)_rate_base2006           383
+ Est. SPECfp_rate2006                                               Not Run
+
+
+                                   HARDWARE
+                                   --------
+            CPU Name: could not determine
+ CPU Characteristics:  
+             CPU MHz: 9999
+                 FPU: Integrated
+      CPU(s) enabled: number of cores enabled cores, could not determine chips, number of cores manufactured into each chip cores/chip, number of threads enabled per core threads/core
+    CPU(s) orderable: 1,2 chips
+       Primary Cache: 9999 KB I + 9999 KB D on chip per core
+     Secondary Cache: 9999 KB I+D on chip per core
+            L3 Cache: 9999 MB I+D on chip per chip
+         Other Cache: None
+              Memory: 125.650 GB fixme: If using DDR3, format is:
+                      'N GB (M x N GB nRxn PCn-nnnnnR-n, ECC)'
+      Disk Subsystem: 3.6 TB  add more disk info here
+      Other Hardware: None
+
+
+                                   SOFTWARE
+                                   --------
+    Operating System: Ubuntu 18.04.1 LTS
+                      4.15.0-29-generic
+            Compiler: gcc, g++ & gfortran 4.3.4
+       Auto Parallel: No
+         File System: ext4
+        System State: Run level 5 (add definition here)
+       Base Pointers: 64-bit
+       Peak Pointers: 64-bit
+      Other Software: None
+
+
+                                 Submit Notes
+                                 ------------
+    The config file option 'submit' was used.
+    'numactl' was used to bind copies to the cores.
+    See the configuration file for details.
+
+                            Operating System Notes
+                            ----------------------
+    'ulimit -s unlimited' was used to set environment stack size
+
+                                Platform Notes
+                                --------------
+     Sysinfo program /home/me/syncfile/cputool/speccpu2006/Docs/sysinfo
+     $Rev: 6775 $ $Date:: 2011-08-16 #$ 8787f7622badcf24e01c368b1db4377c
+     running on ubuntu Thu May 16 00:56:35 2019
+    
+     This section contains SUT (System Under Test) info as seen by
+     some common utilities.  To remove or add to this section, see:
+       http://www.spec.org/cpu2006/Docs/config.html#sysinfo
+    
+     From /proc/cpuinfo
+     *
+     * Did not identify cpu model.  If you would
+     * like to write your own sysinfo program, see
+     * www.spec.org/cpu2006/config.html#sysinfo
+     *
+     *
+     * 0 "physical id" tags found.  Perhaps this is an older system,
+     * or a virtualized system.  Not attempting to guess how to
+     * count chips/cores for this system.
+     *
+           64 "processors"
+        cores, siblings (Caution: counting these is hw and system dependent.  The
+        following excerpts from /proc/cpuinfo might not be reliable.  Use with
+        caution.)
+    
+     From /proc/meminfo
+        MemTotal:       131753668 kB
+        HugePages_Total:       0
+        Hugepagesize:       2048 kB
+    
+     /usr/bin/lsb_release -d
+        Ubuntu 18.04.1 LTS
+    
+     From /etc/*release* /etc/*version*
+        debian_version: buster/sid
+        os-release:
+           NAME="Ubuntu"
+           VERSION="18.04.1 LTS (Bionic Beaver)"
+           ID=ubuntu
+           ID_LIKE=debian
+           PRETTY_NAME="Ubuntu 18.04.1 LTS"
+           VERSION_ID="18.04"
+           HOME_URL="https://www.ubuntu.com/"
+           SUPPORT_URL="https://help.ubuntu.com/"
+    
+     uname -a:
+        Linux ubuntu 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:41:03 UTC 2018
+        aarch64 aarch64 aarch64 GNU/Linux
+    
+     run-level 5 Mar 21 16:41
+    
+     SPEC is set to: /home/me/syncfile/cputool/speccpu2006
+        Filesystem     Type  Size  Used Avail Use% Mounted on
+        /dev/sda2      ext4  3.6T  105G  3.3T   4% /
+    
+     (End of data from sysinfo program)
+
+                              Base Unknown Flags
+                              ------------------
+    410.bwaves: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+
+      433.milc: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+    434.zeusmp: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+
+   435.gromacs: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+ 436.cactusADM: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+  437.leslie3d: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+
+      444.namd: "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+    447.dealII: "-fpermissive" (in CXXPORTABILITY)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+    450.soplex: "-std=c++03" (in CXXPORTABILITY)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+    453.povray: "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+  454.calculix: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+  459.GemsFDTD: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+
+     465.tonto: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+
+       470.lbm: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+       481.wrf: "-fno-aggressive-loop-optimizations" (in FOPTIMIZE)
+                "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+   482.sphinx3: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+
+                           Base Compiler Invocation
+                           ------------------------
+C benchmarks: 
+     /usr/bin/gcc
+
+C++ benchmarks: 
+     /usr/bin/g++
+
+Fortran benchmarks: 
+     /usr/bin/gfortran
+
+Benchmarks using both Fortran and C: 
+     /usr/bin/gcc /usr/bin/gfortran
+
+
+                            Base Portability Flags
+                            ----------------------
+    410.bwaves: -DSPEC_CPU_LP64
+    416.gamess: -DSPEC_CPU_LP64
+      433.milc: -DSPEC_CPU_LP64
+    434.zeusmp: -DSPEC_CPU_LP64
+   435.gromacs: -DSPEC_CPU_LP64
+ 436.cactusADM: -DSPEC_CPU_LP64
+  437.leslie3d: -DSPEC_CPU_LP64
+      444.namd: -DSPEC_CPU_LP64
+    447.dealII: -DSPEC_CPU_LP64
+    450.soplex: -DSPEC_CPU_LP64
+    453.povray: -DSPEC_CPU_LP64
+  454.calculix: -DSPEC_CPU_LP64
+  459.GemsFDTD: -DSPEC_CPU_LP64
+     465.tonto: -DSPEC_CPU_LP64
+       470.lbm: -DSPEC_CPU_LP64
+       481.wrf: -DSPEC_CPU_LP64 -DSPEC_CPU_CASE_FLAG -DSPEC_CPU_LINUX
+   482.sphinx3: -DSPEC_CPU_LP64
+
+
+                           Base Optimization Flags
+                           -----------------------
+C benchmarks: 
+     -O2 -fno-strict-aliasing
+
+C++ benchmarks: 
+     -O2 -fno-strict-aliasing
+
+Fortran benchmarks:
+
+    410.bwaves: -O2 -fno-strict-aliasing
+
+    416.gamess: -O0
+
+    434.zeusmp: Same as 410.bwaves
+
+  437.leslie3d: Same as 410.bwaves
+
+  459.GemsFDTD: Same as 410.bwaves
+
+     465.tonto: Same as 410.bwaves
+
+Benchmarks using both Fortran and C: 
+     -O2 -fno-strict-aliasing
+
+
+    SPEC and SPECfp are registered trademarks of the Standard Performance
+    Evaluation Corporation.  All other brand and product names appearing
+    in this result are trademarks or registered trademarks of their
+    respective holders.
+##############################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+#                                                                            #
+# Your run was marked invalid because it has one or more flags in the        #
+# "unknown" category. You might be able to resolve this problem without      #
+# re-running your test; see                                                  #
+#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #
+# for more information.                                                      #
+#                                                                            #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+##############################################################################
+-----------------------------------------------------------------------------
+For questions about this result, please contact the tester.
+For other inquiries, please contact webmaster@spec.org.
+Copyright 2006-2019 Standard Performance Evaluation Corporation
+Tested with SPEC CPU2006 v1.2.
+Report generated on Sat May 18 05:04:05 2019 by CPU2006 ASCII formatter v6400.

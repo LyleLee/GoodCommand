@@ -1,0 +1,259 @@
+##############################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+#                                                                            #
+# Your run was marked invalid because it has one or more flags in the        #
+# "unknown" category. You might be able to resolve this problem without      #
+# re-running your test; see                                                  #
+#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #
+# for more information.                                                      #
+#                                                                            #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+##############################################################################
+                           SPEC(R) CINT2006 Summary
+                       System Vendor System Model Name
+         Test Sponsor: Test Sponsor (Optional, defaults to hw_vendor)
+                           Thu May 16 00:56:34 2019
+
+CPU2006 License: 0                                       Test date: May-2019
+Test sponsor: Test Sponsor (Optional, defaults to hw_vendor)  Hardware availability: Dec-9999
+Tested by:    (Optional, defaults to hw_vendor)  Software availability: May-2010
+
+                                  Estimated                       Estimated
+                Base     Base       Base        Peak     Peak       Peak
+Benchmarks     Copies  Run Time     Rate       Copies  Run Time     Rate 
+-------------- ------  ---------  ---------    ------  ---------  ---------
+400.perlbench      64        756        827 S                                  
+400.perlbench      64        823        760 S                                  
+400.perlbench      64        760        823 *                                  
+401.bzip2          64       1560        396 S                                  
+401.bzip2          64       1604        385 S                                  
+401.bzip2          64       1569        394 *                                  
+403.gcc            64       2504        206 *                                  
+403.gcc            64       2492        207 S                                  
+403.gcc            64       2506        206 S                                  
+429.mcf            64       4171        140 S                                  
+429.mcf            64       4194        139 S                                  
+429.mcf            64       4189        139 *                                  
+445.gobmk          64        801        838 *                                  
+445.gobmk          64        799        841 S                                  
+445.gobmk          64        801        838 S                                  
+456.hmmer          64        696        858 *                                  
+456.hmmer          64        702        851 S                                  
+456.hmmer          64        691        864 S                                  
+458.sjeng          64        950        815 S                                  
+458.sjeng          64        952        813 *                                  
+458.sjeng          64        965        803 S                                  
+462.libquantum     64       5456        243 *                                  
+462.libquantum     64       5464        243 S                                  
+462.libquantum     64       5441        244 S                                  
+464.h264ref        64       1193       1190 S                                  
+464.h264ref        64       1205       1180 S                                  
+464.h264ref        64       1195       1180 *                                  
+471.omnetpp        64       1962        204 S                                  
+471.omnetpp        64       1969        203 S                                  
+471.omnetpp        64       1967        203 *                                  
+473.astar          64       1590        283 *                                  
+473.astar          64       1591        282 S                                  
+473.astar          64       1588        283 S                                  
+483.xalancbmk      64       1278        346 S                                  
+483.xalancbmk      64       1289        343 S                                  
+483.xalancbmk      64       1285        344 *                                  
+==============================================================================
+400.perlbench      64        760        823 *                                  
+401.bzip2          64       1569        394 *                                  
+403.gcc            64       2504        206 *                                  
+429.mcf            64       4189        139 *                                  
+445.gobmk          64        801        838 *                                  
+456.hmmer          64        696        858 *                                  
+458.sjeng          64        952        813 *                                  
+462.libquantum     64       5456        243 *                                  
+464.h264ref        64       1195       1180 *                                  
+471.omnetpp        64       1967        203 *                                  
+473.astar          64       1590        283 *                                  
+483.xalancbmk      64       1285        344 *                                  
+ Est. SPECint(R)_rate_base2006          421
+ Est. SPECint_rate2006                                              Not Run
+
+
+                                   HARDWARE
+                                   --------
+            CPU Name: could not determine
+ CPU Characteristics:  
+             CPU MHz: 9999
+                 FPU: Integrated
+      CPU(s) enabled: number of cores enabled cores, could not determine chips, number of cores manufactured into each chip cores/chip, number of threads enabled per core threads/core
+    CPU(s) orderable: 1,2 chips
+       Primary Cache: 9999 KB I + 9999 KB D on chip per core
+     Secondary Cache: 9999 KB I+D on chip per core
+            L3 Cache: 9999 MB I+D on chip per chip
+         Other Cache: None
+              Memory: 125.650 GB fixme: If using DDR3, format is:
+                      'N GB (M x N GB nRxn PCn-nnnnnR-n, ECC)'
+      Disk Subsystem: 3.6 TB  add more disk info here
+      Other Hardware: None
+
+
+                                   SOFTWARE
+                                   --------
+    Operating System: Ubuntu 18.04.1 LTS
+                      4.15.0-29-generic
+            Compiler: gcc, g++ & gfortran 4.3.4
+       Auto Parallel: No
+         File System: ext4
+        System State: Run level 5 (add definition here)
+       Base Pointers: 64-bit
+       Peak Pointers: 64-bit
+      Other Software: None
+
+
+                                 Submit Notes
+                                 ------------
+    The config file option 'submit' was used.
+    'numactl' was used to bind copies to the cores.
+    See the configuration file for details.
+
+                            Operating System Notes
+                            ----------------------
+    'ulimit -s unlimited' was used to set environment stack size
+
+                                Platform Notes
+                                --------------
+     Sysinfo program /home/me/syncfile/cputool/speccpu2006/Docs/sysinfo
+     $Rev: 6775 $ $Date:: 2011-08-16 #$ 8787f7622badcf24e01c368b1db4377c
+     running on ubuntu Thu May 16 00:56:35 2019
+    
+     This section contains SUT (System Under Test) info as seen by
+     some common utilities.  To remove or add to this section, see:
+       http://www.spec.org/cpu2006/Docs/config.html#sysinfo
+    
+     From /proc/cpuinfo
+     *
+     * Did not identify cpu model.  If you would
+     * like to write your own sysinfo program, see
+     * www.spec.org/cpu2006/config.html#sysinfo
+     *
+     *
+     * 0 "physical id" tags found.  Perhaps this is an older system,
+     * or a virtualized system.  Not attempting to guess how to
+     * count chips/cores for this system.
+     *
+           64 "processors"
+        cores, siblings (Caution: counting these is hw and system dependent.  The
+        following excerpts from /proc/cpuinfo might not be reliable.  Use with
+        caution.)
+    
+     From /proc/meminfo
+        MemTotal:       131753668 kB
+        HugePages_Total:       0
+        Hugepagesize:       2048 kB
+    
+     /usr/bin/lsb_release -d
+        Ubuntu 18.04.1 LTS
+    
+     From /etc/*release* /etc/*version*
+        debian_version: buster/sid
+        os-release:
+           NAME="Ubuntu"
+           VERSION="18.04.1 LTS (Bionic Beaver)"
+           ID=ubuntu
+           ID_LIKE=debian
+           PRETTY_NAME="Ubuntu 18.04.1 LTS"
+           VERSION_ID="18.04"
+           HOME_URL="https://www.ubuntu.com/"
+           SUPPORT_URL="https://help.ubuntu.com/"
+    
+     uname -a:
+        Linux ubuntu 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:41:03 UTC 2018
+        aarch64 aarch64 aarch64 GNU/Linux
+    
+     run-level 5 Mar 21 16:41
+    
+     SPEC is set to: /home/me/syncfile/cputool/speccpu2006
+        Filesystem     Type  Size  Used Avail Use% Mounted on
+        /dev/sda2      ext4  3.6T  105G  3.3T   4% /
+    
+     (End of data from sysinfo program)
+
+                              Base Unknown Flags
+                              ------------------
+  400.perlbench: "-std=gnu90" (in CPORTABILITY)
+                 "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+      401.bzip2: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+        403.gcc: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+        429.mcf: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+      445.gobmk: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+      456.hmmer: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+      458.sjeng: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+ 462.libquantum: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+    464.h264ref: "-fsigned-char -fno-aggressive-loop-optimizations" (in COPTIMIZE)
+
+    471.omnetpp: "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+      473.astar: "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+  483.xalancbmk: "-fsigned-char -fno-aggressive-loop-optimizations" (in CXXOPTIMIZE)
+
+
+                           Base Compiler Invocation
+                           ------------------------
+C benchmarks: 
+     /usr/bin/gcc
+
+C++ benchmarks: 
+     /usr/bin/g++
+
+
+                            Base Portability Flags
+                            ----------------------
+  400.perlbench: -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX_X64
+      401.bzip2: -DSPEC_CPU_LP64
+        403.gcc: -DSPEC_CPU_LP64
+        429.mcf: -DSPEC_CPU_LP64
+      445.gobmk: -DSPEC_CPU_LP64
+      456.hmmer: -DSPEC_CPU_LP64
+      458.sjeng: -DSPEC_CPU_LP64
+ 462.libquantum: -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX
+    464.h264ref: -DSPEC_CPU_LP64
+    471.omnetpp: -DSPEC_CPU_LP64
+      473.astar: -DSPEC_CPU_LP64
+  483.xalancbmk: -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX
+
+
+                           Base Optimization Flags
+                           -----------------------
+C benchmarks: 
+     -O2 -fno-strict-aliasing
+
+C++ benchmarks: 
+     -O2 -fno-strict-aliasing
+
+
+    SPEC and SPECint are registered trademarks of the Standard Performance
+    Evaluation Corporation.  All other brand and product names appearing
+    in this result are trademarks or registered trademarks of their
+    respective holders.
+##############################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+#                                                                            #
+# Your run was marked invalid because it has one or more flags in the        #
+# "unknown" category. You might be able to resolve this problem without      #
+# re-running your test; see                                                  #
+#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #
+# for more information.                                                      #
+#                                                                            #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN  #
+##############################################################################
+-----------------------------------------------------------------------------
+For questions about this result, please contact the tester.
+For other inquiries, please contact webmaster@spec.org.
+Copyright 2006-2019 Standard Performance Evaluation Corporation
+Tested with SPEC CPU2006 v1.2.
+Report generated on Sat May 18 05:03:59 2019 by CPU2006 ASCII formatter v6400.

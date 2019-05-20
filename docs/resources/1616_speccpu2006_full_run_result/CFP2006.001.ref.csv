@@ -1,0 +1,436 @@
+valid,0
+
+"Full Results Table"
+
+Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
+410.bwaves,64,2838.523811,306.4128,0,S,,,,,,"ref iteration #1"
+410.bwaves,64,2842.154174,306.021376,1,S,,,,,,"ref iteration #2"
+410.bwaves,64,2844.035704,305.818944,0,S,,,,,,"ref iteration #3"
+416.gamess,64,4217.142877,297.149056,1,S,,,,,,"ref iteration #1"
+416.gamess,64,4204.30397,298.056448,0,S,,,,,,"ref iteration #2"
+416.gamess,64,4223.675332,296.689472,0,S,,,,,,"ref iteration #3"
+433.milc,64,2755.8853,213.187392,0,S,,,,,,"ref iteration #1"
+433.milc,64,2766.801428,212.346304,0,S,,,,,,"ref iteration #2"
+433.milc,64,2757.666786,213.049664,1,S,,,,,,"ref iteration #3"
+434.zeusmp,64,1183.995784,491.893632,1,S,,,,,,"ref iteration #1"
+434.zeusmp,64,1185.633365,491.214272,0,S,,,,,,"ref iteration #2"
+434.zeusmp,64,1180.972628,493.152832,0,S,,,,,,"ref iteration #3"
+435.gromacs,64,483.808622,944.505728,1,S,,,,,,"ref iteration #1"
+435.gromacs,64,480.556844,950.896896,0,S,,,,,,"ref iteration #2"
+435.gromacs,64,489.725784,933.093632,0,S,,,,,,"ref iteration #3"
+436.cactusADM,64,1495.303054,511.468224,1,S,,,,,,"ref iteration #1"
+436.cactusADM,64,1492.886805,512.296064,0,S,,,,,,"ref iteration #2"
+436.cactusADM,64,1497.499968,510.717888,0,S,,,,,,"ref iteration #3"
+437.leslie3d,64,2946.468973,204.176576,0,S,,,,,,"ref iteration #1"
+437.leslie3d,64,2942.286566,204.466816,0,S,,,,,,"ref iteration #2"
+437.leslie3d,64,2944.08293,204.34208,1,S,,,,,,"ref iteration #3"
+444.namd,64,567.476229,904.496064,0,S,,,,,,"ref iteration #1"
+444.namd,64,566.228771,906.488704,0,S,,,,,,"ref iteration #2"
+444.namd,64,567.408276,904.604352,1,S,,,,,,"ref iteration #3"
+447.dealII,64,959.886125,762.75712,0,S,,,,,,"ref iteration #1"
+447.dealII,64,962.317307,760.830144,1,S,,,,,,"ref iteration #2"
+447.dealII,64,972.867899,752.579072,0,S,,,,,,"ref iteration #3"
+450.soplex,64,3126.611458,170.715136,0,S,,,,,,"ref iteration #1"
+450.soplex,64,3198.127329,166.897664,1,S,,,,,,"ref iteration #2"
+450.soplex,64,3201.689916,166.711936,0,S,,,,,,"ref iteration #3"
+453.povray,64,350.037004,972.697152,0,S,,,,,,"ref iteration #1"
+453.povray,64,353.851442,962.211712,1,S,,,,,,"ref iteration #2"
+453.povray,64,353.951753,961.939008,0,S,,,,,,"ref iteration #3"
+454.calculix,64,1256.141067,420.334976,0,S,,,,,,"ref iteration #1"
+454.calculix,64,1235.05332,427.511936,0,S,,,,,,"ref iteration #2"
+454.calculix,64,1238.017229,426.488384,1,S,,,,,,"ref iteration #3"
+459.GemsFDTD,64,4105.3715,165.402816,0,S,,,,,,"ref iteration #1"
+459.GemsFDTD,64,4093.567482,165.879744,0,S,,,,,,"ref iteration #2"
+459.GemsFDTD,64,4095.568989,165.79872,1,S,,,,,,"ref iteration #3"
+465.tonto,64,1030.425776,611.164864,0,S,,,,,,"ref iteration #1"
+465.tonto,64,1034.29362,608.879296,1,S,,,,,,"ref iteration #2"
+465.tonto,64,1035.020467,608.451712,0,S,,,,,,"ref iteration #3"
+470.lbm,64,5183.015101,169.661888,1,S,,,,,,"ref iteration #1"
+470.lbm,64,5183.413661,169.648832,0,S,,,,,,"ref iteration #2"
+470.lbm,64,5182.470161,169.67968,0,S,,,,,,"ref iteration #3"
+481.wrf,64,1932.802295,369.867136,1,S,,,,,,"ref iteration #1"
+481.wrf,64,1934.580133,369.527232,0,S,,,,,,"ref iteration #2"
+481.wrf,64,1931.755159,370.067584,0,S,,,,,,"ref iteration #3"
+482.sphinx3,64,4134.130729,301.722432,0,S,,,,,,"ref iteration #1"
+482.sphinx3,64,4246.579613,293.732864,1,S,,,,,,"ref iteration #2"
+482.sphinx3,64,4326.525728,288.305216,0,S,,,,,,"ref iteration #3"
+
+"Selected Results Table"
+
+Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
+410.bwaves,64,2842.154174,306.021376,1,S,,,,,NR,"SelectedIteration (base #2)"
+416.gamess,64,4217.142877,297.149056,1,S,,,,,NR,"SelectedIteration (base #1)"
+433.milc,64,2757.666786,213.049664,1,S,,,,,NR,"SelectedIteration (base #3)"
+434.zeusmp,64,1183.995784,491.893632,1,S,,,,,NR,"SelectedIteration (base #1)"
+435.gromacs,64,483.808622,944.505728,1,S,,,,,NR,"SelectedIteration (base #1)"
+436.cactusADM,64,1495.303054,511.468224,1,S,,,,,NR,"SelectedIteration (base #1)"
+437.leslie3d,64,2944.08293,204.34208,1,S,,,,,NR,"SelectedIteration (base #3)"
+444.namd,64,567.408276,904.604352,1,S,,,,,NR,"SelectedIteration (base #3)"
+447.dealII,64,962.317307,760.830144,1,S,,,,,NR,"SelectedIteration (base #2)"
+450.soplex,64,3198.127329,166.897664,1,S,,,,,NR,"SelectedIteration (base #2)"
+453.povray,64,353.851442,962.211712,1,S,,,,,NR,"SelectedIteration (base #2)"
+454.calculix,64,1238.017229,426.488384,1,S,,,,,NR,"SelectedIteration (base #3)"
+459.GemsFDTD,64,4095.568989,165.79872,1,S,,,,,NR,"SelectedIteration (base #3)"
+465.tonto,64,1034.29362,608.879296,1,S,,,,,NR,"SelectedIteration (base #2)"
+470.lbm,64,5183.015101,169.661888,1,S,,,,,NR,"SelectedIteration (base #1)"
+481.wrf,64,1932.802295,369.867136,1,S,,,,,NR,"SelectedIteration (base #1)"
+482.sphinx3,64,4246.579613,293.732864,1,S,,,,,NR,"SelectedIteration (base #2)"
+
+SPECfp_rate_base2006,383.111525,,383.111525
+SPECfp_rate2006,"Not Run",,,,,,,"Not Run"
+
+"Run number:",001
+
+"Hardware Vendor:","System Vendor"
+"Hardware Model:","System Model Name"
+"Date tested:",May-2019
+"CPU2006 License:",0
+"Test sponsor:","Test Sponsor (Optional, defaults to hw_vendor)"
+"Tested by:","(Optional, defaults to hw_vendor)"
+"Hardware avail:",Dec-9999
+"Software avail:",May-2010
+
+
+HARDWARE
+
+"CPU Name","could not determine"
+"CPU Characteristics"," "
+"CPU MHz",9999
+FPU,Integrated
+"CPU(s) enabled","number of cores enabled cores, could not determine chips, number of cores manufactured into each chip cores/chip, number of threads enabled per core threads/core"
+"CPU(s) orderable","1,2 chips"
+"Primary Cache","9999 KB I + 9999 KB D on chip per core"
+"Secondary Cache","9999 KB I+D on chip per core"
+"L3 Cache","9999 MB I+D on chip per chip"
+"Other Cache",None
+Memory,"125.650 GB fixme: If using DDR3, format is:"
+,"'N GB (M x N GB nRxn PCn-nnnnnR-n, ECC)'"
+"Disk Subsystem","3.6 TB  add more disk info here"
+"Other Hardware",None
+
+SOFTWARE
+
+"Operating System","Ubuntu 18.04.1 LTS"
+,4.15.0-29-generic
+Compiler,"gcc, g++ & gfortran 4.3.4"
+"Auto Parallel",No
+"File System",ext4
+"System State","Run level 5 (add definition here)"
+"Base Pointers",64-bit
+"Peak Pointers",64-bit
+"Other Software",None
+
+"Submit Notes"
+
+"The config file option 'submit' was used."
+"'numactl' was used to bind copies to the cores."
+"See the configuration file for details."
+
+"Operating System Notes"
+
+"'ulimit -s unlimited' was used to set environment stack size"
+
+"Platform Notes"
+
+" Sysinfo program /home/me/syncfile/cputool/speccpu2006/Docs/sysinfo"
+" $Rev: 6775 $ $Date:: 2011-08-16 #$ 8787f7622badcf24e01c368b1db4377c"
+" running on ubuntu Thu May 16 00:56:35 2019"
+
+" This section contains SUT (System Under Test) info as seen by"
+" some common utilities.  To remove or add to this section, see:"
+"   http://www.spec.org/cpu2006/Docs/config.html#sysinfo"
+
+" From /proc/cpuinfo"
+" *"
+" * Did not identify cpu model.  If you would"
+" * like to write your own sysinfo program, see"
+" * www.spec.org/cpu2006/config.html#sysinfo"
+" *"
+" *"
+" * 0 ""physical id"" tags found.  Perhaps this is an older system,"
+" * or a virtualized system.  Not attempting to guess how to"
+" * count chips/cores for this system."
+" *"
+"       64 ""processors"""
+"    cores, siblings (Caution: counting these is hw and system dependent.  The"
+"    following excerpts from /proc/cpuinfo might not be reliable.  Use with"
+"    caution.)"
+
+" From /proc/meminfo"
+"    MemTotal:       131753668 kB"
+"    HugePages_Total:       0"
+"    Hugepagesize:       2048 kB"
+
+" /usr/bin/lsb_release -d"
+"    Ubuntu 18.04.1 LTS"
+
+" From /etc/*release* /etc/*version*"
+"    debian_version: buster/sid"
+"    os-release:"
+"       NAME=""Ubuntu"""
+"       VERSION=""18.04.1 LTS (Bionic Beaver)"""
+"       ID=ubuntu"
+"       ID_LIKE=debian"
+"       PRETTY_NAME=""Ubuntu 18.04.1 LTS"""
+"       VERSION_ID=""18.04"""
+"       HOME_URL=""https://www.ubuntu.com/"""
+"       SUPPORT_URL=""https://help.ubuntu.com/"""
+
+" uname -a:"
+"    Linux ubuntu 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:41:03 UTC 2018"
+"    aarch64 aarch64 aarch64 GNU/Linux"
+
+" run-level 5 Mar 21 16:41"
+
+" SPEC is set to: /home/me/syncfile/cputool/speccpu2006"
+"    Filesystem     Type  Size  Used Avail Use% Mounted on"
+"    /dev/sda2      ext4  3.6T  105G  3.3T   4% /"
+
+" (End of data from sysinfo program)"
+
+"Base Compiler Invocation"
+410.bwaves," /usr/bin/gfortran"," /usr/bin/gfortran"
+416.gamess," /usr/bin/gfortran"," /usr/bin/gfortran"
+433.milc," /usr/bin/gcc"," /usr/bin/gcc"
+434.zeusmp," /usr/bin/gfortran"," /usr/bin/gfortran"
+435.gromacs," /usr/bin/gcc"," /usr/bin/gfortran"," /usr/bin/gfortran"
+436.cactusADM," /usr/bin/gcc"," /usr/bin/gfortran"," /usr/bin/gfortran"
+437.leslie3d," /usr/bin/gfortran"," /usr/bin/gfortran"
+444.namd," /usr/bin/g++"," /usr/bin/g++"
+447.dealII," /usr/bin/g++"," /usr/bin/g++"
+450.soplex," /usr/bin/g++"," /usr/bin/g++"
+453.povray," /usr/bin/g++"," /usr/bin/g++"
+454.calculix," /usr/bin/gcc"," /usr/bin/gfortran"," /usr/bin/gfortran"
+459.GemsFDTD," /usr/bin/gfortran"," /usr/bin/gfortran"
+465.tonto," /usr/bin/gfortran"," /usr/bin/gfortran"
+470.lbm," /usr/bin/gcc"," /usr/bin/gcc"
+481.wrf," /usr/bin/gcc"," /usr/bin/gfortran"," /usr/bin/gfortran"
+482.sphinx3," /usr/bin/gcc"," /usr/bin/gcc"
+
+"Base Portability Flags"
+410.bwaves," -DSPEC_CPU_LP64"
+416.gamess," -DSPEC_CPU_LP64"
+433.milc," -DSPEC_CPU_LP64"
+434.zeusmp," -DSPEC_CPU_LP64"
+435.gromacs," -DSPEC_CPU_LP64"
+436.cactusADM," -DSPEC_CPU_LP64"
+437.leslie3d," -DSPEC_CPU_LP64"
+444.namd," -DSPEC_CPU_LP64"
+447.dealII," -DSPEC_CPU_LP64"
+450.soplex," -DSPEC_CPU_LP64"
+453.povray," -DSPEC_CPU_LP64"
+454.calculix," -DSPEC_CPU_LP64"
+459.GemsFDTD," -DSPEC_CPU_LP64"
+465.tonto," -DSPEC_CPU_LP64"
+470.lbm," -DSPEC_CPU_LP64"
+481.wrf," -DSPEC_CPU_LP64"," -DSPEC_CPU_CASE_FLAG"," -DSPEC_CPU_LINUX"
+482.sphinx3," -DSPEC_CPU_LP64"
+
+"Base Optimization Flags"
+410.bwaves," -O2"," -fno-strict-aliasing"
+416.gamess," -O0"
+433.milc," -O2"," -fno-strict-aliasing"
+434.zeusmp," -O2"," -fno-strict-aliasing"
+435.gromacs," -O2"," -fno-strict-aliasing"," -O2"," -fno-strict-aliasing"
+436.cactusADM," -O2"," -fno-strict-aliasing"," -O2"," -fno-strict-aliasing"
+437.leslie3d," -O2"," -fno-strict-aliasing"
+444.namd," -O2"," -fno-strict-aliasing"
+447.dealII," -O2"," -fno-strict-aliasing"
+450.soplex," -O2"," -fno-strict-aliasing"
+453.povray," -O2"," -fno-strict-aliasing"
+454.calculix," -O2"," -fno-strict-aliasing"," -O2"," -fno-strict-aliasing"
+459.GemsFDTD," -O2"," -fno-strict-aliasing"
+465.tonto," -O2"," -fno-strict-aliasing"
+470.lbm," -O2"," -fno-strict-aliasing"
+481.wrf," -O2"," -fno-strict-aliasing"," -O2"," -fno-strict-aliasing"
+482.sphinx3," -O2"," -fno-strict-aliasing"
+
+"Base Other Flags"
+410.bwaves," No flags used"
+416.gamess," No flags used"
+433.milc," No flags used"
+434.zeusmp," No flags used"
+435.gromacs," No flags used"
+436.cactusADM," No flags used"
+437.leslie3d," No flags used"
+444.namd," No flags used"
+447.dealII," No flags used"
+450.soplex," No flags used"
+453.povray," No flags used"
+454.calculix," No flags used"
+459.GemsFDTD," No flags used"
+465.tonto," No flags used"
+470.lbm," No flags used"
+481.wrf," No flags used"
+482.sphinx3," No flags used"
+
+"Base Forbidden Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Base Unknown Flags"
+410.bwaves," -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+416.gamess
+433.milc," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+434.zeusmp," -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+435.gromacs," -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+436.cactusADM," -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+437.leslie3d," -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+444.namd," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+447.dealII," -fpermissive"," -fpermissive"," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+450.soplex," -std=c++03"," -std=c++03"," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+453.povray," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+454.calculix," -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+459.GemsFDTD," -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+465.tonto," -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+470.lbm," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+481.wrf," -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"," -fno-aggressive-loop-optimizations"
+482.sphinx3," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+
+"Peak Compiler Invocation"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Peak Portability Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Peak Optimization Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Peak Other Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Peak Forbidden Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+"Peak Unknown Flags"
+410.bwaves
+416.gamess
+433.milc
+434.zeusmp
+435.gromacs
+436.cactusADM
+437.leslie3d
+444.namd
+447.dealII
+450.soplex
+453.povray
+454.calculix
+459.GemsFDTD
+465.tonto
+470.lbm
+481.wrf
+482.sphinx3
+
+ERRORS
+
+##############################################################################
+"#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
+"#                                                                            #"
+"# Your run was marked invalid because it has one or more flags in the        #"
+"# ""unknown"" category. You might be able to resolve this problem without      #"
+"# re-running your test; see                                                  #"
+"#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #"
+"# for more information.                                                      #"
+"#                                                                            #"
+"#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
+##############################################################################
+----------------
+"For questions about","this result, please","contact the tester.",
+"For other inquiries,","please contact",webmaster@spec.org.,
+"Copyright 2006-2019 Standard","Performance Evaluation",Corporation,
+"Tested with SPEC CPU2006 ","v1.2.  Report","generated on ","Sat May 18 05:04:05 2019","by SPEC CPU2006 CSV","formatter v6364."

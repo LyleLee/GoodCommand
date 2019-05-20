@@ -1,0 +1,355 @@
+valid,0
+
+"Full Results Table"
+
+Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
+400.perlbench,32,514.727463,607.389376,1,S,,,,,,"ref iteration #1"
+400.perlbench,32,515.247355,606.776512,0,S,,,,,,"ref iteration #2"
+400.perlbench,32,514.625056,607.510272,0,S,,,,,,"ref iteration #3"
+401.bzip2,32,916.966979,336.7624,0,S,,,,,,"ref iteration #1"
+401.bzip2,32,914.16391,337.795008,1,S,,,,,,"ref iteration #2"
+401.bzip2,32,912.867693,338.274656,0,S,,,,,,"ref iteration #3"
+403.gcc,32,797.759852,322.904192,0,S,,,,,,"ref iteration #1"
+403.gcc,32,803.433408,320.623968,0,S,,,,,,"ref iteration #2"
+403.gcc,32,797.96016,322.823136,1,S,,,,,,"ref iteration #3"
+429.mcf,32,1009.38659,289.12608,0,S,,,,,,"ref iteration #1"
+429.mcf,32,1009.742742,289.024128,1,S,,,,,,"ref iteration #2"
+429.mcf,32,1012.576169,288.21536,0,S,,,,,,"ref iteration #3"
+445.gobmk,32,622.920278,538.881152,0,S,,,,,,"ref iteration #1"
+445.gobmk,32,623.770827,538.146368,1,S,,,,,,"ref iteration #2"
+445.gobmk,32,625.958196,536.265856,0,S,,,,,,"ref iteration #3"
+456.hmmer,32,632.046747,472.370112,0,S,,,,,,"ref iteration #1"
+456.hmmer,32,631.60291,472.70208,1,S,,,,,,"ref iteration #2"
+456.hmmer,32,631.018635,473.139744,0,S,,,,,,"ref iteration #3"
+458.sjeng,32,729.57712,530.7184,1,S,,,,,,"ref iteration #1"
+458.sjeng,32,729.75906,530.58608,0,S,,,,,,"ref iteration #2"
+458.sjeng,32,729.141184,531.035712,0,S,,,,,,"ref iteration #3"
+462.libquantum,32,2166.882054,305.988032,0,S,,,,,,"ref iteration #1"
+462.libquantum,32,2140.972081,309.691104,0,S,,,,,,"ref iteration #2"
+462.libquantum,32,2159.108223,307.08976,1,S,,,,,,"ref iteration #3"
+464.h264ref,32,950.32642,745.175552,1,S,,,,,,"ref iteration #1"
+464.h264ref,32,950.170492,745.297824,0,S,,,,,,"ref iteration #2"
+464.h264ref,32,951.162344,744.52064,0,S,,,,,,"ref iteration #3"
+471.omnetpp,32,908.857188,220.056576,0,S,,,,,,"ref iteration #1"
+471.omnetpp,32,903.564312,221.345632,0,S,,,,,,"ref iteration #2"
+471.omnetpp,32,906.533448,220.62064,1,S,,,,,,"ref iteration #3"
+473.astar,32,690.976378,325.105184,1,S,,,,,,"ref iteration #1"
+473.astar,32,691.08153,325.055712,0,S,,,,,,"ref iteration #2"
+473.astar,32,690.837931,325.170336,0,S,,,,,,"ref iteration #3"
+483.xalancbmk,32,667.899265,330.588768,0,S,,,,,,"ref iteration #1"
+483.xalancbmk,32,667.358921,330.856448,1,S,,,,,,"ref iteration #2"
+483.xalancbmk,32,665.926924,331.567904,0,S,,,,,,"ref iteration #3"
+
+"Selected Results Table"
+
+Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
+400.perlbench,32,514.727463,607.389376,1,S,,,,,NR,"SelectedIteration (base #1)"
+401.bzip2,32,914.16391,337.795008,1,S,,,,,NR,"SelectedIteration (base #2)"
+403.gcc,32,797.96016,322.823136,1,S,,,,,NR,"SelectedIteration (base #3)"
+429.mcf,32,1009.742742,289.024128,1,S,,,,,NR,"SelectedIteration (base #2)"
+445.gobmk,32,623.770827,538.146368,1,S,,,,,NR,"SelectedIteration (base #2)"
+456.hmmer,32,631.60291,472.70208,1,S,,,,,NR,"SelectedIteration (base #2)"
+458.sjeng,32,729.57712,530.7184,1,S,,,,,NR,"SelectedIteration (base #1)"
+462.libquantum,32,2159.108223,307.08976,1,S,,,,,NR,"SelectedIteration (base #3)"
+464.h264ref,32,950.32642,745.175552,1,S,,,,,NR,"SelectedIteration (base #1)"
+471.omnetpp,32,906.533448,220.62064,1,S,,,,,NR,"SelectedIteration (base #3)"
+473.astar,32,690.976378,325.105184,1,S,,,,,NR,"SelectedIteration (base #1)"
+483.xalancbmk,32,667.358921,330.856448,1,S,,,,,NR,"SelectedIteration (base #2)"
+
+SPECint_rate_base2006,394.094525,,394.094525
+SPECint_rate2006,"Not Run",,,,,,,"Not Run"
+
+"Run number:",002
+
+"Hardware Vendor:","System Vendor"
+"Hardware Model:","System Model Name"
+"Date tested:",May-2019
+"CPU2006 License:",0
+"Test sponsor:","Test Sponsor (Optional, defaults to hw_vendor)"
+"Tested by:","(Optional, defaults to hw_vendor)"
+"Hardware avail:",Dec-9999
+"Software avail:",May-2010
+
+
+HARDWARE
+
+"CPU Name","could not determine"
+"CPU Characteristics"," "
+"CPU MHz",9999
+FPU,Integrated
+"CPU(s) enabled","number of cores enabled cores, could not determine chips, number of cores manufactured into each chip cores/chip, number of threads enabled per core threads/core"
+"CPU(s) orderable","1,2 chips"
+"Primary Cache","9999 KB I + 9999 KB D on chip per core"
+"Secondary Cache","9999 KB I+D on chip per core"
+"L3 Cache","9999 MB I+D on chip per chip"
+"Other Cache",None
+Memory,"510.626 GB fixme: If using DDR3, format is:"
+,"'N GB (M x N GB nRxn PCn-nnnnnR-n, ECC)'"
+"Disk Subsystem","3.6 TB  add more disk info here"
+"Other Hardware",None
+
+SOFTWARE
+
+"Operating System","Red Hat Enterprise Linux Server release 7.6"
+,(Maipo)
+,4.14.0-115.el7a.aarch64
+Compiler,"gcc, g++ & gfortran 4.3.4"
+"Auto Parallel",No
+"File System",xfs
+"System State","Run level 3 (add definition here)"
+"Base Pointers",64-bit
+"Peak Pointers",64-bit
+"Other Software",None
+
+"Submit Notes"
+
+"The config file option 'submit' was used."
+"'numactl' was used to bind copies to the cores."
+"See the configuration file for details."
+
+"Operating System Notes"
+
+"'ulimit -s unlimited' was used to set environment stack size"
+
+"Platform Notes"
+
+" Sysinfo program /home/tmp_from_iso/Docs/sysinfo"
+" $Rev: 6775 $ $Date:: 2011-08-16 #$ 8787f7622badcf24e01c368b1db4377c"
+" running on test-controller Fri May 17 11:38:19 2019"
+
+" This section contains SUT (System Under Test) info as seen by"
+" some common utilities.  To remove or add to this section, see:"
+"   http://www.spec.org/cpu2006/Docs/config.html#sysinfo"
+
+" From /proc/cpuinfo"
+" *"
+" * Did not identify cpu model.  If you would"
+" * like to write your own sysinfo program, see"
+" * www.spec.org/cpu2006/config.html#sysinfo"
+" *"
+" *"
+" * 0 ""physical id"" tags found.  Perhaps this is an older system,"
+" * or a virtualized system.  Not attempting to guess how to"
+" * count chips/cores for this system."
+" *"
+"       96 ""processors"""
+"    cores, siblings (Caution: counting these is hw and system dependent.  The"
+"    following excerpts from /proc/cpuinfo might not be reliable.  Use with"
+"    caution.)"
+
+" From /proc/meminfo"
+"    MemTotal:       535429696 kB"
+"    HugePages_Total:       0"
+"    Hugepagesize:     524288 kB"
+
+" From /etc/*release* /etc/*version*"
+"    os-release:"
+"       NAME=""Red Hat Enterprise Linux Server"""
+"       VERSION=""7.6 (Maipo)"""
+"       ID=""rhel"""
+"       ID_LIKE=""fedora"""
+"       VARIANT=""Server"""
+"       VARIANT_ID=""server"""
+"       VERSION_ID=""7.6"""
+"       PRETTY_NAME=""Red Hat Enterprise Linux Server 7.6 (Maipo)"""
+"    redhat-release: Red Hat Enterprise Linux Server release 7.6 (Maipo)"
+"    system-release: Red Hat Enterprise Linux Server release 7.6 (Maipo)"
+"    system-release-cpe: cpe:/o:redhat:enterprise_linux:7.6:ga:server"
+
+" uname -a:"
+"    Linux test-controller 4.14.0-115.el7a.aarch64 #1 SMP Tue Sep 25 12:32:51 EDT"
+"    2018 aarch64 aarch64 aarch64 GNU/Linux"
+
+" run-level 3 May 10 16:04"
+
+" SPEC is set to: /home/tmp_from_iso"
+"    Filesystem              Type  Size  Used Avail Use% Mounted on"
+"    /dev/mapper/rhel00-home xfs   3.6T   67G  3.6T   2% /home"
+
+" (End of data from sysinfo program)"
+
+"Base Compiler Invocation"
+400.perlbench," /usr/bin/gcc"," /usr/bin/gcc"
+401.bzip2," /usr/bin/gcc"," /usr/bin/gcc"
+403.gcc," /usr/bin/gcc"," /usr/bin/gcc"
+429.mcf," /usr/bin/gcc"," /usr/bin/gcc"
+445.gobmk," /usr/bin/gcc"," /usr/bin/gcc"
+456.hmmer," /usr/bin/gcc"," /usr/bin/gcc"
+458.sjeng," /usr/bin/gcc"," /usr/bin/gcc"
+462.libquantum," /usr/bin/gcc"," /usr/bin/gcc"
+464.h264ref," /usr/bin/gcc"," /usr/bin/gcc"
+471.omnetpp," /usr/bin/g++"," /usr/bin/g++"
+473.astar," /usr/bin/g++"," /usr/bin/g++"
+483.xalancbmk," /usr/bin/g++"," /usr/bin/g++"
+
+"Base Portability Flags"
+400.perlbench," -DSPEC_CPU_LP64"," -DSPEC_CPU_LINUX_X64"
+401.bzip2," -DSPEC_CPU_LP64"
+403.gcc," -DSPEC_CPU_LP64"
+429.mcf," -DSPEC_CPU_LP64"
+445.gobmk," -DSPEC_CPU_LP64"
+456.hmmer," -DSPEC_CPU_LP64"
+458.sjeng," -DSPEC_CPU_LP64"
+462.libquantum," -DSPEC_CPU_LP64"," -DSPEC_CPU_LINUX"
+464.h264ref," -DSPEC_CPU_LP64"
+471.omnetpp," -DSPEC_CPU_LP64"
+473.astar," -DSPEC_CPU_LP64"
+483.xalancbmk," -DSPEC_CPU_LP64"," -DSPEC_CPU_LINUX"
+
+"Base Optimization Flags"
+400.perlbench," -O2"," -fno-strict-aliasing"
+401.bzip2," -O2"," -fno-strict-aliasing"
+403.gcc," -O2"," -fno-strict-aliasing"
+429.mcf," -O2"," -fno-strict-aliasing"
+445.gobmk," -O2"," -fno-strict-aliasing"
+456.hmmer," -O2"," -fno-strict-aliasing"
+458.sjeng," -O2"," -fno-strict-aliasing"
+462.libquantum," -O2"," -fno-strict-aliasing"
+464.h264ref," -O2"," -fno-strict-aliasing"
+471.omnetpp," -O2"," -fno-strict-aliasing"
+473.astar," -O2"," -fno-strict-aliasing"
+483.xalancbmk," -O2"," -fno-strict-aliasing"
+
+"Base Other Flags"
+400.perlbench," No flags used"
+401.bzip2," No flags used"
+403.gcc," No flags used"
+429.mcf," No flags used"
+445.gobmk," No flags used"
+456.hmmer," No flags used"
+458.sjeng," No flags used"
+462.libquantum," No flags used"
+464.h264ref," No flags used"
+471.omnetpp," No flags used"
+473.astar," No flags used"
+483.xalancbmk," No flags used"
+
+"Base Forbidden Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Base Unknown Flags"
+400.perlbench," -std=gnu90"," -std=gnu90"," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+401.bzip2," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+403.gcc," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+429.mcf," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+445.gobmk," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+456.hmmer," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+458.sjeng," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+462.libquantum," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+464.h264ref," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+471.omnetpp," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+473.astar," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+483.xalancbmk," -fsigned-char -fno-aggressive-loop-optimizations"," -fsigned-char -fno-aggressive-loop-optimizations"
+
+"Peak Compiler Invocation"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Peak Portability Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Peak Optimization Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Peak Other Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Peak Forbidden Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+"Peak Unknown Flags"
+400.perlbench
+401.bzip2
+403.gcc
+429.mcf
+445.gobmk
+456.hmmer
+458.sjeng
+462.libquantum
+464.h264ref
+471.omnetpp
+473.astar
+483.xalancbmk
+
+ERRORS
+
+##############################################################################
+"#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
+"#                                                                            #"
+"# 'reportable' flag not set during run                                       #"
+"# Unknown flags were used! See                                               #"
+"#      http://www.spec.org/cpu2006/Docs/runspec.html#flagsurl                #"
+"# for information about how to get rid of this error.                        #"
+"#                                                                            #"
+"#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
+##############################################################################
+----------------
+"For questions about","this result, please","contact the tester.",
+"For other inquiries,","please contact",webmaster@spec.org.,
+"Copyright 2006-2019 Standard","Performance Evaluation",Corporation,
+"Tested with SPEC CPU2006 ","v1.2.  Report","generated on ","Sat May 18 17:21:16 2019","by SPEC CPU2006 CSV","formatter v6364."

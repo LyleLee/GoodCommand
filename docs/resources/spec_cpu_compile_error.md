@@ -56,8 +56,6 @@ collect2: error: ld returned 1 exit status
 !!!!! buildtools killed
 /home/me/cpu2006
 ```
-
-
 ## 执行450时出错
 ```
 ./runspec -c ../config/lemon-2cpu.cfg 450 --rate 1 -noreportable
@@ -108,3 +106,18 @@ Individual benchmark selection is not allowed for a reportable run
 改成
 ./runspec -c ../config/lemon-2cpu.cfg 450 --rate 1 --noreportable
 ```
+
+## 执行install报错
+```
+We do not appear to have working vendor-supplied binaries for your
+architecture.  You will have to compile the tool binaries by
+yourself.  Please read the file
+
+    /home/me/syncfile/cputool/speccpu2006/Docs/tools-build.html
+
+for instructions on how you might be able to build them.
+
+Please only attempt this as a last resort.
+```
+也就是没有预编译好的二进制文件可以安装，需要我们自行编译
+同时在"tools/bin/"也可以看到哪些体系结果有编译好的二进制用于安装。

@@ -1,0 +1,3106 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta name="generator" content="SPEC CPU2006 Tools 6611 (flags v6417)" />
+<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+<style type="text/css" id="internalScreen" media="screen">
+<!--
+body {
+  margin:  1em;
+  border:  0;
+  padding: 0;
+  background: white;
+  color:      black;
+  font-family: "Times Roman", times, serif;
+}
+
+.tt {
+  font-family: monospace;
+}
+
+div.flagClass > h2 {
+  border-bottom: 1px dotted black;
+  width: 80%;
+  font-family: sans-serif;
+}
+
+div.flagDesc {
+  clear: both;
+  background-color: rgb(255, 245, 220);
+  border: 1px solid blue; /* XXX This is for debugging */ 
+  margin: 0 auto;
+  width: 90%;
+}
+
+li.flagName {
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: block;
+  margin: 0.5em 0 0.5em 0;
+  font-size: 125%;
+  white-space: nowrap;
+}
+
+/* (presumably short) informationals all get grouped together near the top
+ * of the flag description block.
+ */
+.flagOrigin, .flagDescClass, .flagDescCompiler, .flagDescRE, .flagDescParallel, .flagVar {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  float: left;
+  padding: 0.25em;
+  margin: 0 0 0.25em 0;
+}
+
+.flagDescClass::before {
+  content: "Flag Class: ";
+}
+.flagDescCompiler::before {
+  content: "Compilers that recognize this flag: ";
+}
+.flagDescRE::before {
+  content: "Regular Expression: ";
+}
+.flagDescParallel::before {
+  content: "Indicates automatic parallelization: ";
+}
+.flagVar::before {
+  content: "Found In: ";
+}
+
+span.flagDescInc {
+  border-bottom: 1px solid black;
+}
+
+/* The description text stands alone. */
+.descText {
+  clear: both;
+  padding: 0.5em 1em 0.5em 1em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0.5em 0 0.5em 0;
+}
+
+/* This is a separate class so that in the print style sheet it can
+ * be ignored.
+ * Also, 'style="clear:both;"' is longer than 'class="clear"'
+ */
+.clear {
+  clear: both;
+}
+
+/* This is really for the link _to_ the flag report */
+li.unknown > a:link, a:visited { text-decoration: none; }
+
+.monospace {
+  font-family: Courier, "Courier New", monospace;
+}
+
+ul.flagDescList {
+  clear: both;
+  list-style-type: none;
+}
+
+/* Arrange for each flag description to have some headroom. */
+ul.flagDescList > li {
+  margin: 2em 0 0 0;
+}
+
+ul.flagDesc {
+  list-style-type: none;
+}
+
+div.flagTOC {
+  border: 1px solid white;
+  padding: 0.5em 1em;
+  margin: 0 auto;
+  width: 80%;
+}
+
+ul.flagTOC {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.flagTOC > li {
+  border: 1px solid white; /* rgb(211, 211, 211); */
+  margin: 0;
+  padding: 0.25em 0 0.25em 0;
+  float: left;
+  display: inline-block; /* Fix IE bug; compliant browsers will ignore this */
+  width: 24.3%;
+  min-height: 1.5em;
+  overflow: hidden; /* If the table gets squeezed too much, don't let the
+                     * text overlap
+                     */
+  white-space: nowrap;
+}
+
+ul.SubMenu li {
+  border: 1px solid white; /* rgb(211, 211, 211); */
+}
+
+ul.SubMenu {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  border: 1px solid black;
+  background-color: white;
+  margin: 0 0 0 2em;
+  padding: 0.25em 5em 0.25em 0.5em;
+  white-space: nowrap;
+}
+
+li:hover > ul.SubMenu, ul.SubMenu:hover {
+  display: block;
+}
+
+ul.SubMenu > li:hover, ul.flagTOC > li:hover {
+  background-color: rgb(176, 196, 238); /* lightsteelgray... almost */
+  border: 1px solid rgb(128, 128, 128);
+}
+
+
+.resultpage a:link, .resultpage a:visited {
+  text-decoration: none;
+  border-bottom: 1px dashed black;
+  color: inherit;
+}
+
+.resultpage {
+  margin: auto;
+  padding: 0;
+  width: 800px;
+}
+
+div.logo {
+  float: left;
+  width: 38px;
+  height: 57px;
+}
+
+.titlebarcontainer, .resultstable, .ncsection {
+  border: solid 1px;
+  width: 100%;
+  float: left;
+}
+
+.ncsection {
+  background-color: white;
+  color: black;
+}
+
+.titlebar {
+  float: left;
+  padding: 0em 1em 0em 1em;
+  text-align: center;
+  width: 91%;
+}
+
+div.titlebar > h1, div.titlebar > p {
+  margin: 0 1em 0 1em;
+}
+
+div.ncsection {
+  font-size: 150%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.systembar {
+  float: left;
+  width: 65%;
+  font-size: 150%;
+  margin: 0;
+  padding: 0.1em;
+  border-right: solid 1px black;
+}
+
+.metricbar {
+  padding: 0.1em;
+  margin: 0;
+  float: right;
+  width: 33%;
+  height: 50%;
+  font-size: 120%;
+}
+
+.metricbar#base {
+  background-color: #c8c8c8;
+  color: black;
+}
+
+.metricbar#peak {
+  background-color: transparent;
+  color: #2626b3;       /* peak blue */
+}
+
+.metricbar p {
+  margin: 0;
+  padding: 0.2em;
+}
+
+.datebar p, .systembar p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Datebar stuff for older results */
+.datebar p {
+  float: left;
+  border-left: solid 1px black;
+}
+
+span.item {
+  float: left;
+  margin: 0;
+  padding: 0.1em 0 0.1em 0.5em;
+}
+
+span.value {
+  float: right;
+  padding: 0.1em 0.5em 0.1em 0;
+}
+
+div.datebar {
+  width: 100%;
+  float: left;
+  min-height: 100%;
+  border: solid 1px black;
+}
+
+p#test_sponsor         { width: 48%; }
+p#tester               { width: 48%; }
+p#license_num          { width: 24%; }
+p#test_date            { width: 23%; }
+p#hw_avail, p#sw_avail { width: 25%; }
+
+/* Table-based datebar on newer results */
+table.datebar {
+  float: left;
+  width: 100%;
+  min-height: 100%;
+  border-collapse: collapse;
+  border: solid 1px black;
+  table-layout: fixed;
+}
+
+table.datebar th {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 0.5em;
+  padding: 0 0.5em 0 0.25em;
+}
+
+table.datebar td {
+  text-align: left;
+  padding: 0 0.5em 0 0;
+}
+
+th#license_num          { width: 17%; }
+th#test_sponsor         { width: 17%; }
+th#tester               { width: 17%; }
+th#test_date            { width: 22%; }
+th#hw_avail             { width: 22%; }
+th#sw_avail             { width: 22%; }
+td#license_num_val      { width: 52%; }
+td#test_sponsor_val     { width: 52%; }
+td#tester_val           { width: 52%; }
+td#test_date_val        { width: 13%; white-space: nowrap; }
+td#hw_avail_val         { width: 13%; white-space: nowrap; }
+td#sw_avail_val         { width: 13%; white-space: nowrap; }
+
+
+div.graph {
+  margin: auto;
+}
+
+div.sysdesc > h2 {
+  text-align: center;
+  background-color: #c8c8c8;
+  color: black;
+  padding: 0.5em 0 0.5em 0;
+  margin: 0;
+} 
+  
+div.sysdesc {
+  margin: 0.5em 0 0.5em 0;
+}
+
+div.infobox, div.sysdesc {
+  float: left;
+  width: 100%;
+  padding: 0;
+  border: solid 1px black;
+}
+
+div.infobox table {
+  width: 49%;
+  float: left;
+}
+
+div.infobox table tr {
+  vertical-align: top;
+}
+
+div.infobox table#Hardware,
+div.infobox table#BenchmarkSoftware {
+  width: 50%;
+  border-right: 1px solid black;
+}
+
+div.infobox table#Systems {
+  width: 100%;
+}
+
+div.infobox table#Systems tbody th {
+  width: 20%;
+}
+
+div.infobox thead th {
+  font-size: 200%;
+}
+
+div.infobox tbody th {
+  text-align: left;
+}
+
+.resultstable h2, div.notes h2 {
+  text-align: center;
+  margin: 0.1em;
+}
+
+div.notes h3 {
+  margin: 0.1em;
+}
+
+div.notes table {
+  width: 100%;
+}
+
+div.notes table tr td {
+  text-align: right;
+  vertical-align: top;
+}
+
+/* Alas, IE6... if only you didn't suck so much...
+div.notes table tr td + td {
+*/
+div.notes table td.al {
+  text-align: left;
+  width: 85%;
+}
+
+div.notes table tr td {
+  padding-bottom: 1em;
+}
+
+div.notes table.portability tr td {
+  padding: 0em;
+}
+
+div.notes table.portability {
+  padding: 1em;
+}
+
+.resultstable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resultstable th.basecol, .resultstable th.peakcol {
+  padding: 0.1em;
+  font-size: 90%;
+}
+
+.resultstable th {
+  border: solid 2px black;
+}
+
+.resultstable td {
+  border: solid 1px #b8b8b8;
+}
+
+td.bm, th.bm { 
+  border-right: solid 2px black;
+  border-left: solid 2px black;
+}
+
+td.secs { 
+  border-left: solid 2px black;
+}
+
+td.ratio { 
+  border-right: solid 2px black;
+}
+
+.resultstable tfoot td {
+  text-align: center;
+  border: solid 2px black;
+}
+
+th.basecol {
+  background-color: #c8c8c8;
+  color: black;
+}
+td.basecol {
+  text-align: right;
+  background-color: transparent;
+  color: black;
+}
+
+th.peakcol {
+  text-align: center;
+}
+
+.peakcol {
+  background-color: transparent;
+  color: #2626b3;       /* peak blue */
+  text-align: right;
+}
+
+td.bm {
+  /* Basically, the benchmark name and copies columns */
+  background-color: #c8c8c8;
+  color: black;
+}
+
+span.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.selected a:link, .selected a:visited {
+  border-bottom: 0;
+}
+
+div.notes {
+  width: 100%;
+  float: left;
+  border: solid 1px black;
+}
+
+div.flagfooter {
+  text-align: center;
+}
+
+div.errors {
+  border: solid 2px red;
+}
+div.errors h2 {
+  background-color: transparent;
+  color: red;
+}
+
+div.footer {
+  border: none;
+}
+
+/* People find the "double underline" confusing.  And Safari 1.3 doesn't deal
+ * well with attempting to disable the border for userflag links.  So just
+ * give up and don't decorate user flags specially.
+********************
+span.userflag {
+  text-decoration: underline;
+}
+
+.userflag a:link {
+  border-bottom: 0;
+}
+********************
+*/
+
+/* Keep flags from being wrapped */
+span.userflag, span.flagtext {
+  white-space: nowrap;
+}
+/* Most of the screen-specific CSS is also the common CSS */
+
+/* Style for the non-image W3C marking at the bottom of the page, courtesy of
+ * Marek Prokop (http://www.sovavsiti.cz/css/w3c_buttons.html)
+ */
+.w3cbutton3 {
+  margin: 1em 1em 0 0;
+  width: 9em;
+  border: 1px solid #ccc;
+  font-family: helvetica,arial,sans-serif;
+  font-size: 70%;
+  font-weight: bold;
+  float: left;
+}
+.w3cbutton3 a {
+  display: block;
+  width: 100%;
+}
+.w3cbutton3 a:link,
+.w3cbutton3 a:visited,
+.w3cbutton3 a:hover {
+  background-color: #fc6;
+  color: #000;
+  text-decoration: none;
+  border-bottom: none;
+}
+.w3cbutton3 span.w3c {
+  padding: 0 0.4em;
+  background-color: #fff;
+  color: #0c479d;
+}
+
+-->
+</style>
+<style type="text/css" id="internalPrint" media="print">
+<!--
+body {
+  margin:  1em;
+  border:  0;
+  padding: 0;
+  background: white;
+  color:      black;
+  font-family: "Times Roman", times, serif;
+}
+
+.tt {
+  font-family: monospace;
+}
+
+div.flagClass > h2 {
+  border-bottom: 1px dotted black;
+  width: 80%;
+  font-family: sans-serif;
+}
+
+div.flagDesc {
+  clear: both;
+  background-color: rgb(255, 245, 220);
+  border: 1px solid blue; /* XXX This is for debugging */ 
+  margin: 0 auto;
+  width: 90%;
+}
+
+li.flagName {
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: block;
+  margin: 0.5em 0 0.5em 0;
+  font-size: 125%;
+  white-space: nowrap;
+}
+
+/* (presumably short) informationals all get grouped together near the top
+ * of the flag description block.
+ */
+.flagOrigin, .flagDescClass, .flagDescCompiler, .flagDescRE, .flagDescParallel, .flagVar {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  float: left;
+  padding: 0.25em;
+  margin: 0 0 0.25em 0;
+}
+
+.flagDescClass::before {
+  content: "Flag Class: ";
+}
+.flagDescCompiler::before {
+  content: "Compilers that recognize this flag: ";
+}
+.flagDescRE::before {
+  content: "Regular Expression: ";
+}
+.flagDescParallel::before {
+  content: "Indicates automatic parallelization: ";
+}
+.flagVar::before {
+  content: "Found In: ";
+}
+
+span.flagDescInc {
+  border-bottom: 1px solid black;
+}
+
+/* The description text stands alone. */
+.descText {
+  clear: both;
+  padding: 0.5em 1em 0.5em 1em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0.5em 0 0.5em 0;
+}
+
+/* This is a separate class so that in the print style sheet it can
+ * be ignored.
+ * Also, 'style="clear:both;"' is longer than 'class="clear"'
+ */
+.clear {
+  clear: both;
+}
+
+/* This is really for the link _to_ the flag report */
+li.unknown > a:link, a:visited { text-decoration: none; }
+
+.monospace {
+  font-family: Courier, "Courier New", monospace;
+}
+
+ul.flagDescList {
+  clear: both;
+  list-style-type: none;
+}
+
+/* Arrange for each flag description to have some headroom. */
+ul.flagDescList > li {
+  margin: 2em 0 0 0;
+}
+
+ul.flagDesc {
+  list-style-type: none;
+}
+
+div.flagTOC {
+  border: 1px solid white;
+  padding: 0.5em 1em;
+  margin: 0 auto;
+  width: 80%;
+}
+
+ul.flagTOC {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.flagTOC > li {
+  border: 1px solid white; /* rgb(211, 211, 211); */
+  margin: 0;
+  padding: 0.25em 0 0.25em 0;
+  float: left;
+  display: inline-block; /* Fix IE bug; compliant browsers will ignore this */
+  width: 24.3%;
+  min-height: 1.5em;
+  overflow: hidden; /* If the table gets squeezed too much, don't let the
+                     * text overlap
+                     */
+  white-space: nowrap;
+}
+
+ul.SubMenu li {
+  border: 1px solid white; /* rgb(211, 211, 211); */
+}
+
+ul.SubMenu {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  border: 1px solid black;
+  background-color: white;
+  margin: 0 0 0 2em;
+  padding: 0.25em 5em 0.25em 0.5em;
+  white-space: nowrap;
+}
+
+li:hover > ul.SubMenu, ul.SubMenu:hover {
+  display: block;
+}
+
+ul.SubMenu > li:hover, ul.flagTOC > li:hover {
+  background-color: rgb(176, 196, 238); /* lightsteelgray... almost */
+  border: 1px solid rgb(128, 128, 128);
+}
+
+
+.resultpage a:link, .resultpage a:visited {
+  text-decoration: none;
+  border-bottom: 1px dashed black;
+  color: inherit;
+}
+
+.resultpage {
+  margin: auto;
+  padding: 0;
+  width: 800px;
+}
+
+div.logo {
+  float: left;
+  width: 38px;
+  height: 57px;
+}
+
+.titlebarcontainer, .resultstable, .ncsection {
+  border: solid 1px;
+  width: 100%;
+  float: left;
+}
+
+.ncsection {
+  background-color: white;
+  color: black;
+}
+
+.titlebar {
+  float: left;
+  padding: 0em 1em 0em 1em;
+  text-align: center;
+  width: 91%;
+}
+
+div.titlebar > h1, div.titlebar > p {
+  margin: 0 1em 0 1em;
+}
+
+div.ncsection {
+  font-size: 150%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.systembar {
+  float: left;
+  width: 65%;
+  font-size: 150%;
+  margin: 0;
+  padding: 0.1em;
+  border-right: solid 1px black;
+}
+
+.metricbar {
+  padding: 0.1em;
+  margin: 0;
+  float: right;
+  width: 33%;
+  height: 50%;
+  font-size: 120%;
+}
+
+.metricbar#base {
+  background-color: #c8c8c8;
+  color: black;
+}
+
+.metricbar#peak {
+  background-color: transparent;
+  color: #2626b3;       /* peak blue */
+}
+
+.metricbar p {
+  margin: 0;
+  padding: 0.2em;
+}
+
+.datebar p, .systembar p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Datebar stuff for older results */
+.datebar p {
+  float: left;
+  border-left: solid 1px black;
+}
+
+span.item {
+  float: left;
+  margin: 0;
+  padding: 0.1em 0 0.1em 0.5em;
+}
+
+span.value {
+  float: right;
+  padding: 0.1em 0.5em 0.1em 0;
+}
+
+div.datebar {
+  width: 100%;
+  float: left;
+  min-height: 100%;
+  border: solid 1px black;
+}
+
+p#test_sponsor         { width: 48%; }
+p#tester               { width: 48%; }
+p#license_num          { width: 24%; }
+p#test_date            { width: 23%; }
+p#hw_avail, p#sw_avail { width: 25%; }
+
+/* Table-based datebar on newer results */
+table.datebar {
+  float: left;
+  width: 100%;
+  min-height: 100%;
+  border-collapse: collapse;
+  border: solid 1px black;
+  table-layout: fixed;
+}
+
+table.datebar th {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 0.5em;
+  padding: 0 0.5em 0 0.25em;
+}
+
+table.datebar td {
+  text-align: left;
+  padding: 0 0.5em 0 0;
+}
+
+th#license_num          { width: 17%; }
+th#test_sponsor         { width: 17%; }
+th#tester               { width: 17%; }
+th#test_date            { width: 22%; }
+th#hw_avail             { width: 22%; }
+th#sw_avail             { width: 22%; }
+td#license_num_val      { width: 52%; }
+td#test_sponsor_val     { width: 52%; }
+td#tester_val           { width: 52%; }
+td#test_date_val        { width: 13%; white-space: nowrap; }
+td#hw_avail_val         { width: 13%; white-space: nowrap; }
+td#sw_avail_val         { width: 13%; white-space: nowrap; }
+
+
+div.graph {
+  margin: auto;
+}
+
+div.sysdesc > h2 {
+  text-align: center;
+  background-color: #c8c8c8;
+  color: black;
+  padding: 0.5em 0 0.5em 0;
+  margin: 0;
+} 
+  
+div.sysdesc {
+  margin: 0.5em 0 0.5em 0;
+}
+
+div.infobox, div.sysdesc {
+  float: left;
+  width: 100%;
+  padding: 0;
+  border: solid 1px black;
+}
+
+div.infobox table {
+  width: 49%;
+  float: left;
+}
+
+div.infobox table tr {
+  vertical-align: top;
+}
+
+div.infobox table#Hardware,
+div.infobox table#BenchmarkSoftware {
+  width: 50%;
+  border-right: 1px solid black;
+}
+
+div.infobox table#Systems {
+  width: 100%;
+}
+
+div.infobox table#Systems tbody th {
+  width: 20%;
+}
+
+div.infobox thead th {
+  font-size: 200%;
+}
+
+div.infobox tbody th {
+  text-align: left;
+}
+
+.resultstable h2, div.notes h2 {
+  text-align: center;
+  margin: 0.1em;
+}
+
+div.notes h3 {
+  margin: 0.1em;
+}
+
+div.notes table {
+  width: 100%;
+}
+
+div.notes table tr td {
+  text-align: right;
+  vertical-align: top;
+}
+
+/* Alas, IE6... if only you didn't suck so much...
+div.notes table tr td + td {
+*/
+div.notes table td.al {
+  text-align: left;
+  width: 85%;
+}
+
+div.notes table tr td {
+  padding-bottom: 1em;
+}
+
+div.notes table.portability tr td {
+  padding: 0em;
+}
+
+div.notes table.portability {
+  padding: 1em;
+}
+
+.resultstable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resultstable th.basecol, .resultstable th.peakcol {
+  padding: 0.1em;
+  font-size: 90%;
+}
+
+.resultstable th {
+  border: solid 2px black;
+}
+
+.resultstable td {
+  border: solid 1px #b8b8b8;
+}
+
+td.bm, th.bm { 
+  border-right: solid 2px black;
+  border-left: solid 2px black;
+}
+
+td.secs { 
+  border-left: solid 2px black;
+}
+
+td.ratio { 
+  border-right: solid 2px black;
+}
+
+.resultstable tfoot td {
+  text-align: center;
+  border: solid 2px black;
+}
+
+th.basecol {
+  background-color: #c8c8c8;
+  color: black;
+}
+td.basecol {
+  text-align: right;
+  background-color: transparent;
+  color: black;
+}
+
+th.peakcol {
+  text-align: center;
+}
+
+.peakcol {
+  background-color: transparent;
+  color: #2626b3;       /* peak blue */
+  text-align: right;
+}
+
+td.bm {
+  /* Basically, the benchmark name and copies columns */
+  background-color: #c8c8c8;
+  color: black;
+}
+
+span.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.selected a:link, .selected a:visited {
+  border-bottom: 0;
+}
+
+div.notes {
+  width: 100%;
+  float: left;
+  border: solid 1px black;
+}
+
+div.flagfooter {
+  text-align: center;
+}
+
+div.errors {
+  border: solid 2px red;
+}
+div.errors h2 {
+  background-color: transparent;
+  color: red;
+}
+
+div.footer {
+  border: none;
+}
+
+/* People find the "double underline" confusing.  And Safari 1.3 doesn't deal
+ * well with attempting to disable the border for userflag links.  So just
+ * give up and don't decorate user flags specially.
+********************
+span.userflag {
+  text-decoration: underline;
+}
+
+.userflag a:link {
+  border-bottom: 0;
+}
+********************
+*/
+
+/* Keep flags from being wrapped */
+span.userflag, span.flagtext {
+  white-space: nowrap;
+}
+/* Classes that contain links - useless on paper */
+.flagTOC, .SubMenu, .NoPrint {
+  display: none;
+}
+
+/* Don't decorate links - they're not clickable */
+a {
+  text-decoration: none;
+  background: inherit;
+  color: inherit;
+}
+
+.resultpage {
+  width: 100%;
+}
+
+.w3cbutton3 {
+  display: none;
+}
+-->
+</style>
+<style type="text/css" id="user">
+
+
+body { background: white; }
+
+
+</style>
+<title>CPU2006 Result Flag Description</title>
+</head>
+<body>
+<h1>CPU2006 Flag Description<br />System Vendor System Model Name</h1>
+<h2>Test sponsored by Test Sponsor (Optional, defaults to hw_vendor)</h2>
+
+
+<p>Compilers: gcc 4.1.2 (AMD64)</p>
+<p>Compilers: gcc 4.3 (AMD64)</p>
+<p>Compilers: gcc 4.4 (AMD64)</p>
+<p>Compilers: gcc 4.6 (AMD64)</p>
+
+<p>This file contains information about the GNU gcc compiler, reformatted for
+SPEC result reporting, excerpted and/or summarized from the GNU documentation
+and from Apple's Mac OS X man pages.</p>
+
+<p>The Copyright notice from the Mac OS X page for 'man gcc' lists:<br />
+Copyright (c) 1988, 1989, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.</p>
+
+<p>SPEC's modifications are:<br />
+Copyright (C) 2006-2011 Standard Performance Evaluation Corporation</p>
+
+<p>Permission is granted to copy, distribute and/or modify this document under
+the terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with the Invariant Sections
+being "GNU General Public License" "Funding Free Software", the Front-Cover
+texts being (a) (see below), and with the Back-Cover Texts being (b) (see
+below).  A copy of the license is included on your SPEC media as
+<tt>redistributable_sources/licences/fdl-1.2.txt</tt> 
+<br />and the "Funding Free Software" section is on your SPEC media as
+<br /><tt>redistributable_sources/licences/fsf-funding.txt</tt></p>
+
+<p>(a) The FSF's Front-Cover Text is:</p>
+
+     <p style="margin-left:3em;">A GNU Manual</p>
+
+<p>(b) The FSF's Back-Cover Text is:</p>
+
+<p style="margin-left:3em;">You have freedom to copy and modify this GNU Manual,
+like GNU software.  Copies published by the Free Software Foundation raise funds
+for GNU development.</p>
+
+
+<hr />
+<div class="unknownflags">
+<h2>Base Unknown Flags</h2>
+<h3><a name="unknown410.bwavesbase">410.bwaves (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE410.bwavesbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown433.milcbase">433.milc (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="COPTIMIZE433.milcbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown434.zeusmpbase">434.zeusmp (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE434.zeusmpbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown435.gromacsbase">435.gromacs (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE435.gromacsbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+<li><a name="COPTIMIZE435.gromacsbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown436.cactusADMbase">436.cactusADM (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE436.cactusADMbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+<li><a name="COPTIMIZE436.cactusADMbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown437.leslie3dbase">437.leslie3d (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE437.leslie3dbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown444.namdbase">444.namd (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="CXXOPTIMIZE444.namdbase">CXXOPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown447.dealIIbase">447.dealII (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="CXXPORTABILITY447.dealIIbase">CXXPORTABILITY</a>: <span class="monospace">-fpermissive</span></li>
+<li><a name="CXXOPTIMIZE447.dealIIbase">CXXOPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown450.soplexbase">450.soplex (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="CXXPORTABILITY450.soplexbase">CXXPORTABILITY</a>: <span class="monospace">-std=c++03</span></li>
+<li><a name="CXXOPTIMIZE450.soplexbase">CXXOPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown453.povraybase">453.povray (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="CXXOPTIMIZE453.povraybase">CXXOPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown454.calculixbase">454.calculix (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE454.calculixbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+<li><a name="COPTIMIZE454.calculixbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown459.GemsFDTDbase">459.GemsFDTD (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE459.GemsFDTDbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown465.tontobase">465.tonto (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE465.tontobase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown470.lbmbase">470.lbm (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="COPTIMIZE470.lbmbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown481.wrfbase">481.wrf (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="FOPTIMIZE481.wrfbase">FOPTIMIZE</a>: <span class="monospace">-fno-aggressive-loop-optimizations</span></li>
+<li><a name="COPTIMIZE481.wrfbase">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+<h3><a name="unknown482.sphinx3base">482.sphinx3 (base)</a></h3>
+<ul class="flagDescList">
+<li><a name="COPTIMIZE482.sphinx3base">COPTIMIZE</a>: <span class="monospace">-fsigned-char -fno-aggressive-loop-optimizations</span></li>
+</ul>
+</div>
+<hr />
+
+<div class="compilerflags">
+<h2>Base Compiler Invocation</h2>
+<h3><a name="CCbasecompiler">C benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CCbase_gcc_2335361101e72cec0571c67a1537548c" id="user_CCbase_gcc_2335361101e72cec0571c67a1537548c">/usr/bin/gcc</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">CC, LD</li>
+<li class="descText">
+<p>
+Invoke a Linux distribution's modified version of the GCC C compiler, or one direct from FSF.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="CXXbasecompiler">C++ benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_CC_5627c862e1f7bce8bf624cad44cb0a75" id="user_CXXbase_CC_5627c862e1f7bce8bf624cad44cb0a75">/usr/bin/g++</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">CXX, LD</li>
+<li class="descText">
+<p>
+Invoke a Linux distribution's modified version of the GCC C++ compiler, or one direct from FSF.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="FCbasecompiler">Fortran benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_FC_0e251f00304fad1895c2edb95682c2b2" id="user_FCbase_FC_0e251f00304fad1895c2edb95682c2b2">/usr/bin/gfortran</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FC, LD</li>
+<li class="descText">
+<p>
+Invoke a Linux distribution's modified version of the GCC fortran compiler, or one direct from FSF.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="CC_FCbasecompiler">Benchmarks using both Fortran and C</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CC_FCbase_gcc_2335361101e72cec0571c67a1537548c" id="user_CC_FCbase_gcc_2335361101e72cec0571c67a1537548c">/usr/bin/gcc</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">CC</li>
+<li class="descText">
+<p>
+Invoke a Linux distribution's modified version of the GCC C compiler, or one direct from FSF.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CC_FCbase_FC_0e251f00304fad1895c2edb95682c2b2" id="user_CC_FCbase_FC_0e251f00304fad1895c2edb95682c2b2">/usr/bin/gfortran</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FC, LD</li>
+<li class="descText">
+<p>
+Invoke a Linux distribution's modified version of the GCC fortran compiler, or one direct from FSF.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr />
+
+<div class="portabilityflags">
+<h2>Base Portability Flags</h2>
+<h4><a name="portability410.bwavesbase">410.bwaves</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY410_bwaves_DSPEC_CPU_LP64" id="suite_basePORTABILITY410_bwaves_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability416.gamessbase">416.gamess</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY416_gamess_DSPEC_CPU_LP64" id="suite_basePORTABILITY416_gamess_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability433.milcbase">433.milc</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY433_milc_DSPEC_CPU_LP64" id="suite_basePORTABILITY433_milc_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability434.zeusmpbase">434.zeusmp</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY434_zeusmp_DSPEC_CPU_LP64" id="suite_basePORTABILITY434_zeusmp_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability435.gromacsbase">435.gromacs</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY435_gromacs_DSPEC_CPU_LP64" id="suite_basePORTABILITY435_gromacs_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability436.cactusADMbase">436.cactusADM</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY436_cactusADM_DSPEC_CPU_LP64" id="suite_basePORTABILITY436_cactusADM_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability437.leslie3dbase">437.leslie3d</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY437_leslie3d_DSPEC_CPU_LP64" id="suite_basePORTABILITY437_leslie3d_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability444.namdbase">444.namd</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY444_namd_DSPEC_CPU_LP64" id="suite_basePORTABILITY444_namd_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability447.dealIIbase">447.dealII</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY447_dealII_DSPEC_CPU_LP64" id="suite_basePORTABILITY447_dealII_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability450.soplexbase">450.soplex</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY450_soplex_DSPEC_CPU_LP64" id="suite_basePORTABILITY450_soplex_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability453.povraybase">453.povray</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY453_povray_DSPEC_CPU_LP64" id="suite_basePORTABILITY453_povray_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability454.calculixbase">454.calculix</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY454_calculix_DSPEC_CPU_LP64" id="suite_basePORTABILITY454_calculix_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability459.GemsFDTDbase">459.GemsFDTD</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY459_GemsFDTD_DSPEC_CPU_LP64" id="suite_basePORTABILITY459_GemsFDTD_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability465.tontobase">465.tonto</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY465_tonto_DSPEC_CPU_LP64" id="suite_basePORTABILITY465_tonto_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability470.lbmbase">470.lbm</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY470_lbm_DSPEC_CPU_LP64" id="suite_basePORTABILITY470_lbm_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability481.wrfbase">481.wrf</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY481_wrf_DSPEC_CPU_LP64" id="suite_basePORTABILITY481_wrf_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="b481.wrf_baseCPORTABILITY_DSPEC_CPU_CASE_FLAG" id="b481.wrf_baseCPORTABILITY_DSPEC_CPU_CASE_FLAG">-DSPEC_CPU_CASE_FLAG</a></li>
+<li class="flagOrigin"><a href="#benchmarkOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/benchmark.png" alt="[benchmark]" /></a></li>
+<li class="flagVar">CPORTABILITY</li>
+<li class="descText">
+<p>
+This macro indicates that Fortran functions called from C should have their
+names lower-cased.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="b481.wrf_baseCPORTABILITY_DSPEC_CPU_LINUX" id="b481.wrf_baseCPORTABILITY_DSPEC_CPU_LINUX">-DSPEC_CPU_LINUX</a></li>
+<li class="flagOrigin"><a href="#benchmarkOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/benchmark.png" alt="[benchmark]" /></a></li>
+<li class="flagVar">CPORTABILITY</li>
+<li class="descText">
+<p>
+This macro indicates that the benchmark is being compiled on a Linux system.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability482.sphinx3base">482.sphinx3</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_basePORTABILITY482_sphinx3_DSPEC_CPU_LP64" id="suite_basePORTABILITY482_sphinx3_DSPEC_CPU_LP64">-DSPEC_CPU_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr />
+
+<div class="optimizationflags">
+<h2>Base Optimization Flags</h2>
+<h3><a name="CCbaseoptimization">C benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CCbase_F-O2" id="user_CCbase_F-O2">-O2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">COPTIMIZE</li>
+<li class="descText">
+<p>Optimize even more. GCC performs nearly all supported optimizations that do 
+not involve a space-speed tradeoff. The compiler does not perform loop 
+unrolling or function inlining when you specify -O2. As compared to -O, this 
+option increases both compilation time and the performance of the generated 
+code.</p>
+
+<p>-O2 turns on all optimization flags specified by -O. It also turns on the 
+following optimization flags:</p>
+<ul>
+<li>-fthread-jumps</li>
+<li>-fcrossjumping</li>
+<li>-foptimize-sibling-calls</li>
+<li>-fcse-follow-jumps</li>
+<li>-fcse-skip-blocks</li>
+<li>-fgcse</li>
+<li>-fgcse-lm</li>
+<li>-fexpensive-optimizations</li>
+<li>-fstrength-reduce</li>
+<li>-frerun-cse-after-loop</li>
+<li>-frerun-loop-opt</li>
+<li>-fcaller-saves</li>
+<li>-fpeephole2</li>
+<li>-fschedule-insns</li>
+<li>-fschedule-insns2</li>
+<li>-fsched-interblock</li>
+<li>-fsched-spec</li>
+<li>-fregmove</li>
+<li>-fstrict-aliasing</li>
+<li>-fdelete-null-pointer-checks</li>
+<li>-freorder-blocks</li>
+<li>-freorder-functions</li>
+<li>-funit-at-a-time</li>
+<li>-falign-functions</li>
+<li>-falign-jumps</li>
+<li>-falign-loops</li>
+<li>-falign-labels</li>
+<li>-ftree-vrp</li>
+<li>-ftree-pre</li>
+</ul>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="#user_F-fthread-jumps">-fthread-jumps</a></li>
+  <li><a href="#user_F-fcrossjumping">-fcrossjumping</a></li>
+  <li><a href="#user_F-foptimize-sibling-calls">-foptimize-sibling-calls</a></li>
+  <li><a href="#user_F-fcse-follow-jumps">-fcse-follow-jumps</a></li>
+  <li><a href="#user_F-fcse-skip-blocks">-fcse-skip-blocks</a></li>
+  <li><a href="#user_F-fgcse">-fgcse</a></li>
+  <li><a href="#user_F-fgcse-lm">-fgcse-lm</a></li>
+  <li><a href="#user_F-fexpensive-optimizations">-fexpensive-optimizations</a></li>
+  <li><a href="#user_F-fstrength-reduce">-fstrength-reduce</a></li>
+  <li><a href="#user_F-frerun-cse-after-loop">-frerun-cse-after-loop</a></li>
+  <li><a href="#user_F-frerun-loop-opt">-frerun-loop-opt</a></li>
+  <li><a href="#user_F-fcaller-saves">-fcaller-saves</a></li>
+  <li><a href="#user_F-fpeephole2">-fpeephole2</a></li>
+  <li><a href="#user_F-fschedule-insns">-fschedule-insns</a></li>
+  <li><a href="#user_F-fschedule-insns2">-fschedule-insns2</a></li>
+  <li><a href="#user_F-fsched-interblock">-fsched-interblock</a></li>
+  <li><a href="#user_F-fsched-spec">-fsched-spec</a></li>
+  <li><a href="#user_F-fregmove">-fregmove</a></li>
+  <li><a href="#user_F-fstrict-aliasing">-fstrict-aliasing</a></li>
+  <li><a href="#user_F-fdelete-null-pointer-checks">-fdelete-null-pointer-checks</a></li>
+  <li><a href="#user_F-freorder-blocks">-freorder-blocks</a></li>
+  <li><a href="#user_F-freorder-functions">-freorder-functions</a></li>
+  <li><a href="#user_F-funit-at-a-time">-funit-at-a-time</a></li>
+  <li><a href="#user_F-falign-functions">-falign-functions,
+-falign-functions=n</a></li>
+  <li><a href="#user_F-falign-jumps">-falign-jumps,
+-falign-jumps=n</a></li>
+  <li><a href="#user_F-falign-loops">-falign-loops,
+-falign-loops=n</a></li>
+  <li><a href="#user_F-falign-labels">-falign-labels</a></li>
+  <li><a href="#user_F-ftree-vrp">-ftree-vrp</a></li>
+  <li><a href="#user_F-O1">-O1</a>
+   <ul class="SubMenu">
+    <li><a href="#user_F-fdefer-pop">-fdefer-pop</a></li>
+    <li><a href="#user_F-fdelayed-branch">-fdelayed-branch</a></li>
+    <li><a href="#user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+    <li><a href="#user_F-fcprop-registers">-fcprop-registers</a></li>
+    <li><a href="#user_F-floop-optimize">-floop-optimize</a></li>
+    <li><a href="#user_F-fif-conversion">-fif-conversion</a></li>
+    <li><a href="#user_F-fif-conversion2">-fif-conversion2</a></li>
+    <li><a href="#user_F-ftree-ccp">-ftree-ccp</a></li>
+    <li><a href="#user_F-ftree-dce">-ftree-dce</a></li>
+    <li><a href="#user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+    <li><a href="#user_F-ftree-dse">-ftree-dse</a></li>
+    <li><a href="#user_F-ftree-ter">-ftree-ter</a></li>
+    <li><a href="#user_F-ftree-lrs">-ftree-lrs</a></li>
+    <li><a href="#user_F-ftree-sra">-ftree-sra</a></li>
+    <li><a href="#user_F-ftree-copyrename">-ftree-copyrename</a></li>
+    <li><a href="#user_F-ftree-fre">-ftree-fre</a></li>
+    <li><a href="#user_F-ftree-ch">-ftree-ch</a></li>
+    <li><a href="#user_F-fmerge-constants">-fmerge-constants</a></li>
+   </ul>
+  </li>
+ </ul>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CCbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f" id="user_CCbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f">-fno-strict-aliasing</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">COPTIMIZE</li>
+<li class="descText">
+<p>Does not allow the compiler to assume the strictest aliasing rules applicable to
+   the language being compiled.  For C (and C++), optimizations
+   based on the type of expressions are not activated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="CXXbaseoptimization">C++ benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_F-O2" id="user_CXXbase_F-O2">-O2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">CXXOPTIMIZE</li>
+<li class="descText">
+<p>Optimize even more. GCC performs nearly all supported optimizations that do 
+not involve a space-speed tradeoff. The compiler does not perform loop 
+unrolling or function inlining when you specify -O2. As compared to -O, this 
+option increases both compilation time and the performance of the generated 
+code.</p>
+
+<p>-O2 turns on all optimization flags specified by -O. It also turns on the 
+following optimization flags:</p>
+<ul>
+<li>-fthread-jumps</li>
+<li>-fcrossjumping</li>
+<li>-foptimize-sibling-calls</li>
+<li>-fcse-follow-jumps</li>
+<li>-fcse-skip-blocks</li>
+<li>-fgcse</li>
+<li>-fgcse-lm</li>
+<li>-fexpensive-optimizations</li>
+<li>-fstrength-reduce</li>
+<li>-frerun-cse-after-loop</li>
+<li>-frerun-loop-opt</li>
+<li>-fcaller-saves</li>
+<li>-fpeephole2</li>
+<li>-fschedule-insns</li>
+<li>-fschedule-insns2</li>
+<li>-fsched-interblock</li>
+<li>-fsched-spec</li>
+<li>-fregmove</li>
+<li>-fstrict-aliasing</li>
+<li>-fdelete-null-pointer-checks</li>
+<li>-freorder-blocks</li>
+<li>-freorder-functions</li>
+<li>-funit-at-a-time</li>
+<li>-falign-functions</li>
+<li>-falign-jumps</li>
+<li>-falign-loops</li>
+<li>-falign-labels</li>
+<li>-ftree-vrp</li>
+<li>-ftree-pre</li>
+</ul>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="#user_F-fthread-jumps">-fthread-jumps</a></li>
+  <li><a href="#user_F-fcrossjumping">-fcrossjumping</a></li>
+  <li><a href="#user_F-foptimize-sibling-calls">-foptimize-sibling-calls</a></li>
+  <li><a href="#user_F-fcse-follow-jumps">-fcse-follow-jumps</a></li>
+  <li><a href="#user_F-fcse-skip-blocks">-fcse-skip-blocks</a></li>
+  <li><a href="#user_F-fgcse">-fgcse</a></li>
+  <li><a href="#user_F-fgcse-lm">-fgcse-lm</a></li>
+  <li><a href="#user_F-fexpensive-optimizations">-fexpensive-optimizations</a></li>
+  <li><a href="#user_F-fstrength-reduce">-fstrength-reduce</a></li>
+  <li><a href="#user_F-frerun-cse-after-loop">-frerun-cse-after-loop</a></li>
+  <li><a href="#user_F-frerun-loop-opt">-frerun-loop-opt</a></li>
+  <li><a href="#user_F-fcaller-saves">-fcaller-saves</a></li>
+  <li><a href="#user_F-fpeephole2">-fpeephole2</a></li>
+  <li><a href="#user_F-fschedule-insns">-fschedule-insns</a></li>
+  <li><a href="#user_F-fschedule-insns2">-fschedule-insns2</a></li>
+  <li><a href="#user_F-fsched-interblock">-fsched-interblock</a></li>
+  <li><a href="#user_F-fsched-spec">-fsched-spec</a></li>
+  <li><a href="#user_F-fregmove">-fregmove</a></li>
+  <li><a href="#user_F-fstrict-aliasing">-fstrict-aliasing</a></li>
+  <li><a href="#user_F-fdelete-null-pointer-checks">-fdelete-null-pointer-checks</a></li>
+  <li><a href="#user_F-freorder-blocks">-freorder-blocks</a></li>
+  <li><a href="#user_F-freorder-functions">-freorder-functions</a></li>
+  <li><a href="#user_F-funit-at-a-time">-funit-at-a-time</a></li>
+  <li><a href="#user_F-falign-functions">-falign-functions,
+-falign-functions=n</a></li>
+  <li><a href="#user_F-falign-jumps">-falign-jumps,
+-falign-jumps=n</a></li>
+  <li><a href="#user_F-falign-loops">-falign-loops,
+-falign-loops=n</a></li>
+  <li><a href="#user_F-falign-labels">-falign-labels</a></li>
+  <li><a href="#user_F-ftree-vrp">-ftree-vrp</a></li>
+  <li><a href="#user_F-O1">-O1</a>
+   <ul class="SubMenu">
+    <li><a href="#user_F-fdefer-pop">-fdefer-pop</a></li>
+    <li><a href="#user_F-fdelayed-branch">-fdelayed-branch</a></li>
+    <li><a href="#user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+    <li><a href="#user_F-fcprop-registers">-fcprop-registers</a></li>
+    <li><a href="#user_F-floop-optimize">-floop-optimize</a></li>
+    <li><a href="#user_F-fif-conversion">-fif-conversion</a></li>
+    <li><a href="#user_F-fif-conversion2">-fif-conversion2</a></li>
+    <li><a href="#user_F-ftree-ccp">-ftree-ccp</a></li>
+    <li><a href="#user_F-ftree-dce">-ftree-dce</a></li>
+    <li><a href="#user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+    <li><a href="#user_F-ftree-dse">-ftree-dse</a></li>
+    <li><a href="#user_F-ftree-ter">-ftree-ter</a></li>
+    <li><a href="#user_F-ftree-lrs">-ftree-lrs</a></li>
+    <li><a href="#user_F-ftree-sra">-ftree-sra</a></li>
+    <li><a href="#user_F-ftree-copyrename">-ftree-copyrename</a></li>
+    <li><a href="#user_F-ftree-fre">-ftree-fre</a></li>
+    <li><a href="#user_F-ftree-ch">-ftree-ch</a></li>
+    <li><a href="#user_F-fmerge-constants">-fmerge-constants</a></li>
+   </ul>
+  </li>
+ </ul>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f" id="user_CXXbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f">-fno-strict-aliasing</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">CXXOPTIMIZE</li>
+<li class="descText">
+<p>Does not allow the compiler to assume the strictest aliasing rules applicable to
+   the language being compiled.  For C (and C++), optimizations
+   based on the type of expressions are not activated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="FCbaseoptimization">Fortran benchmarks</a></h3>
+<h4><a name="optimization410.bwavesbase">410.bwaves</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseFOPTIMIZE410_bwaves_F-O2" id="user_baseFOPTIMIZE410_bwaves_F-O2">-O2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FOPTIMIZE</li>
+<li class="descText">
+<p>Optimize even more. GCC performs nearly all supported optimizations that do 
+not involve a space-speed tradeoff. The compiler does not perform loop 
+unrolling or function inlining when you specify -O2. As compared to -O, this 
+option increases both compilation time and the performance of the generated 
+code.</p>
+
+<p>-O2 turns on all optimization flags specified by -O. It also turns on the 
+following optimization flags:</p>
+<ul>
+<li>-fthread-jumps</li>
+<li>-fcrossjumping</li>
+<li>-foptimize-sibling-calls</li>
+<li>-fcse-follow-jumps</li>
+<li>-fcse-skip-blocks</li>
+<li>-fgcse</li>
+<li>-fgcse-lm</li>
+<li>-fexpensive-optimizations</li>
+<li>-fstrength-reduce</li>
+<li>-frerun-cse-after-loop</li>
+<li>-frerun-loop-opt</li>
+<li>-fcaller-saves</li>
+<li>-fpeephole2</li>
+<li>-fschedule-insns</li>
+<li>-fschedule-insns2</li>
+<li>-fsched-interblock</li>
+<li>-fsched-spec</li>
+<li>-fregmove</li>
+<li>-fstrict-aliasing</li>
+<li>-fdelete-null-pointer-checks</li>
+<li>-freorder-blocks</li>
+<li>-freorder-functions</li>
+<li>-funit-at-a-time</li>
+<li>-falign-functions</li>
+<li>-falign-jumps</li>
+<li>-falign-loops</li>
+<li>-falign-labels</li>
+<li>-ftree-vrp</li>
+<li>-ftree-pre</li>
+</ul>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="#user_F-fthread-jumps">-fthread-jumps</a></li>
+  <li><a href="#user_F-fcrossjumping">-fcrossjumping</a></li>
+  <li><a href="#user_F-foptimize-sibling-calls">-foptimize-sibling-calls</a></li>
+  <li><a href="#user_F-fcse-follow-jumps">-fcse-follow-jumps</a></li>
+  <li><a href="#user_F-fcse-skip-blocks">-fcse-skip-blocks</a></li>
+  <li><a href="#user_F-fgcse">-fgcse</a></li>
+  <li><a href="#user_F-fgcse-lm">-fgcse-lm</a></li>
+  <li><a href="#user_F-fexpensive-optimizations">-fexpensive-optimizations</a></li>
+  <li><a href="#user_F-fstrength-reduce">-fstrength-reduce</a></li>
+  <li><a href="#user_F-frerun-cse-after-loop">-frerun-cse-after-loop</a></li>
+  <li><a href="#user_F-frerun-loop-opt">-frerun-loop-opt</a></li>
+  <li><a href="#user_F-fcaller-saves">-fcaller-saves</a></li>
+  <li><a href="#user_F-fpeephole2">-fpeephole2</a></li>
+  <li><a href="#user_F-fschedule-insns">-fschedule-insns</a></li>
+  <li><a href="#user_F-fschedule-insns2">-fschedule-insns2</a></li>
+  <li><a href="#user_F-fsched-interblock">-fsched-interblock</a></li>
+  <li><a href="#user_F-fsched-spec">-fsched-spec</a></li>
+  <li><a href="#user_F-fregmove">-fregmove</a></li>
+  <li><a href="#user_F-fstrict-aliasing">-fstrict-aliasing</a></li>
+  <li><a href="#user_F-fdelete-null-pointer-checks">-fdelete-null-pointer-checks</a></li>
+  <li><a href="#user_F-freorder-blocks">-freorder-blocks</a></li>
+  <li><a href="#user_F-freorder-functions">-freorder-functions</a></li>
+  <li><a href="#user_F-funit-at-a-time">-funit-at-a-time</a></li>
+  <li><a href="#user_F-falign-functions">-falign-functions,
+-falign-functions=n</a></li>
+  <li><a href="#user_F-falign-jumps">-falign-jumps,
+-falign-jumps=n</a></li>
+  <li><a href="#user_F-falign-loops">-falign-loops,
+-falign-loops=n</a></li>
+  <li><a href="#user_F-falign-labels">-falign-labels</a></li>
+  <li><a href="#user_F-ftree-vrp">-ftree-vrp</a></li>
+  <li><a href="#user_F-O1">-O1</a>
+   <ul class="SubMenu">
+    <li><a href="#user_F-fdefer-pop">-fdefer-pop</a></li>
+    <li><a href="#user_F-fdelayed-branch">-fdelayed-branch</a></li>
+    <li><a href="#user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+    <li><a href="#user_F-fcprop-registers">-fcprop-registers</a></li>
+    <li><a href="#user_F-floop-optimize">-floop-optimize</a></li>
+    <li><a href="#user_F-fif-conversion">-fif-conversion</a></li>
+    <li><a href="#user_F-fif-conversion2">-fif-conversion2</a></li>
+    <li><a href="#user_F-ftree-ccp">-ftree-ccp</a></li>
+    <li><a href="#user_F-ftree-dce">-ftree-dce</a></li>
+    <li><a href="#user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+    <li><a href="#user_F-ftree-dse">-ftree-dse</a></li>
+    <li><a href="#user_F-ftree-ter">-ftree-ter</a></li>
+    <li><a href="#user_F-ftree-lrs">-ftree-lrs</a></li>
+    <li><a href="#user_F-ftree-sra">-ftree-sra</a></li>
+    <li><a href="#user_F-ftree-copyrename">-ftree-copyrename</a></li>
+    <li><a href="#user_F-ftree-fre">-ftree-fre</a></li>
+    <li><a href="#user_F-ftree-ch">-ftree-ch</a></li>
+    <li><a href="#user_F-fmerge-constants">-fmerge-constants</a></li>
+   </ul>
+  </li>
+ </ul>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseFOPTIMIZE410_bwaves_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f" id="user_baseFOPTIMIZE410_bwaves_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f">-fno-strict-aliasing</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FOPTIMIZE</li>
+<li class="descText">
+<p>Does not allow the compiler to assume the strictest aliasing rules applicable to
+   the language being compiled.  For C (and C++), optimizations
+   based on the type of expressions are not activated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization416.gamessbase">416.gamess</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseFOPTIMIZE416_gamess_F-O0" id="user_baseFOPTIMIZE416_gamess_F-O0">-O0</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FOPTIMIZE</li>
+<li class="descText">
+<p>Do not optimize. This is the default.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization434.zeusmpbase">434.zeusmp</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base434_zeusmp_identical_c1200fd4d216ef9db27cfc0c72d686f2" id="suite_base434_zeusmp_identical_c1200fd4d216ef9db27cfc0c72d686f2">Same as 410.bwaves</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization437.leslie3dbase">437.leslie3d</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base437_leslie3d_identical_c1200fd4d216ef9db27cfc0c72d686f2" id="suite_base437_leslie3d_identical_c1200fd4d216ef9db27cfc0c72d686f2">Same as 410.bwaves</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization459.GemsFDTDbase">459.GemsFDTD</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base459_GemsFDTD_identical_c1200fd4d216ef9db27cfc0c72d686f2" id="suite_base459_GemsFDTD_identical_c1200fd4d216ef9db27cfc0c72d686f2">Same as 410.bwaves</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization465.tontobase">465.tonto</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base465_tonto_identical_c1200fd4d216ef9db27cfc0c72d686f2" id="suite_base465_tonto_identical_c1200fd4d216ef9db27cfc0c72d686f2">Same as 410.bwaves</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="CC_FCbaseoptimization">Benchmarks using both Fortran and C</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CC_FCbase_F-O2" id="user_CC_FCbase_F-O2">-O2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">COPTIMIZE, FOPTIMIZE</li>
+<li class="descText">
+<p>Optimize even more. GCC performs nearly all supported optimizations that do 
+not involve a space-speed tradeoff. The compiler does not perform loop 
+unrolling or function inlining when you specify -O2. As compared to -O, this 
+option increases both compilation time and the performance of the generated 
+code.</p>
+
+<p>-O2 turns on all optimization flags specified by -O. It also turns on the 
+following optimization flags:</p>
+<ul>
+<li>-fthread-jumps</li>
+<li>-fcrossjumping</li>
+<li>-foptimize-sibling-calls</li>
+<li>-fcse-follow-jumps</li>
+<li>-fcse-skip-blocks</li>
+<li>-fgcse</li>
+<li>-fgcse-lm</li>
+<li>-fexpensive-optimizations</li>
+<li>-fstrength-reduce</li>
+<li>-frerun-cse-after-loop</li>
+<li>-frerun-loop-opt</li>
+<li>-fcaller-saves</li>
+<li>-fpeephole2</li>
+<li>-fschedule-insns</li>
+<li>-fschedule-insns2</li>
+<li>-fsched-interblock</li>
+<li>-fsched-spec</li>
+<li>-fregmove</li>
+<li>-fstrict-aliasing</li>
+<li>-fdelete-null-pointer-checks</li>
+<li>-freorder-blocks</li>
+<li>-freorder-functions</li>
+<li>-funit-at-a-time</li>
+<li>-falign-functions</li>
+<li>-falign-jumps</li>
+<li>-falign-loops</li>
+<li>-falign-labels</li>
+<li>-ftree-vrp</li>
+<li>-ftree-pre</li>
+</ul>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="#user_F-fthread-jumps">-fthread-jumps</a></li>
+  <li><a href="#user_F-fcrossjumping">-fcrossjumping</a></li>
+  <li><a href="#user_F-foptimize-sibling-calls">-foptimize-sibling-calls</a></li>
+  <li><a href="#user_F-fcse-follow-jumps">-fcse-follow-jumps</a></li>
+  <li><a href="#user_F-fcse-skip-blocks">-fcse-skip-blocks</a></li>
+  <li><a href="#user_F-fgcse">-fgcse</a></li>
+  <li><a href="#user_F-fgcse-lm">-fgcse-lm</a></li>
+  <li><a href="#user_F-fexpensive-optimizations">-fexpensive-optimizations</a></li>
+  <li><a href="#user_F-fstrength-reduce">-fstrength-reduce</a></li>
+  <li><a href="#user_F-frerun-cse-after-loop">-frerun-cse-after-loop</a></li>
+  <li><a href="#user_F-frerun-loop-opt">-frerun-loop-opt</a></li>
+  <li><a href="#user_F-fcaller-saves">-fcaller-saves</a></li>
+  <li><a href="#user_F-fpeephole2">-fpeephole2</a></li>
+  <li><a href="#user_F-fschedule-insns">-fschedule-insns</a></li>
+  <li><a href="#user_F-fschedule-insns2">-fschedule-insns2</a></li>
+  <li><a href="#user_F-fsched-interblock">-fsched-interblock</a></li>
+  <li><a href="#user_F-fsched-spec">-fsched-spec</a></li>
+  <li><a href="#user_F-fregmove">-fregmove</a></li>
+  <li><a href="#user_F-fstrict-aliasing">-fstrict-aliasing</a></li>
+  <li><a href="#user_F-fdelete-null-pointer-checks">-fdelete-null-pointer-checks</a></li>
+  <li><a href="#user_F-freorder-blocks">-freorder-blocks</a></li>
+  <li><a href="#user_F-freorder-functions">-freorder-functions</a></li>
+  <li><a href="#user_F-funit-at-a-time">-funit-at-a-time</a></li>
+  <li><a href="#user_F-falign-functions">-falign-functions,
+-falign-functions=n</a></li>
+  <li><a href="#user_F-falign-jumps">-falign-jumps,
+-falign-jumps=n</a></li>
+  <li><a href="#user_F-falign-loops">-falign-loops,
+-falign-loops=n</a></li>
+  <li><a href="#user_F-falign-labels">-falign-labels</a></li>
+  <li><a href="#user_F-ftree-vrp">-ftree-vrp</a></li>
+  <li><a href="#user_F-O1">-O1</a>
+   <ul class="SubMenu">
+    <li><a href="#user_F-fdefer-pop">-fdefer-pop</a></li>
+    <li><a href="#user_F-fdelayed-branch">-fdelayed-branch</a></li>
+    <li><a href="#user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+    <li><a href="#user_F-fcprop-registers">-fcprop-registers</a></li>
+    <li><a href="#user_F-floop-optimize">-floop-optimize</a></li>
+    <li><a href="#user_F-fif-conversion">-fif-conversion</a></li>
+    <li><a href="#user_F-fif-conversion2">-fif-conversion2</a></li>
+    <li><a href="#user_F-ftree-ccp">-ftree-ccp</a></li>
+    <li><a href="#user_F-ftree-dce">-ftree-dce</a></li>
+    <li><a href="#user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+    <li><a href="#user_F-ftree-dse">-ftree-dse</a></li>
+    <li><a href="#user_F-ftree-ter">-ftree-ter</a></li>
+    <li><a href="#user_F-ftree-lrs">-ftree-lrs</a></li>
+    <li><a href="#user_F-ftree-sra">-ftree-sra</a></li>
+    <li><a href="#user_F-ftree-copyrename">-ftree-copyrename</a></li>
+    <li><a href="#user_F-ftree-fre">-ftree-fre</a></li>
+    <li><a href="#user_F-ftree-ch">-ftree-ch</a></li>
+    <li><a href="#user_F-fmerge-constants">-fmerge-constants</a></li>
+   </ul>
+  </li>
+ </ul>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CC_FCbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f" id="user_CC_FCbase_F-fno-strict-aliasing_a8047cc9f94be72335a766650435d22f">-fno-strict-aliasing</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="flagVar">COPTIMIZE, FOPTIMIZE</li>
+<li class="descText">
+<p>Does not allow the compiler to assume the strictest aliasing rules applicable to
+   the language being compiled.  For C (and C++), optimizations
+   based on the type of expressions are not activated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr />
+<h2>Implicitly Included Flags</h2>
+<p>This section contains descriptions of flags that were included implicitly
+by other flags, but which do not have a permanent home at SPEC.</p>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fthread-jumps" id="user_F-fthread-jumps">-fthread-jumps</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform optimizations where we check to see if a jump branches to a location where another comparison subsumed by the first is found. If so, the first branch is redirected to either the destination of the second branch or a point immediately following it, depending on whether the condition is known to be true or false.
+
+Enabled at levels -O2, -O3, -Os. 
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fcrossjumping" id="user_F-fcrossjumping">-fcrossjumping</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform cross-jumping transformation. This transformation unifies equivalent code and save code size. The resulting code may or may not perform better than without cross-jumping.
+
+Enabled at levels -O2, -O3, -Os. 
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-foptimize-sibling-calls" id="user_F-foptimize-sibling-calls">-foptimize-sibling-calls</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Optimize sibling and tail recursive calls.
+
+Enabled at levels -O2, -O3, -Os. 
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fcse-follow-jumps" id="user_F-fcse-follow-jumps">-fcse-follow-jumps</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+In common subexpression elimination, scan through jump instructions when the target of the jump is not reached by any other path. For example, when CSE encounters an if statement with an else clause, CSE will follow the jump when the condition tested is false.
+
+Enabled at levels -O2, -O3, -Os. 
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fcse-skip-blocks" id="user_F-fcse-skip-blocks">-fcse-skip-blocks</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+This is similar to -fcse-follow-jumps, but causes CSE to follow jumps which conditionally skip over blocks. When CSE encounters a simple if statement with no else clause, -fcse-skip-blocks causes CSE to follow the jump around the body of the if.
+
+Enabled at levels -O2, -O3, -Os.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fgcse" id="user_F-fgcse">-fgcse</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform a global common subexpression elimination pass. This pass also performs global constant and copy propagation.
+
+Note: When compiling a program using computed gotos, a GCC extension, you may get better runtime performance if you disable the global common subexpression elimination pass by adding -fno-gcse to the command line.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fgcse-lm" id="user_F-fgcse-lm">-fgcse-lm</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+When -fgcse-lm is enabled, global common subexpression elimination will attempt to move loads which are only killed by stores into themselves. This allows a loop containing a load/store sequence to be changed to a load outside the loop, and a copy/store within the loop.
+
+Enabled by default when gcse is enabled. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fexpensive-optimizations" id="user_F-fexpensive-optimizations">-fexpensive-optimizations</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform a number of minor optimizations that are relatively expensive.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fstrength-reduce" id="user_F-fstrength-reduce">-fstrength-reduce</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform the optimizations of loop strength reduction and elimination of iteration variables.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-frerun-cse-after-loop" id="user_F-frerun-cse-after-loop">-frerun-cse-after-loop</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>   Re-run common subexpression elimination after loop optimizations
+   have been performed.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-frerun-loop-opt" id="user_F-frerun-loop-opt">-frerun-loop-opt</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Run the loop optimizer twice.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fcaller-saves" id="user_F-fcaller-saves">-fcaller-saves</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Enable values to be allocated in registers that will be clobbered by function calls, by emitting extra instructions to save and restore the registers around such calls. Such allocation is done only when it seems to result in better code than would otherwise be produced.
+
+This option is always enabled by default on certain machines, usually those which have no call-preserved registers to use instead.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fpeephole2" id="user_F-fpeephole2">-fpeephole2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Disable any machine-specific peephole optimizations. The difference between -fno-peephole and -fno-peephole2 is in how they are implemented in the compiler; some targets use one, some use the other, a few use both.
+
+-fpeephole is enabled by default. -fpeephole2 enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fschedule-insns" id="user_F-fschedule-insns">-fschedule-insns</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+If supported for the target machine, attempt to reorder instructions to eliminate execution stalls due to required data being unavailable. This helps machines that have slow floating point or memory load instructions by allowing other instructions to be issued until the result of the load or floating point instruction is required.
+
+Enabled at levels -O2, -O3, -Os
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fschedule-insns2" id="user_F-fschedule-insns2">-fschedule-insns2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Similar to -fschedule-insns, but requests an additional pass of instruction scheduling after register allocation has been done. This is especially useful on machines with a relatively small number of registers and where memory load instructions take more than one cycle.
+
+Enabled at levels -O2, -O3, -Os. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fsched-interblock" id="user_F-fsched-interblock">
+-fsched-interblock
+</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Schedule instructions across basic blocks.  This is enabled by default when
+scheduling before register allocation, i.e. with <tt>-fschedule-insns</tt> or  
+at <tt>-O2</tt> or higher.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fsched-spec" id="user_F-fsched-spec">-fsched-spec</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Don't allow speculative motion of non-load instructions. This is normally enabled by default when scheduling before register allocation, i.e. with -fschedule-insns or at -O2 or higher.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fregmove" id="user_F-fregmove">-fregmove</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+Attempt to reassign register numbers in move instructions and as operands of other simple instructions in order to maximize the amount of register tying. This is especially helpful on machines with two-operand instructions.
+
+Note -fregmove and -foptimize-register-move are the same optimization.
+
+Enabled at levels -O2, -O3, -Os.
+<p>
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fstrict-aliasing" id="user_F-fstrict-aliasing">
+-fstrict-aliasing
+</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Allows the compiler to assume the strictest aliasing rules applicable to
+   the language being compiled.  For C (and C++), this activates optimizations
+   based on the type of expressions.  In particular, an object of one type is
+   assumed never to reside at the same address as an object of a different
+   type, unless the types are almost the same.  For example, an "unsigned int"
+   can alias an "int", but not a "void*" or a "double".  A character type may
+   alias any other type.</p>
+
+<p>Pay special attention to code like this:</p>
+<pre>
+   union a_union {
+     int i;
+     double d;
+   };
+
+   int f() {
+     a_union t;
+     t.d = 3.0;
+     return t.i;
+   }
+</pre>
+
+<p>The practice of reading from a different union member than the one
+   most recently written to (called ``type-punning'') is common.  Even
+   with <tt>-fstrict-aliasing</tt>, type-punning is allowed, provided the
+   memory is accessed through the union type.  So, the code above will
+   work as expected.  However, this code might not:</p>
+<pre>
+   int f() {
+     a_union t;
+     int* ip;
+     t.d = 3.0;
+     ip = &amp;t.i;
+     return *ip;
+   }
+</pre>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fdelete-null-pointer-checks" id="user_F-fdelete-null-pointer-checks">-fdelete-null-pointer-checks</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Use global dataflow analysis to identify and eliminate useless checks for null pointers. The compiler assumes that dereferencing a null pointer would have halted the program. If a pointer is checked after it has already been dereferenced, it cannot be null.
+
+In some environments, this assumption is not true, and programs can safely dereference null pointers. Use -fno-delete-null-pointer-checks to disable this optimization for programs which depend on that behavior.
+
+Enabled at levels -O2, -O3, -Os.
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-freorder-blocks" id="user_F-freorder-blocks">-freorder-blocks</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Reorder basic blocks in the compiled function in order to reduce number of taken branches and improve code locality.
+
+Enabled at levels -O2, -O3. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-freorder-functions" id="user_F-freorder-functions">-freorder-functions</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Reorder functions in the object file in order to improve code locality. This is implemented by using special subsections .text.hot for most frequently executed functions and .text.unlikely for unlikely executed functions. Reordering is done by the linker so object file format must support named sections and linker must place them in a reasonable way.
+
+Also profile feedback must be available in to make this option effective. See -fprofile-arcs for details.
+
+Enabled at levels -O2, -O3, -Os.
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-funit-at-a-time" id="user_F-funit-at-a-time">-funit-at-a-time</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Parse the whole compilation unit before starting to produce code. This allows some extra optimizations to take place but consumes more memory (in general). There are some compatibility issues with unit-at-at-time mode:
+
+    * enabling unit-at-a-time mode may change the order in which functions, variables, and top-level asm statements are emitted, and will likely break code relying on some particular ordering. The majority of such top-level asm statements, though, can be replaced by section attributes.
+    * unit-at-a-time mode removes unreferenced static variables and functions. This may result in undefined references when an asm statement refers directly to variables or functions that are otherwise unused. In that case either the variable/function shall be listed as an operand of the asm statement operand or, in the case of top-level asm statements the attribute used shall be used on the declaration.
+    * Static functions now can use non-standard passing conventions that may break asm statements calling functions directly. Again, attribute used will prevent this behavior. 
+
+As a temporary workaround, -fno-unit-at-a-time can be used, but this scheme may not be supported by future releases of GCC.
+
+Enabled at levels -O2, -O3. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-falign-functions" id="user_F-falign-functions">
+-falign-functions,
+-falign-functions=n
+</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Align the start of functions to the next power-of-two greater than
+   <i>n</i>, skipping up to <i>n</i> bytes.  For instance,
+   <tt>-falign-functions=32</tt> aligns functions to the next 32-byte
+   boundary, but <tt>-falign-functions=24</tt> would align to the next
+   32-byte boundary only if this can be done by skipping 23 bytes or less.</p>
+
+<p><tt>-fno-align-functions</tt> and <tt>-falign-functions=1</tt> are
+   equivalent and mean that functions will not be aligned.</p>
+
+<p>Some assemblers only support this flag when <i>n</i> is a power of two; in
+   that case, it is rounded up.</p>
+
+<p>If <i>n</i> is not specified, use a machine-dependent default.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-falign-jumps" id="user_F-falign-jumps">
+-falign-jumps,
+-falign-jumps=n
+</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Align branch targets to a power-of-two boundary, for branch targets
+    where the targets can only be reached by jumping, skipping up to <i>n</i>
+    bytes like <tt>-falign-functions.</tt>  In this case, no dummy operations
+    need be executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-falign-loops" id="user_F-falign-loops">
+-falign-loops,
+-falign-loops=n
+</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Align loops to a power-of-two boundary, skipping up to <i>n</i> bytes like
+   <tt>-falign-functions.</tt>  The hope is that the loop will be executed
+   many times, which will make up for any execution of the dummy
+   operations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-falign-labels" id="user_F-falign-labels">-falign-labels</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+-falign-labels=n
+    Align all branch targets to a power-of-two boundary, skipping up to n bytes like -falign-functions. This option can easily make code slower, because it must insert dummy operations for when the branch target is reached in the usual flow of the code.
+
+    -fno-align-labels and -falign-labels=1 are equivalent and mean that labels will not be aligned.
+
+    If -falign-loops or -falign-jumps are applicable and are greater than this value, then their values are used instead.
+
+    If n is not specified or is zero, use a machine-dependent default which is very likely to be `1', meaning no alignment.
+
+    Enabled at levels -O2, -O3. 
+	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-vrp" id="user_F-ftree-vrp">-ftree-vrp</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>
+Perform Value Range Propagation on trees. This is similar to the constant propagation pass, but instead of values, ranges of values are propagated. This allows the optimizers to remove unnecessary range checks like array bound checks and null pointer checks. This is enabled by default at -O2 and higher. Null pointer check elimination is only done if -fdelete-null-pointer-checks is enabled. 	
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-O1" id="user_F-O1">-O1</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Optimize. Optimizing compilation takes somewhat more time, and a lot more
+memory for a large function.</p>
+
+<p>With -O, the compiler tries to reduce code size and execution time, without
+performing any optimizations that take a great deal of compilation time.</p>
+
+<p>-O turns on the following optimization flags:</p>
+<ul>
+<li>-fdefer-pop</li>
+<li>-fdelayed-branch</li>
+<li>-fguess-branch-probability</li>
+<li>-fcprop-registers</li>
+<li>-floop-optimize</li>
+<li>-fif-conversion</li>
+<li>-fif-conversion2</li>
+<li>-ftree-ccp</li>
+<li>-ftree-dce</li>
+<li>-ftree-dominator-opts</li>
+<li>-ftree-dse</li>
+<li>-ftree-ter</li>
+<li>-ftree-lrs</li>
+<li>-ftree-sra</li>
+<li>-ftree-copyrename</li>
+<li>-ftree-fre</li>
+<li>-ftree-ch</li>
+<li>-fmerge-constants</li>
+</ul>
+
+<p>-O also turns on -fomit-frame-pointer on machines where doing so does not 
+interfere with debugging.</p>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="#user_F-fdefer-pop">-fdefer-pop</a></li>
+  <li><a href="#user_F-fdelayed-branch">-fdelayed-branch</a></li>
+  <li><a href="#user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+  <li><a href="#user_F-fcprop-registers">-fcprop-registers</a></li>
+  <li><a href="#user_F-floop-optimize">-floop-optimize</a></li>
+  <li><a href="#user_F-fif-conversion">-fif-conversion</a></li>
+  <li><a href="#user_F-fif-conversion2">-fif-conversion2</a></li>
+  <li><a href="#user_F-ftree-ccp">-ftree-ccp</a></li>
+  <li><a href="#user_F-ftree-dce">-ftree-dce</a></li>
+  <li><a href="#user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+  <li><a href="#user_F-ftree-dse">-ftree-dse</a></li>
+  <li><a href="#user_F-ftree-ter">-ftree-ter</a></li>
+  <li><a href="#user_F-ftree-lrs">-ftree-lrs</a></li>
+  <li><a href="#user_F-ftree-sra">-ftree-sra</a></li>
+  <li><a href="#user_F-ftree-copyrename">-ftree-copyrename</a></li>
+  <li><a href="#user_F-ftree-fre">-ftree-fre</a></li>
+  <li><a href="#user_F-ftree-ch">-ftree-ch</a></li>
+  <li><a href="#user_F-fmerge-constants">-fmerge-constants</a></li>
+ </ul>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fdefer-pop" id="user_F-fdefer-pop">-fdefer-pop</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p> Always pop the arguments to each function call as soon as that function returns. 
+For machines which must pop arguments after a function call, the compiler 
+normally lets arguments accumulate on the stack for several function calls 
+and pops them all at once.
+
+-fnodefer-pop is disabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fdelayed-branch" id="user_F-fdelayed-branch">-fdelayed-branch</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>If supported for the target machine, attempt to reorder instructions to 
+exploit instruction slots available after delayed branch instructions.
+
+Enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fguess-branch-probability" id="user_F-fguess-branch-probability">-fguess-branch-probability</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>If supported for the target machine, attempt to reorder instructions to exploit 
+instruction slots available after delayed branch instructions.
+
+-fnoguess-branch-probability is enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fcprop-registers" id="user_F-fcprop-registers">-fcprop-registers</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>After register allocation and post-register allocation instruction 
+splitting, we perform a copy-propagation pass to try to reduce scheduling 
+dependencies and occasionally eliminate the copy.
+
+-fno-cprop-registers is disabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-floop-optimize" id="user_F-floop-optimize">-floop-optimize</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform loop optimizations: move constant expressions out of loops, 
+simplify exit test conditions and optionally do strength-reduction as well.
+
+Enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fif-conversion" id="user_F-fif-conversion">-fif-conversion</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Attempt to transform conditional jumps into branch-less equivalents. 
+This include use of conditional moves, min, max, set flags and abs instructions, 
+and some tricks doable by standard arithmetics. The use of conditional 
+execution on chips where it is available is controlled by if-conversion2.
+
+Enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fif-conversion2" id="user_F-fif-conversion2">-fif-conversion2</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Use conditional execution (where available) to transform conditional 
+jumps into branch-less equivalents.
+
+Enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-ccp" id="user_F-ftree-ccp">-ftree-ccp</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform sparse conditional constant propagation (CCP) on trees. 
+This pass only operates on local scalar variables and is 
+enabled by default at -O and higher.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-dce" id="user_F-ftree-dce">-ftree-dce</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform dead code elimination (DCE) on trees. 
+This flag is enabled by default at -O and higher.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-dominator-opts" id="user_F-ftree-dominator-opts">-ftree-dominator-opts</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform a variety of simple scalar cleanups (constant/copy propagation, 
+redundancy elimination, range propagation and expression simplification) 
+based on a dominator tree traversal. This also performs jump threading 
+(to reduce jumps to jumps). This flag is enabled by default at -O and higher.  </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-dse" id="user_F-ftree-dse">-ftree-dse</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Not described in Manual for gcc 4.1 </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-ter" id="user_F-ftree-ter">-ftree-ter</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform temporary expression replacement during the SSA->normal phase. 
+Single use/single def temporaries are replaced at their use location 
+with their defining expression. This results in non-GIMPLE code, but 
+gives the expanders much more complex trees to work on resulting in 
+better RTL generation. This is enabled by default at -O and higher. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-lrs" id="user_F-ftree-lrs">-ftree-lrs</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform live range splitting during the SSA->normal phase. Distinct live ranges of a variable are split into unique variables, allowing for better optimization later. This is enabled by default at -O and higher. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-sra" id="user_F-ftree-sra">-ftree-sra</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform scalar replacement of aggregates. This pass replaces structure references with scalars to prevent committing structures to memory too early. This flag is enabled by default at -O and higher. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-copyrename" id="user_F-ftree-copyrename">-ftree-copyrename</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform copy renaming on trees. This pass attempts to rename compiler temporaries to other variables at copy locations, usually resulting in variable names which more closely resemble the original variables. This flag is enabled by default at -O and higher. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-fre" id="user_F-ftree-fre">-ftree-fre</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform Full Redundancy Elimination (FRE) on trees. The difference between FRE and PRE is that FRE only considers expressions that are computed on all paths leading to the redundant computation. This analysis faster than PRE, though it exposes fewer redundancies. This flag is enabled by default at -O and higher. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-ftree-ch" id="user_F-ftree-ch">-ftree-ch</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Perform loop header copying on trees. This is beneficial since it increases effectiveness of code motion optimizations. It also saves one jump. This flag is enabled by default at -O and higher. It is not enabled for -Os, since it usually increases code size. </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_F-fmerge-constants" id="user_F-fmerge-constants">-fmerge-constants</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></li>
+<li class="descText">
+<p>Attempt to merge identical constants (string constants and floating point constants) across compilation units.
+
+This option is the default for optimized compilation if the assembler and linker support it. Use -fno-merge-constants to inhibit this behavior.
+
+Enabled at levels -O, -O2, -O3, -Os.  </p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<hr />
+<h2><a name="submitCommand">Commands and Options Used to Submit Benchmark Runs</a></h2>
+
+
+<p><b>Using numactl to bind processes and memory to cores</b></p>
+<p>For multi-copy runs or single copy runs on systems with multiple sockets, it is advantageous to bind a process to a particular core.  Otherwise, the OS may arbitrarily move your process from one core to another.  This can effect performance.  To help, SPEC allows the use of a "submit" command where users can specify a utility to use to bind processes.  We have found the utility 'numactl' to be the best choice.</p>
+<p>numactl runs processes with a specific NUMA scheduling or memory placement policy.  The policy is set for a command and inherited by all of its children.  The numactl flag "--physcpubind" specifies which core(s) to bind the process. "-l" instructs numactl to keep a process memory on the local node while "-m" specifies which node(s) to place a process memory.  For full details on using numactl, please refer to your Linux documentation, 'man numactl'</p>
+<p>Note that some versions of numactl, particularly the version found on SLES 10, we have found that the utility incorrectly interprets application arguments as it's own.  For example, with the command "numactl --physcpubind=0 -l a.out -m a", numactl will interpret a.out's "-m" option as it's own "-m" option.  To work around this problem, a user can put the command to be run in a shell script and then run the shell script using numactl.  For example: "echo 'a.out -m a' > run.sh ; numactl --physcpubind=0 bash run.sh"</p>
+
+
+<hr />
+<h2><a name="softwareEnvironment">Shell, Environment, and Other Software Settings</a></h2>
+
+
+<p><b> ulimit -s &lt;n&gt;</b></p>
+<p>
+           Sets the stack size to <b>n</b> kbytes, or <b>unlimited</b> to allow the stack size
+           to grow without limit. 
+</p>
+
+
+<hr />
+<div class="flagorigins">
+ <p>Flag description origin markings:</p>
+ <table>
+  <tr>
+   <td><a name="userOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/user.png" alt="[user]" /></a></td>
+   <td>Indicates that the flag description came from the user flags file.</td>
+  </tr>
+  <tr>
+   <td><a name="suiteOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/suite.png" alt="[suite]" /></a></td>
+   <td>Indicates that the flag description came from the suite-wide flags file.</td>
+  </tr>
+  <tr>
+   <td><a name="benchmarkOrigin"><img src="http://www.spec.org/auto/cpu2006/flags/benchmark.png" alt="[benchmark]" /></a></td>
+   <td>Indicates that the flag description came from a per-benchmark flags file.</td>
+  </tr>
+ </table>
+</div>
+<hr />
+<p style="text-align: left">For questions about the meanings of these flags, please contact the tester.<br />
+For other inquiries, please contact <a href="mailto:webmaster@spec.org">webmaster@spec.org</a><br />
+Copyright 2006-2019 Standard Performance Evaluation Corporation<br />
+Tested with SPEC CPU2006 v1.2.<br />
+Report generated on Sat May 18 05:04:05 2019 by SPEC CPU2006 flags formatter v6417.</p>
+</body>
+</html>
