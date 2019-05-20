@@ -121,3 +121,53 @@ Please only attempt this as a last resort.
 ```
 也就是没有预编译好的二进制文件可以安装，需要我们自行编译
 同时在"tools/bin/"也可以看到哪些体系结果有编译好的二进制用于安装。
+
+
+## 执行416.gamess base时报错
+```
+*** Miscompare of cytosine.2.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0082/cytosine.2.out.mis
+
+*** Miscompare of h2ocu2+.gradient.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0082/h2ocu2+.gradient.out.mis
+
+*** Miscompare of triazolium.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0083/triazolium.out.mis
+
+*** Miscompare of cytosine.2.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0083/cytosine.2.out.mis
+
+*** Miscompare of h2ocu2+.gradient.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0083/h2ocu2+.gradient.out.mis
+
+*** Miscompare of triazolium.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0084/triazolium.out.mis
+
+*** Miscompare of cytosine.2.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0084/cytosine.2.out.mis
+
+*** Miscompare of h2ocu2+.gradient.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0084/h2ocu2+.gradient.out.mis
+
+*** Miscompare of cytosine.2.out; for details see
+    /home/me/syncfile/cputool/speccpu2006/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc43-64bit.0085/cytosine.2.out.mis
+Error: 3x416.gamess
+Producing Raw Reports
+mach: default
+  ext: gcc43-64bit
+    size: ref
+      set: int
+      set: fp
+        format: raw -> /home/me/syncfile/cputool/speccpu2006/result/CFP2006.014.ref.rsf
+Parsing flags for 416.gamess base: done
+Doing flag reduction: done
+        format: flags -> /home/me/syncfile/cputool/speccpu2006/result/CFP2006.014.ref.flags.html
+        format: ASCII -> /home/
+```
+
+解决办法：
+在config文件中,例如我使用的confi文件为：config/d05-2cpu.cfg，修改
+```
+416.gamess=default=default=default:
+FOPTIMIZE = -O0
+```
