@@ -24,7 +24,7 @@ su root
 
 ### 合入更改：
 
-方法1：切换到cpu2006 ISO文件解压的根目录执行
+**方法1：**切换到cpu2006 ISO文件解压的根目录执行
 ```
 patch -R -p1 < all_in_one.patch
 ```
@@ -36,13 +36,13 @@ chmod +w 目录名/文件名
 patch下载地址：[[all_in_one]](resources/all_in_one.patch)
 
 
-方法2：切换到cpu2006 git目录执行
+**方法2：**切换到cpu2006 git目录执行
 ```
 git am --abort #保证上次合入操作停止
 git am 0001-modify-to-make-compile-success.patch
 ```
 如果提示权限不足，请修改文件权限或者使用sudo命令  
-patch下载地址：[[0001-modify-to-make-compile-success.patch]](resouces/0001-modify-to-make-compile-success.patch)
+patch下载地址：[[0001-modify-to-make-compile-success.patch]](resources/0001-modify-to-make-compile-success.patch)
 
 ### 编译
 执行编译前，可能需要修改某些目录和文件的权限
@@ -122,14 +122,15 @@ runspec finished at Sat May 18 05:04:05 2019; 187651 total seconds elapsed
 
 ```
 
-执行结果，请参考：
+执行结果，请参考：D:\doc\GoodCommand\docs\resources\1616_speccpu2006_full_run_result\CFP2006.001.ref.html
+D:\doc\GoodCommand\docs\resources\1616_speccpu2006_full_run_result\CINT2006.001.ref.html
   
 |case			|分数			|
 |:--------------|:--------------|
 |[[1616 int结果]](resources/1616_speccpu2006_full_run_result/CINT2006.001.ref.html)	|421	|
 |[[1616 fp结果]](resources/1616_speccpu2006_full_run_result/CFP2006.001.ref.html)	|383	|
-|[[1620 int结果]](resouces/1620_speccpu2006_full_run_result/CINT2006.002.ref.html)	|394	|
-|[[1620 fp结果]](resources/1620_speccpu2006_full_run_result/CFP2006.002.ref.html)	|283	|
+|[[1620 int结果]](resources/1620ES_speccpu2006_full_run_result/CINT2006.002.ref.html)	|394	|
+|[[1620 fp结果]](resources/1620ES_speccpu2006_full_run_result/CFP2006.002.ref.html)	|283	|
 
 分数和软硬件强相关，请注意差别。  
 

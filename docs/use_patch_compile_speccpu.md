@@ -15,13 +15,14 @@ chmod +w 目录名/文件名
 ```
 patch下载地址：[[all_in_one]](resources/all_in_one.patch)
 
+
 **方法2：**切换到cpu2006 git目录执行
 ```
 git am --abort #保证上次合入操作停止
 git am 0001-modify-to-make-compile-success.patch
 ```
 如果提示权限不足，请修改文件权限或者使用sudo命令  
-patch下载地址：[[0001-modify-to-make-compile-success.patch]](resouces/0001-modify-to-make-compile-success.patch)
+patch下载地址：[[0001-modify-to-make-compile-success.patch]](resources/0001-modify-to-make-compile-success.patch)
 
 ### 编译
 执行编译前，可能需要修改某些目录和文件的权限

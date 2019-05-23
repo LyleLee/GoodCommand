@@ -83,7 +83,7 @@ fio --ramp_time=5 --runtime=15 --size=20g --ioengine=libaio --filename=/dev/sdb 
 ```
 测试脚本如下：
 
-[/src/io_all.sh](resources/io_all.sh)
+[/src/io_all.sh](script/io_all.sh)
 
 测试log如下：  
 [x86](resources/x86_fio_simple.txt)  

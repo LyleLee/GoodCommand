@@ -51,7 +51,7 @@
     - [perf:    ](perf.md    )
 - benchmark:
     - [cpu information:     ](cpuinfo.md         )
-    - [cpu spec cpu:        ](cpu_benchmark.md   )
+    - [cpu spec cpu:        ](cpu_speccpu.md   )
     - [mem information:     ](meminfo.md         )
     - [mem stream:          ](stream.md          )
     - [mem stream_x86:      ](stream_x86.md      )
