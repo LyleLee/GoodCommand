@@ -171,3 +171,28 @@ Doing flag reduction: done
 416.gamess=default=default=default:
 FOPTIMIZE = -O0
 ```
+
+## 执行.buildtoos报错
+```
+You are not allowed to write into /home/me/tmp_from_iso2/config.
+That may be because you are attempting to source the shrc on your distribution
+media.
+
+It may also be that a different user installed the benchmark tree and
+has not set permissions that allow you to use it for runs.  See the
+output_root section of runspec.html for information on how an installed
+benchmark tree may be used by multiple users.
+
+Please try again after correcting the problem.
+Top of SPEC benchmark tree is '/home/me/tmp_from_iso2'
+Can't open MANIFEST for writing: Permission denied
+Uhoh! I appear to have had problems relocating the tree.
+Once you fix the problem (is your SPEC environment variable set?) you can make
+the tools work by sourcing the shrc and running /bin/relocate by hand.
+```
+解决办法：
+```
+chmod +w config -R
+chmod +w MANIFEST
+
+```

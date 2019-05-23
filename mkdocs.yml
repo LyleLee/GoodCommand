@@ -11,7 +11,8 @@ nav:
         - perf: perf.md
     - benchmark:
         - cpu information: cpuinfo.md
-        - cpu speccpu: cpu_benchmark.md
+        - cpu speccpu: cpu_speccpu.md
+        - cpu compile speccpu: use_patch_compile_speccpu.md
         - mem information: meminfo.md
         - mem stream: stream.md
         - mem stream_x86: stream_x86.md
