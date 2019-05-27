@@ -7,7 +7,7 @@ cd coremark
 make
 ```
 
-```CS
+```shell
 [me@servername ~]$ git clone https://github.com/eembc/coremark.git
 Cloning into 'coremark'...
 remote: Enumerating objects: 189, done.
