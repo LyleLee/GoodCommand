@@ -379,7 +379,7 @@ root    ALL=(ALL)       ALL
 me      ALL=(ALL)       ALL
 ```
 
-## 安装linux源码
+## 安装linux源码,安装内核源码
 ```
 sudo apt-get install linux-4.4-source-4.4  
 xz -d linux-4.4-source-4.4.tar.xz   
@@ -387,6 +387,18 @@ sudo xz -d linux-4.4-source-4.4.tar.xz
 tar -xvf linux-4.4-source-4.4.tar   
 sudo tar -xvf linux-4.4-source-4.4.tar
 ```
+ubuntu
+```
+sudo apt-get update
+sudo apt-get install linux-source
+
+#会在/usr/src下面安装当前内核版本的源码
+me@ubuntu:~$ ls /usr/src/
+linux-headers-4.15.0-29  linux-headers-4.15.0-29-generic  linux-source-4.15.0  linux-source-4.15.0.tar.bz2
+me@ubuntu:~$ uname -a
+Linux ubuntu 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:41:03 UTC 2018 aarch64 aarch64 aarch64 GNU/Linux
+```
+
 ## 校验md5
 计算文件的md5值
 ```shell-session
