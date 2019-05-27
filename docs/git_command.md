@@ -115,6 +115,36 @@ git checkout --track origin/serverfix
 ```
 git checkout --patch master include/uapi/linux/mii.h    #把master分支的指定文件合并到当前分支
 ```
+## 生成patch与合入patch
+
+**diff 和 patch 命令组合**  
+使用diff比较文件差异并生成patch文件， 然后使用patch合入修订，适用于没有版本管理的场景
+例子请查看[[diff]](diff.md)
+
+**git diff 和 git apply 组合**  
+使用git diff 成patch， 使用git apply 命令合入代码。 git apply 可以加参数--check，可以更加安全的合入和撤销代码
+```
+git diff > add_function.patch           #当前仓库中修改，但是未暂存的文件生成patch
+git diff --cached > add_function.patch        #当前仓库已经暂存，但是没提交的文件生成patch
+git diff --staged --binary > mypatch.patch    #二进制文件patch
+git diff --relative 1bc4aa..1c7b4e            #以相对当前路径，生成两个commit之间的patch，适合用于生成模块的patch
+
+
+git apply add_function.patch                  #git apply 可以保证一个patch可以完整合入或者完全不合入
+git apply -p0 add_function                    #如果需要去除前缀路径
+```
+
+**git format-patch和git am组合**  
+git format-patch可以针对git仓库的commit和版本生成patch，使用git am 可以完整合入patch中的commit信息,也就是作者和message等。前面的patch版本管理方式都是只针对代码改动，不包含提交的commit信息。
+
+```
+git format-patch master                                 #在当前分支,生成master到当前分支的patch，一个commit一个patch。默认当前分支是从参数中的分支（master）分出来的
+git format-patch master --stdout > add_function.patch   #生成单个文件的patch
+git format-patch -s fe21342443 -o today/                #生成自从fe21342443以来的patch，每个comit一个patch
+
+git amadd_function.patch                                #以提交方式合入patch
+git apply add_function.patch                            #以修改，未暂存方式合入patch
+```
 
 ## 如果错误向github提交了敏感信息如密码：
 包含敏感信息的文件为server_start_up_log.txt
