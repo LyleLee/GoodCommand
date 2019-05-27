@@ -8,6 +8,9 @@ Baseboard Management Controller 用于管理服务器的子系统，有独立的
 iBMC:/->
 ```
 ```CS
+#查询固件版本BMC、CPLD、BIOS信息
+ipmcget -d v
+
 #查询iBMC管理网口的IP信息。
 ipmcget -d ipinfo 
 
