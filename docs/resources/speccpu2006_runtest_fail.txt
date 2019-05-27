@@ -1,0 +1,293 @@
+     ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+     ©¦                        ? MobaXterm 10.2 ?                          ©¦
+     ©¦            (SSH client, X-server and networking tools)             ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? SSH session to me@192.168.1.201                                  ©¦
+     ©¦   ? SSH gateway     : ?  (lixianfa@114.119.4.74)                   ©¦
+     ©¦   ? SSH compression : ?                                            ©¦
+     ©¦   ? SSH-browser     : ?                                            ©¦
+     ©¦   ? X11-forwarding  : ?  (remote display is forwarded through SSH) ©¦
+     ©¦   ? DISPLAY         : ?  (automatically set on remote server)      ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? For more info, ctrl+click on help or visit our website           ©¦
+     ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+
+Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-29-generic aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri May 24 00:01:46 CST 2019
+
+  System load:  0.3              Processes:                  856
+  Usage of /:   2.1% of 3.58TB   Users logged in:            1
+  Memory usage: 2%               IP address for enahisic2i0: 192.168.1.201
+  Swap usage:   10%
+
+ * Ubuntu's Kubernetes 1.14 distributions can bypass Docker and use containerd
+   directly, see https://bit.ly/ubuntu-containerd or try it now with
+
+     snap install microk8s --classic
+
+414 packages can be updated.
+184 updates are security updates.
+
+
+*** System restart required ***
+You have new mail.
+Last login: Tue May 21 21:43:09 2019 from 192.168.1.107
+me@ubuntu:~$ ls
+bin  code  Desktop  docker-curriculum  Documents  Downloads  io_all.sh  mbox  patch  Public  syncfile  tmp  tmux-client-45465.log  tmux.conf.backup  tmux.conf-default
+me@ubuntu:~$ cd code/
+me@ubuntu:~/code$ ls
+4.14-with-4.18-hns3.tgz  dmidecode  fishing  kernel-4.18.0-80.el8.src.rpm  kernel-rhel  kernel-rhel-backup  linux  linux-5.0.5.tar.xz  net  speccpu2006  ubuntu-bionic  using_Kconfig
+me@ubuntu:~/code$
+me@ubuntu:~/code$
+me@ubuntu:~/code$ cd speccpu2006/
+me@ubuntu:~/code/speccpu2006$
+me@ubuntu:~/code/speccpu2006$
+me@ubuntu:~/code/speccpu2006$ source shrc
+me@ubuntu:~/code/speccpu2006$ ./bin/runspec --test
+runspec v6674 - Copyright 1999-2011 Standard Performance Evaluation Corporation
+Using 'unknown' tools
+Reading MANIFEST... 19896 files
+Loading runspec modules................
+Running the Perl test suite...
+t/base/cond.................ok
+t/base/if...................ok
+t/base/lex..................ok
+t/base/num..................ok
+t/base/pat..................ok
+t/base/rs...................ok
+t/base/term.................ok
+t/comp/bproto...............ok
+t/comp/cmdopt...............ok
+t/comp/colon................ok
+t/comp/decl.................ok
+t/comp/hints................ok
+t/comp/multiline............ok
+t/comp/our..................ok
+t/comp/package..............ok
+t/comp/parser...............ok
+t/comp/proto................ok
+t/comp/redef................ok
+t/comp/require..............ok
+t/comp/script...............ok
+t/comp/term.................ok
+t/comp/use..................ok
+t/run/exit..................ok
+t/run/fresh_perl............ok
+t/run/noswitch..............ok
+t/run/runenv................ok
+t/run/switchC...............ok
+t/run/switchF...............ok
+t/run/switchI...............ok
+t/run/switcha...............ok
+t/run/switchd...............ok
+t/run/switches..............ok
+t/run/switchn...............ok
+t/run/switchp...............ok
+t/run/switchx...............ok
+t/cmd/elsif.................ok
+t/cmd/for...................ok
+t/cmd/mod...................ok
+t/cmd/subval................ok
+t/cmd/switch................ok
+t/cmd/while.................ok
+t/io/argv...................ok
+t/io/binmode................ok
+t/io/crlf...................ok
+t/io/dup....................ok
+t/io/fflush.................ok
+t/io/fs.....................ok
+t/io/inplace................ok
+t/io/iprefix................ok
+t/io/layers.................ok
+t/io/nargv..................ok
+t/io/open...................ok
+t/io/openpid................ok
+t/io/pipe...................ok
+t/io/print..................ok
+t/io/read...................ok
+t/io/tell...................ok
+t/io/utf8...................ok
+t/re/pat....................ok
+t/re/pat_advanced...........ok
+t/re/pat_psycho.............ok
+t/re/pat_re_eval............ok
+t/re/pat_rt_report..........ok
+t/re/pat_special_cc.........ok
+t/re/qr.....................ok
+t/re/qr_gc..................ok
+t/re/qrstack................ok
+t/re/re.....................ok
+t/re/reg_60508..............ok
+t/re/reg_email..............ok
+t/re/reg_fold...............ok
+t/re/reg_mesg...............ok
+t/re/reg_namedcapture.......skipped
+t/re/reg_nc_tie.............ok
+t/re/reg_pmod...............ok
+t/re/reg_posixcc............ok
+t/re/reg_unsafe.............ok
+t/re/regexp.................ok
+t/re/regexp_noamp...........ok
+t/re/regexp_notrie..........ok
+t/re/regexp_qr..............ok
+t/re/regexp_qr_embed........ok
+t/re/regexp_trielist........ok
+t/re/regexp_unicode_prop....ok
+t/re/rxcode.................ok
+t/re/subst..................ok
+t/re/subst_amp..............ok
+t/re/subst_wamp.............ok
+t/re/substr.................ok
+t/op/64bitint...............ok
+t/op/anonsub................ok
+t/op/append.................ok
+t/op/args...................ok
+t/op/arith..................ok
+t/op/array..................ok
+t/op/array_base.............ok
+t/op/assignwarn.............ok
+t/op/attrhand...............ok
+t/op/attrs..................ok
+t/op/auto...................ok
+t/op/avhv...................ok
+t/op/bless..................ok
+t/op/bop....................ok
+t/op/caller.................ok
+t/op/chars..................ok
+t/op/chdir..................ok
+t/op/chop...................ok
+t/op/closure................ok
+t/op/cmp....................ok
+t/op/concat.................ok
+t/op/cond...................ok
+t/op/context................ok
+t/op/cproto.................ok
+t/op/crypt..................ok
+t/op/defins.................ok
+t/op/delete.................ok
+t/op/die....................ok
+t/op/die_exit...............ok
+t/op/do.....................ok
+t/op/dor....................ok
+t/op/each...................ok
+t/op/eval...................ok
+t/op/exec...................ok
+t/op/exists_sub.............ok
+t/op/exp....................ok
+t/op/fh.....................ok
+t/op/filetest...............ok
+t/op/flip...................ok
+t/op/fork...................ok
+t/op/glob...................ok
+t/op/gmagic.................ok
+t/op/goto...................ok
+t/op/goto_xs................ok
+t/op/grep...................ok
+t/op/gv.....................ok
+t/op/hashassign.............ok
+t/op/hashwarn...............ok
+t/op/inc....................ok
+t/op/inccode................ok
+t/op/index..................ok
+t/op/int....................ok
+t/op/join...................ok
+t/op/lc.....................ok
+t/op/lc_user................ok
+t/op/length.................ok
+t/op/lex_assign.............ok
+t/op/lfs....................ok
+t/op/list...................ok
+t/op/local..................ok
+t/op/localref...............ok
+t/op/loopctl................ok
+t/op/lop....................ok
+t/op/magic..................# Failed at op/magic.t line 405
+FAILED at test 38
+t/op/method.................ok
+t/op/mkdir..................ok
+t/op/my.....................ok
+t/op/my_stash...............ok
+t/op/nothr5005..............ok
+t/op/numconvert.............FAILED at test 104
+t/op/oct....................ok
+t/op/or.....................ok
+t/op/ord....................ok
+t/op/override...............ok
+t/op/pack...................ok
+t/op/pos....................ok
+t/op/pow....................ok
+t/op/push...................ok
+t/op/qq.....................ok
+t/op/quotemeta..............ok
+t/op/rand...................ok
+t/op/range..................ok
+t/op/read...................ok
+t/op/readdir................ok
+t/op/readline...............ok
+t/op/recurse................ok
+t/op/ref....................ok
+t/op/repeat.................ok
+t/op/reverse................ok
+t/op/runlevel...............ok
+t/op/sleep..................ok
+t/op/sort...................ok
+t/op/splice.................ok
+t/op/split..................ok
+t/op/sprintf................ok
+t/op/sprintf2...............ok
+t/op/srand..................ok
+t/op/stash..................ok
+t/op/stat...................ok
+t/op/state..................ok
+t/op/study..................ok
+t/op/sub_lval...............ok
+t/op/subst..................ok
+t/op/subst_amp..............ok
+t/op/subst_wamp.............ok
+t/op/sysio..................ok
+t/op/tie....................ok
+t/op/tiearray...............ok
+t/op/tiehandle..............ok
+t/op/time...................ok
+t/op/tr.....................ok
+t/op/undef..................ok
+t/op/universal..............ok
+t/op/unshift................ok
+t/op/utf8decode.............ok
+t/op/utfhash................ok
+t/op/vec....................ok
+t/op/ver....................ok
+t/op/wantarray..............ok
+t/op/write..................ok
+t/uni/fold..................ok
+t/uni/lower.................ok
+t/uni/sprintf...............ok
+t/uni/title.................ok
+t/uni/tr_utf8...............ok
+t/uni/upper.................ok
+t/uni/write.................ok
+t/lib/1_compile.............ok
+t/lib/commonsense...........ok
+Failed 2 tests out of 217, 99.08% okay.
+        op/magic.t
+        op/numconvert.t
+### Since not all tests were successful, you may want to run some of
+### them individually and examine any diagnostic messages they produce.
+### See the INSTALL document's section on "make test".
+### You have a good chance to get more information by running
+###   specperl harness
+### in the 'test' directory since most (>=80%) of the tests succeeded.
+### You may have to set your dynamic library search path,
+### LD_LIBRARY_PATH, to point to the build directory:
+###   setenv LD_LIBRARY_PATH `pwd`; cd test; specperl harness
+###   LD_LIBRARY_PATH=`pwd`; export LD_LIBRARY_PATH; cd test; specperl harness
+###   export LD_LIBRARY_PATH=`pwd`; cd test; specperl harness
+### for csh-style shells, like tcsh; or for traditional/modern
+### Bourne-style shells, like bash, ksh, and zsh, respectively.
+u=1.29  s=0.23  cu=15.36  cs=1.79  scripts=217  tests=71688
+me@ubuntu:~/code/speccpu2006$

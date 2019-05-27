@@ -196,3 +196,28 @@ chmod +w config -R
 chmod +w MANIFEST
 
 ```
+
+
+## 执行./bin/runspec不成功
+两个perl脚本执行报错
+```
+t/uni/write.................ok
+t/lib/1_compile.............ok
+t/lib/commonsense...........ok
+Failed 2 tests out of 217, 99.08% okay.
+        op/magic.t
+        op/numconvert.t
+### Since not all tests were successful, you may want to run some of
+### them individually and examine any diagnostic messages they produce.
+### See the INSTALL document's section on "make test".
+### You have a good chance to get more information by running
+###   specperl harness
+```
+可以单独重现这个错误：
+```shell
+cd tools/src/perl-5.12.3
+./perl t/op/magic.t
+./perl t/op/numconvert
+```
+解决办法：
+
