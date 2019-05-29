@@ -387,7 +387,7 @@ sudo xz -d linux-4.4-source-4.4.tar.xz
 tar -xvf linux-4.4-source-4.4.tar   
 sudo tar -xvf linux-4.4-source-4.4.tar
 ```
-ubuntu
+Ubuntu
 ```
 sudo apt-get update
 sudo apt-get install linux-source
@@ -397,6 +397,11 @@ me@ubuntu:~$ ls /usr/src/
 linux-headers-4.15.0-29  linux-headers-4.15.0-29-generic  linux-source-4.15.0  linux-source-4.15.0.tar.bz2
 me@ubuntu:~$ uname -a
 Linux ubuntu 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:41:03 UTC 2018 aarch64 aarch64 aarch64 GNU/Linux
+```
+
+Redhat、CentOS
+```
+yum install kernel-devel Kernel-headers
 ```
 
 ## 校验md5
