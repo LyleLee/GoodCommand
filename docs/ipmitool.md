@@ -15,9 +15,14 @@ ipmitool -I lanplus -H 192.168.2.151 -U Administrator -P Adminpasscode sol deact
 如果ipmitool 连接到了目标单板但是没有输出。有两种设置方法：
 
 方法一：修改BIOS设置
-```
+
+```CS
+#开源版本
 BIOS -> Device Manager -> Console Preference Selection -> Preferred console Serial
+#产品版本
+BIOS Setup -> Advance -> misc config -> SPCR enable
 ```
+
 方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200
 ```
 GRUB_TIMEOUT=5
