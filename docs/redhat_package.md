@@ -18,22 +18,24 @@ loop0                     7:0    0    3G  0 loop /mnt/cd_redhat7.6
 ### 添加本地源
 
 redhat7.6及以下软件源配置文件如下：
-```shell-session
-[root@readhat76 ~]# cat /etc/yum.repos.d/local_iso.repo
+```shell
+cat /etc/yum.repos.d/local_iso.repo
+```
+```config
 [localiso]
 name=redhatapp
 baseurl=file:///mnt/cd_redhat/
 enable=1
 gpgcheck=0
 ```
-`baseurl=file:///mnt/cd_redhat/`刚才创建的挂载目录
+`baseurl=file:///mnt/cd_redhat/`刚才创建的挂载目录. 载配置文件[[local_iso_RHEL7.6.repo]](resources/local_iso_RHEL7.6.repo)
 
 
 redhat8.0及以上软件源配置文件如下：
-```shell-session
-vim /etc/yum.repos.d/local_iso.repo
-##内容如下
-[root@localhost yum.repos.d]# cat local_iso.repo 
+```shell
+cat /etc/yum.repos.d/local_iso.repo
+```
+```config
 [base]
 name=baseos
 baseurl=file:///mnt/cd_redhat/BaseOS
@@ -46,7 +48,7 @@ baseurl=file:///mnt/cd_redhat/AppStream
 enable=1
 gpgcheck=0
 ```
-`baseurl=file:///mnt/cd_redhat`是刚才创建的挂载目录
+`baseurl=file:///mnt/cd_redhat`是刚才创建的挂载目录.下载配置文件[[local_iso_RHEL8.0.repo]](resources/local_iso_RHEL7.6.repo)
 
 ### 确认添加成功
 ```shell-session
