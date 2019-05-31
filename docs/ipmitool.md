@@ -48,12 +48,16 @@ ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode
 
 #电源管理：
 ```CS
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode power off   	#(硬关机，直接切断电源)
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode power soft  	#(软关机，即如同轻按一下开机按钮)
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode power on    	#(硬开机)
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode power reset 	#(硬重启,断电上电)
-ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode power status	#(获取当前电源状态)
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power off   	#(硬关机，直接切断电源)
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power power soft  	#(软关机，即如同轻按一下开机按钮)
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power power on    	#(硬开机)
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power power reset 	#(硬重启,断电上电)
+ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power power status	#(获取当前电源状态)
 ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis power cycle #（断电1秒后上电）
+```
+上面的命令很长，每次打那么多字会太不友好了，可以进入ipmitool交互模式，后面直接输入命令就可以了。  
+```shell
+ipmitool -I lanplus -H 192.168.1.233 -U Administrator -P Admin@9000 shell
 ```
 
 # 远程引导（档次有效）
@@ -61,7 +65,7 @@ ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis po
 chassis bootdev pxe 	#网络引导
 chassis bootdev disk 	#硬盘引导
 chassis bootdev cdrom 	#光驱引导
-chassis bootdev bios  	#重启后停在BIOS 菜单 在1620没有问题
+chassis bootdev bios  	#重启后停在BIOS菜单 在1620有问题
 chassis bootdev pxe　	#重启后从PXE启动
 ```
 # 读取系统状态
