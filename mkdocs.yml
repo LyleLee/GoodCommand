@@ -82,6 +82,7 @@ nav:
     - 服务器:
         - ARM server firmware_update: firmware_update.md
         - ARM storage software: arm_storage_stack.md
+    - 性能之巅: 性能之巅.md
     - 计算机启动: 计算机启动.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
