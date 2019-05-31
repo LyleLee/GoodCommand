@@ -54,6 +54,7 @@ nav:
     - script: script.md
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
+    - sshfs: sshfs.md
     - sysrq: sysrq.md
     - systemd: systemd.md
     - tar: tar.md
