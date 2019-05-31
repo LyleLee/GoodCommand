@@ -59,6 +59,7 @@ nav:
     - sysrq: sysrq.md
     - systemd: systemd.md
     - tar: tar.md
+    - taskset: taskset.md
     - tcpdump: tcpdump.md
     - time: time.md
     - tldr: tldr.md
