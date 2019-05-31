@@ -210,6 +210,25 @@ systemctl restart network
 tcpdump -v icmp -i eth0
 ```
 
+### 查看网口对应的PCI设备
+```shell
+ls -la /sys/class/net/
+```
+```
+total 0
+drwxr-xr-x  2 root root 0 May 31 23:57 .
+drwxr-xr-x 52 root root 0 Apr 14  2015 ..
+lrwxrwxrwx  1 root root 0 Apr 14  2015 eno1 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.0/net/eno1
+lrwxrwxrwx  1 root root 0 Apr 14  2015 eno2 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.1/net/eno2
+lrwxrwxrwx  1 root root 0 Apr 14  2015 eno3 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.2/net/eno3
+lrwxrwxrwx  1 root root 0 Apr 14  2015 eno4 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.3/net/eno4
+lrwxrwxrwx  1 root root 0 Apr 14  2015 enp189s0f0 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.0/net/enp189s0f0
+lrwxrwxrwx  1 root root 0 Apr 14  2015 enp189s0f1 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.1/net/enp189s0f1
+lrwxrwxrwx  1 root root 0 Apr 14  2015 enp189s0f2 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.2/net/enp189s0f2
+lrwxrwxrwx  1 root root 0 Apr 14  2015 enp189s0f3 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.3/net/enp189s0f3
+lrwxrwxrwx  1 root root 0 Apr 14  2015 lo -> ../../devices/virtual/net/lo
+```
+
 ### http代理
 有时候服务器需要经过代理服务器访问网络
 ```
