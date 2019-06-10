@@ -33,6 +33,7 @@ nav:
     - dstat: dstat.md
     - ethtool: ethtool.md
     - edac-util: edac-util.md
+    - firewall: firewall.md
     - gcc: gcc.md
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
