@@ -118,6 +118,8 @@ CFS算法定义在kernel/sched_fair.c
 
 
 
+
+
 # 时间,节拍，系统定时器
 <arm/param.h> 定义了节拍率。
 
@@ -146,3 +148,49 @@ me@ubuntu:~/code/linux$ grep -rn CONFIG_HZ . | grep x86
 |Taishan2280v2 |ARM   |RHEL7.6    |4.18.0-74.el8.aarch64    |100HZ         |100HZ  10ms       |[[log]](resources/x86_log.md#HZ)|
 |Red Hat kvm   |x86_64|ubuntu     |4.15.0-20-generic        |250HZ         |100HZ  10ms       |[[log]](resources/vps_log.md#HZ)|
 
+# 实际时间
+当前时间（墙上时间）定义在文件kernel/time/timekeeping.c中：
+```c
+struct timespec xtime;
+```
+timespec数据结构定义在文件<linux/time.h>中：
+```c
+struct timespec{
+    _kernel_time_t tv_sec;
+    long tc_nsec;
+}
+```
+
+
+# 竞争和锁
+各种锁的机制区别在于：当锁已经被其他线程持有，因而不可用时的行为表现-----一些锁会简单地执行忙等待，而另外一些锁会使当前任务睡眠直到锁可用为止。
+锁解决竞争条件地前提是，锁是原子操作实现的。
+在X86体系结构总，锁的实现使用了成为compare和exchange的类似指令。
+
+# 内核提供了两组原子操作接口
+
+一组针对整数进行操作，另一组针对单独的位进行操作.  
+
+整数原子操作数据类型定义在include/linux/types.h
+```
+typedef struct {
+        volatile int counter;
+} atomic_t;
+```
+
+整数原子操作定义在：
+```
+include/asm-generic/atomic.h
+```
+位原子操作定义在：
+```
+include/linux/bitops.h
+asm/bitops.h
+```
+
+# 锁
+自旋锁。申请锁的进程旋转等待，耗费处理器时间，持有自旋锁的时间应该小于进程两次上下文切换的时间。
+信号量。申请信号量的进程会被睡眠，等待唤醒，不消耗处理器时间。
+读写自旋锁。 多个线程可以同时获得读锁，读锁可以递归。写锁会保证没有人能在读或者写。
+
+自旋锁定义在 asm/spinlock.h, 调用结构定义在linux/spinlock.h
