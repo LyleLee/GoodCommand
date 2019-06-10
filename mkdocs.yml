@@ -54,6 +54,7 @@ nav:
     - numactl : numactl.md
     - raid级别: raid.md
     - script: script.md
+    - selinux: SELinux.md
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
     - sshfs: sshfs.md
