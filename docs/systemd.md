@@ -5,9 +5,10 @@ systemd
 
 ### 配置文件路径
 一个任务由一个.service文件表示，.service文件可以启动多个程序、脚本、命令作为任务的一部分。  
-用户创建的.service任务，建议放置在：`/usr/lib/systemd/system/`  
+用户创建的.service任务，建议放置在：`/usr/lib/systemd/system/`  rasppberypi,redhat7.6  
 系统创建的.service任务，防止在：`/lib/systemd/system/`  
 文件防止到相应路径后，需要执行enable命令，这样systemd才开始加载任务，在重启时也会自动加载。
+
 ```
 systemctl enable xxx.service
 ```
@@ -99,7 +100,7 @@ ExecStart指定了执行的脚本。
 ### 安装执行
 ```
 cp re.service /usr/lib/systemd/system/frpc.service
-systemctl enable re.service
+systemctl enable frpc.service
 ```
 如果中途修改了文件，
 ```
