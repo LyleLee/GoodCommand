@@ -61,3 +61,11 @@ printf "\n\n****************\n" | tee -a $hardware_software_conf
 echo "cat /proc/meminfo" | tee -a $hardware_software_conf
 cat /proc/meminfo >> $hardware_software_conf
 printf "\n\n****************\n" | tee -a $hardware_software_conf
+
+echo "lshw" | tee -a $hardware_software_conf
+lshw >> $hardware_software_conf
+printf "\n\n****************\n" | tee -a $hardware_software_conf
+
+echo "ls /sys/class/net/ -la" | tee -a $hardware_software_conf
+ls /sys/class/net/ -la >> $hardware_software_conf
+printf "\n\n****************\n" | tee -a $hardware_software_conf
