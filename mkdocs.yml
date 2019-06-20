@@ -51,7 +51,7 @@ nav:
     - netstat: netstat.md
     - nfs: nfs.md
     - nmap : nmap.md
-    - ntfs : ntfs.md
+    - ntfs : nfts.md
     - numactl : numactl.md
     - raid级别: raid.md
     - script: script.md
