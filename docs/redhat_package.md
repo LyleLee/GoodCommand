@@ -130,6 +130,7 @@ yum --enbalerepo=epel install phpmyadmin
 yum clean all       #清除缓存
 yum history         #查看安装历史
 
+yum list installed | grep kernel	#查看已安装内核
 
 rpm -ivh [package_name]     #安装软件包
 rpm -Uvh [package_name]     #升级软件包
