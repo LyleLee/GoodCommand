@@ -50,6 +50,7 @@ nav:
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
+    - iperf: iperf.md
     - ipmitool: ipmitool.md
     - kernel document: linux_kernel.md
     - kernel_module: compile_kernel_module.md
