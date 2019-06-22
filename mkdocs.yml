@@ -5,6 +5,9 @@ repo_url: https://github.com/LyleLee/GoodCommand
 
 nav:
     - Home: index.md
+    - alias: alias.md
+    - awk: awk.md
+    - board_connect: board_connect.md
     - benchmark tool:
         - fio: fio.md
         - vdbench: vdbench.md
@@ -27,13 +30,18 @@ nav:
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
         - hardware_error_corrected: Hardware_error_corrected.md
+        - NIC_name_not_correct: NIC_name_not_correct.md
+    - ceph: ceph.md
+    - devmem: devmem.md
     - dns: dns.md
     - diff: diff.md
     - docker: docker.md
+    - dpdk: dpdk.md
     - dstat: dstat.md
     - ethtool: ethtool.md
     - edac-util: edac-util.md
     - firewall: firewall.md
+    - fdisk: fdisk.md
     - gcc: gcc.md
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
@@ -47,6 +55,7 @@ nav:
     - kernel_module: compile_kernel_module.md
     - kvm: kvm.md
     - linux: linux.md
+    - lspci: lspci.md
     - nethogs: nethogs.md
     - netstat: netstat.md
     - nfs: nfs.md
@@ -58,6 +67,7 @@ nav:
     - selinux: SELinux.md
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
+    - sftp: sftp.md
     - sshfs: sshfs.md
     - sysrq: sysrq.md
     - systemd: systemd.md

@@ -2,6 +2,10 @@ ethtool
 =========================
 查看和配置网卡的命令行工具
 
+```
+ethtool -p enP2p233s0f1		#端口闪灯，识别是哪一个物理网口
+```
+
 查看网卡enahisic2i0的基本参数
 ```shell-session
 me@ubuntu:~$ ethtool enahisic2i0

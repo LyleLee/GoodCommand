@@ -37,7 +37,7 @@ MODULE_DESCRIPTION("A Hello, World Module");
 ```
 
 
-## 在内核代码树内构建模块【不使用编译选项】
+## 在内核代码树内构建模块【不使用内核配置选项】
 模块代码fishing.c放置在linux内核源码的drivers/char/fishing/fishing.c路径下。  
 模块的Makefile仅有一句，文件放置在linux内核源码的drivers/char/fishing/Makefile路径下
 ```Makefile
