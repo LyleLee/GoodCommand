@@ -7,6 +7,13 @@ Network Mapper，开源的网络工具，用于网络探测和安全审计。可
 sudo apt install nmap
 ```
 
+```
+nmap -A -T4 scanme.nmap.org		#扫描主机
+nmap -sP 192.168.1.*			#ping扫描
+nmap -sP 10.0-255.0-255.1-254	#ping扫描
+
+```
+
 ## 扫描局域网
 ```
 nmap -sP 192.168.1.*
@@ -18,31 +25,6 @@ Nmap scan report for 192.168.1.1
 Host is up (0.034s latency).
 Nmap scan report for 192.168.1.4
 Host is up (0.020s latency).
-Nmap scan report for 192.168.1.6
-Host is up (0.0060s latency).
-Nmap scan report for 192.168.1.7
-Host is up (0.083s latency).
-Nmap scan report for 192.168.1.13
-Host is up (0.0029s latency).
-Nmap scan report for 192.168.1.40
-Host is up (0.00024s latency).
-Nmap scan report for 192.168.1.42
-Host is up (0.00019s latency).
-Nmap scan report for 192.168.1.44
-Host is up (0.00013s latency).
-Nmap scan report for 192.168.1.80
-Host is up (0.00036s latency).
-Nmap scan report for 192.168.1.81
-Host is up (0.00034s latency).
-Nmap scan report for test-network (192.168.1.83)
-Host is up (0.00029s latency).
-Nmap scan report for 192.168.1.84
-Host is up (0.00027s latency).
-Nmap scan report for ref-compute-1 (192.168.1.85)
-Host is up (0.00016s latency).
-Nmap scan report for 192.168.1.87
-Host is up (0.00018s latency).
-Nmap scan report for 192.168.1.90
 Host is up (0.00016s latency).
 Nmap scan report for test-compute-1 (192.168.1.94)
 Host is up (0.00029s latency).
@@ -53,7 +35,7 @@ Nmap done: 256 IP addresses (69 hosts up) scanned in 1.90 seconds
 
 扫描某台主机打开的tcp端口，猜测主机OS版本
 ```cs
-me@ubuntu:$ sudo nmap -O -sV 192.168.1.211
+me@ubuntu:$ sudo nmap -O -sV 192.168.1.211		#-O 操作系统探测， -sV 版本扫描
 [sudo] password for me:
 
 Starting Nmap 7.60 ( https://nmap.org ) at 2019-04-03 14:56 CST
