@@ -1,0 +1,3561 @@
+lscpu
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  1
+Core(s) per socket:  48
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x0
+CPU max MHz:         2000.0000
+CPU min MHz:         200.0000
+BogoMIPS:            200.00
+L1d cache:           64K
+L1i cache:           64K
+L2 cache:            512K
+L3 cache:            32768K
+NUMA node0 CPU(s):   0-23
+NUMA node1 CPU(s):   24-47
+NUMA node2 CPU(s):   48-71
+NUMA node3 CPU(s):   72-95
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+
+
+****************
+lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda               8:0    0  3.7T  0 disk 
+├─sda1            8:1    0  200M  0 part 
+├─sda2            8:2    0    1G  0 part 
+└─sda3            8:3    0  3.7T  0 part 
+  ├─rhel00-swap 253:3    0    4G  0 lvm  
+  ├─rhel00-home 253:4    0  3.6T  0 lvm  
+  └─rhel00-root 253:5    0   50G  0 lvm  
+sdb               8:16   0  3.7T  0 disk 
+├─sdb1            8:17   0  600M  0 part /boot/efi
+├─sdb2            8:18   0    1G  0 part /boot
+└─sdb3            8:19   0  3.7T  0 part 
+  ├─rhel-root   253:0    0   50G  0 lvm  /
+  ├─rhel-swap   253:1    0    4G  0 lvm  [SWAP]
+  └─rhel-home   253:2    0  3.6T  0 lvm  /home
+sr0              11:0    1 1024M  0 rom  
+
+
+****************
+df
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               256G     0  256G   0% /dev
+tmpfs                  256G     0  256G   0% /dev/shm
+tmpfs                  256G  104M  256G   1% /run
+tmpfs                  256G     0  256G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   50G   31G   20G  62% /
+/dev/sdb2             1014M  152M  863M  15% /boot
+/dev/sdb1              599M  6.2M  593M   2% /boot/efi
+/dev/mapper/rhel-home  3.6T  149G  3.5T   5% /home
+tmpfs                   52G     0   52G   0% /run/user/0
+
+
+****************
+smartctl
+smartctl -a /dev/sda
+smartctl 6.6 2017-11-05 r4594 [aarch64-linux-4.18.0-68.el8.aarch64] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF INFORMATION SECTION ===
+Device Model:     MG04ACA400N
+Serial Number:    67BHK2WTF77D
+LU WWN Device Id: 5 000039 7dbf0174c
+Firmware Version: FJ3J
+User Capacity:    4,000,787,030,016 bytes [4.00 TB]
+Sector Size:      512 bytes logical/physical
+Rotation Rate:    7200 rpm
+Form Factor:      3.5 inches
+Device is:        Not in smartctl database [for details use: -P showall]
+ATA Version is:   ATA8-ACS (minor revision not indicated)
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 6.0 Gb/s)
+Local Time is:    Thu Jun 27 10:12:28 2019 CST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+=== START OF READ SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+General SMART Values:
+Offline data collection status:  (0x82)	Offline data collection activity
+					was completed without error.
+					Auto Offline Data Collection: Enabled.
+Self-test execution status:      (  40)	The self-test routine was interrupted
+					by the host with a hard or soft reset.
+Total time to complete Offline 
+data collection: 		(  120) seconds.
+Offline data collection
+capabilities: 			 (0x5b) SMART execute Offline immediate.
+					Auto Offline data collection on/off support.
+					Suspend Offline collection upon new
+					command.
+					Offline surface scan supported.
+					Self-test supported.
+					No Conveyance Self-test supported.
+					Selective Self-test supported.
+SMART capabilities:            (0x0003)	Saves SMART data before entering
+					power-saving mode.
+					Supports SMART auto save timer.
+Error logging capability:        (0x01)	Error logging supported.
+					General Purpose Logging supported.
+Short self-test routine 
+recommended polling time: 	 (   2) minutes.
+Extended self-test routine
+recommended polling time: 	 ( 447) minutes.
+SCT capabilities: 	       (0x003d)	SCT Status supported.
+					SCT Error Recovery Control supported.
+					SCT Feature Control supported.
+					SCT Data Table supported.
+
+SMART Attributes Data Structure revision number: 16
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+  1 Raw_Read_Error_Rate     0x000b   100   100   050    Pre-fail  Always       -       0
+  2 Throughput_Performance  0x0005   100   100   050    Pre-fail  Offline      -       0
+  3 Spin_Up_Time            0x0027   100   100   001    Pre-fail  Always       -       6865
+  4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       174
+  5 Reallocated_Sector_Ct   0x0033   100   100   050    Pre-fail  Always       -       0
+  7 Seek_Error_Rate         0x000b   100   100   050    Pre-fail  Always       -       0
+  8 Seek_Time_Performance   0x0005   100   100   050    Pre-fail  Offline      -       0
+  9 Power_On_Hours          0x0032   074   074   000    Old_age   Always       -       10663
+ 10 Spin_Retry_Count        0x0033   103   100   030    Pre-fail  Always       -       0
+ 12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       173
+191 G-Sense_Error_Rate      0x0032   100   100   000    Old_age   Always       -       1260
+192 Power-Off_Retract_Count 0x0032   100   100   000    Old_age   Always       -       91
+193 Load_Cycle_Count        0x0032   100   100   000    Old_age   Always       -       3595
+194 Temperature_Celsius     0x0022   100   100   000    Old_age   Always       -       31 (Min/Max 20/62)
+196 Reallocated_Event_Count 0x0032   100   100   000    Old_age   Always       -       0
+197 Current_Pending_Sector  0x0032   100   100   000    Old_age   Always       -       0
+198 Offline_Uncorrectable   0x0030   100   100   000    Old_age   Offline      -       0
+199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0
+220 Disk_Shift              0x0002   100   100   000    Old_age   Always       -       0
+222 Loaded_Hours            0x0032   084   084   000    Old_age   Always       -       6531
+223 Load_Retry_Count        0x0032   100   100   000    Old_age   Always       -       0
+224 Load_Friction           0x0022   100   100   000    Old_age   Always       -       0
+226 Load-in_Time            0x0026   100   100   000    Old_age   Always       -       639
+240 Head_Flying_Hours       0x0001   100   100   001    Pre-fail  Offline      -       0
+
+SMART Error Log Version: 1
+No Errors Logged
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Short captive       Interrupted (host reset)      80%      6327         -
+
+SMART Selective self-test log data structure revision number 1
+ SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS
+    1        0        0  Not_testing
+    2        0        0  Not_testing
+    3        0        0  Not_testing
+    4        0        0  Not_testing
+    5        0        0  Not_testing
+Selective self-test flags (0x0):
+  After scanning selected spans, do NOT read-scan remainder of disk.
+If Selective self-test is pending on power-up, resume after 0 minute delay.
+
+smartctl -a /dev/sdb
+smartctl 6.6 2017-11-05 r4594 [aarch64-linux-4.18.0-68.el8.aarch64] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF INFORMATION SECTION ===
+Device Model:     MG04ACA400N
+Serial Number:    67BHK2WWF77D
+LU WWN Device Id: 5 000039 7dbf0174f
+Firmware Version: FJ3J
+User Capacity:    4,000,787,030,016 bytes [4.00 TB]
+Sector Size:      512 bytes logical/physical
+Rotation Rate:    7200 rpm
+Form Factor:      3.5 inches
+Device is:        Not in smartctl database [for details use: -P showall]
+ATA Version is:   ATA8-ACS (minor revision not indicated)
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 6.0 Gb/s)
+Local Time is:    Thu Jun 27 10:12:28 2019 CST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+=== START OF READ SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+General SMART Values:
+Offline data collection status:  (0x82)	Offline data collection activity
+					was completed without error.
+					Auto Offline Data Collection: Enabled.
+Self-test execution status:      (  41)	The self-test routine was interrupted
+					by the host with a hard or soft reset.
+Total time to complete Offline 
+data collection: 		(  120) seconds.
+Offline data collection
+capabilities: 			 (0x5b) SMART execute Offline immediate.
+					Auto Offline data collection on/off support.
+					Suspend Offline collection upon new
+					command.
+					Offline surface scan supported.
+					Self-test supported.
+					No Conveyance Self-test supported.
+					Selective Self-test supported.
+SMART capabilities:            (0x0003)	Saves SMART data before entering
+					power-saving mode.
+					Supports SMART auto save timer.
+Error logging capability:        (0x01)	Error logging supported.
+					General Purpose Logging supported.
+Short self-test routine 
+recommended polling time: 	 (   2) minutes.
+Extended self-test routine
+recommended polling time: 	 ( 446) minutes.
+SCT capabilities: 	       (0x003d)	SCT Status supported.
+					SCT Error Recovery Control supported.
+					SCT Feature Control supported.
+					SCT Data Table supported.
+
+SMART Attributes Data Structure revision number: 16
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+  1 Raw_Read_Error_Rate     0x000b   100   100   050    Pre-fail  Always       -       0
+  2 Throughput_Performance  0x0005   100   100   050    Pre-fail  Offline      -       0
+  3 Spin_Up_Time            0x0027   100   100   001    Pre-fail  Always       -       7086
+  4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       182
+  5 Reallocated_Sector_Ct   0x0033   100   100   050    Pre-fail  Always       -       0
+  7 Seek_Error_Rate         0x000b   100   100   050    Pre-fail  Always       -       0
+  8 Seek_Time_Performance   0x0005   100   100   050    Pre-fail  Offline      -       0
+  9 Power_On_Hours          0x0032   074   074   000    Old_age   Always       -       10624
+ 10 Spin_Retry_Count        0x0033   103   100   030    Pre-fail  Always       -       0
+ 12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       181
+191 G-Sense_Error_Rate      0x0032   100   100   000    Old_age   Always       -       8195
+192 Power-Off_Retract_Count 0x0032   100   100   000    Old_age   Always       -       118
+193 Load_Cycle_Count        0x0032   100   100   000    Old_age   Always       -       4135
+194 Temperature_Celsius     0x0022   100   100   000    Old_age   Always       -       35 (Min/Max 20/62)
+196 Reallocated_Event_Count 0x0032   100   100   000    Old_age   Always       -       0
+197 Current_Pending_Sector  0x0032   100   100   000    Old_age   Always       -       0
+198 Offline_Uncorrectable   0x0030   100   100   000    Old_age   Offline      -       0
+199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0
+220 Disk_Shift              0x0002   100   100   000    Old_age   Always       -       0
+222 Loaded_Hours            0x0032   086   086   000    Old_age   Always       -       5683
+223 Load_Retry_Count        0x0032   100   100   000    Old_age   Always       -       0
+224 Load_Friction           0x0022   100   100   000    Old_age   Always       -       0
+226 Load-in_Time            0x0026   100   100   000    Old_age   Always       -       637
+240 Head_Flying_Hours       0x0001   100   100   001    Pre-fail  Offline      -       0
+
+SMART Error Log Version: 1
+No Errors Logged
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Extended captive    Interrupted (host reset)      90%      6357         -
+# 2  Short captive       Interrupted (host reset)      80%      6357         -
+
+SMART Selective self-test log data structure revision number 1
+ SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS
+    1        0        0  Not_testing
+    2        0        0  Not_testing
+    3        0        0  Not_testing
+    4        0        0  Not_testing
+    5        0        0  Not_testing
+Selective self-test flags (0x0):
+  After scanning selected spans, do NOT read-scan remainder of disk.
+If Selective self-test is pending on power-up, resume after 0 minute delay.
+
+
+
+****************
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eno1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:86:00:00:06 brd ff:ff:ff:ff:ff:ff
+3: eno2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:86:01:00:06 brd ff:ff:ff:ff:ff:ff
+4: eno3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:18:86:02:00:06 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.93/24 brd 192.168.1.255 scope global dynamic eno3
+       valid_lft 2750sec preferred_lft 2750sec
+5: eno4: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:86:03:00:06 brd ff:ff:ff:ff:ff:ff
+6: eno5: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:86:04:00:06 brd ff:ff:ff:ff:ff:ff
+7: eno6: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 00:18:86:05:00:06 brd ff:ff:ff:ff:ff:ff
+8: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 52:54:00:fe:91:35 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+9: virbr0-nic: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel master virbr0 state DOWN group default qlen 1000
+    link/ether 52:54:00:fe:91:35 brd ff:ff:ff:ff:ff:ff
+
+
+****************
+lspci
+-+-[0000:bc]---00.0-[bd]--+-00.0  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        \-00.1  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ +-[0000:ba]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
+ +-[0000:b8]---00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
+ +-[0000:b4]---00.0-[b5]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine
+ +-[0000:80]-+-00.0-[81]--
+ |           +-08.0-[82]--
+ |           +-0c.0-[83]--
+ |           \-10.0-[84]--
+ +-[0000:7c]---00.0-[7d]--+-00.0  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        +-00.1  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        +-00.2  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE RDMA Network Controller
+ |                        \-00.3  Huawei Technologies Co., Ltd. HNS GE/10GE/25GE Network Controller
+ +-[0000:7a]-+-00.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           +-01.0  Huawei Technologies Co., Ltd. HiSilicon USB 2.0 2-port Host Controller
+ |           \-02.0  Huawei Technologies Co., Ltd. HiSilicon USB 3.0 Host Controller
+ +-[0000:78]---00.0  Huawei Technologies Co., Ltd. HiSilicon HPRE Engine
+ +-[0000:74]-+-00.0-[75]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine
+ |           +-02.0  Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA
+ |           \-03.0  Huawei Technologies Co., Ltd. HiSilicon AHCI HBA
+ \-[0000:00]-+-00.0-[01]--
+             +-04.0-[02]--
+             +-08.0-[03]--
+             +-0c.0-[04]--
+             +-10.0-[05]----00.0  Huawei Technologies Co., Ltd. Hi1710 [iBMC Intelligent Management system chip w/VGA support]
+             \-12.0-[06]--
+
+
+****************
+dmidecode
+dmidecode -t bios 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0000, DMI type 0, 26 bytes
+BIOS Information
+	Vendor: Huawei Corp.
+	Version: Hisilicon D06 UEFI RC0 - V1.20.01
+	Release Date: 04/19/2019
+	Address: 0x7F000
+	Runtime Size: 516 kB
+	ROM Size: 4096 kB
+	Characteristics:
+		PCI is supported
+		BIOS is upgradeable
+		BIOS shadowing is allowed
+		Boot from CD is supported
+		Selectable boot is supported
+		EDD is supported
+		Japanese floppy for NEC 9800 1.2 MB is supported (int 13h)
+		Japanese floppy for Toshiba 1.2 MB is supported (int 13h)
+		5.25"/360 kB floppy services are supported (int 13h)
+		5.25"/1.2 MB floppy services are supported (int 13h)
+		3.5"/720 kB floppy services are supported (int 13h)
+		3.5"/2.88 MB floppy services are supported (int 13h)
+		8042 keyboard services are supported (int 9h)
+		CGA/mono video services are supported (int 10h)
+		ACPI is supported
+		USB legacy is supported
+		BIOS boot specification is supported
+		Targeted content distribution is supported
+		UEFI is supported
+	BIOS Revision: 0.0
+
+Handle 0x0004, DMI type 13, 22 bytes
+BIOS Language Information
+	Language Description Format: Long
+	Installable Languages: 1
+		en|US|iso8859-1
+	Currently Installed Language: en|US|iso8859-1
+
+dmidecode -t system 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+	Manufacturer: Huawei
+	Product Name: D06 
+	Version: To be filled by O.E.M.
+	Serial Number: To be filled by O.E.M.
+	UUID: 2e05cacc-1dd2-11b2-ac45-0018e1c5d866
+	Wake-up Type: Power Switch
+	SKU Number: To be filled by O.E.M.
+	Family: To be filled by O.E.M.
+
+Handle 0x0005, DMI type 32, 11 bytes
+System Boot Information
+	Status: No errors detected
+
+dmidecode -t baseboard 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0003, DMI type 2, 17 bytes
+Base Board Information
+	Manufacturer: Huawei
+	Product Name: D06
+	Version: Estuary
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis: To Be Filled By O.E.M.
+	Chassis Handle: 0x0002
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0032, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM1
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:7d:00.0
+
+Handle 0x0033, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM2
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 2
+	Bus Address: 0000:7d:00.1
+
+Handle 0x0034, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM3
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 3
+	Bus Address: 0000:7d:00.2
+
+Handle 0x0035, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM4
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 4
+	Bus Address: 0000:7d:00.3
+
+Handle 0x0036, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM5
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 5
+	Bus Address: 0000:bd:00.0
+
+Handle 0x0037, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: LOM6
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 6
+	Bus Address: 0000:bd:00.1
+
+Handle 0x0038, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: VGA
+	Type: Video
+	Status: Enabled
+	Type Instance: 7
+	Bus Address: 0000:05:00.0
+
+Handle 0x0039, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: ScsiController
+	Type: SCSI Controller
+	Status: Enabled
+	Type Instance: 8
+	Bus Address: 0000:74:02.0
+
+Handle 0x003A, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: Embeded SATA Controller
+	Type: SATA Controller
+	Status: Enabled
+	Type Instance: 9
+	Bus Address: 0000:74:03.0
+
+dmidecode -t chassis 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0002, DMI type 3, 25 bytes
+Chassis Information
+	Manufacturer: Huawei
+	Type: Main Server Chassis
+	Lock: Not Present
+	Version: To be filled by O.E.M.
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Boot-up State: Safe
+	Power Supply State: Safe
+	Thermal State: Safe
+	Security Status: None
+	OEM Information: 0x00000000
+	Height: 2 U
+	Number Of Power Cords: 1
+	Contained Elements: 0
+	SKU Number: Not Specified
+
+dmidecode -t processor 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x002C, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: CPU01
+	Type: Central Processor
+	Family: ARM
+	Manufacturer: Hisilicon
+	ID: 10 D0 0F 48 00 00 00 00
+	Signature: Implementor 0x48, Variant 0x0, Architecture 15, Part 0xd01, Revision 0
+	Version: Hisilicon 1620
+	Voltage: 0.9 V
+	External Clock: 100 MHz
+	Max Speed: 2000 MHz
+	Current Speed: 2000 MHz
+	Status: Populated, Enabled
+	Upgrade: Unknown
+	L1 Cache Handle: 0x0029
+	L2 Cache Handle: 0x002A
+	L3 Cache Handle: 0x002B
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Part Number: To be filled by O.E.M.
+	Core Count: 48
+	Core Enabled: 48
+	Thread Count: 48
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+Handle 0x0031, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: CPU02
+	Type: Central Processor
+	Family: ARM
+	Manufacturer: Hisilicon
+	ID: 10 D0 0F 48 00 00 00 00
+	Signature: Implementor 0x48, Variant 0x0, Architecture 15, Part 0xd01, Revision 0
+	Version: Hisilicon 1620
+	Voltage: 0.9 V
+	External Clock: 100 MHz
+	Max Speed: 2000 MHz
+	Current Speed: 2000 MHz
+	Status: Populated, Enabled
+	Upgrade: Unknown
+	L1 Cache Handle: 0x002E
+	L2 Cache Handle: 0x002F
+	L3 Cache Handle: 0x0030
+	Serial Number: To be filled by O.E.M.
+	Asset Tag: To be filled by O.E.M.
+	Part Number: To be filled by O.E.M.
+	Core Count: 48
+	Core Enabled: 48
+	Thread Count: 48
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+dmidecode -t memory 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0006, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 8 TB
+	Error Information Handle: Not Provided
+	Number Of Devices: 32
+
+Handle 0x0008, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM000 J27
+	Bank Locator: SOCKET 0 CHANNEL 0 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF47A
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0009, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM001 J28
+	Bank Locator: SOCKET 0 CHANNEL 0 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000A, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM010 J21
+	Bank Locator: SOCKET 0 CHANNEL 1 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF4E8
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000B, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM011 J22
+	Bank Locator: SOCKET 0 CHANNEL 1 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000C, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM020 J19
+	Bank Locator: SOCKET 0 CHANNEL 2 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF45B
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000D, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM021 J20
+	Bank Locator: SOCKET 0 CHANNEL 2 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x000E, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM030 J13
+	Bank Locator: SOCKET 0 CHANNEL 3 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF359
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x000F, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM031 J14
+	Bank Locator: SOCKET 0 CHANNEL 3 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0010, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM040 J25
+	Bank Locator: SOCKET 0 CHANNEL 4 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF4F0
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0011, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM041 J26
+	Bank Locator: SOCKET 0 CHANNEL 4 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0012, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM050 J23
+	Bank Locator: SOCKET 0 CHANNEL 5 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF55F
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0013, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM051 J24
+	Bank Locator: SOCKET 0 CHANNEL 5 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0014, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM060 J17
+	Bank Locator: SOCKET 0 CHANNEL 6 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF389
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0015, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM061 J18
+	Bank Locator: SOCKET 0 CHANNEL 6 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0016, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM070 J15
+	Bank Locator: SOCKET 0 CHANNEL 7 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF34E
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0017, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM071 J16
+	Bank Locator: SOCKET 0 CHANNEL 7 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0018, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM100 J43
+	Bank Locator: SOCKET 1 CHANNEL 0 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF53D
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0019, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM101 J44
+	Bank Locator: SOCKET 1 CHANNEL 0 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001A, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM110 J37
+	Bank Locator: SOCKET 1 CHANNEL 1 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF2F2
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001B, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM111 J38
+	Bank Locator: SOCKET 1 CHANNEL 1 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001C, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM120 J35
+	Bank Locator: SOCKET 1 CHANNEL 2 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF4E5
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001D, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM121 J36
+	Bank Locator: SOCKET 1 CHANNEL 2 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x001E, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM130 J29
+	Bank Locator: SOCKET 1 CHANNEL 3 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF307
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x001F, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM131 J30
+	Bank Locator: SOCKET 1 CHANNEL 3 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0020, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM140 J41
+	Bank Locator: SOCKET 1 CHANNEL 4 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF2E3
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0021, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM141 J42
+	Bank Locator: SOCKET 1 CHANNEL 4 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0022, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM150 J39
+	Bank Locator: SOCKET 1 CHANNEL 5 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF642
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0023, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM151 J40
+	Bank Locator: SOCKET 1 CHANNEL 5 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0024, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM160 J33
+	Bank Locator: SOCKET 1 CHANNEL 6 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF321
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0025, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM161 J34
+	Bank Locator: SOCKET 1 CHANNEL 6 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+Handle 0x0026, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM170 J31
+	Bank Locator: SOCKET 1 CHANNEL 7 DIMM 0
+	Type: DDR4
+	Type Detail: Synchronous Registered (Buffered)
+	Speed: 2666 MT/s
+	Manufacturer: Hynix
+	Serial Number: 0x2C4AF65A
+	Asset Tag: 1820
+	Part Number: HMA84GR7AFR4N-VK    
+	Rank: 2
+	Configured Memory Speed: 2666 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 2.0 V
+	Configured Voltage: 1.2 V
+
+Handle 0x0027, DMI type 17, 40 bytes
+Memory Device
+	Array Handle: 0x0006
+	Error Information Handle: Not Provided
+	Total Width: Unknown
+	Data Width: Unknown
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM171 J32
+	Bank Locator: SOCKET 1 CHANNEL 7 DIMM 1
+	Type: Unknown
+	Type Detail: Unknown Synchronous
+	Speed: Unknown
+	Manufacturer: NO DIMM
+	Serial Number: NO DIMM
+	Asset Tag: NO DIMM
+	Part Number: NO DIMM
+	Rank: Unknown
+	Configured Memory Speed: Unknown
+	Minimum Voltage: Unknown
+	Maximum Voltage: Unknown
+	Configured Voltage: Unknown
+
+dmidecode -t cache 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x0028, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Instruction Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3072 kB
+	Maximum Size: 3072 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Instruction
+	Associativity: 8-way Set-associative
+
+Handle 0x0029, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Data Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3072 kB
+	Maximum Size: 3072 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Data
+	Associativity: 8-way Set-associative
+
+Handle 0x002A, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 24576 kB
+	Maximum Size: 24576 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 8-way Set-associative
+
+Handle 0x002B, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3 Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 46080 kB
+	Maximum Size: 46080 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x002D, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Instruction Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3072 kB
+	Maximum Size: 3072 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Parity
+	System Type: Instruction
+	Associativity: 8-way Set-associative
+
+Handle 0x002E, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1 Data Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3072 kB
+	Maximum Size: 3072 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Data
+	Associativity: 8-way Set-associative
+
+Handle 0x002F, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 24576 kB
+	Maximum Size: 24576 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 8-way Set-associative
+
+Handle 0x0030, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3 Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 46080 kB
+	Maximum Size: 46080 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+dmidecode -t connector 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+dmidecode -t slot 
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 3.1.1 present.
+
+Handle 0x003B, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot1
+	Type: x16 PCI Express x16
+	Current Usage: Available
+	Length: Other
+	ID: 1
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003C, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot2
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 2
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003D, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot3
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 3
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003E, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot4
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 4
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x003F, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot5
+	Type: x16 PCI Express x16
+	Current Usage: Available
+	Length: Other
+	ID: 5
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x0040, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot6
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 6
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x0041, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot7
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 7
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+Handle 0x0042, DMI type 9, 17 bytes
+System Slot Information
+	Designation: slot8
+	Type: x8 PCI Express x8
+	Current Usage: Available
+	Length: Other
+	ID: 8
+	Characteristics: None
+	Bus Address: 0000:00:00.0
+
+
+
+****************
+cat /proc/cupinfo
+processor	: 0
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 1
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 2
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 3
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 4
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 5
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 6
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 7
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 8
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 9
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 10
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 11
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 12
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 13
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 14
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 15
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 16
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 17
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 18
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 19
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 20
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 21
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 22
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 23
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 24
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 25
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 26
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 27
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 28
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 29
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 30
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 31
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 32
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 33
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 34
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 35
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 36
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 37
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 38
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 39
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 40
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 41
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 42
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 43
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 44
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 45
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 46
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 47
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 48
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 49
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 50
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 51
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 52
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 53
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 54
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 55
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 56
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 57
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 58
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 59
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 60
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 61
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 62
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 63
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 64
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 65
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 66
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 67
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 68
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 69
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 70
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 71
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 72
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 73
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 74
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 75
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 76
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 77
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 78
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 79
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 80
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 81
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 82
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 83
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 84
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 85
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 86
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 87
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 88
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 89
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 90
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 91
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 92
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 93
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 94
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+processor	: 95
+BogoMIPS	: 200.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm dcpop
+CPU implementer	: 0x48
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd01
+CPU revision	: 0
+
+
+
+****************
+cat /proc/meminfo
+MemTotal:       535426816 kB
+MemFree:        518914176 kB
+MemAvailable:   479592896 kB
+Buffers:            5056 kB
+Cached:          2083008 kB
+SwapCached:            0 kB
+Active:           678528 kB
+Inactive:        1858048 kB
+Active(anon):     474560 kB
+Inactive(anon):    81344 kB
+Active(file):     203968 kB
+Inactive(file):  1776704 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       4194240 kB
+SwapFree:        4194240 kB
+Dirty:              1600 kB
+Writeback:             0 kB
+AnonPages:        449856 kB
+Mapped:           161024 kB
+Shmem:            106176 kB
+Slab:            2979584 kB
+SReclaimable:     545984 kB
+SUnreclaim:      2433600 kB
+KernelStack:       78400 kB
+PageTables:        25984 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    271907648 kB
+Committed_AS:    2438912 kB
+VmallocTotal:   133009637312 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:     524288 kB
+Hugetlb:               0 kB
+
+
+****************
+lshw
+localhost.localdomain
+    description: System
+    product: D06 (To be filled by O.E.M.)
+    vendor: Huawei
+    version: To be filled by O.E.M.
+    serial: To be filled by O.E.M.
+    width: 64 bits
+    capabilities: smbios-3.1.1 dmi-3.1.1 smp
+    configuration: boot=normal chassis=server family=To be filled by O.E.M. sku=To be filled by O.E.M. uuid=CCCA052E-D21D-B211-AC45-0018E1C5D866
+  *-core
+       description: Motherboard
+       product: D06
+       vendor: Huawei
+       physical id: 0
+       version: Estuary
+       serial: To be filled by O.E.M.
+       slot: To Be Filled By O.E.M.
+     *-firmware
+          description: BIOS
+          vendor: Huawei Corp.
+          physical id: 1
+          version: Hisilicon D06 UEFI RC0 - V1.20.01
+          date: 04/19/2019
+          size: 516KiB
+          capacity: 4MiB
+          capabilities: pci upgrade shadowing cdboot bootselect edd int13floppynec int13floppytoshiba int13floppy360 int13floppy1200 int13floppy720 int13floppy2880 int9keyboard int10video acpi usb biosbootspecification uefi
+     *-memory
+          description: System Memory
+          physical id: 6
+          slot: System board or motherboard
+          size: 512GiB
+          capacity: 8TiB
+        *-bank:0
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 0
+             serial: 0x2C4AF47A
+             slot: DIMM000 J27
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:1
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 1
+             serial: NO DIMM
+             slot: DIMM001 J28
+        *-bank:2
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 2
+             serial: 0x2C4AF4E8
+             slot: DIMM010 J21
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:3
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 3
+             serial: NO DIMM
+             slot: DIMM011 J22
+        *-bank:4
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 4
+             serial: 0x2C4AF45B
+             slot: DIMM020 J19
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:5
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 5
+             serial: NO DIMM
+             slot: DIMM021 J20
+        *-bank:6
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 6
+             serial: 0x2C4AF359
+             slot: DIMM030 J13
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:7
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 7
+             serial: NO DIMM
+             slot: DIMM031 J14
+        *-bank:8
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 8
+             serial: 0x2C4AF4F0
+             slot: DIMM040 J25
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:9
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 9
+             serial: NO DIMM
+             slot: DIMM041 J26
+        *-bank:10
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: a
+             serial: 0x2C4AF55F
+             slot: DIMM050 J23
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:11
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: b
+             serial: NO DIMM
+             slot: DIMM051 J24
+        *-bank:12
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: c
+             serial: 0x2C4AF389
+             slot: DIMM060 J17
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:13
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: d
+             serial: NO DIMM
+             slot: DIMM061 J18
+        *-bank:14
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: e
+             serial: 0x2C4AF34E
+             slot: DIMM070 J15
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:15
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: f
+             serial: NO DIMM
+             slot: DIMM071 J16
+        *-bank:16
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 10
+             serial: 0x2C4AF53D
+             slot: DIMM100 J43
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:17
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 11
+             serial: NO DIMM
+             slot: DIMM101 J44
+        *-bank:18
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 12
+             serial: 0x2C4AF2F2
+             slot: DIMM110 J37
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:19
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 13
+             serial: NO DIMM
+             slot: DIMM111 J38
+        *-bank:20
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 14
+             serial: 0x2C4AF4E5
+             slot: DIMM120 J35
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:21
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 15
+             serial: NO DIMM
+             slot: DIMM121 J36
+        *-bank:22
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 16
+             serial: 0x2C4AF307
+             slot: DIMM130 J29
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:23
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 17
+             serial: NO DIMM
+             slot: DIMM131 J30
+        *-bank:24
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 18
+             serial: 0x2C4AF2E3
+             slot: DIMM140 J41
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:25
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 19
+             serial: NO DIMM
+             slot: DIMM141 J42
+        *-bank:26
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 1a
+             serial: 0x2C4AF642
+             slot: DIMM150 J39
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:27
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 1b
+             serial: NO DIMM
+             slot: DIMM151 J40
+        *-bank:28
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 1c
+             serial: 0x2C4AF321
+             slot: DIMM160 J33
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:29
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 1d
+             serial: NO DIMM
+             slot: DIMM161 J34
+        *-bank:30
+             description: DIMM DDR4 Synchronous Registered (Buffered) 2666 MHz (0.4 ns)
+             product: HMA84GR7AFR4N-VK
+             vendor: Hynix
+             physical id: 1e
+             serial: 0x2C4AF65A
+             slot: DIMM170 J31
+             size: 32GiB
+             width: 64 bits
+             clock: 2666MHz (0.4ns)
+        *-bank:31
+             description: DIMM Synchronous [empty]
+             product: NO DIMM
+             vendor: NO DIMM
+             physical id: 1f
+             serial: NO DIMM
+             slot: DIMM171 J32
+     *-cache:0
+          description: L1 cache
+          physical id: 28
+          slot: L1 Instruction Cache
+          size: 3MiB
+          capacity: 3MiB
+          capabilities: synchronous internal write-back instruction
+          configuration: level=1
+     *-cache:1
+          description: L1 cache
+          physical id: 29
+          slot: L1 Data Cache
+          size: 3MiB
+          capacity: 3MiB
+          capabilities: synchronous internal write-back data
+          configuration: level=1
+     *-cache:2
+          description: L2 cache
+          physical id: 2a
+          slot: L2 Cache
+          size: 24MiB
+          capacity: 24MiB
+          capabilities: synchronous internal varies unified
+          configuration: level=2
+     *-cache:3
+          description: L3 cache
+          physical id: 2b
+          slot: L3 Cache
+          size: 45MiB
+          capacity: 45MiB
+          capabilities: synchronous internal varies unified
+          configuration: level=3
+     *-cpu:0
+          description: CPU
+          product: ARM (To be filled by O.E.M.)
+          vendor: Hisilicon
+          physical id: 2c
+          bus info: cpu@0
+          version: Hisilicon 1620
+          serial: To be filled by O.E.M.
+          slot: CPU01
+          size: 2GHz
+          capacity: 2GHz
+          clock: 100MHz
+          capabilities: lm cpufreq
+          configuration: cores=48 enabledcores=48 threads=48
+     *-cache:4
+          description: L1 cache
+          physical id: 2d
+          slot: L1 Instruction Cache
+          size: 3MiB
+          capacity: 3MiB
+          capabilities: synchronous internal write-back instruction
+          configuration: level=1
+     *-cache:5
+          description: L1 cache
+          physical id: 2e
+          slot: L1 Data Cache
+          size: 3MiB
+          capacity: 3MiB
+          capabilities: synchronous internal write-back data
+          configuration: level=1
+     *-cache:6
+          description: L2 cache
+          physical id: 2f
+          slot: L2 Cache
+          size: 24MiB
+          capacity: 24MiB
+          capabilities: synchronous internal varies unified
+          configuration: level=2
+     *-cache:7
+          description: L3 cache
+          physical id: 30
+          slot: L3 Cache
+          size: 45MiB
+          capacity: 45MiB
+          capabilities: synchronous internal varies unified
+          configuration: level=3
+     *-cpu:1
+          description: CPU
+          product: ARM (To be filled by O.E.M.)
+          vendor: Hisilicon
+          physical id: 31
+          bus info: cpu@1
+          version: Hisilicon 1620
+          serial: To be filled by O.E.M.
+          slot: CPU02
+          size: 2GHz
+          capacity: 2GHz
+          clock: 100MHz
+          capabilities: lm cpufreq
+          configuration: cores=48 enabledcores=48 threads=48
+     *-pci:0
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:76
+     *-pci:1
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 4
+          bus info: pci@0000:00:04.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:78
+     *-pci:2
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 101
+          bus info: pci@0000:00:08.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:80
+     *-pci:3
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 102
+          bus info: pci@0000:00:0c.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:82
+     *-pci:4
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 103
+          bus info: pci@0000:00:10.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:84 memory:e0000000-e2ffffff
+        *-display
+             description: VGA compatible controller
+             product: Hi1710 [iBMC Intelligent Management system chip w/VGA support]
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0
+             bus info: pci@0000:05:00.0
+             version: 01
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pm msi pciexpress vga_controller bus_master cap_list
+             configuration: driver=hibmc-drm latency=0
+             resources: irq:257 memory:e0000000-e1ffffff memory:e2000000-e21fffff
+     *-pci:5
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 12
+          bus info: pci@0000:00:12.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:86
+     *-pci:6
+          description: PCI bridge
+          product: HiSilicon PCI-PCI Bridge
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 104
+          bus info: pci@0000:74:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pci pciexpress pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: iomemory:1010-100f irq:0 ioport:144000000(size=8388608)
+        *-generic UNCLAIMED
+             description: Processing accelerators
+             product: HiSilicon ZIP Engine
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0
+             bus info: pci@0000:75:00.0
+             version: 20
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msi pm cap_list
+             configuration: latency=0
+             resources: iomemory:10-f memory:144000000-1443fffff memory:144400000-1447effff
+     *-sas
+          description: Serial Attached SCSI controller
+          product: HiSilicon SAS 3.0 HBA
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 5
+          bus info: pci@0000:74:02.0
+          logical name: scsi2
+          version: 20
+          width: 32 bits
+          clock: 33MHz
+          capabilities: sas pciexpress msi pm bus_master cap_list
+          configuration: driver=hisi_sas_v3_hw latency=0
+          resources: irq:967 memory:a2000000-a2007fff
+        *-disk:0
+             description: ATA Disk
+             product: MG04ACA400N
+             physical id: 0.0.0
+             bus info: scsi@2:0.0.0
+             logical name: /dev/sda
+             version: FJ3J
+             serial: 67BHK2WTF77D
+             size: 3726GiB (4TB)
+             capabilities: gpt-1.00 partitioned partitioned:gpt
+             configuration: ansiversion=5 guid=298a652c-20da-48ab-90da-833300ebd62d logicalsectorsize=512 sectorsize=512
+           *-volume:0
+                description: Windows FAT volume
+                vendor: mkfs.fat
+                physical id: 1
+                bus info: scsi@2:0.0.0,1
+                logical name: /dev/sda1
+                version: FAT16
+                serial: 2b70-dedb
+                size: 199MiB
+                capacity: 199MiB
+                capabilities: boot fat initialized
+                configuration: FATs=2 filesystem=fat name=EFI System Partition
+           *-volume:1
+                description: data partition
+                vendor: Windows
+                physical id: 2
+                bus info: scsi@2:0.0.0,2
+                logical name: /dev/sda2
+                serial: 4be39f29-21dd-49e7-8989-519715627347
+                capacity: 1023MiB
+           *-volume:2
+                description: LVM Physical Volume
+                vendor: Linux
+                physical id: 3
+                bus info: scsi@2:0.0.0,3
+                logical name: /dev/sda3
+                serial: gfhGxt-G0ub-0LPj-SQ0k-hnKj-hVnH-3nIzbJ
+                size: 3724GiB
+                capabilities: multi lvm2
+        *-disk:1
+             description: ATA Disk
+             product: MG04ACA400N
+             physical id: 0.1.0
+             bus info: scsi@2:0.1.0
+             logical name: /dev/sdb
+             version: FJ3J
+             serial: 67BHK2WWF77D
+             size: 3726GiB (4TB)
+             capabilities: gpt-1.00 partitioned partitioned:gpt
+             configuration: ansiversion=5 guid=222e391f-5e2b-4286-84ac-f261b59e2205 logicalsectorsize=512 sectorsize=512
+           *-volume:0
+                description: Windows FAT volume
+                vendor: mkfs.fat
+                physical id: 1
+                bus info: scsi@2:0.1.0,1
+                logical name: /dev/sdb1
+                logical name: /boot/efi
+                version: FAT32
+                serial: f5e8-132d
+                size: 598MiB
+                capacity: 599MiB
+                capabilities: boot fat initialized
+                configuration: FATs=2 filesystem=fat mount.fstype=vfat mount.options=rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro name=EFI System Partition state=mounted
+           *-volume:1
+                description: EFI partition
+                physical id: 2
+                bus info: scsi@2:0.1.0,2
+                logical name: /dev/sdb2
+                logical name: /boot
+                serial: db2b8c59-4daa-477d-9391-614315a2766a
+                capacity: 1023MiB
+                configuration: mount.fstype=xfs mount.options=rw,seclabel,relatime,attr2,inode64,noquota state=mounted
+           *-volume:2
+                description: LVM Physical Volume
+                vendor: Linux
+                physical id: 3
+                bus info: scsi@2:0.1.0,3
+                logical name: /dev/sdb3
+                serial: yvU0O0-AiZT-6RoY-4ieS-ODvF-fYjw-aWeaHG
+                size: 3724GiB
+                capabilities: multi lvm2
+        *-enclosure UNCLAIMED
+             description: SCSI Enclosure
+             product: Expander 12Gx16
+             vendor: HUAWEI
+             physical id: 0.2.0
+             bus info: scsi@2:0.2.0
+             version: 128
+             serial: 500e004aaaaaaa1e
+             configuration: ansiversion=6
+     *-sata
+          description: SATA controller
+          product: HiSilicon AHCI HBA
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 3
+          bus info: pci@0000:74:03.0
+          version: 20
+          width: 32 bits
+          clock: 33MHz
+          capabilities: sata pciexpress msi pm ahci_1.0 bus_master cap_list
+          configuration: driver=ahci latency=0
+          resources: irq:24 memory:a2008000-a2008fff
+     *-generic:0 UNCLAIMED
+          description: Network and computing encryption device
+          product: HiSilicon HPRE Engine
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 7
+          bus info: pci@0000:78:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm cap_list
+          configuration: latency=0
+          resources: iomemory:20-1f memory:208000000-2081fffff
+     *-usb:0
+          description: USB controller
+          product: HiSilicon USB 2.0 2-port Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 8
+          bus info: pci@0000:7a:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm ohci bus_master cap_list
+          configuration: driver=ohci-pci latency=0
+          resources: iomemory:20-1f irq:23 memory:20c100000-20c100fff
+        *-usbhost
+             product: OHCI PCI host controller
+             vendor: Linux 4.18.0-68.el8.aarch64 ohci_hcd
+             physical id: 1
+             bus info: usb@3
+             logical name: usb3
+             version: 4.18
+             capabilities: usb-1.10
+             configuration: driver=hub slots=2 speed=12Mbit/s
+     *-usb:1
+          description: USB controller
+          product: HiSilicon USB 2.0 2-port Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 9
+          bus info: pci@0000:7a:01.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm ehci bus_master cap_list
+          configuration: driver=ehci-pci latency=0
+          resources: iomemory:20-1f irq:23 memory:20c101000-20c101fff
+        *-usbhost
+             product: EHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 ehci_hcd
+             physical id: 1
+             bus info: usb@1
+             logical name: usb1
+             version: 4.18
+             capabilities: usb-2.00
+             configuration: driver=hub slots=2 speed=480Mbit/s
+           *-usb:0
+                description: USB hub
+                product: USB 2.0 Hub
+                vendor: Standard Microsystems Corp.
+                physical id: 1
+                bus info: usb@1:1
+                version: b.b3
+                capabilities: usb-2.00
+                configuration: driver=hub maxpower=2mA slots=4 speed=480Mbit/s
+           *-usb:1
+                description: USB hub
+                product: USB 2.0 Hub
+                vendor: Standard Microsystems Corp.
+                physical id: 2
+                bus info: usb@1:2
+                version: b.b3
+                capabilities: usb-2.00
+                configuration: driver=hub maxpower=2mA slots=4 speed=480Mbit/s
+              *-usb:0
+                   description: Keyboard
+                   product: Keyboard/Mouse KVM 1.1.0
+                   vendor: Huawei Technologies Co., Ltd.
+                   physical id: 1
+                   bus info: usb@1:2.1
+                   version: 1.00
+                   capabilities: usb-1.10
+                   configuration: driver=usbhid speed=12Mbit/s
+              *-usb:1
+                   description: Mass storage device
+                   product: DVD-ROM VM 1.1.0
+                   vendor: Huawei Technologies Co., Ltd.
+                   physical id: 3
+                   bus info: usb@1:2.3
+                   logical name: scsi3
+                   version: 1.00
+                   capabilities: usb-2.00 atapi emulated scsi-host
+                   configuration: driver=usb-storage maxpower=2mA speed=480Mbit/s
+                 *-cdrom
+                      description: SCSI CD-ROM
+                      product: DVD-ROM VM 1.1.0
+                      vendor: Virtual
+                      physical id: 0.0.0
+                      bus info: scsi@3:0.0.0
+                      logical name: /dev/cdrom
+                      logical name: /dev/sr0
+                      version: 225
+                      capabilities: removable audio
+                      configuration: status=nodisc
+     *-usb:2
+          description: USB controller
+          product: HiSilicon USB 3.0 Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: a
+          bus info: pci@0000:7a:02.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm xhci bus_master cap_list
+          configuration: driver=xhci_hcd latency=0
+          resources: iomemory:20-1f irq:26 memory:20c000000-20c0fffff
+        *-usbhost:0
+             product: xHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 xhci-hcd
+             physical id: 0
+             bus info: usb@5
+             logical name: usb5
+             version: 4.18
+             capabilities: usb-2.00
+             configuration: driver=hub slots=1 speed=480Mbit/s
+        *-usbhost:1
+             product: xHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 xhci-hcd
+             physical id: 1
+             bus info: usb@6
+             logical name: usb6
+             version: 4.18
+             capabilities: usb-3.00
+             configuration: driver=hub slots=1 speed=5000Mbit/s
+     *-pci:7
+          description: PCI bridge
+          product: HiSilicon PCI-PCI Bridge
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 105
+          bus info: pci@0000:7c:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pci pciexpress pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: iomemory:1010-100f irq:0 ioport:120000000(size=35651584)
+        *-network:0
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE RDMA Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0
+             bus info: pci@0000:7d:00.0
+             logical name: eno1
+             version: 20
+             serial: 00:18:86:00:00:06
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+             configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u firmware=0xb0750419 latency=0 link=no multicast=yes port=fibre
+             resources: iomemory:10-f iomemory:10-f irq:0 memory:122000000-12200ffff memory:120000000-1200fffff memory:122010000-1220effff memory:120100000-120efffff
+        *-network:1
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE RDMA Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0.1
+             bus info: pci@0000:7d:00.1
+             logical name: eno2
+             version: 20
+             serial: 00:18:86:01:00:06
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+             configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u firmware=0xb0750419 latency=0 link=no multicast=yes port=fibre
+             resources: iomemory:10-f iomemory:10-f irq:0 memory:1220f0000-1220fffff memory:120f00000-120ffffff memory:122100000-1221dffff memory:121000000-121dfffff
+        *-network:2
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE RDMA Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0.2
+             bus info: pci@0000:7d:00.2
+             logical name: eno3
+             version: 20
+             serial: 00:18:86:02:00:06
+             size: 1Gbit/s
+             capacity: 1Gbit/s
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+             configuration: autonegotiation=on broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u duplex=full firmware=0xb0750419 ip=192.168.1.93 latency=0 link=yes multicast=yes port=MII speed=1Gbit/s
+             resources: iomemory:10-f iomemory:10-f irq:0 memory:1221e0000-1221effff memory:121e00000-121efffff
+        *-network:3
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0.3
+             bus info: pci@0000:7d:00.3
+             logical name: eno4
+             version: 20
+             serial: 00:18:86:03:00:06
+             capacity: 1Gbit/s
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+             configuration: autonegotiation=on broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u firmware=0xb0750419 latency=0 link=no multicast=yes port=MII
+             resources: iomemory:10-f iomemory:10-f irq:0 memory:1221f0000-1221fffff memory:121f00000-121ffffff
+     *-pci:8
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 106
+          bus info: pci@0000:80:00.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:88
+     *-pci:9
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 107
+          bus info: pci@0000:80:08.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:90
+     *-pci:10
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 108
+          bus info: pci@0000:80:0c.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:92
+     *-pci:11
+          description: PCI bridge
+          product: HiSilicon PCIe Root Port with Gen4
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 109
+          bus info: pci@0000:80:10.0
+          version: 45
+          width: 32 bits
+          clock: 33MHz
+          capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: irq:94
+     *-pci:12
+          description: PCI bridge
+          product: HiSilicon PCI-PCI Bridge
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 10a
+          bus info: pci@0000:b4:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pci pciexpress pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: iomemory:1010-100f irq:0 ioport:400144000000(size=8388608)
+        *-generic UNCLAIMED
+             description: Processing accelerators
+             product: HiSilicon ZIP Engine
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0
+             bus info: pci@0000:b5:00.0
+             version: 20
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msi pm cap_list
+             configuration: latency=0
+             resources: iomemory:40010-4000f memory:400144000000-4001443fffff memory:400144400000-4001447effff
+     *-generic:1 UNCLAIMED
+          description: Network and computing encryption device
+          product: HiSilicon HPRE Engine
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: b
+          bus info: pci@0000:b8:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm cap_list
+          configuration: latency=0
+          resources: iomemory:40020-4001f memory:400208000000-4002081fffff
+     *-usb:3
+          description: USB controller
+          product: HiSilicon USB 2.0 2-port Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: c
+          bus info: pci@0000:ba:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm ohci bus_master cap_list
+          configuration: driver=ohci-pci latency=0
+          resources: iomemory:40020-4001f irq:23 memory:40020c100000-40020c100fff
+        *-usbhost
+             product: OHCI PCI host controller
+             vendor: Linux 4.18.0-68.el8.aarch64 ohci_hcd
+             physical id: 1
+             bus info: usb@4
+             logical name: usb4
+             version: 4.18
+             capabilities: usb-1.10
+             configuration: driver=hub slots=2 speed=12Mbit/s
+     *-usb:4
+          description: USB controller
+          product: HiSilicon USB 2.0 2-port Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: d
+          bus info: pci@0000:ba:01.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm ehci bus_master cap_list
+          configuration: driver=ehci-pci latency=0
+          resources: iomemory:40020-4001f irq:23 memory:40020c101000-40020c101fff
+        *-usbhost
+             product: EHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 ehci_hcd
+             physical id: 1
+             bus info: usb@2
+             logical name: usb2
+             version: 4.18
+             capabilities: usb-2.00
+             configuration: driver=hub slots=2 speed=480Mbit/s
+     *-usb:5
+          description: USB controller
+          product: HiSilicon USB 3.0 Host Controller
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 2
+          bus info: pci@0000:ba:02.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pciexpress msi pm xhci bus_master cap_list
+          configuration: driver=xhci_hcd latency=0
+          resources: iomemory:40020-4001f irq:27 memory:40020c000000-40020c0fffff
+        *-usbhost:0
+             product: xHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 xhci-hcd
+             physical id: 0
+             bus info: usb@7
+             logical name: usb7
+             version: 4.18
+             capabilities: usb-2.00
+             configuration: driver=hub slots=1 speed=480Mbit/s
+        *-usbhost:1
+             product: xHCI Host Controller
+             vendor: Linux 4.18.0-68.el8.aarch64 xhci-hcd
+             physical id: 1
+             bus info: usb@8
+             logical name: usb8
+             version: 4.18
+             capabilities: usb-3.00
+             configuration: driver=hub slots=1 speed=5000Mbit/s
+     *-pci:13
+          description: PCI bridge
+          product: HiSilicon PCI-PCI Bridge
+          vendor: Huawei Technologies Co., Ltd.
+          physical id: 0
+          bus info: pci@0000:bc:00.0
+          version: 20
+          width: 64 bits
+          clock: 33MHz
+          capabilities: pci pciexpress pm normal_decode bus_master cap_list
+          configuration: driver=pcieport
+          resources: iomemory:1010-100f irq:0 ioport:400120000000(size=35651584)
+        *-network:0
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE RDMA Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0
+             bus info: pci@0000:bd:00.0
+             logical name: eno5
+             version: 20
+             serial: 00:18:86:04:00:06
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+             configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u firmware=0xb0750419 latency=0 link=no multicast=yes port=fibre
+             resources: iomemory:40010-4000f iomemory:40010-4000f irq:0 memory:400122000000-40012200ffff memory:400120000000-4001200fffff memory:400122010000-4001220fffff memory:400120100000-400120ffffff
+        *-network:1
+             description: Ethernet interface
+             product: HNS GE/10GE/25GE RDMA Network Controller
+             vendor: Huawei Technologies Co., Ltd.
+             physical id: 0.1
+             bus info: pci@0000:bd:00.1
+             logical name: eno6
+             version: 20
+             serial: 00:18:86:05:00:06
+             width: 64 bits
+             clock: 33MHz
+             capabilities: pciexpress msix pm bus_master cap_list ethernet physical fibre
+             configuration: autonegotiation=off broadcast=yes driver=hns3 driverversion=4.18.0-68.el8.aarch64 SMP mod_u firmware=0xb0750419 latency=0 link=no multicast=yes port=fibre
+             resources: iomemory:40010-4000f iomemory:40010-4000f irq:0 memory:400122100000-40012210ffff memory:400121000000-4001210fffff memory:400122110000-4001221fffff memory:400121100000-400121ffffff
+     *-pnp00:00
+          product: PnP device PNP0c02
+          physical id: e
+          capabilities: pnp
+          configuration: driver=system
+     *-pnp00:01
+          product: PnP device PNP0501
+          physical id: f
+          capabilities: pnp
+          configuration: driver=serial
+  *-network:0
+       description: Ethernet interface
+       physical id: 1
+       logical name: virbr0
+       serial: 52:54:00:fe:91:35
+       capabilities: ethernet physical
+       configuration: broadcast=yes driver=bridge driverversion=2.3 firmware=N/A ip=192.168.122.1 link=no multicast=yes
+  *-network:1
+       description: Ethernet interface
+       physical id: 2
+       logical name: virbr0-nic
+       serial: 52:54:00:fe:91:35
+       size: 10Mbit/s
+       capabilities: ethernet physical
+       configuration: autonegotiation=off broadcast=yes driver=tun driverversion=1.6 duplex=full link=no multicast=yes port=twisted pair speed=10Mbit/s
+
+
+****************
+ls /sys/class/net/ -la
+total 0
+drwxr-xr-x.  2 root root 0 Jun 18 06:46 .
+drwxr-xr-x. 70 root root 0 Jun 18 06:45 ..
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno1 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.0/net/eno1
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno2 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.1/net/eno2
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno3 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.2/net/eno3
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno4 -> ../../devices/pci0000:7c/0000:7c:00.0/0000:7d:00.3/net/eno4
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno5 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.0/net/eno5
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 eno6 -> ../../devices/pci0000:bc/0000:bc:00.0/0000:bd:00.1/net/eno6
+lrwxrwxrwx.  1 root root 0 Jun 18 06:45 lo -> ../../devices/virtual/net/lo
+lrwxrwxrwx.  1 root root 0 Jun 18 06:46 virbr0 -> ../../devices/virtual/net/virbr0
+lrwxrwxrwx.  1 root root 0 Jun 18 06:46 virbr0-nic -> ../../devices/virtual/net/virbr0-nic
+
+
+****************
