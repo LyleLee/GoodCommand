@@ -157,3 +157,25 @@ modprobe: FATAL: Module drivers/char/fishing/fishing.ko not found.
 ```
 原因是modprobe只查找/lib/modules/(uname -r)/下的ko。 但是把ko复制到相应目录下并未解决，可能需要make module_install才能起作用
 
+## 问题：version magic
+自行insmod是出现version magic的问题
+```
+sudo insmod drivers/char/fishing/fishing.ko
+```
+```
+[Sun Jun 23 10:26:52 2019] fishing: version magic '4.15.18-dirty SMP preempt mod_unload aarch64' should be '4.15.0-29-generic SMP mod_unload aarch64'
+```
+
+```
+me@ubuntu:~/code/linux$ modinfo drivers/char/fishing/fishing.ko
+filename:       /home/me/code/linux/drivers/char/fishing/fishing.ko
+description:    A Hello, World Module
+author:         Shakespeare
+license:        GPL
+depends:
+intree:         Y
+name:           fishing
+vermagic:       4.15.18-dirty SMP preempt mod_unload aarch64
+
+```
+

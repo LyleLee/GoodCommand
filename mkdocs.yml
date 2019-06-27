@@ -53,7 +53,7 @@ nav:
     - iperf: iperf.md
     - ipmitool: ipmitool.md
     - kernel document: linux_kernel.md
-    - kernel_module: compile_kernel_module.md
+    - kernel_module: kernel_module.md
     - kvm: kvm.md
     - linux: linux.md
     - lspci: lspci.md
