@@ -83,6 +83,7 @@ nav:
     - vnc: vnc.md
     - wget: wget.md
     - 发行版: 
+        - 获取内核源码: get_kernel_source.md
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
         - redhat build kernel[cn]: redhat_build_kernel_zh.md
