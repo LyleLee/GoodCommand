@@ -50,6 +50,7 @@ nav:
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
+    - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
     - kernel document: linux_kernel.md
@@ -69,6 +70,7 @@ nav:
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
     - sftp: sftp.md
+    - ssh: ssh.md
     - sshfs: sshfs.md
     - sysrq: sysrq.md
     - systemd: systemd.md

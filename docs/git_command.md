@@ -40,6 +40,11 @@ git reset HEAD CONTRIBUTING.md
 git log -p -2
 ```
 
+回退最近一次提交
+```
+git reset --hard HEAD^
+```
+
 ## 远程仓库远程分支
 显示远程仓库
 ```
