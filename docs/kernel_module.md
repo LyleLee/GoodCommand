@@ -176,6 +176,11 @@ depends:
 intree:         Y
 name:           fishing
 vermagic:       4.15.18-dirty SMP preempt mod_unload aarch64
-
 ```
 
+模块在代码树外的解决办法：
+
+ubuntu 18.04
+```
+make -C /lib/modules/4.15.0-29-generic/build SUBDIRS=$PWD modules
+```
