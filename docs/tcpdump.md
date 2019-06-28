@@ -4,6 +4,7 @@ tcpdump是linux下著名的抓包手段。是定位网络，协议问题的杀�
 
 ```
  tcpdump tcp -i eth1 -t -s 0 -c 100 and dst port ! 22 and src net 192.168.1.0/24 -w ./target.cap
+ tcpdump -v arp 查看arp包
 ```
 ```
 (1)tcp: ip icmp arp rarp 和 tcp、udp、icmp这些选项等都要放到第一个参数的位置，用来过滤数据报的类型

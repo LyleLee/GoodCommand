@@ -50,6 +50,7 @@ nav:
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
+    - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
     - kernel document: linux_kernel.md
@@ -61,7 +62,7 @@ nav:
     - netstat: netstat.md
     - nfs: nfs.md
     - nmap : nmap.md
-    - ntfs : nfts.md
+    - ntfs : ntfs.md
     - numactl : numactl.md
     - raid级别: raid.md
     - script: script.md
@@ -69,6 +70,7 @@ nav:
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
     - sftp: sftp.md
+    - ssh: ssh.md
     - sshfs: sshfs.md
     - sysrq: sysrq.md
     - systemd: systemd.md
@@ -83,6 +85,7 @@ nav:
     - vnc: vnc.md
     - wget: wget.md
     - 发行版: 
+        - 获取内核源码: get_kernel_source.md
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
         - redhat build kernel[cn]: redhat_build_kernel_zh.md

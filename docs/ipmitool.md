@@ -23,7 +23,8 @@ BIOS -> Device Manager -> Console Preference Selection -> Preferred console Seri
 BIOS Setup -> Advance -> misc config -> SPCR enable
 ```
 
-方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200
+方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200  
+CentOS、RetHat：
 ```
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
@@ -35,10 +36,25 @@ GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhg
 b quiet console=ttyAMA0,115200"
 GRUB_DISABLE_RECOVERY="true"
 ```
+ubuntu
+```
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT=2
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX="console=ttyAMA0,115200"
+```
+
 更新grub.cfg文件：
-```
+```CS
+#CentOS、RedHat
 grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+#ubuntu
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+
 请注意不同的OS有不同的更新方式，请参考[[grub]](grub.md)
 
 以下所有命令需要先执行：
@@ -60,7 +76,7 @@ ipmitool -H 192.168.1.59 -I lanplus -U Administrator -P Adminpasscode chassis po
 ipmitool -I lanplus -H 192.168.1.233 -U Administrator -P Admin@9000 shell
 ```
 
-# 远程引导（档次有效）
+# 远程引导（当次有效）
 ```
 chassis bootdev pxe 	#网络引导
 chassis bootdev disk 	#硬盘引导
