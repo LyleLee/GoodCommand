@@ -31,6 +31,7 @@ nav:
         - nfs_not_respond: nfs_not_respond.md
         - hardware_error_corrected: Hardware_error_corrected.md
         - NIC_name_not_correct: NIC_name_not_correct.md
+        - 82599_Bar: 82599_Bar.md
     - ceph: ceph.md
     - devmem: devmem.md
     - dns: dns.md
@@ -86,6 +87,7 @@ nav:
     - wget: wget.md
     - 发行版: 
         - 获取内核源码: get_kernel_source.md
+        - CentOS package: CentOS_package.md
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
         - redhat build kernel[cn]: redhat_build_kernel_zh.md
