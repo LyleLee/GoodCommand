@@ -51,6 +51,7 @@ nav:
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
+    - intel_processor: intel_processor.md
     - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
