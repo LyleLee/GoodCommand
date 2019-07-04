@@ -59,6 +59,7 @@ CONFIG_SYSTEM_TRUSTED_KEYS=""
 ```
 https://raw.githubusercontent.com/xin3liang/home-bin/master/build-kernel-natively.sh
 ```
+或者从这里下载[build-kernel-natively](script/build-kernel-natively.sh)
 在源码目录执行
 ```
 /home/build-kernel-natively.sh
