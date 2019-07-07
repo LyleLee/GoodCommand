@@ -11,6 +11,9 @@ CentOS Pakages
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/repository/conf/CentOS-7-anon.repo
 ```
+# 直接下载CentOS源配置文件到本地
+
+
 
 
 ## 问题解决
