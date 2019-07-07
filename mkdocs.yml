@@ -31,6 +31,7 @@ nav:
         - nfs_not_respond: nfs_not_respond.md
         - hardware_error_corrected: Hardware_error_corrected.md
         - NIC_name_not_correct: NIC_name_not_correct.md
+        - 82599_Bar: 82599_Bar.md
     - ceph: ceph.md
     - devmem: devmem.md
     - dns: dns.md
@@ -50,6 +51,7 @@ nav:
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
+    - intel_processor: intel_processor.md
     - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
@@ -88,6 +90,7 @@ nav:
     - 发行版: 
         - 获取内核源码: get_kernel_source.md
         - CentOS build kernel: CentOS_build_kernel.md
+        - CentOS package: CentOS_package.md
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
         - redhat build kernel[cn]: redhat_build_kernel_zh.md
@@ -100,6 +103,7 @@ nav:
     - 服务器:
         - ARM server firmware_update: firmware_update.md
         - ARM storage software: arm_storage_stack.md
+        - ARM opensource software: arm_opensource_software.md
         - BMC_DELL_R730: BMC_DELL_R730.md
     - 性能之巅: 性能之巅.md
     - 计算机启动: 计算机启动.md
