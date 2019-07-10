@@ -33,6 +33,7 @@ nav:
         - NIC_name_not_correct: NIC_name_not_correct.md
         - 82599_Bar: 82599_Bar.md
     - ceph: ceph.md
+    - ceph: ceph_ntp.md
     - devmem: devmem.md
     - dns: dns.md
     - diff: diff.md
