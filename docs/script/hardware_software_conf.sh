@@ -19,6 +19,10 @@ lsblk >> $hardware_software_conf
 wait
 printf "\n\n****************\n" | tee -a $hardware_software_conf
 
+echo "free -g" | tee -a $hardware_software_conf
+free -g >> $hardware_software_conf
+wait
+printf "\n\n****************\n" | tee -a $hardware_software_conf
 
 echo "df" | tee -a $hardware_software_conf
 df -h >> $hardware_software_conf
