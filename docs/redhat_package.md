@@ -79,8 +79,7 @@ rpm -ivh epel-release-latest-7.noarch.rpm
 ```
 同时引入key，KEY是官方发布软件包的验证极致，这里使用官方的公钥安装到本地，当下载软件包时可以验证包的安全性。
 ```
-wegt https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
-rpm --import RPM-GPG-KEY-EPEL-7
+rpm --import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
 ```
 如果是RHEL6，请安装epel-release-latest-6.noarch.rpm和RPM-GPG-KEY-EPEL-6
 
