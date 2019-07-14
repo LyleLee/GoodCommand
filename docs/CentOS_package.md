@@ -13,7 +13,7 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 ```
 # 直接下载CentOS源配置文件到本地
 
-
+前面的下载方式下载到的不是alt-aarch64这里提供一份下载[[CentOS7.6repo]](resources/CentOS7.6repo/CentOS-Base.repo)
 
 
 ## 问题解决
@@ -40,3 +40,4 @@ baseurl=https://mirrors.huaweicloud.com/centos/$releasever/os/$basearch/
 修改为：
 baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/updates/$basearch/
 ```
+
