@@ -33,6 +33,7 @@ nav:
         - NIC_name_not_correct: NIC_name_not_correct.md
         - 82599_Bar: 82599_Bar.md
     - ceph: ceph.md
+    - ceph: ceph_ntp.md
     - devmem: devmem.md
     - dns: dns.md
     - diff: diff.md
@@ -55,6 +56,7 @@ nav:
     - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
+    - iso_download:iso_download.md
     - kernel document: linux_kernel.md
     - kernel_module: kernel_module.md
     - kvm: kvm.md
@@ -62,6 +64,7 @@ nav:
     - lspci: lspci.md
     - nethogs: nethogs.md
     - netstat: netstat.md
+    - nload: nload.md
     - nfs: nfs.md
     - nmap : nmap.md
     - ntfs : ntfs.md
@@ -82,12 +85,14 @@ nav:
     - time: time.md
     - tldr: tldr.md
     - tmux: tmux.md
+    - top: top.md
     - update-alternatives: update-alternatives.md
     - vim: vim.md
     - vnc: vnc.md
     - wget: wget.md
     - 发行版: 
         - 获取内核源码: get_kernel_source.md
+        - CentOS build kernel: CentOS_build_kernel.md
         - CentOS package: CentOS_package.md
         - redhat package: redhat_package.md
         - redhat build kernel[en]: redhat_build_kernel.md
@@ -102,7 +107,8 @@ nav:
         - ARM server firmware_update: firmware_update.md
         - ARM storage software: arm_storage_stack.md
         - ARM opensource software: arm_opensource_software.md
-        - 性能之巅: 性能之巅.md
+        - BMC_DELL_R730: BMC_DELL_R730.md
+    - 性能之巅: 性能之巅.md
     - 计算机启动: 计算机启动.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md

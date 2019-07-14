@@ -20,7 +20,29 @@ ipmitool -I lanplus -H 192.168.2.151 -U Administrator -P Adminpasscode sol deact
 #开源版本
 BIOS -> Device Manager -> Console Preference Selection -> Preferred console Serial
 #产品版本
-BIOS Setup -> Advance -> misc config -> SPCR enable
+BIOS -> Advanced -> MISC Config -> Support SPCR  <Enabled> 
+```
+```
+                         BIOS Setup Utility V2.0
+          Advanced
+/--------------------------------------------------------+---------------------\
+|                     MISC Config                        |    Help Message     |
+|--------------------------------------------------------+---------------------|
+|   Support Smmu                 <Enabled>               |Memory Print Level   |
+|   Support GOP FB for SM750     <Disabled>              |Set. Disable: Do     |
+|   Support SPCR                 <Enabled>               |not print any MRC    |
+|                                                        |statement/ Minimum:  |
+|   System Debug Level           <Debug>                 |Print the most       |
+|   Memory Print Level           <Minimum>               |important(High       |
+|   CPU Prefetching              <Enabled>               |level) MRC           |
+|   Configuration                                        |statement/ Minmax:   |
+|   Support Down Core            <Disabled>              |Print the            |
+|                                                        |Mid-important(Mid    |
+|                                                        |level) and most      |
+|                                                        |important MRC        |
+|                                                        |statement/ Maximum:  |
+|                                                        |MRC statement        |
+|                                                        |                     |
 ```
 
 方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200  
@@ -81,9 +103,12 @@ ipmitool -I lanplus -H 192.168.1.233 -U Administrator -P Admin@9000 shell
 chassis bootdev pxe 	#网络引导
 chassis bootdev disk 	#硬盘引导
 chassis bootdev cdrom 	#光驱引导
-chassis bootdev bios  	#重启后停在BIOS菜单 在1620有问题
+chassis bootdev bios  	#重启后停在BIOS菜单 
 chassis bootdev pxe　	#重启后从PXE启动
 ```
+chassis bootdev
+在1620有. 在1620 CS上可以。 要再OS里面systemctl reboot -i 有效。 ipmitool
+
 # 读取系统状态
 ```
 sensor list   #显示系统所有传感器列表

@@ -10,11 +10,11 @@ yum install kernel-devel-$(uname -r)	#安装当前内核版本的代码，保证
 yum install kernel-devel				#安装当前版本内核的update版本kernel-devel-4.14.0-115.8.1.el7a.aarch64
 ```
 或者到网址下载  
-[[默认内核]](http://vault.centos.org/centos/7/os/Source/SPackages/) kernel-alt-4.14.0-115.el7a.0.1.src.rpm	2018-11-27 06:00	101M   
-[[更新版本]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.2.2.el7a.src.rpm	2018-11-29 15:26	101M   
-[[更新版本]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.5.1.el7a.src.rpm	2019-02-07 15:56	101M   
-[[更新版本]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.6.1.el7a.src.rpm	2019-03-18 16:01	101M   
-[[更新版本]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.7.1.el7a.src.rpm	2019-05-24 16:26	101M  
+[[默认内核版本源码]](http://vault.centos.org/centos/7/os/Source/SPackages/) kernel-alt-4.14.0-115.el7a.0.1.src.rpm	2018-11-27 06:00	101M   
+[[更新版本源码]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.2.2.el7a.src.rpm	2018-11-29 15:26	101M   
+[[更新版本源码]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.5.1.el7a.src.rpm	2019-02-07 15:56	101M   
+[[更新版本源码]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.6.1.el7a.src.rpm	2019-03-18 16:01	101M   
+[[更新版本源码]](http://vault.centos.org/centos/7/updates/Source/SPackages/) kernel-alt-4.14.0-115.7.1.el7a.src.rpm	2019-05-24 16:26	101M  
 
 # RedHat
 
