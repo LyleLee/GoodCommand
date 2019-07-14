@@ -85,6 +85,7 @@ nav:
     - time: time.md
     - tldr: tldr.md
     - tmux: tmux.md
+    - top: top.md
     - update-alternatives: update-alternatives.md
     - vim: vim.md
     - vnc: vnc.md
