@@ -32,8 +32,9 @@ nav:
         - hardware_error_corrected: Hardware_error_corrected.md
         - NIC_name_not_correct: NIC_name_not_correct.md
         - 82599_Bar: 82599_Bar.md
+        - bs osd down: bs/osd_down.md
+        - bs ceph ntp: bs/ceph_ntp.md
     - ceph: ceph.md
-    - ceph: ceph_ntp.md
     - devmem: devmem.md
     - dns: dns.md
     - diff: diff.md
@@ -56,7 +57,7 @@ nav:
     - ip: ip.md
     - iperf: iperf.md
     - ipmitool: ipmitool.md
-    - iso_download:iso_download.md
+    - iso_download: iso_download.md
     - kernel document: linux_kernel.md
     - kernel_module: kernel_module.md
     - kvm: kvm.md

@@ -17,6 +17,56 @@ google-perftools
 libleveldb1
 ```
 
+```
+ceph -s
+ceph -w
+ceph df
+
+```
+
+查看集群的pool，下面可以看出来有一个pool，ID是1， 名字是volumes
+```
+[root@ceph-node00 ~]# ceph osd lspools
+1 volumes
+```
+```
+[root@ceph-node00 ~]# ceph osd pool ls detail
+pool 1 'volumes' replicated size 3 min_size 2 crush_rule 0 object_hash rjenkins pg_num 4096 pgp_num 4096 autoscale_mode warn last_change 1644 lfor 0/0/739 flags hashpspool,selfmanaged_snaps stripe_width 0 application rbd
+        removed_snaps [1~5]
+
+```
+查看集群的虚拟磁盘
+```
+[root@ceph-node00 ~]# rbd ls volumes
+test-000
+test-001
+test-002
+test-003
+test-004
+test-005
+test-006
+test-007
+test-008
+
+```
+查看虚拟磁盘
+```
+[root@ceph-node00 ~]# rbd info volumes/test-319
+rbd image 'test-319':
+        size 400 GiB in 102400 objects
+        order 22 (4 MiB objects)
+        snapshot_count: 0
+        id: 7de74cf76e78
+        block_name_prefix: rbd_data.7de74cf76e78
+        format: 2
+        features: layering, exclusive-lock, object-map, fast-diff, deep-flatten
+        op_features:
+        flags:
+        create_timestamp: Fri Jul  5 23:30:08 2019
+        access_timestamp: Sat Jul  6 15:11:10 2019
+        modify_timestamp: Sat Jul  6 15:25:48 2019
+```
+
 ## 手动部署
 
 ubuntu node1 mon 
