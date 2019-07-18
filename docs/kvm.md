@@ -135,6 +135,10 @@ virsh list -all
 ```shell-session
 virsh console ubuntu_1
 ```
+## 退出串口登录
+```
+ctrl + ]
+```
 ## 启动VM
 ```shell-session
 virsh start ubuntu_2
@@ -289,3 +293,23 @@ group = "root"
 ```
 systemctl restart libvirtd
 ```
+
+## 待确认问题
+kvm可以跑X86的linux？
+```
+error: unexpected data '-all'
+[root@192e168e100e118 ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     instance-8e278c38-2559-4499-81af-37166cf78f3d running
+
+[root@192e168e100e118 ~]# virsh console instance-8e278c38-2559-4499-81af-37166cf78f3d
+Connected to domain instance-8e278c38-2559-4499-81af-37166cf78f3d
+Escape character is ^]
+
+CentOS Linux 7 (Core)
+Kernel 3.10.0-862.el7.x86_64 on an x86_64
+
+ceshi-03 login:
+
+``` 
