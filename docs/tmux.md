@@ -20,6 +20,14 @@ set-option -g allow-rename off
 set -g status-right "#{=21:pane_title} #(date \"+%Y-%m-%d %H:%M:%S\")"
 setw -g mode-keys vi
 ```
+禁止tmux重命名标签页
+```
+set allow-rename off
+set-option -g allow-rename off
+set -g status-keys vi
+set -g history-limit 10000
+```
+
 ## 交换窗口顺序
 
 3号窗口交换到1号窗口
