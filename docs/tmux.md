@@ -2,18 +2,16 @@ tmux 终端复用工具
 ============================
 tmux是终端复用工具，是终端中的神器。 使用tmux可以把一个终端变成一个终端，这样就不需要在多个图形终端中切换来切换去，也不需要担心因为终端关闭而终止前台运行的程序。使用tmux创建一个session之后可以保留到你想关闭为止。下次只需要tmux a就可以恢复所有未关闭的session。
 
-## 配置文件路径
-全局配置文件路径为,没有请创建
+## 配置文件
+
 ```
-/etc/tmux.conf
-```
-当前用户配置文件路径为，没有请创建
-```
-~/.tmux.conf
-```
-导出默认的配置文件
-```
-tmux show -g > a.txt
+/etc/tmux.conf					全局配置文件路径为,没有请创建
+~/.tmux.conf					当前用户配置文件路径为，没有请创建
+tmux show -g > a.txt			导出默认的配置文件
+tmux source-file ~/.tmux.conf	重新加载配置文件
+
+ctrl + b						tmux 界面重新加载配置文件
+:source-file ~/.tmux.conf
 ```
 我的配置文件：
 ```
@@ -22,6 +20,14 @@ set-option -g allow-rename off
 set -g status-right "#{=21:pane_title} #(date \"+%Y-%m-%d %H:%M:%S\")"
 setw -g mode-keys vi
 ```
+禁止tmux重命名标签页
+```
+set allow-rename off
+set-option -g allow-rename off
+set -g status-keys vi
+set -g history-limit 10000
+```
+
 ## 交换窗口顺序
 
 3号窗口交换到1号窗口

@@ -67,3 +67,11 @@ https://raw.githubusercontent.com/xin3liang/home-bin/master/build-kernel-nativel
 
 # 5.安装内核rpm包
 编译好的内核安装包在当前用户主目录下的rpmbuild/RPM下。
+
+
+# 6.编译驱动
+由于重新编译了内核， 如果不是默认包含的驱动， 就需要重新进行编译。这个时候当前内核版本/usr/lib/modules/$(uname -r)可能没有build目录，这个时候就需要创建一个符号链接指当前内核版本源码所在目录
+
+```
+/usr/lib/modules/4.14.0-4k-2019-07-03/build -> /root/rpmbuild/BUILD/kernel-alt-4.14.0-115.el7a/linux-4.14.0-115.el7.0.1.aarch64
+```

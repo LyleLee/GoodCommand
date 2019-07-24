@@ -125,10 +125,29 @@ fio: failed to load engine
 ```
 fio -enghelp
 ```
+## 编译安装fio以支持ceph rbd测试
+```
+[2019-07-20 20:59:26]  [root@192e168e100e111 ~]# unzip fio-3.15.zip 
+[2019-07-20 22:19:37]  [root@192e168e100e111 ~]# yum install librbd1-devel
+[2019-07-20 22:20:15]  [root@192e168e100e111 fio-fio-3.15]# ./configure 
+[2019-07-20 22:20:21]  Rados engine                  yes
+[2019-07-20 22:20:21]  Rados Block Device engine     yes # 有这几个代表安装librbd成功
+[2019-07-20 22:20:21]  rbd_poll                      yes
+[2019-07-20 22:20:21]  rbd_invalidate_cache          yes
+[2019-07-20 22:20:26]  [root@192e168e100e111 fio-fio-3.15]# make -j8
+```
 
-fio --ramp_time=10 --runtime=60 --size=10g --ioengine=libaio --filename=/mnt/testfile.doc --name=4k_read --rw=read --bs=4k
+如果不先安装librbd，编译完之后执行会出现
+```
+[2019-07-20 22:15:43]  fio: engine rbd not loadable
+[2019-07-20 22:15:43]  fio: engine rbd not loadable
+[2019-07-20 22:15:43]  fio: failed to load engine
+```
+除此之外，要想可以执行成功，就好是ceph节点上的/etc/ceph拷贝到当前的主机上。
 
-问题：
+
+
+# 问题：
 + ubuntu下缺少libaio库
 ```console
 4k_read: No I/O performed by libaio, perhaps try --debug=io option for details?

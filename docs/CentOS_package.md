@@ -15,6 +15,12 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
 前面的下载方式下载到的不是alt-aarch64这里提供一份下载[[CentOS7.6repo]](resources/CentOS7.6repo/CentOS-Base.repo)
 
+# 配置epel源
+方法1：参考[Redhat的配置](redhat_package.md)
+方法2：CentOS的本地源或者在线源配置好之后，就可以直接安装epel源：
+```
+yum install epel-release
+```
 
 ## 问题解决
 如果出现repodata/repomd.xml Error 404
