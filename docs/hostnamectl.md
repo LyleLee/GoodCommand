@@ -1,7 +1,9 @@
 hostnamectl
 =======================
 修改设置系统的hostname
-
+```
+hostnamectl --static set-hostname ceph1
+```
 查看hostname，设置hostname，重新登陆生效。
 ```shell-session
 [root@localhost home]# hostnamectl

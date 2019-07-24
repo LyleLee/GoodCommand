@@ -26,7 +26,14 @@ getenforce                  #查看SElinux状态
 setenforce 0                #临时关闭SElinux,设置SELinux 成为permissive模式
 setenforce 1                #启用SELinux，设置SELinux 成为enforcing模式
 ```
-永久关闭SELinux
+
+# 临时关闭SElinux
+
+```
+setenforce 0                #临时关闭SElinux,设置SELinux 成为permissive模式
+```
+
+# 永久关闭SELinux
 ```
 vim /etc/selinux/config
 
