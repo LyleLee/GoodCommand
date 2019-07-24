@@ -43,7 +43,7 @@ Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp a
 
 ### 戴尔 PowerEdge R730 Intel(R) Xeon(R) CPU E5-2630 
 
-```text
+```json
 Architecture:          x86_64			#X86架构
 CPU op-mode(s):        32-bit, 64-bit	#同时支持32位和64位运行模式
 Byte Order:            Little Endian	#小端系统
@@ -316,7 +316,7 @@ Machine (188GB total):
 `Net L#25 "enp143s0` 这个是1822网卡，可以根据pci地址查询：lspci -nn | grep 19e5:1822,如下文
 `Misc(MemoryModule)` 内存插槽数量
 
-```
+```json
 [root@ARM server home]# lspci -nn | grep 19e5:1822
 83:00.0 Ethernet controller [0200]: Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE) [19e5:1822] (rev 45)
 84:00.0 Ethernet controller [0200]: Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE) [19e5:1822] (rev 45)
