@@ -76,3 +76,27 @@ echo $iops $bandwith $lat $cpu
 ```
 32.8k 134MB/s 29.90 usr=4.51% sys=16.50%
 ```
+
+
+# awk 截取字符串
+```
+[root@ceph-node00 ceph]# lsblk | grep ceph
+└─ceph--cbab595d--da69--431f--b7b6--c52101f10d39-osd--block--2091e673--d027--4b9f--b8c0--6e7f476fc741 253:11   0   7.3T  0 lvm
+└─ceph--69275ba9--1d6a--4478--9ccd--1a23f7831b37-osd--block--4b24b591--1b1e--4e29--8c55--d279187e039d 253:9    0   7.3T  0 lvm
+└─ceph--7805f320--84b3--4000--a6fb--c32bf9b32a0c-osd--block--4603b474--8bfa--47f7--b69a--0394a727d863 253:4    0   7.3T  0 lvm
+└─ceph--2d3a8630--dbfb--4eba--97bf--7fbfb5cc91ef-osd--block--636d1e4b--5a01--4fc4--aa11--260f7356a7bc 253:14   0   7.3T  0 lvm
+└─ceph--c4e816d1--6e97--4aef--9abf--7502c94709f6-osd--block--1f3e67b4--166b--408f--ae1a--6e07a4667bec 253:12   0   7.3T  0 lvm
+└─ceph--7608df58--0556--424e--9b97--659a4bab1e84-osd--block--b5db2324--be59--4f59--8958--46394f580535 253:10   0   7.3T  0 lvm
+└─ceph--7fe90132--69c8--4c15--a60f--7f2037b4230c-osd--block--b1b345d3--8e44--4f5b--807b--f1dcca93b5a2 253:8    0   7.3T  0 lvm
+└─ceph--bf42f625--f8a1--4351--8762--3bc84847b90e-osd--block--478d5cda--a78d--41c3--a2f9--253c41e62cba 253:3    0   7.3T  0 lvm
+└─ceph--b2a6fe35--c3df--46b3--981c--beaedfc27f53-osd--block--49c7c971--bf3e--481e--be2b--40c021ccb88b 253:13   0   7.3T  0 lvm
+[root@ceph-node00 ceph]# lsblk | grep ceph | awk '{print substr($1,3)}'
+ceph--cbab595d--da69--431f--b7b6--c52101f10d39-osd--block--2091e673--d027--4b9f--b8c0--6e7f476fc741
+ceph--69275ba9--1d6a--4478--9ccd--1a23f7831b37-osd--block--4b24b591--1b1e--4e29--8c55--d279187e039d
+ceph--7805f320--84b3--4000--a6fb--c32bf9b32a0c-osd--block--4603b474--8bfa--47f7--b69a--0394a727d863
+ceph--dda7a760--1a67--45b0--8992--0148beea4146-osd--block--e887daf2--b51a--4c75--a793--e85c9af286b8
+ceph--2d3a8630--dbfb--4eba--97bf--7fbfb5cc91ef-osd--block--636d1e4b--5a01--4fc4--aa11--260f7356a7bc
+ceph--c4e816d1--6e97--4aef--9abf--7502c94709f6-osd--block--1f3e67b4--166b--408f--ae1a--6e07a4667bec
+ceph--7608df58--0556--424e--9b97--659a4bab1e84-osd--block--b5db2324--be59--4f59--8958--46394f580535
+ceph--7fe90132--69c8--4c15--a60f--7f2037b4230c-osd--bl
+```
