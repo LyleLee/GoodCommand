@@ -42,6 +42,9 @@ all.txt保存主机IP列表
 ssh 192.168.100.101
 ```
 
+## 登陆失败后添加到黑名单
+[https://www.cnblogs.com/panblack/p/secure_ssh_auto_block.html](https://www.cnblogs.com/panblack/p/secure_ssh_auto_block.html)
+
 ## 设置免密登录
 
 ```
