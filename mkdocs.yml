@@ -88,6 +88,7 @@ nav:
     - tmux: tmux.md
     - top: top.md
     - update-alternatives: update-alternatives.md
+    - upnpc: upnpc.md
     - vim: vim.md
     - vnc: vnc.md
     - wget: wget.md
