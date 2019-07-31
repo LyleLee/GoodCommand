@@ -4,6 +4,26 @@ CentOS和redhat使用firewall作为防火墙
 ```CS
 systemctl status firewalld.service #查看防火墙服务运行状态，systemctl 也可以用来启动关闭，重启防火墙
 firewall-cmd --state               #查看防火墙是否在运行
+firewall-cmd --get-log-denied      #查看防火墙是否记录已拒绝的数据包
+firewall-cmd --set-log-denied=all  #记录所有拒绝的请求， 设置之后可以在/var/log/messages看到所拒绝的请求log
+```
+由于命令行可能不熟悉，可以使用图形界面进行设置。
+```
+firewall-config
+```
+
+封锁一个IP
+```
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='192.168.1.1' reject"
+```
+封锁一个IP段
+```
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='192.168.1.0/24' reject"
+```
+添加一条rich rule
+```
+sudo firewall-cmd --zone=public --add-rich-rule="rule family="ipv4" source address="198.51.100.0/32" port protocol="tcp" port="10000" log prefix="test-firewalld-log" level="info" accept"
+firewall-cmd --add-rich-rule='rule family="ipv4" source address="139.159.243.11" destination address="192.168.100.12" protocol value="tcp" log prefix="upnpc" level="warning" accept'
 ```
 
 # 防火墙开放80端口防火墙。
@@ -22,7 +42,7 @@ Jun  7 23:29:26 localhost kernel: FINAL_REJECT: IN=enahisic2i0 OUT= MAC=c0:a8:02
 防火墙允许80端口接收请求
 ```
 firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --reload
+firewall-cmd --reload       #重要， 否则不起作用，在firewall-cmd --list-all也无法看到
 ```
 开放后：
 ```
