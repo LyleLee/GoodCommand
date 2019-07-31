@@ -107,3 +107,7 @@ systemctl enable frpc.service
 systemctl daemon-reload
 ```
 这样系统就会不断重启了。
+
+## 参考教程
+
+[https://www.prcplayer.com/index.php/archives/139/](https://www.prcplayer.com/index.php/archives/139/)
