@@ -21,7 +21,11 @@ for i in {0..95}; do
 	ceph osd rm osd.$i
 done
 ```
-
+在每台ceph节点上取消挂载
+```
+umount /var/lib/ceph/osd/ceph-*
+rm -rf /var/lib/ceph/osd/ceph-*
+```
 
 在每台设备上删除ceph上的lvm分区：
 
@@ -38,23 +42,19 @@ dmsetup remove ceph--7c7c2721--5dfc--45e4--9946--5316e21087df-osd--block--922767
 ```
 lvs | grep osd | awk '{print $2}' | xargs lvremove -y       #先删除lvm
 vgs | grep ceph | awk '{print $1}' | xargs vgremove -y      #再删除lvm group
-
-lvremove 给出group名， 可以直接删除group.
 ```
 
-取消挂载
-```
-umount /var/lib/ceph/osd/ceph-*     #只好执行两次
-umount /var/lib/ceph/osd/ceph-*
-rm -rf /var/lib/ceph/osd/ceph-*
-```
-
-
-在每台设备上格式化硬盘
+在每台设备上格式化HDD,SSD（如果有）
 ```
 for disk in {a..l}
     do parted -s /dev/sd${disk} mklabel gpt
     ceph-volume lvm zap /dev/sd${disk} --destroy 
+done
+```
+```
+for ssd_disk in nvme0n1 nvme1n1
+    do parted -s /dev/$ssd_disk mklabel gpt
+    ceph-volume lvm zap /dev/$ssd_disk --destroy 
 done
 ```
 
@@ -70,7 +70,7 @@ done
 
 ## 创建 HDD OSD
 
-在ceph-deploy节点上执行创建
+正常情况下在ceph-deploy节点上执行创建
 ```
 for node in {00..07}; do
     for disk in {a..l};do
@@ -80,28 +80,53 @@ for node in {00..07}; do
 done
 ```
 
-需要设置db时创建osd. 在每个节点上执行
+如果需要设置SSD作为wal和db在每个节点上执行
 ```
-vgcreate ceph-db /dev/nvme0n1 /dev/nvme1n1
-for index in {a..l}; do lvcreate -n ceph-db-$index -L 480G ceph-db; done
+vgcreate ceph-db /dev/nvme0n1
+vgcreate ceph-wal /dev/nvme1n1
+for index in {a..l};do lvcreate -n ceph-db-$index -L 240G ceph-db;lvcreate -n ceph-wal-$index -L 240G ceph-wal;  done
 ```
 
-在deploy节点上执行
+正常情况下在deploy节点上执行
 ```
 for node in {00..07}; do
     for disk in {a..l};do
-        ceph-deploy --overwrite-conf osd create --data /dev/sd${disk}  --block-db ceph-db/ceph-db-${disk}  ceph-node${node}
+        ceph-deploy --overwrite-conf osd create --data /dev/sd${disk} ceph-node${node}
     done
 done
 ```
-
+如果需要设置SSD作为wal和db在每个节点上执行
+```
+for node in {00..07}; do
+    for disk in {a..l};do
+        ceph-deploy --overwrite-conf osd create --data /dev/sd${disk} --block-db ceph-db/ceph-db-$disk --block-wal ceph-wal/ceph-wal-$disk ceph-node${node}
+    done
+done
+```
 ## 创建pool
+
+正常情况下创建pool
 ```
 ceph osd pool create volumes 4096 4096
 ceph osd pool application enable volumes rbd
 ```
+如果需要创建EC pool
+```
+ceph osd erasure-code-profile set testprofile k=4 m=2   #创建名字为testprofile的profile。 k+m为4+2。允许2个OSD出错。还有其他参数请查询其他文档
+ceph osd erasure-code-profile get testprofile   #查看创建好的profile
+ceph osd crush rule create-erasure test_profile_rule test_profile #根据profile创建crush rule
+ceph osd crush rule ls  #查看所有的rule
+ceph osd crush rule dump test_profile_rule  #查看某条rule的配置
 
+ceph osd pool create volumes test_profile test_profile_rule
+ceph osd pool set volumes allow_ec_overwrites true
+ceph osd pool application enable volumes rbd
 
+ceph osd crush rule create-replicated replicated_volumes default host
+ceph osd pool create volumes_replicated_metadata replicated replicated_volumes
+ceph osd pool create volumes_repli_metadata 1024 1024 replicated replicated_volumes
+ceph osd pool application enable volumes_repli_metadata rbd
+```
 ## 创建rbd
 一共创建400个rbd
 ```
@@ -110,6 +135,13 @@ for i in {000..399};do
 done
 ```
 约2分钟
+如果是EC池
+```
+for i in {000..399};do
+	rbd create volumes_repli_metadata/test-$i --size 400G --data-pool volumes;
+done
+
+```
 
 ## 写入数据
 
@@ -237,7 +269,11 @@ ceph daemon osd.0 help              #显示命令帮助
 ceph daemon osd.0 "dump_historic_ops_by_duration" #显示被ops的时间
 ```
 
-
+# noscrub 设置
+```
+ceph used set noscrub       #停止scrub
+ceph osd unset noscrub      #启动scrub
+```
 
 删除lvm分区效果
 ```
