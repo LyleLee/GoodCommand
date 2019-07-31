@@ -32,3 +32,8 @@ hostnamectl --static set-hostname ceph1
       Architecture: arm64
 [root@redhat80 ~]#
 ```
+
+hostname的配置文件在下面路径， 往里面写入一个名字就可以了
+```
+/etc/hostname
+```
