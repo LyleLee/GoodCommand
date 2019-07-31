@@ -34,6 +34,7 @@ nav:
         - 82599_Bar: 82599_Bar.md
         - bs osd down: bs/osd_down.md
         - bs ceph ntp: bs/ceph_ntp.md
+        - cfd_doc: cfd_doc.md
     - ceph: ceph.md
     - devmem: devmem.md
     - dns: dns.md

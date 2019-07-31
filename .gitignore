@@ -4,3 +4,4 @@ docs/person/
 task_list.txt
 *.tar
 *.tar.gz
+confidential*
