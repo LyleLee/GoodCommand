@@ -100,3 +100,9 @@ ceph--c4e816d1--6e97--4aef--9abf--7502c94709f6-osd--block--1f3e67b4--166b--408f-
 ceph--7608df58--0556--424e--9b97--659a4bab1e84-osd--block--b5db2324--be59--4f59--8958--46394f580535
 ceph--7fe90132--69c8--4c15--a60f--7f2037b4230c-osd--bl
 ```
+
+
+# awk 获取IP地址
+```
+ip a | awk '/inet /{print substr($2,5)}' |awk -F '[/]' '{print $1}'
+```
