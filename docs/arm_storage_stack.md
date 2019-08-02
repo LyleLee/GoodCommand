@@ -17,6 +17,8 @@ ARM生态，存储相关软件
 |12         |MogileFS |未使能            |2.73     |[[github]](https://github.com/mogilefs)|
 |13         |GFS      |未使能闭源        |-        |  |
 
+amazon Dynamo key/value 分布式存储系统
+
 ## ubuntu官方不支持ceph-fuse
 ```shell-session
 me@ubuntufio:~$ rmadison -S ceph-fuse
