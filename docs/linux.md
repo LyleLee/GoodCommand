@@ -163,7 +163,12 @@ ethernets:
 enp1s0:
   dhcp4: yes
 me@ceph-client:~$
-``` 
+```
+[【设置DNS教程】](https://www.tecmint.com/configure-network-static-ip-address-in-ubuntu/)
+修改好配置文件之后设置生效
+```
+sudo netplan apply
+```
 redhat7.5 redhat8.0
 ```shell-session
 [me@localhost ~]$ cat /etc/sysconfig/network-scripts/ifcfg-enp1s0
