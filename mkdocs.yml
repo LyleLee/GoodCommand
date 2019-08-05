@@ -26,15 +26,17 @@ nav:
         - io fio benchmark: io_fio_benchmark.md
     - BMC : BMC.md
     - bug solve:
+
         - hdd broken drive: hdd_broken_drive.md
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
         - hardware_error_corrected: Hardware_error_corrected.md
         - NIC_name_not_correct: NIC_name_not_correct.md
         - 82599_Bar: 82599_Bar.md
-        - bs osd down: bs/osd_down.md
+        - bs osd down: bs/ceph_osd_down.md
         - bs ceph ntp: bs/ceph_ntp.md
         - cfd_doc: cfd_doc.md
+        - dev_root_not_exist: dev_root_not_exist.md
     - ceph: ceph.md
     - devmem: devmem.md
     - dns: dns.md
@@ -89,7 +91,7 @@ nav:
     - tmux: tmux.md
     - top: top.md
     - update-alternatives: update-alternatives.md
-    - upnpc: upnpc.md
+    - upnpc: upnp.md
     - vim: vim.md
     - vnc: vnc.md
     - wget: wget.md
