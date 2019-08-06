@@ -26,7 +26,6 @@ nav:
         - io fio benchmark: io_fio_benchmark.md
     - BMC : BMC.md
     - bug solve:
-
         - hdd broken drive: hdd_broken_drive.md
         - nfs lock 1670650: nfs_lock.md
         - nfs_not_respond: nfs_not_respond.md
@@ -61,8 +60,11 @@ nav:
     - iperf: iperf.md
     - ipmitool: ipmitool.md
     - iso_download: iso_download.md
-    - kernel document: linux_kernel.md
-    - kernel_module: kernel_module.md
+    - kernel:
+        - linux内核设计与实现: linux内核设计与实现.md
+        - kernel document: linux_kernel.md
+        - kernel_module: kernel_module.md
+        - kern_levels.h: kern_levels.md
     - kvm: kvm.md
     - linux: linux.md
     - lspci: lspci.md
@@ -118,5 +120,5 @@ nav:
     - 计算机启动: 计算机启动.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
-    - linux内核设计与实现: linux内核设计与实现.md
+
 theme: readthedocs

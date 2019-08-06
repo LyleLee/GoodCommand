@@ -194,3 +194,36 @@ asm/bitops.h
 读写自旋锁。 多个线程可以同时获得读锁，读锁可以递归。写锁会保证没有人能在读或者写。
 
 自旋锁定义在 asm/spinlock.h, 调用结构定义在linux/spinlock.h
+
+# 内核数类型
+
+[参考文档](https://static.lwn.net/images/pdf/LDD3/ch11.pdf)
+
+
+
+# 进程调度
+
+
+
+                               红黑树，最左侧是要执行的进程
+                         X
+                         X
+                        XX
+                        X                           当代队列
+                       XXX                        +---+---+----+---+---+--+--+
+                  XXXXXX XX XX             <----- |   |   |    |   |   |  |  |
+        XXXXXXX XX  XX    X    X  X  X            |   |   |    |   |   |  |  |
+      XX  XX      XXX      X                      +---+---+----+---+---+--+--+
+     X  XXX      XX  X     XXX
+       XX    XXXXX    X    X  X
+            XX    X        X   X XXX
+        XXXX        X      XX      XX
+    XX X   XX         XX  XX XXX   X XXXXXX
+XXX         XX         X  X       XX  XX
+              XX              XXX  X
+               XX            X     X
+                                   X
+进程调度的入口时schedule().
+pick_next_task()负责查找下一个要运行的task。查找最高优先级的调度类。 调度类缓存有下一个要执行的task，直接返回。
+CFS是朴廷进程的调度类。
+休眠的进程在等待队列wake_queue_haed_t处理. DEFILE_WAIT()创建一个等待队列项。 add_wait_queue()把自己加入到队列中. prepare_to_wait()将进程状态变更为TASK_Interruptible或者TASK_UNINTERRUPTIBLE。条件满足后调用finish_wait()把自己移出等待队列

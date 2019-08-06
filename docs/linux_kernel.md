@@ -8,3 +8,9 @@
 
 ## python document
 [[https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html]]((https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html))
+
+## 内核数据结构
+[https://static.lwn.net/images/pdf/LDD3/ch11.pdf](https://static.lwn.net/images/pdf/LDD3/ch11.pdf)
+
+## 驱动编程教程【good】
+[http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/#prettyPhoto]()
