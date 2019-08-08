@@ -36,6 +36,7 @@ nav:
         - bs ceph ntp: bs/ceph_ntp.md
         - cfd_doc: cfd_doc.md
         - dev_root_not_exist: dev_root_not_exist.md
+        - tomcat not start: bs/tomcat_not_start.md
     - ceph: ceph.md
     - devmem: devmem.md
     - dns: dns.md
