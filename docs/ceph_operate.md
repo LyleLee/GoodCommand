@@ -97,6 +97,8 @@ done
 ```
 如果需要设置SSD作为wal和db在每个节点上执行
 ```
+vgcreate ceph-db /dev/nvme0n1
+vgcreate ceph-wal /dev/nvme1n1
 for node in {00..07}; do
     for disk in {a..l};do
         ceph-deploy --overwrite-conf osd create --data /dev/sd${disk} --block-db ceph-db/ceph-db-$disk --block-wal ceph-wal/ceph-wal-$disk ceph-node${node}
@@ -127,12 +129,13 @@ ceph osd pool create volumes_replicated_metadata replicated replicated_volumes
 ceph osd pool create volumes_repli_metadata 1024 1024 replicated replicated_volumes
 ceph osd pool application enable volumes_repli_metadata rbd
 ```
+
+[reference](https://yanyixing.github.io/2019/03/13/rgw-with-ec/)
+
 ## 创建rbd
 一共创建400个rbd
 ```
-for i in {000..399};do
-	rbd create --size 400G volumes/test-$i
-done
+for i in {000..399};do rbd create size3/test-$i --size 400G; done
 ```
 约2分钟
 如果是EC池
