@@ -5,6 +5,7 @@
 ## linux内核
 [http://makelinux.net/kernel_map/](http://makelinux.net/kernel_map/)
 
+[https://www.kernel.org/doc/html/v4.14/admin-guide/module-signing.html](https://www.kernel.org/doc/html/v4.14/admin-guide/module-signing.html)
 
 ## python document
 [[https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html]]((https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html))

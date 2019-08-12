@@ -148,7 +148,27 @@ make -C ../linux SUBDIRS=$PWD modules
 ```
 ../linux是源码树的路径
 
+## 设置模块参数
+```c
+module_param(name, charp, S_IRUGO); ///< Param desc. charp = char ptr, S_IRUGO can be read/not changed
+```
+第一个参数变量名称。
 
+第二个参数是参数类型，字符串指针。可选类型是byte, int, uint, long, ulong, short, ushort, bool, invbool, charp
+
+第三个参数是权限。我也没有找到S_IRUGO[参数指导](https://www.gnu.org/software/libc/manual/html_node/Permission-Bits.html)
+
+插入模块时指定参数
+```
+sudo insmod hello.ko name=3232323232323
+```
+
+## 查看当前运行的模块的办法
+```
+lsmod | grep hello
+cat /proc/modules
+ls -l /sys/module/ | grep hello
+```
 
 ## 问题 modprobe ko not found
 ```
