@@ -74,8 +74,7 @@ yum install gcc
 以华为镜像站为例：  
 浏览器打开[https://mirrors.huaweicloud.com/epel/](https://mirrors.huaweicloud.com/epel/) 找到epel-release-latest-7
 ```
-wget https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
-rpm -ivh epel-release-latest-7.noarch.rpm
+yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
 ```
 同时引入key，KEY是官方发布软件包的验证极致，这里使用官方的公钥安装到本地，当下载软件包时可以验证包的安全性。
 ```
