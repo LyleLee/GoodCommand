@@ -4,7 +4,7 @@ linux挂在nfts移动硬盘
 
 # 下载安装
 ```
-wget https://www.tuxera.com/community/open-source-ntfs-3g/
+wget https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2017.3.23.tgz
 ./configure
 make
 make install # or 'sudo make install' if you aren't root
