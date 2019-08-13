@@ -85,6 +85,7 @@ nav:
     - sftp: sftp.md
     - ssh: ssh.md
     - sshfs: sshfs.md
+    - storcli: storcli.md
     - sysrq: sysrq.md
     - systemd: systemd.md
     - tar: tar.md
