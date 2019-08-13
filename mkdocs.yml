@@ -35,7 +35,7 @@ nav:
         - bs osd down: bs/ceph_osd_down.md
         - bs ceph ntp: bs/ceph_ntp.md
         - cfd_doc: cfd_doc.md
-        - dev_root_not_exist: dev_root_not_exist.md
+        - dev_root_not_exist: bs/dev_root_not_exist.md
         - tomcat not start: bs/tomcat_not_start.md
     - ceph: ceph.md
     - devmem: devmem.md
@@ -79,7 +79,7 @@ nav:
     - numactl : numactl.md
     - raid级别: raid.md
     - script: script.md
-    - selinux: SELinux.md
+    - selinux: selinux.md
     - shell_program: shell_program.md
     - shellcheck: shellcheck.md
     - sftp: sftp.md

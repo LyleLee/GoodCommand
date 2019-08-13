@@ -8,7 +8,7 @@
 [https://www.kernel.org/doc/html/v4.14/admin-guide/module-signing.html](https://www.kernel.org/doc/html/v4.14/admin-guide/module-signing.html)
 
 ## python document
-[[https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html]]((https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html))
+[[https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html]](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)
 
 ## 内核数据结构
 [https://static.lwn.net/images/pdf/LDD3/ch11.pdf](https://static.lwn.net/images/pdf/LDD3/ch11.pdf)
