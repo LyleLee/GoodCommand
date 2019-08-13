@@ -46,6 +46,7 @@ nav:
     - dstat: dstat.md
     - ethtool: ethtool.md
     - edac-util: edac-util.md
+    - erlang: erlang.md
     - firewall: firewall.md
     - fdisk: fdisk.md
     - gcc: gcc.md
