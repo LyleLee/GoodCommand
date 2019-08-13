@@ -49,6 +49,7 @@ nav:
     - firewall: firewall.md
     - fdisk: fdisk.md
     - gcc: gcc.md
+    - go: go.md
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
     - git two github account: git_two_github_account.md
