@@ -127,6 +127,9 @@ yum repolist all    #查询所有软件源
 yum --enbalerepo=epel install phpmyadmin
 yum clean all       #清除缓存
 yum history         #查看安装历史
+yum list <package_name> --showduplicates    #显示所有版本软件
+yum install <package_name>-<version_info>   #安装指定版本软件包
+yum downgrade <package_name>-<version_info> #强制降级软件包
 
 yum list installed | grep kernel	#查看已安装内核
 
