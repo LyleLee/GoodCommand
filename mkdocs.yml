@@ -73,6 +73,7 @@ nav:
         - kern_levels.h: kern_levels.md
     - kvm: kvm.md
     - linux: linux.md
+    - ls : ls.md
     - lspci: lspci.md
     - nethogs: nethogs.md
     - netstat: netstat.md
