@@ -40,6 +40,7 @@ nav:
         - tomcat not start: bs/tomcat_not_start.md
     - ceph: ceph.md
     - devmem: devmem.md
+    - devtoolset: devtoolset.md
     - dns: dns.md
     - diff: diff.md
     - docker: docker.md
@@ -56,6 +57,7 @@ nav:
     - git command : git_command.md
     - git two github account: git_two_github_account.md
     - grub : grub.md
+    - history: history.md
     - hostnamectl: hostnamectl.md
     - install os: install_os.md
     - interrupts: interrupts.md
