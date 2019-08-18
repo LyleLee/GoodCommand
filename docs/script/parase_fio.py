@@ -9,55 +9,61 @@ import csv
 parent_dir = os.path.abspath(sys.argv[1])
 
 
-def get_json_result(json_file):
+def get_fio_result(json_file):
     cmd = "fio"
+    fio_result = {}
+
     with open(json_file, 'r') as json_fd:
         try:
             one_file_dict = json.load(json_fd)
         except ValueError:
             print(f"error: {json_file}")
-            return ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-        # generate command line
+            return False
+        fio_result['host_name'] = os.path.basename(json_file).split('-')[0]
         for option in one_file_dict['global options']:
             # print(option, ":", one_file_dict['global options'][option])
-            cmd = cmd+" -"+option+"=" + one_file_dict['global options'][option]
-        for job_option in one_file_dict['jobs'][0]['job options']:
-            cmd = cmd+" -"+job_option+"="+one_file_dict['jobs'][0]['job options'][job_option]
-        # get result
-        host_name = os.path.basename(json_file).split('-')[0]
-        rbd_name = one_file_dict['global options']['rbdname']
-        bs = one_file_dict['global options']['bs']
+            fio_result[option] = one_file_dict['global options'][option]
+        fio_result['numjobs'] = len(one_file_dict['jobs'])
         rw = one_file_dict['global options']['rw']
-        ioengine = one_file_dict['global options']['ioengine']
-        iodirect = one_file_dict['global options']['direct']  if 'direct' in one_file_dict['global options'] else 0
-        iodepth = one_file_dict['global options']['iodepth']
-        number_job = len(one_file_dict['jobs'])
-        if rw.find('write') == -1:
-            bw = one_file_dict['jobs'][0]['read']['bw']
-            iops = one_file_dict['jobs'][0]['read']['iops']
-            lat_mean_ms = one_file_dict['jobs'][0]['read']['lat_ns']['mean']/1000000
-            lat_max_ms = one_file_dict['jobs'][0]['read']['lat_ns']['max']/1000000
-        else:
-            bw = one_file_dict['jobs'][0]['write']['bw']
-            iops = one_file_dict['jobs'][0]['write']['iops']
-            lat_mean_ms = one_file_dict['jobs'][0]['write']['lat_ns']['mean']/1000000
-            lat_max_ms = one_file_dict['jobs'][0]['write']['lat_ns']['max']/1000000
-        return [host_name, rbd_name, bs, rw, ioengine, iodirect, iodepth, number_job, iops, bw,
-                lat_mean_ms, lat_max_ms, cmd]
+        if rw == 'randread':
+            rw = 'read'
+        if rw == 'randwrite':
+            rw = 'write'
+
+        fio_result['bw_KiB'] = 0
+        fio_result['iops'] = 0
+        fio_result['lat_ns_mean'] = 0
+        fio_result['lat_ns_max'] = 0
+        for one_job in one_file_dict['jobs']:
+            fio_result['bw_KiB'] += one_job[rw]['bw']
+            fio_result['iops'] += one_job[rw]['iops']
+            fio_result['lat_ns_mean'] += one_job[rw]['lat_ns']['mean']
+            fio_result['lat_ns_max'] = one_job[rw]['lat_ns']['max'] if one_job[rw]['lat_ns']['max'] >= fio_result['lat_ns_max'] else fio_result['lat_ns_max']
+        fio_result['lat_ns_mean'] = fio_result['lat_ns_mean']/fio_result['numjobs']
+    return fio_result
 
 
 def processing(dir_name):
     fio_csv = os.path.join(parent_dir, os.path.basename(parent_dir)+".csv")
     with open(fio_csv, 'w', newline='') as f:
         csv_write = csv.writer(f)
-        csv_write.writerow(["host_name", "rbd_name", "bs", "rw", "ioengine", "iodirect", "iodepth", "number_job",
-                            "iops", "bw_KiB", "lat_mean_ms", "lat_max_ms", "cmd"])
+        head_line = []
+        data_line = []
         for current_dir, sub_dirs, files in os.walk(dir_name):
             for one_file in files:
                 if one_file.endswith(".json"):
-                    data_line = get_json_result(os.path.join(current_dir, one_file))
-                    if data_line[0]:
-                        csv_write.writerow(data_line)
+                    one_file_full_path = os.path.join(current_dir, one_file)
+                    fio_result = get_fio_result(one_file_full_path)
+                    one_head_line = fio_result.keys()
+                    one_data_line = fio_result.values()
+                    if len(head_line) == 0:
+                        head_line = one_head_line
+                        csv_write.writerow(head_line)
+                    if head_line == one_head_line:
+                        csv_write.writerow(one_data_line)
+                    else:
+                        print(f"head line not the same: \n")
+                        print(f"head line before: {data_line} \n head line this file {one_head_line}")
     f.close()
 
 
