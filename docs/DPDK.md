@@ -1,30 +1,39 @@
+dpdk 数据平面开发套件
+=======================
+DPDK使用了轮询(polling)而不是中断来处理数据包。在收到数据包时，经DPDK重载的网卡驱动不会通过中断通知CPU，
+而是直接将数据包存入内存，交付应用层软件通过DPDK提供的接口来直接处理，这样节省了大量的CPU中断时间和内存拷贝时间。
+
 下载地址
+
 http://core.dpdk.org/download/
 
-安装依赖
+编译安装
 ```
-[root@arm-134 ~]# yum install make makecache gcc-c++ patch kernel-devel numactl
-已加载插件：fastestmirror, langpacks
-Loading mirror speeds from cached hostfile
-软件包 1:make-3.82-23.el7.aarch64 已安装并且是最新版本
-没有可用软件包 makecache。
-软件包 gcc-c++-4.8.5-36.el7.aarch64 已安装并且是最新版本
-软件包 patch-2.7.1-10.el7_5.aarch64 已安装并且是最新版本
-软件包 kernel-devel-4.14.0-115.el7a.0.1.aarch64 已安装并且是最新版本
-软件包 numactl-2.0.9-7.el7.aarch64 已安装并且是最新版本
-无须任何处理
+yum install make makecache gcc-c++ patch kernel-devel numactl
+cd dpdk-stable-17.11.6
+usertools/dpdk-setup.sh
+2
 ```
+编译成功会有提示：
 
-设置环境变量
-```
+![images/dpdk_build_sucess.PNG](images/dpdk_build_sucess.PNG)
 
-export RTE_SDK=/home/lixianfa/dpdk/dpdk-stable-17.11.6/
-export RTE_TARGET=arm64-armv8a-linuxapp-gcc
-export KERNELDIR=/lib/modules/4.14.0-115.el7a.0.1.aarch64/build/
+
+巨型页配置
+```
+usertools/dpdk-setup.sh
+[21] Setup hugepage mappings for NUMA systems
+[28] List hugepage info from /proc/meminfo
 ```
 
 绑定dpdk
 ```
+usertools/dpdk-setup.sh
+[17] Insert IGB UIO module
+[23] Bind Ethernet/Crypto device to IGB UIO module
+[22] Display current Ethernet/Crypto device settings
+
+
 Network devices using DPDK-compatible driver
 ============================================
 0002:e9:00.0 '82599ES 10-Gigabit SFI/SFP+ Network Connection 10fb' drv=igb_uio unused=ixgbe
@@ -32,62 +41,8 @@ Network devices using DPDK-compatible driver
 Network devices using kernel driver
 ===================================
 <none>
-
 ```
 
-巨型页配置
-```
-Option: 28
-
-AnonHugePages:         0 kB
-ShmemHugePages:        0 kB
-HugePages_Total:      48
-HugePages_Free:        0
-HugePages_Rsvd:        0
-HugePages_Surp:        0
-Hugepagesize:     524288 kB
-```
-
-
-pfring发包
-```
-/home/PF_RING-6.0.2/userland/examples/pfsend -i dna1 -f /data1/rawdata110   -r4 -n100
-/home/PF_RING-6.0.2/userland/examples/pfsend -i dna0 -f /data1/rawdata002 -r 5
-/home/PF_RING-6.0.2/userland/examples/pfsend -i dna0 -n 0 -r 5
-
-#更多参数
--a              Active send retry
--f <.pcap file> Send packets as read from a pcap file
--g <core_id>    Bind this app to a core
--h              Print this help
--i <device>     Device name. Use device
--l <length>     Packet length to send. Ignored with -f
--n <num>        Num pkts to send (use 0 for infinite)
--r <rate>       Rate to send (example -r 2.5 sends 2.5 Gbit/sec, -r -1 pcap capture rate)
--m <dst MAC>    Reforge destination MAC (format AA:BB:CC:DD:EE:FF)
--b <num>        Number of different IPs (balanced traffic)
--w <watermark>  TX watermark (low value=low latency) [not effective on DNA]
--z              Disable zero-copy, if supported [DNA only]
--x <if index>   Send to the selected interface, if supported
--d              Daemon mode
--P <pid file>   Write pid to the specified file (daemon mode only)
--v              Verbose
-```
-
-```
-watch -d -n 1 IPNetStat 0
-```
-
-测试线速
-
-```
-134
-/home/jiuzhou/bin/jz_dpdk
-
-206
-/home/PF_RING-6.0.2/userland/examples/pfsend -i dna0 -f rawdata100 -r10 -n0
-/home/PF_RING-6.0.2/userland/examples/pfsend -i dna0 -r10 -n0				#需要制定要发送的IP数据包，否则自行构建的数据包可能不是IP数据包，测试结果较差
-```
 
 测试处理
 ```
@@ -107,63 +62,9 @@ IPnet 绑到numctl一个核上， 观察网卡是否在哪一个P上。dpdk在�
 增加处理进程数量
 ```
 
-待处理问题：
-1. top 显示进程运行所在的核
+# 问题记录
 
-
-确认网卡在从片还是主片上：
-```
-[root@arm-134 home]# lspci -tv
--+-[000d:30]---00.0-[31]--
- +-[000c:20]---00.0-[21]--
- +-[000a:10]---00.0-[11]--
- +-[0007:40]---00.0-[41]----00.0  Huawei Technologies Co., Ltd. Hi1710 [iBMC Intelligent Management system chip w/VGA support]
- +-[0006:08]---00.0-[09]--
- +-[0005:00]---00.0-[01]--
- +-[0004:48]---00.0-[49]----00.0  LSI Logic / Symbios Logic MegaRAID SAS-3 3108 [Invader]
- +-[0002:e8]---00.0-[e9]--+-00.0  Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection
- |                        \-00.1  Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection
- \-[0000:00]-
-
-```
-
-
-/home/hengguang/lichao/4xg_sdh_mmap
-/home/hengguang/devmem/devmem2 0x75040000000
-/home/hengguang/devmem/devmem2 0x75040048000
-
-for((i=0x75040000000;i<0x75041000000;i+=8)); do
-	printf "read: 0x%x\n" $i;
-	/home/hengguang/devmem/devmem2 "$i"
-done
-
-
-[    0.604814] pci_bus 000a:10: on NUMA node 2
-[    0.604821] pci 000a:10:00.0: BAR 0: assigned [mem 0x65040000000-0x6504000ffff]
-[    0.604824] pci 000a:10:00.0: PCI bridge to [bus 11]
-[    0.605176] acpi PNP0A08:06: MCFG quirk: ECAM at [mem 0x74002000000-0x74002ffffff] for [bus 20-2f] with hisi_pcie_ops
-[    0.607069] pci_bus 000c:20: root bus resource [mem 0x75040000000-0x750ffffffff window] (bus address [0x40000000-0xffffffff])
-[    0.607072] pci_bus 000c:20: root bus resource [io  0x60000-0x6ffff window] (bus address [0x0000-0xffff])
-[    0.607074] pci_bus 000c:20: root bus resource [bus 20-2f]
-[    0.607084] pci 000c:20:00.0: [19e5:1610] type 01 class 0x060400
-[    0.607101] pci 000c:20:00.0: reg 0x10: [mem 0x00000000-0x0000ffff]
-[    0.607147] pci 000c:20:00.0: supports D1 D2
-[    0.607148] pci 000c:20:00.0: PME# supported from D0 D1 D3hot
-[    0.607250] pci 000c:21:00.0: [10ee:7028] type 00 class 0x020000
-[    0.607275] pci 000c:21:00.0: reg 0x10: [mem 0x75040000000-0x75040ffffff 64bit]
-[    0.607356] pci 000c:21:00.0: PME# supported from D0 D1 D2 D3hot
-[    0.607431] pci_bus 000c:20: on NUMA node 3
-[    0.607439] pci 000c:20:00.0: BAR 14: assigned [mem 0x75040000000-0x75040ffffff]
-[    0.607441] pci 000c:20:00.0: BAR 0: assigned [mem 0x75041000000-0x7504100ffff]
-[    0.607445] pci 000c:21:00.0: BAR 0: assigned [mem 0x75040000000-0x75040ffffff 64bit]
-[    0.607456] pci 000c:20:00.0: PCI bridge to [bus 21]
-[    0.607460] pci 000c:20:00.0:   bridge window [mem 0x75040000000-0x75040ffffff]
-[    0.607819] acpi PNP0A08:07: MCFG quirk: ECAM at [mem 0x78003000000-0x78003ffffff] for [bu
-
-
-# 问题
-
-缺少numa.h, 
+#### 问题1： 缺少numa.h, 
 ```
 /home/lixianfa/dpdk/dpdk-stable-17.11.6/lib/librte_eal/linuxapp/eal/eal_memory.c:56:18: fatal error: numa.h: No such file or directory
 ```
@@ -172,13 +73,52 @@ done
 sudo yum install numactl-devel
 ```
 
+#### 问题2： could not split insn
+```
+/home/me/dpdk-stable-18.11.2/drivers/event/octeontx/timvf_worker.c: In function ‘timvf_timer_arm_burst_sp’:
+/home/me/dpdk-stable-18.11.2/drivers/event/octeontx/timvf_worker.c:88:1: error: could not split insn
+ }
+ ^
+(insn 95 98 99 (parallel [
+            (set (reg:DI 0 x0 [orig:98 D.8599 ] [98])
+                (mem/v:DI (reg/f:DI 21 x21 [orig:88 D.8605 ] [88]) [-1  S8 A64]))
+            (set (mem/v:DI (reg/f:DI 21 x21 [orig:88 D.8605 ] [88]) [-1  S8 A64])
+                (unspec_volatile:DI [
+                        (plus:DI (mem/v:DI (reg/f:DI 21 x21 [orig:88 D.8605 ] [88]) [-1  S8 A64])
+                            (const_int -281474976710656 [0xffff000000000000]))
+                        (const_int 0 [0])
+                    ] UNSPECV_ATOMIC_OP))
+            (clobber (reg:CC 66 cc))
+            (clobber (reg:DI 1 x1))
+            (clobber (reg:SI 2 x2))
+        ]) /home/me/dpdk-stable-18.11.2/drivers/event/octeontx/timvf_worker.h:95 1832 {atomic_fetch_adddi}
+     (expr_list:REG_UNUSED (reg:CC 66 cc)
+        (expr_list:REG_UNUSED (reg:SI 2 x2)
+            (expr_list:REG_UNUSED (reg:DI 1 x1)
+                (nil)))))
+/home/me/dpdk-stable-18.11.2/drivers/event/octeontx/timvf_worker.c:88:1: internal compiler error: in final_scan_insn, at final.c:2897
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <http://bugzilla.redhat.com/bugzilla> for instructions.
+Preprocessed source stored into /tmp/ccDIw6Il.out file, please attach this to your bugreport.
+make[6]: *** [timvf_worker.o] Error 1
+make[5]: *** [octeontx] Error 2
+make[4]: *** [event] Error 2
+make[3]: *** [drivers] Error 2
+make[2]: *** [all] Error 2
+make[1]: *** [pre_install] Error 2
+make: *** [install] Error 2
+------------------------------------------------------------------------------
+ RTE_TARGET exported as arm64-armv8a-linuxapp-gcc
+------------------------------------------------------------------------------
 
+Press enter to continue ...
+```
+还没有解决办法
+[https://www.mail-archive.com/dev@dpdk.org/msg121218.html](https://www.mail-archive.com/dev@dpdk.org/msg121218.html)
 
-
-
-
-
-
+厂家测试数据
+```
 ARM-131# show traffic
 -----------------------------------------------------------
 Interface pps                      Mbps
@@ -286,3 +226,5 @@ Interface pps                      Mbps
 0         0                        0
 1         423236                   1411
 ARM-131# show traffic
+
+```

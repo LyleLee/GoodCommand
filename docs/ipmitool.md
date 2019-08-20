@@ -189,6 +189,11 @@ ipmitool enable       <user id>　　				#使能某用户
 ipmitool priv         <user id> <privilegelevel> [<channel number>]　#修改某用户在某通道上的权限
 ipmitool test         <user id> <16|20>[<password]>　#测试用户
 ```
+#升级固件
+```
+ipmitool hpm upgrade <xxxxx.hpm> -z 25000 forces
+```
+
 # Board_connect
 其他命令请参考：
 ```

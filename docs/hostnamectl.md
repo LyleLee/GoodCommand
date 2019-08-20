@@ -4,6 +4,8 @@ hostnamectl
 ```
 hostnamectl --static set-hostname ceph1
 ```
+注意--static
+
 查看hostname，设置hostname，重新登陆生效。
 ```shell-session
 [root@localhost home]# hostnamectl

@@ -84,6 +84,7 @@ nav:
     - nmap : nmap.md
     - ntfs : ntfs.md
     - numactl : numactl.md
+    - pfring: pfring.md
     - raid级别: raid.md
     - script: script.md
     - selinux: selinux.md
