@@ -1,12 +1,14 @@
-KVM 常用命令
+KVM
 =====================
-有一天需要安装ceph集群来看看分布式系统的性能，想找几台机器来测测，一看发现至少需要3台，突然发现自己很穷，起个虚拟机吧。  
-有一天需要整点危险的事情，服务器只有一台怕搞坏被集体群殴，起个虚拟机吧。  
-有一天需要装个操作系统看看redhat好还是ubuntu好， 起个虚拟机吧。  
-那就起个虚拟机吧。  怎么起？ 和在window一样装个VMware或者virtualbox，然后挂上ISO。以前都是这么搞的。坏处就是慢、久、坑。还是在linux上搞好一点。  
-咨询一下大佬，用KVM好！  
-具体是参考：[地址](https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/) ，图文教程，感觉还是挺良心的。  
-如果还是懒，参考步骤
+有一天需要安装ceph集群来看看分布式系统的性能，想找几台机器来测测，一看发现至少需要3台，机器不够怎么办，起一个虚拟机。
+
+有一天需要整点危险的事情，如果在服务器上搞，容易导致设备数据损坏，导致其他认受影响。
+
+有一天需要装个操作系统看看redhat好还是ubuntu好， 在物理机上装实在太久了，用虚拟机好一些。
+
+怎么搞虚拟机？和在window一样装个VMware或者virtualbox，然后挂上ISO。以前都是这么搞的。坏处就是慢、久、坑。还是在linux上搞好一点。  
+
+**KVM就是我们一直寻找的东西**下面在ARM64设备上进行操作。
 
 ## 看看你的服务器到底支不支持。
 
@@ -26,50 +28,18 @@ sudo apt-get install qemu-kvm libvirt-bin bridge-utils virtinst
 #如果需要图形化管理界面：
 sudo apt-get install virt-manager
 ```
-redhat8.0 arm验证通过
+redhat8.0 CentOS7.6 arm验证通过
 ```shell-session
 yum install qemu-kvm libvirt virt-install
 ```
-## 部署网络
-主要是为了虚拟机起来之后可以直接联网，安装各种软件方便。 也可以先跳过这一步，先部署虚拟机
-参考[参考地址](https://segmentfault.com/a/1190000015418876)
-我选择的是网桥模式，主要是修改好配置文件之后重启网络即可。  
-ubuntu18.04网络配置文件：`/etc/netplan/01-netcfg.yaml`  
-redhat7.5、redhat8.0网络配置文件：`/etc/sysconfig/network-scripts/ifcfg-enp1s0`,参考[linux网络操作](linux.md#_5)  
-路径一般是对的，文件名有可能不一样。
-```shell-session
-me@ubuntu:/etc/netplan$ cat 01-netcfg.yaml
-# This file describes the network interfaces available on your system
-# For more information, see netplan(5).
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enahisic2i0:
-      dhcp4: yes
-    enahisic2i1:
-      dhcp4: yes
-    enahisic2i2:
-      dhcp4: yes
-    enahisic2i3:
-      dhcp4: yes
 
-  bridges:
-        virbr0:
-                interfaces: [enahisic2i0]
-                dhcp4: yes
-                addresses: [192.168.1.201/24]
-                gateway4: 192.168.1.2
-                nameservers:
-                        addresses: [127.0.0.53]
-me@ubuntu:/etc/netplan$
-```
-    本人主机上有4个网口，网卡enahisic2i0上有内网IP，安装好kvm工具后会自动生成网桥virbr0，使用`ip a`可以查到，这里是把enahisic2i0加到了网桥上，这样后面加入的虚拟机也会自己挂到这个网桥上，即可和外部网络接通，这里的网关，和nameservers保持和原来主机上的一致即可。
 ## 创建一台虚拟机
 可以想到：需要指定虚拟机的CPU、内存、硬盘，ISO文件等。  命令写成一行装不下，写成多行，把下面的命令保存为文件，添加执行权限，执行即可。
 
-例如脚本1：install_ubuntu.sh
-改脚本已经在host机为ubuntu18.04时验证通过，无报错
+**脚本1：./install_ubuntu.sh**
+
+在ubuntu18.04 安装一个ubuntu18.04虚机
+
 ```sh
 #!/bin/bash
 #install_ubuntu.sh
@@ -99,7 +69,8 @@ sudo virt-install               \
 ```
 
 
-例如脚本2：install_vm.sh
+**脚本2：./install_vm.sh**
+
 一个可供选择的简单脚本（没有vnc图形界面）。改脚本在redhat8.0上验证通过。。
 ```
 #!/bin/bash
@@ -111,25 +82,176 @@ virt-install \
   --cdrom /root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso
 ```
 
-使用脚本1：
-```shell-session
-sudo chmod +x install_ubuntu.sh
-./install_ubuntu.sh
+**脚本3：./install_vm.sh**
+
+在CentOS7.6上安装CentOS7.6
 ```
-使用脚本2
-```shell-session
-sudo chmod +x install_vm.sh
-./install_vm.sh
+#!/bin/bash
+virt-install \
+  --name CentOS7.6 \
+  --os-variant "centos7.0" \
+  --memory 8192 \
+  --vcpus 4 \
+  --disk size=20 \
+  --graphics vnc,listen=0.0.0.0,keymap=en-us \
+  --location /home/me/isos/CentOS-7-aarch64-Minimal-1810.iso \
+  --extra-args console=ttyS0
+
+```
+提示安装成功后可以使用命令查看设备。
+```
+[me@centos ~]$ virsh list --all
+ Id    Name                           State
+----------------------------------------------------
+ 1     CentOS7.6                      running
+ 2     2-centos7.6                    running
+
 ```
 
-由于redhat和ubuntu环境不同，使用脚本时可能会报两种错误, 解决办法见后文报错处理
+## 部署网络
+ 
+ubuntu18.04网络配置文件：`/etc/netplan/01-netcfg.yaml`
+ 
+CentOS7、redhat7.5、redhat8.0网络配置文件：`/etc/sysconfig/network-scripts/ifcfg-enp1s0`,参考[linux网络操作](linux.md#_5)
+
+这里给出两个例子：
+
+#### ubuntu 8.0
+路径一般是对的，文件名有可能不一样。
+```shell-session
+me@ubuntu:/etc/netplan$ cat 01-netcfg.yaml
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enahisic2i0:
+      dhcp4: yes
+    enahisic2i1:
+      dhcp4: yes
+    enahisic2i2:
+      dhcp4: yes
+    enahisic2i3:
+      dhcp4: yes
+
+  bridges:
+        virbr0:
+                interfaces: [enahisic2i0]
+                dhcp4: yes
+                addresses: [192.168.1.201/24]
+                gateway4: 192.168.1.2
+                nameservers:
+                        addresses: [127.0.0.53]
+me@ubuntu:/etc/netplan$
 ```
-1. Failed to connect socket
-2. Could not open '/root/iso/SLE-15-SP1-Installer-DVD-aarch64-Beta4-DVD1.iso': Permission denied
+本人主机上有4个网口，网卡enahisic2i0上有内网IP，安装好kvm工具后会自动生成网桥virbr0，使用`ip a`可以查到，这里是把enahisic2i0加到了网桥上，这样后面加入的虚拟机也会自己挂到这个网桥上，即可和外部网络接通，这里的网关，和nameservers保持和原来主机上的一致即可。
+
+#### CentOS 7.6
+
+这里将网络部署为bridge模式。
+
+设置host的网络。 我的设备联网的网口是enp189s0f0，一般情况下， 它会dhcp获得一个IP地址。 安装kvm之后， 会生成一个bridge设备：virbr0。 需要设置virbr0自动获取IP地址，并且把enp189s0f0添加到virbr0 slave device当中。
+
+**编辑编辑virbr0**
+
+这里使用nmtui网络配置工具，进入界面后选择编辑virbr0，在Slaves 选择ADD添加enp189s0f0的MAC地址，IPv4选择 Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添加。
 ```
+   ┌───────────────────────────┤ Edit Connection ├───────────────────────────┐
+   │                                                                        ↑│
+   │         Profile name virbr0__________________________________          ▮│
+   │               Device virbr0__________________________________          ▒│
+   │                                                                        ▒│
+   │ ╤ BRIDGE                                                      <Hide>   ▒│
+   │ │ Slaves                                                               ▒│
+   │ │ ┌───────────────────────────────────────────────┐                    ▒│
+   │ │ │ tap0                                        ↑ │ <Add>              ▒│
+   │ │ │ enp189s0f0                                  ▒ │                    ▒│
+   │ │ │                                             ▒ │ <Edit...>          ▒│
+   │ │ │                                             ▒ │                    ▒│
+   │ │ │                                             ▮ │ <Delete>           ▒│
+   │ │ │                                             ↓ │                    ▒│
+   │ │ └───────────────────────────────────────────────┘                    ▒│
+   │ │         Aging time 300_______ seconds                                ▒│
+   │ │ [X] Enable IGMP snooping                                             ▒│
+   │ │ [X] Enable STP (Spanning Tree Protocol)                              ▒│
+   │ │           Priority 32768_____                                        ▒│
+   │ │      Forward delay 2_________ seconds                                ▒│
+   │                                                                        ↓│
+   └─────────────────────────────────────────────────────────────────────────┘
+   
+   ═ IPv4 CONFIGURATION <Automatic>                              <Show> 
+```
+**编辑enp189s0f0**
+
+再次使用nmtui，进入界面后选择编辑enp189s0f0
+```
+   ┌───────────────────────────┤ Edit Connection ├───────────────────────────┐
+   │                                                                         │
+   │         Profile name enp189s0f0______________________________           │
+   │               Device enp189s0f0 (00:18:2D:04:00:5C)__________           │
+   │                                                                         │
+   │ ═ ETHERNET                                                    <Show>    │
+   │                                                                         │
+   │ ═ IPv4 CONFIGURATION <Automatic>                              <Show>    │
+   │ ═ IPv6 CONFIGURATION <Automatic>                              <Show>    │
+   │                                                                         │
+   │ [X] Automatically connect                                               │
+   │ [X] Available to all users                                              │
+   │                                                                         │
+   │                                                           <Cancel> <OK> │
+   │                                                                         │
+   │                                                                         │
+   │                                                                         │
+   │                                                                         │
+   │                                                                         │
+   │                                                                         │
+   │                                                                         │
+   └─────────────────────────────────────────────────────────────────────────┘
+```
+完成设置后，原来在enp189s0f0上的地址会自动设置到virbr0上。
+
+**编辑VM**
+
+```
+virsh edit CentOS7.6
+```
+使用脚本3创建的VM的interface字段是：
+```
+    <interface type='user'>
+      <mac address='52:54:00:bf:37:a0'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+```
+修改user为bridge， 添加<source />：
+```
+    <interface type='bridge'>
+      <mac address='52:54:00:bf:37:a0'/>
+      <source bridge='virbr0'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+```
+
+设置之后，在host的bridge上会自动添加一个tab设备。这个时候重新进入VM就可以看到VM已经获得了和Host一样的由DHCP服务器分配的地址：
+```
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:0a:e3:0c brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.216/24 brd 192.168.2.255 scope global noprefixroute dynamic eth0
+       valid_lft 86363sec preferred_lft 86363sec
+    inet6 fe80::1be7:b0db:e5af:65ab/64 scope link tentative noprefixroute dadfailed
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2a4a:917b:1d4a:a231/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+
+```
+
+
+
 ## 查看当前虚拟机
 ```shell-session
-virsh list -all
+virsh list --all
 ```
 ## 通过串口登录虚拟机
 ```shell-session
@@ -255,10 +377,15 @@ or other application using the libvirt API.
 </network>
 
 ```
+# 参考资料
 
+[【http://blog.programster.org/kvm-cheatsheet】](http://blog.programster.org/kvm-cheatsheet)
 
-## 报错处理
-**无法连接到libvirt-sock**
+[【https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/】](https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/) 
+
+# 问题记录
+
+### 问题1：无法连接到libvirt-sock**
 ```
 [root@localhost ~]# ./install_vm.sh
 ERROR    Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such file or directory
@@ -267,7 +394,7 @@ ERROR    Failed to connect socket to '/var/run/libvirt/libvirt-sock': No such fi
 ```
 systemctl start libvirtd
 ```
-**无法读取iso，权限不对**
+### 问题2：无法读取iso，权限不对**
 ```
 Starting install...
 Allocating 'suse-02.qcow2'                                                                                                                       |  20 GB  00:00:01
@@ -292,6 +419,32 @@ group = "root"
 ```
 ```
 systemctl restart libvirtd
+```
+
+### 问题3：unsupported configuration: ACPI requires UEFI on this architecture
+```
+[me@centos bin]$ ./install_vm.sh
+WARNING  Couldn't configure UEFI: Did not find any UEFI binary path for arch 'aarch64'
+WARNING  Your aarch64 VM may not boot successfully.
+
+Starting install...
+Retrieving file .treeinfo...                                                   |  274 B  00:00:00
+Retrieving file vmlinuz...                                                     | 5.8 MB  00:00:00
+Retrieving file initrd.img...                                                  |  41 MB  00:00:00
+Allocating 'CentOS7.6.qcow2'                                                   |  20 GB  00:00:00
+ERROR    unsupported configuration: ACPI requires UEFI on this architecture
+Removing disk 'CentOS7.6.qcow2'                                                |    0 B  00:00:00
+Domain installation does not appear to have been successful.
+If it was, you can restart your domain by running:
+  virsh --connect qemu:///session start CentOS7.6
+otherwise, please restart your installation.
+```
+解决办法
+```
+yum install AAVMF
+```
+```
+AAVMF.noarch : UEFI firmware for aarch64 virtual machines
 ```
 
 ## 待确认问题
