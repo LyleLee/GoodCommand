@@ -103,6 +103,12 @@ ceph--7fe90132--69c8--4c15--a60f--7f2037b4230c-osd--bl
 
 
 # awk 获取IP地址
+
+获取IP地址
+```
+ip a | grep -E "inet [0-9]*.[0-9]*.[0-9]*.[0-9]*/24"| awk '{print $2}' |awk -F '/' '{print $1}'
+```
+substr 删除第2各字段的头5各字符
 ```
 ip a | awk '/inet /{print substr($2,5)}' |awk -F '[/]' '{print $1}'
 ```
