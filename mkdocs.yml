@@ -51,6 +51,7 @@ nav:
     - erlang: erlang.md
     - firewall: firewall.md
     - fdisk: fdisk.md
+    - ffmpeg: ffmpeg.md
     - gcc: gcc.md
     - go: go.md
     - git bash windows: git_bash_windows.md
