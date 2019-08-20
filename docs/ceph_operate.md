@@ -1,3 +1,28 @@
+
+
+
+#新建集群目标：
+```
+[root@192e168e100e118 ~]# ceph -s
+  cluster:
+    id:     6534efb5-b842-40ea-b807-8e94c398c4a9
+    health: HEALTH_WARN
+            noscrub,nodeep-scrub flag(s) set
+
+  services:
+    mon: 5 daemons, quorum ceph-node00,ceph-node01,ceph-node06,ceph-node07,ceph-node02 (age 2w)
+    mgr: ceph-node00(active, since 2w)
+    osd: 96 osds: 96 up (since 12d), 96 in (since 2w)
+         flags noscrub,nodeep-scrub
+
+  data:
+    pools:   9 pools, 4096 pgs
+    objects: 40.96M objects, 156 TiB
+    usage:   491 TiB used, 230 TiB / 721 TiB avail
+    pgs:     4096 active+clean
+
+```
+
 # HDD 重测
 
 ## 删除pool
@@ -43,6 +68,15 @@ dmsetup remove ceph--7c7c2721--5dfc--45e4--9946--5316e21087df-osd--block--922767
 lvs | grep osd | awk '{print $2}' | xargs lvremove -y       #先删除lvm
 vgs | grep ceph | awk '{print $1}' | xargs vgremove -y      #再删除lvm group
 ```
+
+可以在单台设备上执行上述命令，
+```
+root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'lvs | grep osd | awk \'{print $2}\' | xargs lvremove -y'
+root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'vgs | grep ceph | awk \'{print $1}\' | xargs vgremove -y '
+```
+传递的命令带有单引号，所以这里加了转义符号。
+
+
 
 在每台设备上格式化HDD,SSD（如果有）
 ```
