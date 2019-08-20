@@ -146,6 +146,10 @@ fio -enghelp
 除此之外，要想可以执行成功，就好是ceph节点上的/etc/ceph拷贝到当前的主机上。
 
 
+# 其他IO监控工具
+
+https://www.cnblogs.com/quixotic/p/3258730.html
+
 
 # 问题：
 + ubuntu下缺少libaio库
