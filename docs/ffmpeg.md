@@ -118,7 +118,7 @@ ffmpeg  -y  -re  -itsoffset 0.5  -stream_loop -1   -i '/home/me/video/FM_1080p.m
  -max_interleave_delta 1000M  -mpegts_flags +latm 'udp://237.0.1.1:1531?ttl=255&pkt_size=1316&fifo_size=10000000&overrun_nonfatal=0' 
 ```
 命令
-[run_ffmpeg](script/run_ffmpeg.sh)
+[run_ffmpeg](../script/run_ffmpeg.sh)
 
 运行结果：
 ```
