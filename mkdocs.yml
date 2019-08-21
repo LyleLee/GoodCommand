@@ -77,6 +77,7 @@ nav:
     - linux: linux.md
     - ls : ls.md
     - lspci: lspci.md
+    - lstopo: lstopo.md
     - nethogs: nethogs.md
     - netstat: netstat.md
     - nload: nload.md
@@ -94,6 +95,7 @@ nav:
     - ssh: ssh.md
     - sshfs: sshfs.md
     - storcli: storcli.md
+    - strip: strip.md
     - sysrq: sysrq.md
     - systemd: systemd.md
     - tar: tar.md
