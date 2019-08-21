@@ -11,31 +11,40 @@ wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
 ```
 完整的项目代码，请访问 [链接](https://www.cs.virginia.edu/stream/FTP/Code/)
 ## 编译
-```shell-session
-gcc -O stream.c -o stream
+
+```
+gcc -O2 -mcmodel=large -fopenmp -DSTREAM_ARRAY_SIZE=10000000 -DNTIMES=30 -DOFFSET=4096 stream.c -o stream
+
+-mcmodel=large 大内存服务器使用参数
+-DSTREAM_ARRAY_SIZE=10000000 根据L3 cache的大小选择数组元素，使数组的占用的内存大小超过L3 cache的大小
+-DNTIMES=30 执行测试的次数，选择最好的依次打印
+-DOFFSET=4096 有可能改变数组再内存中的对齐方式
 ```
 ## 执行
 ```
 ./stream
 ```
-## ARM服务器执行结果
+## 1616服务器
 ```shell-session
-me@ubuntu:~/stream$ ./stream
+me@ubuntu:~/code/stream$ ./stream
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------
 This system uses 8 bytes per array element.
 -------------------------------------------------------------
-Array size = 10000000 (elements), Offset = 0 (elements)
-Memory per array = 76.3 MiB (= 0.1 GiB).
-Total memory required = 228.9 MiB (= 0.2 GiB).
-Each kernel will be executed 10 times.
+Array size = 100000000 (elements), Offset = 4096 (elements)
+Memory per array = 762.9 MiB (= 0.7 GiB).
+Total memory required = 2288.8 MiB (= 2.2 GiB).
+Each kernel will be executed 30 times.
  The *best* time for each kernel (excluding the first iteration)
  will be used to compute the reported bandwidth.
 -------------------------------------------------------------
+Number of Threads requested = 64
+Number of Threads counted = 64
+-------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
-Each test below will take on the order of 17729 microseconds.
-   (= 17729 clock ticks)
+Each test below will take on the order of 37823 microseconds.
+   (= 37823 clock ticks)
 Increase the size of the arrays if this shows that
 you are not getting at least 20 clock ticks per test.
 -------------------------------------------------------------
@@ -44,24 +53,51 @@ For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
 Function    Best Rate MB/s  Avg time     Min time     Max time
-Copy:           10266.2     0.015629     0.015585     0.015700
-Scale:          10588.2     0.015190     0.015111     0.015333
-Add:            11421.5     0.021111     0.021013     0.021220
-Triad:          11416.0     0.021077     0.021023     0.021138
+Copy:           58415.5     0.033761     0.027390     0.073813
+Scale:          58925.3     0.031476     0.027153     0.074888
+Add:            56900.2     0.047931     0.042179     0.076715
+Triad:          57035.6     0.049256     0.042079     0.089866
 -------------------------------------------------------------
 Solution Validates: avg error less than 1.000000e-13 on all three arrays
 -------------------------------------------------------------
-me@ubuntu:~/stream$
 ```
-
-## ARM服务器执行结果分析
-
-根据[设备内存信息](meminfo.md)  
-内存频率是Speed: 2400 MT/s  
-数据位宽是64bit  
-每个内存条的理论带宽是：`2400M * 64bit = 153600 Mbit/s = 19200 MB/s = 18.75 GB/s`
-stream测出的系统可用带宽是：11416.0，与理论带宽存在较大差距。仍需要分析差距原因。
-
+## 1620服务器
+```shell-session
+[me@centos stream]$ ./stream
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 10000000 (elements), Offset = 4096 (elements)
+Memory per array = 76.3 MiB (= 0.1 GiB).
+Total memory required = 228.9 MiB (= 0.2 GiB).
+Each kernel will be executed 30 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Number of Threads requested = 128
+Number of Threads counted = 128
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 3460 microseconds.
+   (= 3460 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          103292.1     0.002324     0.001549     0.004953
+Scale:          89145.7     0.002493     0.001795     0.004599
+Add:           101608.3     0.003173     0.002362     0.004439
+Triad:         105318.4     0.003154     0.002279     0.005893
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+```
 ## ARM树莓派执行结果
 树莓派总内存大小为1GB，内存频率没有标明
 ```shell-session
@@ -168,7 +204,73 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 me@Board:~/stream$ lscpu
 ```
 
-## 静态数组内存大小限制
+## 结果分析
+
+1616内存硬件信息：
+```
+Array Handle: 0x0007
+Error Information Handle: Not Provided
+Total Width: 72 bits
+Data Width: 64 bits
+Size: 32 GB
+Form Factor: DIMM
+Set: None
+Locator: DIMM120 J17
+Bank Locator: SOCKET 1 CHANNEL 2 DIMM 0
+Type: DDR4
+Type Detail: Synchronous Registered (Buffered)
+Speed: 2400 MT/s
+Manufacturer: Samsung
+Serial Number: 0x35125924
+Asset Tag: 1709
+Part Number: M393A4K40BB1-CRC
+Rank: 2
+Configured Clock Speed: 2400 MT/s
+Minimum Voltage: 1.2 V
+Maximum Voltage: 1.2 V
+Configured Voltage: 1.2 V
+
+数量：4
+```
+1620内存硬件信息：
+```
+Array Handle: 0x0006
+Error Information Handle: Not Provided
+Total Width: 72 bits
+Data Width: 64 bits
+Size: 32 GB
+Form Factor: DIMM
+Set: None
+Locator: DIMM170 J31
+Bank Locator: SOCKET 1 CHANNEL 7 DIMM 0
+Type: DDR4
+Type Detail: Synchronous Registered (Buffered)
+Speed: 2666 MT/s
+Manufacturer: Samsung
+Serial Number: 0x40C3BA1D
+Asset Tag: 1838
+Part Number: M393A4K40BB2-CTD
+Rank: 2
+Configured Clock Speed: 2666 MT/s
+Minimum Voltage: 1.2 V
+Maximum Voltage: 2.0 V
+Configured Voltage: 1.2 V
+
+数量：16
+```
+
+计算公式：
+```
+speed * data size /8 * DIMM number / 1024 /1024 = bandwidth
+```
+
+|服务器    |理论带宽                          |stream测试值|
+|:---------|---------------------------------:|:-----------|
+|1616      |2400\*64/8\*4/1024/1024=75GiB/s   |55GiB/s     |
+|1620      |2666\*64/8\*16/1024/1024=333GiB/s |102GiB/s    |
+
+
+## 问题记录：静态数组内存大小限制
 当设置的数组大小比较大时，编译器会给出报警。
 ```
 [root@localhost stream]# gcc -DSTREAM_ARRAY_SIZE=100000000  stream.c -o option_no_100M_stream
