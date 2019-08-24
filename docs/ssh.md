@@ -81,5 +81,115 @@ Session stopped
     - Press S to save terminal output to file
 
 Disconnected: No supported authentication methods available (server sent: publickey,gssapi-keyex,gssapi-with-mic)
-
 ```
+
+## 知识介绍
+
+非对称加密解密，公钥用于加密，私钥用于解密。
+
+你可以将公钥发送给别人，加密后的数据只能通过你手中的私钥解密，第三者拦截到也没有意义。
+
+### 一、https 的传输安全的原理
+
+![](images/ssh_3.png)
+
+1、客户端请求服务端
+
+2、服务端将用于数据加密的公钥 cert_pub 返回给客户端
+
+3、客户端对公钥进行验证（有没过期啊，办法机构合不合法啊之类的）
+
+4、客户端生成用于加密本次会话数据的密钥 sess_key，并通过服务端返回的 cert_pub 进行加密发送给服务端（安全传输，只有 cert_pri 的拥有者才能解密出此数据）
+
+5、服务端通过私钥 cert_pri 解密拿到 sess_key，至此，服务端和客户端都拿到了加密会话传输数据的 sess_key
+
+6、剩下的事件就是用 sess_key 加密发送数据，接受数据后用 sess_key 解密的工作了
+
+### 二、ssh 密码登录
+1、客户端发送登录请求，ssh user@hostname
+
+2、服务端接受请求，将服务端的公钥 ser_rsa.pub 发送给客户端
+
+3、客户端输入密码，密码使用 ser_rsa.pub 加密后发送给服务端（敏感信息安全传输了）
+
+4、服务端接受加密后的密码，使用服务端私钥 ser_rsa 解密，匹配认证密码是否合法
+
+5、客户端生成会话数据加密 sess_key，使用 ser_rsa.pub 加密后传输给服务端（敏感信息安全传输了）
+
+6、服务端获取到后使用 ser_rsa 解密，客户端和服务端通过 sess_key 进行会话数据安全传输
+
+### 三、ssh 公钥认证登录
+
+所谓的密钥认证，实际上是使用一对加密字符串，一个称为公钥(public key)， 任何人都可以看到其内容，
+
+用于加密；另一个称为密钥(private key)，只有拥有者才能看到，用于解密。 通过公钥加密过的密文使用密
+
+钥可以轻松解密，但根据公钥来猜测密钥却十分困难。
+
+ssh 的密钥认证就是使用了这一特性。服务器和客户端都各自拥有自己的公钥和密钥。 为了说明方便，以下
+
+将使用这些符号。
+
++ cli_pub  客户端公钥
+
++ cli_pri  客户端密钥
+
++ ser_pub  服务器公钥
+
++ ser_pri  服务器密钥
+
+在认证之前，客户端需要通过某种方法将公钥 cli_pub 注册到服务器上。
+
+认证过程分为两个步骤。
+
+1. 会话密钥(session key)生成
+
+    1. 客户端 请求连接服务器，服务器将 ser_pub 发送给客户端。
+
+    2. 服务器生成会话ID(session id)，设为 sess_id，发送给客户端。
+
+    3. 客户端生成会话密钥(session key)，设为 sess_key，并计算 sess_xor = sess_id xor sess_key。
+
+    4. 客户端将 sess_xor 用 ser_pub 进行加密，结果发送给服务器。（敏感信息加密传输）
+
+    5. 服务器用 ser_pri 进行解密，获得 sess_xor。
+
+    6. 服务器进行 sess_xor xor sess_id 的运算，获得 sess_key。
+
+    7. 至此服务器和客户端都知道了会话密钥 sess_key，以后的传输都将被 sess_key 加密。
+
+2. 认证
+
+    1. 服务器 生成随机数 random_str，并用 cli_pub 加密后生成结果 ency(random_str)，发送给客户端
+
+    2. 客户端使用 cli_pri 解密 ency(random_str) 得到 random_str
+
+    3. 客户端计算 sess_key+random_str 的 md5 值 cli_md5(sess_key+random_str)，sess_key 为上一步得到的会话密钥
+
+    4. 服务器计算 sess_key+random_str 的 md5 值 ser_md5(sess_key+random_str)
+
+    5. 客户端将 cli_md5(sess_key+random_str) 发送给服务器
+
+    6. 服务器比较 ser_md5(sess_key+random_str) 和 cli_md5(sess_key+random_str)，两者相同则认证
+
+3. 传输
+
+    1. 传输的话就使用会话密钥 sess_key 进行加密和解密传输
+
+
+
+## 参考资料
+
+关于认证过程的说法， 后者是对的。
+
+[【ruanyifeng】](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
+![](images/ssh_1.png)
+
+[【Justin Ellingwood】](https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process)
+
+![](images/ssh_2.png)
+
+[【中文讲得比较好的参考】](https://my.oschina.net/sallency/blog/1547785)
+
+[https://my.oschina.net/sallency/blog/1547785)
+
