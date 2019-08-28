@@ -7,6 +7,7 @@ nav:
     - Home: index.md
     - alias: alias.md
     - awk: awk.md
+    - autotool: autotool.md
     - board_connect: board_connect.md
     - benchmark tool:
         - fio: fio.md
