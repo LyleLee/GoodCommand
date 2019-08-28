@@ -43,6 +43,23 @@ Network devices using kernel driver
 <none>
 ```
 
+执行helloworld测试。【文档地址】(https://doc.dpdk.org/guides/linux_gsg/build_sample_apps.html)
+```
+cd examples/helloworld/
+export RTE_SDK=$HOME/DPDK
+export RTE_TARGET=x86_64-native-linux-gcc
+
+make
+    CC main.o
+    LD helloworld
+    INSTALL-APP helloworld
+    INSTALL-MAP helloworld.map
+
+ls build/app
+    helloworld helloworld.map
+    
+./helloworld -l 0-3 -n 4
+```
 
 测试处理
 ```
@@ -116,6 +133,7 @@ Press enter to continue ...
 ```
 还没有解决办法
 [https://www.mail-archive.com/dev@dpdk.org/msg121218.html](https://www.mail-archive.com/dev@dpdk.org/msg121218.html)
+
 
 厂家测试数据
 ```
@@ -226,5 +244,8 @@ Interface pps                      Mbps
 0         0                        0
 1         423236                   1411
 ARM-131# show traffic
-
 ```
+dpdk文档地址：
+
+[dpdk文档地址](https://doc.dpdk.org/guides/linux_gsg/quick_start.html)
+
