@@ -11,11 +11,11 @@ PermitRootLogin yes
 
 ## 远程执行任务
 ```
-ssh nick@xxx.xxx.xxx.xxx "df -h" 						#执行普通命令
-ssh nick@xxx.xxx.xxx.xxx -t "top"						#执行交互命令
-ssh nick@xxx.xxx.xxx.xxx < test.sh						#在远程主机上执行本地脚本
-ssh nick@xxx.xxx.xxx.xxx 'bash -s' < test.sh helloworld	#在远程主机上执行待参数的本地脚本
-ssh nick@xxx.xxx.xxx.xxx "/home/nick/test.sh"			#在远程主机上执行远程主机上的脚本
+ssh nick@xxx.xxx.xxx.xxx "df -h" 						    #执行普通命令
+ssh nick@xxx.xxx.xxx.xxx -t "top"					        #执行交互命令
+ssh nick@xxx.xxx.xxx.xxx < test.sh					        #在远程主机上执行本地脚本
+ssh nick@xxx.xxx.xxx.xxx 'bash -s' < test.sh helloworld    #在远程主机上执行待参数的本地脚本
+ssh nick@xxx.xxx.xxx.xxx "/home/nick/test.sh"			     #在远程主机上执行远程主机上的脚本
 ```
 
 ## 批量执行远程任务
