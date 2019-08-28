@@ -9,6 +9,7 @@ vim
 :wq
 :s/vivian/sky/ 	#替换当前行第一个 vivian 为 sky
 :s/vivian/sky/g #替换当前行所有 vivian 为 sky
+:noh
 
 shift+*			#搜索当前光标所在单词
 ```
