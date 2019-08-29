@@ -150,3 +150,26 @@ origin  git@two.github.com:LyleLee/GoodCommand.git (push)
 ssh-keygen -f "/home/me/.ssh/known_hosts" -R "192.168.1.215"
 ```
 这个命令是什么意思
+
+#### 问题： Bad owner or permissions on /home/me/.ssh/config
+
+在config当中设置了连接github的私钥之后出现权限不对
+```
+[me@centos ~]$ ssh -T git@github.com
+Bad owner or permissions on /home/me/.ssh/config
+```
+这个时候不要听信别人的把文件乱chown和chmod。查看现在的文件是，是664
+```
+[me@centos ~]$ ls -la /home/me/.ssh/config
+-rw-rw-r-- 1 me me 88 Aug 29 11:38 /home/me/.ssh/config
+```
+其实只需要改成600就可以了， 也就是除了owner之外，组用户和其他用户都不可读，不可写
+```
+[me@centos .ssh]$ chmod 600 /home/me/.ssh/config
+[me@centos .ssh]$ ssh -T git@github.com
+Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.
+Hi  You've successfully authenticated, but GitHub does not provide shell access.
+[me@centos .ssh]$ ls -la
+-rw-------   1 me me   88 Aug 29 11:38 config
+```
+这个问题第一次遇到，权限多了还不行
