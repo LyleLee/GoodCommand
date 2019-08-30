@@ -74,6 +74,7 @@ nav:
         - kernel document: linux_kernel.md
         - kernel_module: kernel_module.md
         - kern_levels.h: kern_levels.md
+        - static and dynamic lib: lib.md
     - kvm: kvm.md
     - linux: linux.md
     - ls : ls.md
