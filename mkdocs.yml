@@ -76,6 +76,7 @@ nav:
         - kern_levels.h: kern_levels.md
         - static and dynamic lib: lib.md
         - offsetof: offsetof.md
+        - container_of: container_of.md
     - kvm: kvm.md
     - linux: linux.md
     - ls : ls.md

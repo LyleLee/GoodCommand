@@ -6,12 +6,12 @@ offsetof
 
 ## kernel中的实现
 
-```
+```c
 #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
 ```
 解析如下：
 
-```
+```c
             (TYPE *)0           #将0转化为结构体类型的指针。
            ((Type *)0)->MEMBER  #用这个结构体指针引用成员
           &((Type *)0)->MEMBER  #获取成员变量的地址。由于起始地址是0，所以成员变量的地址也就是成员的偏移量
@@ -22,11 +22,11 @@ offsetof
 ## C库中使用
 
 引用头文件
-```
+```c
 #include <stddef.h>
 ```
 参考代码：
-```
+```c
 #include <stddef.h>
 #include <stdio.h>
 
