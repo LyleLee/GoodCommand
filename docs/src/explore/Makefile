@@ -51,7 +51,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/me/gsrc/explore
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/me/gsrc/explore
+CMAKE_BINARY_DIR = /home/me/GoodCommand/docs/src/explore
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/me/gsrc/explore/CMakeFiles /home/me/gsrc/explore/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/me/GoodCommand/docs/src/explore/CMakeFiles /home/me/GoodCommand/docs/src/explore/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/me/gsrc/explore/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/me/GoodCommand/docs/src/explore/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,6 +111,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named container_of_2
+
+# Build rule for target.
+container_of_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 container_of_2
+.PHONY : container_of_2
+
+# fast build rule for target.
+container_of_2/fast:
+	$(MAKE) -f CMakeFiles/container_of_2.dir/build.make CMakeFiles/container_of_2.dir/build
+.PHONY : container_of_2/fast
+
+#=============================================================================
+# Target rules for targets named container_of
+
+# Build rule for target.
+container_of: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 container_of
+.PHONY : container_of
+
+# fast build rule for target.
+container_of/fast:
+	$(MAKE) -f CMakeFiles/container_of.dir/build.make CMakeFiles/container_of.dir/build
+.PHONY : container_of/fast
+
+#=============================================================================
+# Target rules for targets named clib_offsetof
+
+# Build rule for target.
+clib_offsetof: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 clib_offsetof
+.PHONY : clib_offsetof
+
+# fast build rule for target.
+clib_offsetof/fast:
+	$(MAKE) -f CMakeFiles/clib_offsetof.dir/build.make CMakeFiles/clib_offsetof.dir/build
+.PHONY : clib_offsetof/fast
+
+#=============================================================================
 # Target rules for targets named offsetof
 
 # Build rule for target.
@@ -122,6 +161,87 @@ offsetof: cmake_check_build_system
 offsetof/fast:
 	$(MAKE) -f CMakeFiles/offsetof.dir/build.make CMakeFiles/offsetof.dir/build
 .PHONY : offsetof/fast
+
+clib_offsetof.o: clib_offsetof.c.o
+
+.PHONY : clib_offsetof.o
+
+# target to build an object file
+clib_offsetof.c.o:
+	$(MAKE) -f CMakeFiles/clib_offsetof.dir/build.make CMakeFiles/clib_offsetof.dir/clib_offsetof.c.o
+.PHONY : clib_offsetof.c.o
+
+clib_offsetof.i: clib_offsetof.c.i
+
+.PHONY : clib_offsetof.i
+
+# target to preprocess a source file
+clib_offsetof.c.i:
+	$(MAKE) -f CMakeFiles/clib_offsetof.dir/build.make CMakeFiles/clib_offsetof.dir/clib_offsetof.c.i
+.PHONY : clib_offsetof.c.i
+
+clib_offsetof.s: clib_offsetof.c.s
+
+.PHONY : clib_offsetof.s
+
+# target to generate assembly for a file
+clib_offsetof.c.s:
+	$(MAKE) -f CMakeFiles/clib_offsetof.dir/build.make CMakeFiles/clib_offsetof.dir/clib_offsetof.c.s
+.PHONY : clib_offsetof.c.s
+
+container_of.o: container_of.c.o
+
+.PHONY : container_of.o
+
+# target to build an object file
+container_of.c.o:
+	$(MAKE) -f CMakeFiles/container_of.dir/build.make CMakeFiles/container_of.dir/container_of.c.o
+.PHONY : container_of.c.o
+
+container_of.i: container_of.c.i
+
+.PHONY : container_of.i
+
+# target to preprocess a source file
+container_of.c.i:
+	$(MAKE) -f CMakeFiles/container_of.dir/build.make CMakeFiles/container_of.dir/container_of.c.i
+.PHONY : container_of.c.i
+
+container_of.s: container_of.c.s
+
+.PHONY : container_of.s
+
+# target to generate assembly for a file
+container_of.c.s:
+	$(MAKE) -f CMakeFiles/container_of.dir/build.make CMakeFiles/container_of.dir/container_of.c.s
+.PHONY : container_of.c.s
+
+container_of_2.o: container_of_2.c.o
+
+.PHONY : container_of_2.o
+
+# target to build an object file
+container_of_2.c.o:
+	$(MAKE) -f CMakeFiles/container_of_2.dir/build.make CMakeFiles/container_of_2.dir/container_of_2.c.o
+.PHONY : container_of_2.c.o
+
+container_of_2.i: container_of_2.c.i
+
+.PHONY : container_of_2.i
+
+# target to preprocess a source file
+container_of_2.c.i:
+	$(MAKE) -f CMakeFiles/container_of_2.dir/build.make CMakeFiles/container_of_2.dir/container_of_2.c.i
+.PHONY : container_of_2.c.i
+
+container_of_2.s: container_of_2.c.s
+
+.PHONY : container_of_2.s
+
+# target to generate assembly for a file
+container_of_2.c.s:
+	$(MAKE) -f CMakeFiles/container_of_2.dir/build.make CMakeFiles/container_of_2.dir/container_of_2.c.s
+.PHONY : container_of_2.c.s
 
 offsetof.o: offsetof.c.o
 
@@ -158,7 +278,19 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... container_of_2"
+	@echo "... container_of"
+	@echo "... clib_offsetof"
 	@echo "... offsetof"
+	@echo "... clib_offsetof.o"
+	@echo "... clib_offsetof.i"
+	@echo "... clib_offsetof.s"
+	@echo "... container_of.o"
+	@echo "... container_of.i"
+	@echo "... container_of.s"
+	@echo "... container_of_2.o"
+	@echo "... container_of_2.i"
+	@echo "... container_of_2.s"
 	@echo "... offsetof.o"
 	@echo "... offsetof.i"
 	@echo "... offsetof.s"

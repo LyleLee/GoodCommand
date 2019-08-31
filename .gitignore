@@ -5,10 +5,11 @@ task_list.txt
 *.tar
 *.tar.gz
 *.out
+*.so
 
 confidential*
 
 CMakeCache.txt
 *.cmake
-CMakefiles/
+CMakeFiles/
 
