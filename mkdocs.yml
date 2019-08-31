@@ -75,6 +75,7 @@ nav:
         - kernel_module: kernel_module.md
         - kern_levels.h: kern_levels.md
         - static and dynamic lib: lib.md
+        - offsetof: offsetof.md
     - kvm: kvm.md
     - linux: linux.md
     - ls : ls.md
