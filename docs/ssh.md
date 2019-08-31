@@ -9,6 +9,30 @@ ubuntu 默认情况下是不允许root用户通过ssh登录的。
 PermitRootLogin yes
 ```
 
+
+## 内网拷贝
+```
+                                   +-----+
+                   gate_user       |     |
++---------------+  gate.machine.net:8080 |       +-------------------+
+|               |                  |     |       | target_user       |
+|  host 9999    +--------------------------------> target server     |
+|               |                  |     |       | 192.168.2.182:22  |
++---------------+                  |     |       +-------------------+
+                                   |     |
+                                   |     |
+                                   +-----+
+                                Gate Server
+```
+```
+scp -o "ProxyCommand ssh gate_user@gate.machine.net -p 8080 -W %h:%p" target_user@target.machine:/home/file.png .
+```
+```
+ssh -f -N -L 19999:192.168.2.182:22 gate_user@gate.machine.net -p 8080
+ssh target-user@localhost -p 19999          #login into target server
+scp target-user@localhost:/remote/file -P 19999 .
+```
+
 ## 远程执行任务
 ```
 ssh nick@xxx.xxx.xxx.xxx "df -h" 						    #执行普通命令
