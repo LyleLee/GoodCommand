@@ -4,4 +4,11 @@ docs/person/
 task_list.txt
 *.tar
 *.tar.gz
+*.out
+
 confidential*
+
+CMakeCache.txt
+*.cmake
+CMakefiles/
+
