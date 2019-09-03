@@ -224,6 +224,7 @@ mul_float16:
 	fcvt	s1, h0
 	ldr	h0, [sp, 28]
 	fcvt	s0, h0
+	fmul  v0.8h,  v0.8h, v1.8h
 	fmul	s0, s1, s0
 	fcvt	h0, s0
 	str	h0, [sp, 46]
