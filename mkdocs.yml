@@ -40,6 +40,7 @@ nav:
         - dev_root_not_exist: bs/dev_root_not_exist.md
         - tomcat not start: bs/tomcat_not_start.md
         - no_child_processes: bs/no_child_processes.md
+    - chip: chip.md
     - ceph: ceph.md
     - devmem: devmem.md
     - devtoolset: devtoolset.md
