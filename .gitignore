@@ -6,6 +6,9 @@ task_list.txt
 *.tar.gz
 *.out
 *.so
+*.o
+*.swp
+*.a
 
 confidential*
 
