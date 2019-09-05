@@ -1,4 +1,5 @@
 git 常用命令
+===============
 
 ## 文件操作
 
@@ -8,13 +9,23 @@ git rm readme.md        #从暂存区删除文件，以后不再追踪，从工�
 git rm --cached README  #从暂存区删除文件，但是仍然保留在工作区
 git rm log/\*.log       #删除log目录下的所有.log文件，由于git有自己的展开，所以不需要shell进行展开
 git archive --format=zip --output ../kernel-alt-4.14.0-115.6.1.el7a.zip kernel-alt-4.14.0-115.6.1.el7a  #打包代码
+git clean -f # 删除 untracked files
+git clean -fd # 连 untracked 的目录也一起删掉
+git clean -xfd # 连 gitignore 的untrack 文件/目录也一起删掉 （慎用，一般这个是用来删掉编译出来的 .o之类的文件用的）
+ 
+# 在用上述 git clean 前，墙裂建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删
+git clean -nxfd
+git clean -nf
+git clean -nfd
+
 ```
 
 ## 提交和历史
 显示提交信息
 ```
 git log                             #当前分支的提交历史
-git log --pretty=oneline --graph    #图形显示提交历史
+git log --oneline                   #单行显示log
+git log --oneline --graph           #图形显示提交历史
 git log --pretty=oneline pb/master  #远程仓库pb下的master提交历史
 git log nfs-revert-and-hang         #查看某分支nfs-revert-and-hang的log
 git log --name-only                 #仅仅显示修改的文件
