@@ -6,30 +6,53 @@ struct ListNode {
 	struct ListNode *next;
 };
 
-struct ListNode* reverseKGroup(struct ListNode* head, int k){
-	struct ListNode *new_head = (struct ListNode*)malloc(sizeof(struct ListNode));
-	new_head->val = 0;
-	new_head->next = NULL;
-	struct ListNode *p1 = new_head;
-	struct ListNode *p2 = NULL;
-	p1->next = p2;
-	struct ListNode *p3 = head;	
-	struct ListNode *p4 = NULL;
-	while(p3->val != k)
+void revert(struct ListNode *a[], int start , int end)
+{
+	//printf("start:%d, end:%d\n",start,end);
+	struct ListNode *p=NULL;
+	while(start < end)
 	{
-		p4 = p3->next;
-		p3->next = p2;
-		p1->next = p3;
-		
-		p2 = p3;
-		p3 = p4;
+		//printf("reverting:%p,value:%d; %p,value:%d\n",a[start],a[start]->val,a[end],a[end]->val);
+		p=a[start];
+		a[start]=a[end];
+		a[end]=p;
+		start++;
+		end--;
 	}
-	struct ListNode *p5=p1;
-	while(p5->next)p5=p5->next;
-	p5->next= p3->next;
-	p3->next = p1->next;
-	return p3;
 }
+
+
+struct ListNode* reverseKGroup(struct ListNode* head, int k){
+	int s=0;
+	int i=0;
+	int j=0;
+
+	struct ListNode *p=head;
+	struct ListNode **a= (struct ListNode **)malloc(sizeof(struct ListNode *)*k);
+	while(p)
+	{
+		a[s++] = p;
+		p=p->next;
+	}
+	
+	for(i=0;i<s;i++)
+	{	
+		//printf("address: %p; value:%d\n",a[i], a[i]->val);
+	}
+	for(j=0; j<s/k; j++)
+	{
+		revert(a, j*k, (j+1)*k-1);
+	}
+		
+	for(i=0; i<s-1; i++)
+	{
+		a[i]->next = a[i+1];
+		//printf("address: %p; value:%d\n",a[i], a[i]->val);
+	}
+	a[i]->next=NULL;
+	return a[0];
+}
+
 
 void walk_a_list(struct ListNode * head)
 
@@ -70,17 +93,16 @@ int main()
 {
 	struct ListNode *new_head = create_list(5);
 	walk_a_list(new_head);
-	struct ListNode *re = reverseKGroup(new_head->next,5);
+	struct ListNode *re = reverseKGroup(new_head->next,2);
 	walk_a_list(re);
-	
+
 	new_head = create_list(5);
+	walk_a_list(new_head);
+	re = reverseKGroup(new_head->next,3);
+	walk_a_list(re);
+
+	new_head = create_list(6);
 	walk_a_list(new_head);
 	re = reverseKGroup(new_head->next,2);
 	walk_a_list(re);
-	
-	new_head = create_list(5);
-        walk_a_list(new_head);
-        re = reverseKGroup(new_head->next,1);
-        walk_a_list(re);
-
 }
