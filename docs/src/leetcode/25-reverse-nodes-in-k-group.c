@@ -6,6 +6,7 @@ struct ListNode {
 	struct ListNode *next;
 };
 
+void walk_a_list(struct ListNode * head);
 void revert(struct ListNode *a[], int start , int end)
 {
 	//printf("start:%d, end:%d\n",start,end);
@@ -28,29 +29,35 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
 	int j=0;
 
 	struct ListNode *p=head;
-	struct ListNode **a= (struct ListNode **)malloc(sizeof(struct ListNode *)*k);
+	struct ListNode *a[k];
 	while(p)
 	{
 		a[s++] = p;
 		p=p->next;
 	}
-	
+
 	for(i=0;i<s;i++)
 	{	
-		//printf("address: %p; value:%d\n",a[i], a[i]->val);
+		printf("address: %p; value:%d\n",a[i], a[i]->val);
 	}
+	printf("read fish\n");
 	for(j=0; j<s/k; j++)
 	{
 		revert(a, j*k, (j+1)*k-1);
 	}
-		
+
 	for(i=0; i<s-1; i++)
 	{
 		a[i]->next = a[i+1];
 		//printf("address: %p; value:%d\n",a[i], a[i]->val);
 	}
 	a[i]->next=NULL;
-	return a[0];
+	
+	//walk_a_list(a[0]);
+
+	//printf("a[%d]:%d\n",i,a[i]->val);
+	printf("a[0]:%p %d\n",a[0],a[0]->val);
+	return (a[0]);
 }
 
 
@@ -91,18 +98,22 @@ struct ListNode * create_list(int k)
 
 int main()
 {
+	printf("test case1:\n");
 	struct ListNode *new_head = create_list(5);
 	walk_a_list(new_head);
 	struct ListNode *re = reverseKGroup(new_head->next,2);
 	walk_a_list(re);
 
+	printf("test case2:\n");
 	new_head = create_list(5);
 	walk_a_list(new_head);
 	re = reverseKGroup(new_head->next,3);
 	walk_a_list(re);
 
+	printf("test case3:\n");
 	new_head = create_list(6);
 	walk_a_list(new_head);
 	re = reverseKGroup(new_head->next,2);
+	printf("test case3:%p\n",re);
 	walk_a_list(re);
 }
