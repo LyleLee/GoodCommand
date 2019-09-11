@@ -6,60 +6,83 @@ struct ListNode {
 	struct ListNode *next;
 };
 
-void walk_a_list(struct ListNode * head);
-void revert(struct ListNode *a[], int start , int end)
+
+void insert(struct ListNode *pre, struct ListNode *middle)
 {
-	//printf("start:%d, end:%d\n",start,end);
-	struct ListNode *p=NULL;
-	while(start < end)
+	middle->next = pre->next;
+	pre->next = middle;
+}
+
+void removenode(struct ListNode *pre, struct ListNode* middle)
+{
+	if(pre->next == middle)
 	{
-		//printf("reverting:%p,value:%d; %p,value:%d\n",a[start],a[start]->val,a[end],a[end]->val);
-		p=a[start];
-		a[start]=a[end];
-		a[end]=p;
-		start++;
-		end--;
+		pre->next = middle->next;
+		middle->next = NULL;
 	}
 }
 
+int get_size(struct ListNode* head)
+{
+	int s=0;
+	struct ListNode* p = head;
+	while(p)
+	{
+		s++;
+		p=p->next;
+	}
+	return s;
+}
 
+void do_revert(struct ListNode* head, struct ListNode *tail)
+{
+	struct ListNode *pre	= head->next;
+	struct ListNode *p  	= pre->next;
+	struct ListNode *after	= NULL;
+	while(p != tail)
+	{
+		after= p->next;
+		removenode(pre, p);
+		//printf("walk after remove: %p, %d\n",p,p->val);
+		insert(head, p);
+		//printf("walk after insert %p, %d\n",p,p->val);
+		p=after;	
+	}
+}
+
+struct ListNode* get_node_by_index(struct ListNode * prefix_head, int index)
+{
+	int i=0;
+	struct ListNode* p = prefix_head;
+	for(i=0; i<index; i++) p = p->next;
+	
+	return p;
+}
 struct ListNode* reverseKGroup(struct ListNode* head, int k){
+	
 	int s=0;
 	int i=0;
 	int j=0;
 
-	struct ListNode *p=head;
-	struct ListNode *a[k];
-	while(p)
-	{
-		a[s++] = p;
-		p=p->next;
-	}
+	struct ListNode *p1=NULL;
+	struct ListNode *p2=NULL;
 
-	for(i=0;i<s;i++)
-	{	
-		printf("address: %p; value:%d\n",a[i], a[i]->val);
-	}
-	printf("read fish\n");
-	for(j=0; j<s/k; j++)
-	{
-		revert(a, j*k, (j+1)*k-1);
-	}
+	struct ListNode *prefix_head = (struct ListNode*)malloc(sizeof(struct ListNode));
+	prefix_head->val = 0;
+	prefix_head->next = head;
 
-	for(i=0; i<s-1; i++)
-	{
-		a[i]->next = a[i+1];
-		//printf("address: %p; value:%d\n",a[i], a[i]->val);
-	}
-	a[i]->next=NULL;
+	s = get_size(head);
 	
-	//walk_a_list(a[0]);
+	for(i=0; i<s/k; i++)
+	{
+		p1 = get_node_by_index(prefix_head,i*k);
+		p2 = get_node_by_index(prefix_head,(i+1)*k);
+		//printf("p1:%p, p2-next %p\n", p1, p2->next);
+		do_revert(p1, p2->next);
+	}
 
-	//printf("a[%d]:%d\n",i,a[i]->val);
-	printf("a[0]:%p %d\n",a[0],a[0]->val);
-	return (a[0]);
-}
-
+	return	prefix_head->next;
+}	
 
 void walk_a_list(struct ListNode * head)
 
@@ -103,17 +126,11 @@ int main()
 	walk_a_list(new_head);
 	struct ListNode *re = reverseKGroup(new_head->next,2);
 	walk_a_list(re);
-
+	
 	printf("test case2:\n");
-	new_head = create_list(5);
+	new_head = create_list(6);
 	walk_a_list(new_head);
 	re = reverseKGroup(new_head->next,3);
 	walk_a_list(re);
 
-	printf("test case3:\n");
-	new_head = create_list(6);
-	walk_a_list(new_head);
-	re = reverseKGroup(new_head->next,2);
-	printf("test case3:%p\n",re);
-	walk_a_list(re);
 }
