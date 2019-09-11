@@ -226,6 +226,29 @@ root       soft    nproc     unlimited
 ```
 
 
+添加修改patch
+```
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (libfdk_aac))
+  Stream #0:0 -> #1:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #1:1 (aac (native) -> aac (libfdk_aac))
+  Stream #0:0 -> #2:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #2:1 (aac (native) -> aac (libfdk_aac))
+Press [q] to stop, [?] for help
+libavcodec/utils.c 548 avcodec_open2 ......       0kB time=-577014:32:22.77 bitrate=  -0.0kbits/s speed=N/A
+    Last message repeated 2 times
+libavcodec/utils.c 548 avcodec_open2 ......       0kB time=-577014:32:22.77 bitrate=  -0.0kbits/s speed=N/A
+[libx264 @ 0x3e33b320] using cpu capabilities: ARMv8 NEON
+x264 threadpool can not create thread!
+fftools/ffmpeg.c 3520 avcodec_open2 ......
+Error initializing output stream 0:0 -- Error while opening encoder for output stream #0:0 - maybe incorrect parameters such as bit_rate, rate, width or height
+[libfdk_aac @ 0x3e33d290] 2 frames left in the queue on closing
+[libfdk_aac @ 0x3e3925f0] 2 frames left in the queue on closing
+[libfdk_aac @ 0x3e395360] 2 frames left in the queue on closing
+Conversion failed!
+```
+
 # 问题记录
 ```
 ERROR: freetype2 not found using pkg-config
