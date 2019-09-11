@@ -71,6 +71,16 @@ void walk_list_list_entry(struct list_head *head)
 	printf("\n");
 }
 
+void walk_list_for_each(struct list_head *head)
+{
+	struct list_head *pos = NULL;
+	for(pos = head->next; pos !=head;pos = pos->next)
+	{
+		struct node * anode = list_entry(pos, struct node, list);
+		printf("node address: %p, value: %d\n", anode, anode->value);
+	}
+}
+
 int main(void)
 {
 	int i;
@@ -88,5 +98,6 @@ int main(void)
 	}
 	walk_list(&ahead->list);
 	walk_list_list_entry(&ahead->list);
+	walk_list_for_each(&ahead->list);
 	return 0;
 }
