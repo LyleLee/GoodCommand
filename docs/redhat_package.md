@@ -75,14 +75,11 @@ yum install gcc
 浏览器打开[https://mirrors.huaweicloud.com/epel/](https://mirrors.huaweicloud.com/epel/) 找到epel-release-latest-7
 ```
 yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
-```
-同时引入key，KEY是官方发布软件包的验证极致，这里使用官方的公钥安装到本地，当下载软件包时可以验证包的安全性。
-```
 rpm --import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
 ```
+同时引入key，KEY是官方发布软件包的验证极致，这里使用官方的公钥安装到本地，当下载软件包时可以验证包的安全性。
 如果是RHEL6，请安装epel-release-latest-6.noarch.rpm和RPM-GPG-KEY-EPEL-6
 
-```
 这个时候会在`/etc/yum.repo.d/`下面多了一个epel.repo的文件。
 ```
 yum clean all

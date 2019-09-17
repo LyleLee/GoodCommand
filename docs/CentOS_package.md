@@ -17,7 +17,11 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
 # 配置epel源
 方法1：参考[Redhat的配置](redhat_package.md)
-方法2：CentOS的本地源或者在线源配置好之后，就可以直接安装epel源：
+```
+yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
+rpm --import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
+```
+方法2：
 ```
 yum install epel-release
 ```
