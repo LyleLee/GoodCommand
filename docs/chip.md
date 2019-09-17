@@ -55,3 +55,4 @@ Intel cpu
 # 参考资料
 
 [【https://baijiahao.baidu.com/s?id=1617735663824201180&wfr=spider&for=pc】](https://baijiahao.baidu.com/s?id=1617735663824201180&wfr=spider&for=pc)
+[【http://www.prace-ri.eu/IMG/pdf/Best-Practice-Guide-ARM64.pdf】](http://www.prace-ri.eu/IMG/pdf/Best-Practice-Guide-ARM64.pdf)
