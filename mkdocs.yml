@@ -50,6 +50,7 @@ nav:
     - docker: docker.md
     - dpdk: dpdk.md
     - dstat: dstat.md
+    - emqx: emqx.md
     - ethtool: ethtool.md
     - edac-util: edac-util.md
     - erlang: erlang.md

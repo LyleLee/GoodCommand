@@ -57,36 +57,23 @@ git reset --hard HEAD^
 ```
 
 ## 远程仓库远程分支
-显示远程仓库
+
 ```
-git remote -v 
-git remote show origin	
+git remote -v               #显示远程仓库
+git remote show origin	     #显示远程仓库详细信息
+git ls-remote	     #查看远程库更多信息
+git push origin master      #推送本地master分支到远程仓库origin
+
+git tag                     #显示标签
+git tag -l 'v1.8.5*'	       #显示某个标签详细信息
+
+git remote add pb https://github.com/paulboone/ticgit   #添加远程仓库
+git remote rename pb paul	                              #重命名远程仓库
+
+git log --oneline origin/master..master                 #查看本地master比远程仓库多多少个commit
+一般情况下
 ```
-推送本地master分支到远程仓库origin
-```
-git push origin master
-```
-显示标签	
-```
-git tag 
-git tag -l 'v1.8.5*'	 
-```
-添加远程仓库
-```
-git remote add pb https://github.com/paulboone/ticgit
-```
-查看远程仓库	
-```
-git remote show origin	
-```
-重命名远程仓库
-```
-git remote rename pb paul	
-```
-查看远程库更多信息
-```
-git ls-remote	
-```
+
 ## 分支创建管理
 创建分支并切换
 ```
