@@ -40,10 +40,6 @@ ctrl + b
 ctrl + b
 :swap-window -t 0
 ```
-
-## 进入与退出tmux
-实际上退出的优雅方式是detached当前的session。tmux仍在后台运行，连接到终端上。  
-
 分离session
 ```
 ctrl b
@@ -88,6 +84,51 @@ enter
 ctrl b
 new -s sname        #在tmux界面，新建session
 tmux new -s sname   #在shell界面新建session
+```
+
+
+## pannel
+
+```
+ctrl+b, "   #水平分割当前panel
+ctrl+b, %   #垂直分割当前panel
+ctrl+b, ←↑→ #在panel之间切换
+ctrl+b, o   #在panel之间切换
+ctrl+b, z   #当前panel最大化，或者是恢复panel
+```
+
+## 复制
+```
+使用如下配置文件之后， 按住shift可以实现选中终端内容复制到系统剪贴板。
+```
+
+## 配置文件
+```
+# Make mouse useful in copy mode
+setw -g mode-mouse on
+
+# Allow mouse to select which pane to use
+set -g mouse-select-pane on
+
+# Allow mouse dragging to resize panes
+set -g mouse-resize-pane on
+
+# Allow mouse to select windows
+set -g mouse-select-window on
+
+# Allow xterm titles in terminal window, terminal scrolling with scrollbar, and setting overrides of C-Up, C-Down, C-Left, C-Right
+# (commented out because it disables cursor navigation in vim)
+#set -g terminal-overrides "xterm*:XT:smcup@:rmcup@:kUP5=\eOA:kDN5=\eOB:kLFT5=\eOD:kRIT5=\eOC"
+
+# Scroll History
+set -g history-limit 30000
+
+# Set ability to capture on start and restore on exit window data when running an application
+setw -g alternate-screen on
+
+# Lower escape timing from 500ms to 50ms for quicker response to scroll-buffer access.
+set -s escape-time 50
+
 ```
 
 ## 问题

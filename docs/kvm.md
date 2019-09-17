@@ -447,6 +447,23 @@ yum install AAVMF
 AAVMF.noarch : UEFI firmware for aarch64 virtual machines
 ```
 
+### 问题4：error: Refusing to undefine while domain managed save image exists
+
+```
+[me@centos instruction_set]$ virsh undefine vm1
+error: Refusing to undefine while domain managed save image exists
+```
+解决办法：
+```
+[me@centos instruction_set]$ virsh managedsave-remove --domain vm1
+Removed managedsave image for domain vm1
+```
+```
+[me@centos instruction_set]$ virsh undefine --nvram --remove-all-storage vm1
+Domain vm1 has been undefined
+Volume 'sda'(/home/me/.local/share/libvirt/images/CentOS7.6.qcow2) removed.
+```
+
 ## 待确认问题
 kvm可以跑X86的linux？
 ```

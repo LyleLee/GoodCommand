@@ -64,6 +64,27 @@ export LD_LIBRARY_PATH=../code/
 ./call
 ```
 
+# gcc 指定库文件和头文件
+“-I”（大写i），“-L”（大写l），“-l”（小写l）的区别
+我们用gcc编译程序时，可能会用到“-I”（大写i），“-L”（大写l），“-l”（小写l）等参数，下面做个记录：
+
+例：
+```
+gcc -o hello hello.c -I /home/hello/include -L /home/hello/lib -lworld
+```
+上面这句表示在编译hello.c时：
+
+-I /home/hello/include表示将/home/hello/include目录作为第一个寻找头文件的目录，寻找的顺序是：/home/hello/include-->/usr/include-->/usr/local/includ
+
+-L /home/hello/lib表示将/home/hello/lib目录作为第一个寻找库文件的目录，寻找的顺序是：/home/hello/lib-->/lib-->/usr/lib-->/usr/local/lib
+
+ -lworld表示在上面的lib的路径中寻找libworld.so动态库文件（如果gcc编译选项中加入了“-static”表示寻找libworld.a静态库文件）
+
+ gcc -l参数和-L参数
+
+-l参数就是用来指定程序要链接的库，-l参数紧接着就是库名，那么库名跟真正的库文件名有什么关系呢？就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的头lib和尾.so去掉就是库名了。
+
+
 # 参考资料
 
 [【静态库参考】https://www.geeksforgeeks.org/static-vs-dynamic-libraries/](https://www.geeksforgeeks.org/static-vs-dynamic-libraries/)

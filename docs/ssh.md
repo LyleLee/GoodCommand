@@ -10,7 +10,9 @@ PermitRootLogin yes
 ```
 
 
-## 内网拷贝
+## 跨越堡垒机scp
+一台主机很多时候在一个防火墙/堡垒机后面，我们只能先登陆一台设备，再跳转到内网的设备上。上传下载文件的时候也需要这样操作。这就很繁琐了。 事实上，使用ssh tunnel转发，可以直接ssh内网设备或者拷贝文件。
+
 ```
                                    +-----+
                    gate_user       |     |
@@ -24,13 +26,15 @@ PermitRootLogin yes
                                    +-----+
                                 Gate Server
 ```
+使用单行命令
 ```
 scp -o "ProxyCommand ssh gate_user@gate.machine.net -p 8080 -W %h:%p" target_user@target.machine:/home/file.png .
 ```
+使用多行命令
 ```
 ssh -f -N -L 19999:192.168.2.182:22 gate_user@gate.machine.net -p 8080
 ssh target-user@localhost -p 19999          #login into target server
-scp target-user@localhost:/remote/file -P 19999 .
+scp -P 19999 target-user@localhost:/remote/file  .
 ```
 
 ## 远程执行任务
