@@ -16,3 +16,4 @@ set(CPU_AARCHITECTURE "__${CMAKE_SYSTEM_PROCESSOR}__")
 configure_file("config.h.in" "config.h")
 
 add_executable(cy.out cycle.c)
+add_executable(ce.out ceph_cycle.c)
