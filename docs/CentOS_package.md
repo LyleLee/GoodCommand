@@ -76,7 +76,9 @@ yum repolist all    #查询所有软件源
 yum grouplist
 yum groupinstall "Development Tools"
 
-yum --enbalerepo=epel install phpmyadmin
+yum provides htop   #查看拿个软件包提供命令
+yum provides /usr/include/mysql/mysql.h     #查看哪个软件包提供mysql.h
+yum --enbalerepo=epel install phpmyadmin #指定软件源安装软件包
 yum clean all       #清除缓存
 yum history         #查看安装历史
 yum list <package_name> --showduplicates    #显示所有版本软件
