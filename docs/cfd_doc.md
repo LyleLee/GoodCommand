@@ -8,3 +8,4 @@ confidential documents
 # [中国电信](bs/confidential_中国电信ceph测试问题总结.md)
 # [陕西慧铁科技](bs/confidential_陕西慧铁科技.md)
 # [网达软件](ffmpeg.md)
+# [中国科学院上海研究院](bs/confidential_中国科学院上海研究院.md)
