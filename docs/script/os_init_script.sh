@@ -10,7 +10,8 @@ yum install kernel-devel-$(uname -r)
 cat <<"EOF"  >> ~/.bashrc
 
 alias full='_full(){ ls $PWD/$1; };_full'
-alias cleancmake='rm CMakeFiles/ -rf; rm cmake_install.cmake; rm CMakeCache.txt'
+alias cleancmake='rm CMakeFiles/ -rf; rm cmake_install.cmake; rm CMakeCache.txt Makefile'
+alias grep='grep --exclude-dir={.git} --binary-files=without-match --color=auto --exclude={GPATH,GRTAGS,GTAGS,tags} '
 EOF
 source ~/.bashrc
 
