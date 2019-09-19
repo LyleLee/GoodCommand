@@ -19,6 +19,15 @@ cmake to build a project
 
 [【https://www.hahack.com/codes/cmake/】](https://www.hahack.com/codes/cmake/)
 
+#使用cmake 检测X86还是ARM
+
+https://stackoverflow.com/questions/26657082/detect-x86-architecture-in-cmake-file
+
+# 设置C flags和C++ flags
+```
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall")
+```
 
 cmake中变量遇到的坑
 https://cslam.cn/archives/c9f565b5.html
