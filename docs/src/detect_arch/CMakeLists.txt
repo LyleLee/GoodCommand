@@ -2,6 +2,7 @@ project(rdtsc)
 cmake_minimum_required(VERSION 2.8)
 
 message(${CMAKE_SYSTEM_PROCESSOR})
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "(x86)|(X86)|(amd64)|(AMD64)")
 	set (CPU_ARCHITECTURE "__x86_64__")
@@ -15,5 +16,3 @@ set(CPU_AARCHITECTURE "__${CMAKE_SYSTEM_PROCESSOR}__")
 
 configure_file("config.h.in" "config.h")
 
-add_executable(cy.out cycle.c)
-add_executable(ce.out ceph_cycle.c)

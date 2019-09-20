@@ -1,3 +1,7 @@
+/*
+ * 这个代码来自
+ * https://github.com/google/benchmark/blob/master/src/cycleclock.h
+ * */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>

@@ -1,0 +1,3 @@
+#cmakedefine CPU_ARCHITECTURE "@CPU_ARCHITECTURE@"
+#cmakedefine __x86_64__
+#cmakedefine __aarch64__
