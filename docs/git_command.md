@@ -21,7 +21,7 @@ git clean -nfd
 ```
 
 ## 提交和历史
-显示提交信息
+
 ```
 git log                             #当前分支的提交历史
 git log --oneline                   #单行显示log
@@ -30,10 +30,12 @@ git log --pretty=oneline pb/master  #远程仓库pb下的master提交历史
 git log nfs-revert-and-hang         #查看某分支nfs-revert-and-hang的log
 git log --name-only                 #仅仅显示修改的文件
 git log --name-status               #仅仅显示修改的文件，和文件状态
-```
-显示HEAD指针和分支指向的提交对象
-```
-git log --oneline --decorate	 
+git log --oneline --decorate        #显示HEAD指针和分支指向的提交对象
+git log --oneline origin/master..master #显示本地master和远程仓库的commit差异
+git log -p -2                       #展开显示每次提交差异， -2 只显示最近两次更新git	
+
+git reset HEAD CONTRIBUTING.md      #从暂存区测出被误staged的文件
+git reset --hard HEAD^              #回退最近一次提交
 ```
 你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作。最后，提交只有一个。
 ```
@@ -41,19 +43,6 @@ git commit -m 'initial commit'
 git add forgotten_file 
 git commit --amend	
 git add * 
-```
-从暂存区测出被误staged的文件
-```
-git reset HEAD CONTRIBUTING.md	
-```
-展开显示每次提交差异， -2 只显示最近两次更新git	
-```
-git log -p -2
-```
-
-回退最近一次提交
-```
-git reset --hard HEAD^
 ```
 
 ## 远程仓库远程分支
@@ -75,47 +64,20 @@ git log --oneline origin/master..master                 #查看本地master比�
 ```
 
 ## 分支创建管理
-创建分支并切换
+
 ```
-git checkout -b iss53 or: 
+git checkout -b iss53   #创建分支并切换
 git branch iss53 
 git checkout iss53	
-```
-查看所有远程分支，所有分支
-```
-git branch -r
+git branch -r           #查看所有远程分支，所有分支
 git branch -a
-```
-删除分支
-```
-git branch -d hotfix	
-```
-查看分支已经tracked的file
-```
-git ls-tree -r master --name-only	
-```
-
-推送本地serverfix分支到远程仓库上的awesomebranch
-```
-git push origin serverfix:awesomebranch 
-```
-推送本地的serverfix分支到远程的serverfix分支
-```
-git push origin serverfix:serverfix	
-```
-创建并切换到跟踪远程分支的本地分支serverfix
-```
-git checkout -b serverfix origin/serverfix
-```
-创建并切换到跟踪远程分支的本地分支sf	
-```
-git checkout -b sf origin/serverfix	
-```
-自动切换到跟踪远程分支的本地分支
-```
-git checkout --track origin/serverfix
-```
-```
+git branch -d hotfix    #删除分支
+git ls-tree -r master --name-only	          #查看分支已经tracked的file
+git push origin serverfix:awesomebranch     #推送本地serverfix分支到远程仓库上的awesomebranch
+git push origin serverfix:serverfix         #推送本地的serverfix分支到远程的serverfix分支
+git checkout -b serverfix origin/serverfix  #创建并切换到跟踪远程分支的本地分支serverfix
+git checkout -b sf origin/serverfix         #创建并切换到跟踪远程分支的本地分支sf	
+git checkout --track origin/serverfix       #自动切换到跟踪远程分支的本地分支
 git checkout --patch master include/uapi/linux/mii.h    #把master分支的指定文件合并到当前分支
 ```
 ## 生成patch与合入patch
@@ -145,7 +107,7 @@ git format-patch master                                 #在当前分支,生成m
 git format-patch master --stdout > add_function.patch   #生成单个文件的patch
 git format-patch -s fe21342443 -o today/                #生成自从fe21342443以来的patch，每个comit一个patch
 
-git amadd_function.patch                                #以提交方式合入patch
+git am add_function.patch                                #以提交方式合入patch
 git apply add_function.patch                            #以修改，未暂存方式合入patch
 ```
 
