@@ -2,6 +2,9 @@
 ===================
 rdtsc是x86的时时间戳计数器，在ARM上是没有这个寄存器的，所以需要把它替换为相应的实现。
 
+
+
+
 在C/C++源文件当中，嵌入了汇编代码，使用rdtsc(X86特有的汇编指令)获取时间戳计数器的值。
 ```
 #include "util/tc_monitor.h"
@@ -69,3 +72,8 @@ void TC_TimeProvider::setTsc(timeval& tt)
     //....
 }
 ```
+
+
+参考资料：
+
+[https://handystats.readthedocs.io/en/latest/time-measurement.html](https://handystats.readthedocs.io/en/latest/time-measurement.html)
