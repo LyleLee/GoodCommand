@@ -1,6 +1,8 @@
 project(leetcode)
 
+#set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -fsanitize=address")
+
 link_directories(/usr/lib64)
 link_directories(/opt/rh/devtoolset-7/root/usr/lib/gcc/aarch64-redhat-linux/7)
 
@@ -14,4 +16,7 @@ add_executable(224.out 224.c)
 add_executable(sscanf.out sscanf.c)
 add_executable(as.out as.c)
 add_executable(double_224.out double_stack_224.c)
+add_executable(strcat.out strcat.c)
+add_executable(s2.out s2.c)
+add_executable(qsort.out qsort.c)
 cmake_minimum_required(VERSION 2.80)
