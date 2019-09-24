@@ -1,6 +1,10 @@
 git 常用命令
 ===============
 
+```
+git clone  ssh://[user@]host.xz[:port]/path/to/repo.git/
+```
+
 ## 文件操作
 
 ```log
