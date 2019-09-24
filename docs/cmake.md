@@ -29,6 +29,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compar
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall")
 ```
 
+# cmake 设置make的时候显示具体编译命令,可以看到CC命令
+```
+set(CMAKE_VERBOSE_MAKEFILE on)
+```
+
 cmake中变量遇到的坑
 https://cslam.cn/archives/c9f565b5.html
 https://murphypei.github.io/blog/2018/10/cmake-variable.html
