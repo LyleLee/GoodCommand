@@ -95,6 +95,7 @@ nav:
     - numactl : numactl.md
     - pfring: pfring.md
     - raid级别: raid.md
+    - rdtsc: rdtsc.md
     - script: script.md
     - selinux: selinux.md
     - shell_program: shell_program.md
