@@ -11,6 +11,7 @@ vim
 :s/vivian/sky/ 	#替换当前行第一个 vivian 为 sky
 :s/vivian/sky/g #替换当前行所有 vivian 为 sky
 :noh
+5yy             #复制光标开始的十行
 :y10            #复制以下十行
 :10y            #复制第10行
 :p              #黏贴复制内容
