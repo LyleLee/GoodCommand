@@ -86,6 +86,7 @@ nav:
     - ls : ls.md
     - lspci: lspci.md
     - lstopo: lstopo.md
+    - mpstat: mpstat.md
     - nethogs: nethogs.md
     - netstat: netstat.md
     - nload: nload.md
