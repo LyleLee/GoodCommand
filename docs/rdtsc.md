@@ -137,8 +137,8 @@ flags : ... tsc  rdtscp constant_tsc nonstop_tsc ...
 |constant_tsc	|The TSC is synchronized across all sockets/cores.|TSC是同步的   |
 |nonstop_tsc	|The TSC is not affected by power management code.|TSC是不受电源管理代码影响|
 
-
-
+RDTSC没有保序的功能，所以会导致想测的指令在RDTSC区间之外进行。这样为避免CPU乱序，需要用cpuid保序，之后的CPU都有RDTSCP
+，这是已经保序的指令，所以只要有这个指令应该使用这个，而不是老版的
 # 获取时间戳本延时测试
 
 在我的x86服务器上：
