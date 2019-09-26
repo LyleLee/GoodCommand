@@ -15,7 +15,7 @@ alias grep='grep --exclude-dir={.git} --binary-files=without-match --color=auto 
 EOF
 source ~/.bashrc
 
-cat >> ~/
+cat <<"EOF"> ~/.tmux.conf
 
 # Make mouse useful in copy mode
 setw -g mode-mouse on
@@ -41,7 +41,7 @@ setw -g alternate-screen on
 
 # Lower escape timing from 500ms to 50ms for quicker response to scroll-buffer access.
 set -s escape-time 50
-
+EOF
 
 .git/config
 
