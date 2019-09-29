@@ -33,8 +33,8 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
 	}
 	
 	
-	for(i=0; i<s; i++)printf("%d ",i);printf("\n");
-	for(i=0; i<s; i++)printf("%d ",c[i]);printf("\n");
+	for(i=0; i<s; i++){ printf("%d ",i);   }printf("\n");
+	for(i=0; i<s; i++){ printf("%d ",c[i]);}printf("\n");
 	if( s%2 == 0)
 	{
 		return (c[s/2]+c[s/2-1])/2.0;

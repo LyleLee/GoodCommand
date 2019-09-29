@@ -7,9 +7,9 @@ int main()
 	char *s2="cbbd";
 	char *a = (char *)malloc(100*sizeof(char));
 	char b[10]= {0};
-	printf("sizeof(a):%d\n",sizeof(a));
-	printf("sizeof(b):%d\n",sizeof(b));
-	printf("sizeof(char):%d\n",sizeof(char));
+	printf("sizeof(a):%ld\n",sizeof(a));
+	printf("sizeof(b):%ld\n",sizeof(b));
+	printf("sizeof(char):%ld\n",sizeof(char));
 	memset(a, 0, 100);
 	snprintf(a,3,s1+2);
 	printf("%s\n",a);

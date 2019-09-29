@@ -62,7 +62,6 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
 	
 	int s=0;
 	int i=0;
-	int j=0;
 
 	struct ListNode *p1=NULL;
 	struct ListNode *p2=NULL;

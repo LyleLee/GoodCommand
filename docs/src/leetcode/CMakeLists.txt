@@ -1,6 +1,6 @@
 project(leetcode)
 
-#set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -fsanitize=address")
 
 link_directories(/usr/lib64)
@@ -19,4 +19,5 @@ add_executable(double_224.out double_stack_224.c)
 add_executable(strcat.out strcat.c)
 add_executable(s2.out s2.c)
 add_executable(qsort.out qsort.c)
+add_executable(kSmallestPairs.out kSmallestPairs.c)
 cmake_minimum_required(VERSION 2.80)

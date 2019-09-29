@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <unistd.h>
 
 static __inline __attribute__((always_inline)) uint64_t rdtsc() {
 #if defined(__i386__)
@@ -30,7 +31,9 @@ int main()
 	int64_t t1 = rdtsc();
 	sleep(1);
 	int64_t t2 = rdtsc();
-	printf("t1:%lld, t2:%lld, t2-t1:%lld\n",t1,t2,(t2-t1)/1000000);
+	printf("t1:%ld, t2:%ld, t2-t1:%ld\n",t1,t2,(t2-t1)/1000000);
+
+	return 0;
 }
 
 /*__aarch64__是arm gcc预定义宏
