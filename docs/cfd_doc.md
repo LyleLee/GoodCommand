@@ -10,3 +10,4 @@ confidential documents
 # [网达软件](ffmpeg.md)
 # [中国科学院上海研究院](bs/confidential_中国科学院上海研究院.md)
 # [上海交通大学](bs/confidential_上海交通大学.md)
+# [中航信](bs/confidential_中航信.md)
