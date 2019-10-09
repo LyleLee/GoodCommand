@@ -49,6 +49,10 @@ All prerequisites downloaded successfully.
 gcc -Q --help=target    #查询和target相关的编译选项
 gcc -Q -v alpha.c       #查看编译某个文件的具体选项
 ```
-
+# GCC 编译选项
+```
+-static                 #静态链接程序
+-Wl,option              #把静态链接选项传递给连接器
+```
 # 参考资料
 [redhat GCC command option](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Using_the_GNU_Compiler_Collection/invoking-gcc.html)
