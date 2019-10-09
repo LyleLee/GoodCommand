@@ -44,6 +44,7 @@ nav:
     - chip: chip.md
     - ceph: ceph.md
     - cloud_office_solution: cloud_office_solution.md
+    - cskill: cskill.md
     - devmem: devmem.md
     - devtoolset: devtoolset.md
     - dns: dns.md
