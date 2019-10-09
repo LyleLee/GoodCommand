@@ -9,3 +9,4 @@ confidential documents
 # [陕西慧铁科技](bs/confidential_陕西慧铁科技.md)
 # [网达软件](ffmpeg.md)
 # [中国科学院上海研究院](bs/confidential_中国科学院上海研究院.md)
+# [上海交通大学](bs/confidential_上海交通大学.md)
