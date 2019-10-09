@@ -33,3 +33,12 @@ linux数据结构主要来自《linux设备驱动》第三版 第11章
 [http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/#prettyPhoto]()
 
 详细解析/proc文件系统。[【https://www.linuxjournal.com/article/8381】](https://www.linuxjournal.com/article/8381)
+
+
+## 卡内基·梅隆大学 计算机课程
+
+[【计算机系统介绍】](https://www.cs.cmu.edu/afs/cs/academic/class/15213-s13/www/schedule.html)
+
++ 使用教材：Computer Systems: A Programmer's Perspective, Second Edition
+    
++ [关于程序链接](https://www.cs.cmu.edu/afs/cs/academic/class/15213-s13/www/lectures/12-linking.pdf)
