@@ -95,6 +95,7 @@ nav:
     - nmap : nmap.md
     - ntfs : ntfs.md
     - numactl : numactl.md
+    - pip: pip.md
     - pfring: pfring.md
     - raid级别: raid.md
     - rdtsc: rdtsc.md
