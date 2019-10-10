@@ -98,6 +98,7 @@ nav:
     - numactl : numactl.md
     - pip: pip.md
     - pfring: pfring.md
+    - python skill: python_skill.md
     - raid级别: raid.md
     - rdtsc: rdtsc.md
     - script: script.md
