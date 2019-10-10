@@ -1,4 +1,4 @@
-编译选项static导致程序崩溃
+编译选项static导致程序Sgmentation fault
 ============================
 
 可以轻易使用tar2node复现：
@@ -13,6 +13,9 @@ Segmentation fault (core dumped)
 ```
 
 # 定位过程
+
+查阅资料发现pthread静态链接时会有问题，原因是pthread.a没有整个包含到目标程序当中。网上提示使用-Wl,--whole-archive。 但是仍然会有错误
+
 ```diff
  # flag
 -set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result -static")
@@ -46,8 +49,9 @@ make: *** [all] Error 2
 [me@centos build]$
 [me@centos build]$
 ```
+上面的报错，提示libm和libc中有重复定义的函数， 这个是让人很疑惑的，上网搜索，没有相关资料描述。 同时查询了_dl_num_cache_relocations，仍然没有线索，后来怀疑弱符号等原因，查阅了很多资料。 没有什么思路。
 
-
+换个思维方式，只是想静态链接程序，什么错误先不管，如何才能正确地静态链接呢。最终找到了要想静态链接，不同编译器地选项是不一样的。
 
 # 解决办法：
 
@@ -55,19 +59,35 @@ make: *** [all] Error 2
 编辑../CMakeList.txt取消-static
 ```
  # flag
--set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result -static")
--set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall -static")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result -static")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall -static")
 ```
 
 ### 二、使用gcc/g++ 8.0及以上
 
-参考[【devtoolset】](../devtoolset.md)
+升级办法参考[【devtoolset】](../devtoolset.md)
 
 
-相关资料
+### 三、使用低版本gcc如4.8.5
+```
+yum install glibc-static
+```
+使用-Wl,-Bdynamic编译选项
+```diff
+# flag
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result -static")
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall -static")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O2 -Wall -Wno-sign-compare -Wno-unused-result -Wl,-Bdynamic")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O2 -Wall -Wl,-Bdynamic")
+```
 
-[描述最清楚的解释](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=52590)
+
+
+# 相关资料
+
 [【有一个项目再github中讨论的静态链接的情况】](https://github.com/oatpp/oatpp/issues/32)
-[【静态链接pthread库的时候会出现】](https://stackoverflow.com/questions/7090623/c0x-thread-static-linking-problem/31271886#31271886)
+[【静态链接pthread库出现错误1】](https://stackoverflow.com/questions/7090623/c0x-thread-static-linking-problem/31271886#31271886)
+[【静态链接pthread库出现错误2】](https://sourceware.org/bugzilla/show_bug.cgi?id=10652)
+[【静态链接pthread库出现错误3】](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=52590)
 [【有可能是编译器静态链接时弱符号的原因】](https://akkadia.org/drepper/no_static_linking.html)
-
+[【glibc静态链接和动态链接】](https://blog.csdn.net/lianshaohua/article/details/82143337)

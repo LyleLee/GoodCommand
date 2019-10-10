@@ -41,6 +41,7 @@ nav:
         - dev_root_not_exist: bs/dev_root_not_exist.md
         - tomcat not start: bs/tomcat_not_start.md
         - no_child_processes: bs/no_child_processes.md
+        - static_link_segment_fault: bs/static_link_segment_fault.md
     - chip: chip.md
     - ceph: ceph.md
     - cloud_office_solution: cloud_office_solution.md

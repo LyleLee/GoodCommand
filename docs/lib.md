@@ -84,6 +84,15 @@ gcc -o hello hello.c -I /home/hello/include -L /home/hello/lib -lworld
 
 -l参数就是用来指定程序要链接的库，-l参数紧接着就是库名，那么库名跟真正的库文件名有什么关系呢？就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的头lib和尾.so去掉就是库名了。
 
+# 如何让gcc在生成动态链接库的时候静态链接glibc
+
+```
+$ gcc -fPIC -shared reload.c -o reload.so -nostdlib
+$ ldd reload.so
+statically linked
+```
+参考资料： [https://www.bytelang.com/article/content/d3t3i7VmN2g=](https://www.bytelang.com/article/content/d3t3i7VmN2g=)
+
 
 # 参考资料
 
