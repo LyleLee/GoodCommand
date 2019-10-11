@@ -42,3 +42,13 @@ linux数据结构主要来自《linux设备驱动》第三版 第11章
 + 使用教材：Computer Systems: A Programmer's Perspective, Second Edition
     
 + [关于程序链接](https://www.cs.cmu.edu/afs/cs/academic/class/15213-s13/www/lectures/12-linking.pdf)
+
+课程：Computer Architecture Spring 2015
+
+## 圣路易斯大学 计算机课程
+
+完整课程与教学课件：[https://cs.slu.edu/~fritts/CSCI224_S15/](https://cs.slu.edu/~fritts/CSCI224_S15/)
+
+使用教材： Computer Systems: A Programmer's Perspective, 3/E (CS:APP3e)
+
+教材代码： http://csapp.cs.cmu.edu/3e/code.html
