@@ -11,3 +11,4 @@ confidential documents
 # [中国科学院上海研究院](bs/confidential_中国科学院上海研究院.md)
 # [上海交通大学](bs/confidential_上海交通大学.md)
 # [中航信](bs/confidential_中航信.md)
+# [重庆邮电大学](bs/confidential_重庆邮电大学.md)
