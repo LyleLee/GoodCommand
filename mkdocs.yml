@@ -101,6 +101,7 @@ nav:
     - python skill: python_skill.md
     - raid级别: raid.md
     - rdtsc: rdtsc.md
+    - samba: samba.md
     - script: script.md
     - selinux: selinux.md
     - shell_program: shell_program.md
