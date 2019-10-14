@@ -56,3 +56,5 @@ gcc -Q -v alpha.c       #查看编译某个文件的具体选项
 ```
 # 参考资料
 [redhat GCC command option](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Using_the_GNU_Compiler_Collection/invoking-gcc.html)
+
+https://cloud.tencent.com/developer/article/1433457
