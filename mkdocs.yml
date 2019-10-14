@@ -150,5 +150,6 @@ nav:
     - 计算机启动: 计算机启动.md
     - 计算机存储器: 计算机存储器.md
     - 计算机终端: terminal.md
+    - im: customer/im.md
 
 theme: readthedocs
