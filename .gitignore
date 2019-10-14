@@ -10,7 +10,6 @@ task_list.txt
 *.swp
 *.a
 
-confidential*
 
 CMakeCache.txt
 *.cmake
