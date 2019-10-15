@@ -53,6 +53,19 @@ make: *** [all] Error 2
 
 换个思维方式，只是想静态链接程序，什么错误先不管，如何才能正确地静态链接呢。最终找到了要想静态链接，不同编译器地选项是不一样的。
 
+解决问题：
+```
+[100%] Linking CXX executable tars2node
+/usr/bin/ld: cannot find -lgcc_s
+/usr/bin/ld: cannot find -lgcc_s
+collect2: error: ld returned 1 exit status
+make[2]: *** [tars2node] Error 1
+make[1]: *** [CMakeFiles/tars2node.dir/all] Error 2
+make: *** [all] Error 2
+```
+使用-static-libgcc  -static-libstdc++编译选项可以消除这个报错
+
+
 # 解决办法：
 
 ### 一、使用动态链接库，去掉-static选项
