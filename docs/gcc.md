@@ -48,6 +48,7 @@ All prerequisites downloaded successfully.
 ```
 gcc -Q --help=target    #查询和target相关的编译选项
 gcc -Q -v alpha.c       #查看编译某个文件的具体选项
+gcc -print-search-dirs  #打印搜索路径
 ```
 # GCC 编译选项
 ```
