@@ -19,6 +19,7 @@ vim
 
 :[range]s/源字符串/目标字符串/[option]   #替换命令
 :%s/ListNode/ConstructNode/gc            #ListNode→ConstructNode
+:%s#/home/sjt/ch/arm#"${od}"#gc          #替换包含路径的字符串，使用#符号隔开参数和字符串，例子把路径替换成了变量
 :s/line/lines/g                          #表示将光标所在当前行的line全局替换为lines
 :2,3s/line/lines/g                       #表示将2~3行的line全局替换为lines
 :%s= *$==                                #表示全局替换行尾的一个或多个空格
