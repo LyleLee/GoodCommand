@@ -117,6 +117,7 @@ nav:
     - taskset: taskset.md
     - tcpdump: tcpdump.md
     - time: time.md
+    - timedatectl: timedatectl.md
     - tldr: tldr.md
     - tmux: tmux.md
     - top: top.md
