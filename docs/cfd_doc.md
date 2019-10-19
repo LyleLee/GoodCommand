@@ -12,3 +12,4 @@ confidential documents
 # [上海交通大学](customer/confidential_上海交通大学.md)
 # [中航信](customer/confidential_中航信.md)
 # [重庆邮电大学](customer/confidential_重庆邮电大学.md)
+# [上海天文台][customer/confidential_上海天文台.md]
