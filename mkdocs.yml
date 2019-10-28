@@ -42,6 +42,7 @@ nav:
         - tomcat not start: bs/tomcat_not_start.md
         - no_child_processes: bs/no_child_processes.md
         - static_link_segment_fault: bs/static_link_segment_fault.md
+        - openMP: opemMP.md
     - chip: chip.md
     - ceph: ceph.md
     - cloud_office_solution: cloud_office_solution.md

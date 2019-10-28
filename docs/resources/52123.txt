@@ -1,0 +1,870 @@
+Thread 96 (Thread 0xfff6ca86f050 (LWP 57607)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 95 (Thread 0xfff6d0fdf050 (LWP 57608)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 94 (Thread 0xfffb00f9f050 (LWP 57609)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 93 (Thread 0xfffb017af050 (LWP 57610)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 92 (Thread 0xffff761ff050 (LWP 57611)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 91 (Thread 0xffff759ef050 (LWP 57612)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 90 (Thread 0xffff751df050 (LWP 57613)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 89 (Thread 0xffff749cf050 (LWP 57614)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 88 (Thread 0xffff6413f050 (LWP 57615)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 87 (Thread 0xffff6392f050 (LWP 57616)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 86 (Thread 0xffff6311f050 (LWP 57617)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 85 (Thread 0xffff6290f050 (LWP 57618)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 84 (Thread 0xffff620ff050 (LWP 57619)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 83 (Thread 0xffff618ef050 (LWP 57620)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 82 (Thread 0xffff610df050 (LWP 57621)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 81 (Thread 0xffff608cf050 (LWP 57622)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 80 (Thread 0xffff1e09f050 (LWP 57623)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 79 (Thread 0xffff1d88f050 (LWP 57624)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 78 (Thread 0xffff1d07f050 (LWP 57625)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 77 (Thread 0xffff1c86f050 (LWP 57626)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 76 (Thread 0xffff1c05f050 (LWP 57627)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 75 (Thread 0xffff1b84f050 (LWP 57628)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 74 (Thread 0xffff1b03f050 (LWP 57629)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 73 (Thread 0xffff1a82f050 (LWP 57630)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 72 (Thread 0xffff1a01f050 (LWP 57631)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 71 (Thread 0xffff1980f050 (LWP 57632)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 70 (Thread 0xffff18fff050 (LWP 57633)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 69 (Thread 0xffff0609f050 (LWP 57634)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 68 (Thread 0xffff0588f050 (LWP 57635)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 67 (Thread 0xffff0507f050 (LWP 57636)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 66 (Thread 0xffff0486f050 (LWP 57637)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 65 (Thread 0xffff0405f050 (LWP 57638)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 64 (Thread 0xffff0384f050 (LWP 57639)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 63 (Thread 0xffff0303f050 (LWP 57640)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 62 (Thread 0xffff0282f050 (LWP 57641)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 61 (Thread 0xffff0201f050 (LWP 57642)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 60 (Thread 0xffff0180f050 (LWP 57643)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 59 (Thread 0xffff00fff050 (LWP 57644)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 58 (Thread 0xfffee4bcf050 (LWP 57645)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 57 (Thread 0xfffee43bf050 (LWP 57646)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 56 (Thread 0xfffee3baf050 (LWP 57647)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 55 (Thread 0xfffee339f050 (LWP 57648)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 54 (Thread 0xfffedca3f050 (LWP 57649)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 53 (Thread 0xfffcd438f050 (LWP 57650)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 52 (Thread 0xfffcd3b7f050 (LWP 57651)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 51 (Thread 0xfffcd336f050 (LWP 57652)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 50 (Thread 0xfffcd2b5f050 (LWP 57653)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 49 (Thread 0xfffcd234f050 (LWP 57654)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 48 (Thread 0xfffcd1b3f050 (LWP 57655)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 47 (Thread 0xfffcd132f050 (LWP 57656)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 46 (Thread 0xfffcd0b1f050 (LWP 57657)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 45 (Thread 0xfffcd030f050 (LWP 57658)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 44 (Thread 0xfffccfaff050 (LWP 57659)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 43 (Thread 0xfffccf2ef050 (LWP 57660)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 42 (Thread 0xfffcceadf050 (LWP 57661)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 41 (Thread 0xfffcce2cf050 (LWP 57662)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 40 (Thread 0xfffccdabf050 (LWP 57663)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 39 (Thread 0xfffccd2af050 (LWP 57664)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 38 (Thread 0xfffccca9f050 (LWP 57665)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 37 (Thread 0xfffccc28f050 (LWP 57666)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 36 (Thread 0xfffccba7f050 (LWP 57667)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 35 (Thread 0xfffccb26f050 (LWP 57668)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 34 (Thread 0xfffccaa5f050 (LWP 57669)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 33 (Thread 0xfffcca24f050 (LWP 57670)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 32 (Thread 0xfffcc9a3f050 (LWP 57671)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 31 (Thread 0xfffcc922f050 (LWP 57672)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 30 (Thread 0xfffcc8a1f050 (LWP 57673)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 29 (Thread 0xfffcc820f050 (LWP 57674)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 28 (Thread 0xfffcc79ff050 (LWP 57675)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 27 (Thread 0xfffcc71ef050 (LWP 57676)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 26 (Thread 0xfffcc69df050 (LWP 57677)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 25 (Thread 0xfffcc61cf050 (LWP 57678)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 24 (Thread 0xfffcc59bf050 (LWP 57679)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 23 (Thread 0xfffcc51af050 (LWP 57680)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 22 (Thread 0xfffcc499f050 (LWP 57681)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 21 (Thread 0xfffcc418f050 (LWP 57682)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 20 (Thread 0xfffcc397f050 (LWP 57683)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 19 (Thread 0xfffcc316f050 (LWP 57684)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 18 (Thread 0xfffcc295f050 (LWP 57685)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 17 (Thread 0xfffcc214f050 (LWP 57686)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 16 (Thread 0xfffcc193f050 (LWP 57687)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 15 (Thread 0xfffcc112f050 (LWP 57688)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 14 (Thread 0xfffcc091f050 (LWP 57689)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 13 (Thread 0xfffcc010f050 (LWP 57690)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 12 (Thread 0xfffcbf8ff050 (LWP 57691)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 11 (Thread 0xfffcbf0ef050 (LWP 57692)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 10 (Thread 0xfffcbe8df050 (LWP 57693)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 9 (Thread 0xfffcbe0cf050 (LWP 57694)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 8 (Thread 0xfffcbd8bf050 (LWP 57695)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 7 (Thread 0xfffcbd0af050 (LWP 57696)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 6 (Thread 0xfffcbc89f050 (LWP 57697)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 5 (Thread 0xfffcbc08f050 (LWP 57698)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 4 (Thread 0xfffcbb87f050 (LWP 57699)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 3 (Thread 0xfffcbb06f050 (LWP 57700)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 2 (Thread 0xfffcba85f050 (LWP 57701)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643abe4 in futex_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569840, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_barrier_wait_end (bar=<optimized out>, state=6569840) at ../.././libgomp/config/linux/bar.c:48
+#4  0x0000ffff864382d8 in gomp_simple_barrier_wait (bar=<optimized out>) at ../.././libgomp/config/posix/simple-bar.h:60
+#5  gomp_thread_start (xdata=<optimized out>) at ../.././libgomp/team.c:127
+#6  0x0000ffff86677c48 in start_thread () from /lib64/libpthread.so.0
+#7  0x0000ffff8632f600 in thread_start () from /lib64/libc.so.6
+Thread 1 (Thread 0xffff85a19020 (LWP 52123)):
+#0  0x0000ffff8632a6f0 in syscall () from /lib64/libc.so.6
+#1  0x0000ffff8643ae74 in futex_wait (val=6569832, addr=<optimized out>) at ../.././libgomp/config/linux/futex.h:45
+#2  do_wait (val=6569832, addr=<optimized out>) at ../.././libgomp/config/linux/wait.h:67
+#3  gomp_team_barrier_wait_end (bar=<optimized out>, state=6569832) at ../.././libgomp/config/linux/bar.c:112
+#4  0x0000ffff8643afe4 in gomp_team_barrier_wait_final (bar=<optimized out>) at ../.././libgomp/config/linux/bar.c:136
+#5  0x0000ffff8643949c in gomp_team_end () at ../.././libgomp/team.c:934
+#6  0x00000000005bea8c in ClarkLoop::Run (this=this@entry=0xffffc9191190, convolvedResidual=..., doubleConvolvedPsfs=...) at /home/sjtu_chifei/sourcecode/wsclean-2.7/deconvolution/clarkloop.cpp:89
+#7  0x00000000004de618 in GenericClean::ExecuteMajorIteration (this=<optimized out>, dirtySet=..., modelSet=..., psfs=..., width=4000, height=4000, reachedMajorThreshold=@0xffffc9191ef0: true) at /home/sjtu_chifei/sourcecode/wsclean-2.7/deconvolution/genericclean.cpp:81
+#8  0x00000000004f8d54 in ParallelDeconvolution::ExecuteMajorIteration (this=this@entry=0xffffc91936e8, dataImage=..., modelImage=..., psfImages=..., reachedMajorThreshold=@0xffffc9191ef0: true) at /home/sjtu_chifei/sourcecode/wsclean-2.7/deconvolution/paralleldeconvolution.cpp:164
+#9  0x00000000004cdc4c in Deconvolution::Perform (this=this@entry=0xffffc91936e0, groupTable=..., reachedMajorThreshold=@0xffffc9191ef0: true, majorIterationNr=4) at /home/sjtu_chifei/sourcecode/wsclean-2.7/deconvolution/deconvolution.cpp:142
+#10 0x0000000000482408 in WSClean::runIndependentGroup (this=this@entry=0xffffc91927f0, groupTable=..., primaryBeam=...) at /home/sjtu_chifei/sourcecode/wsclean-2.7/wsclean/wsclean.cpp:727
+#11 0x000000000048afb0 in WSClean::RunClean (this=0xffffc91927f0) at /home/sjtu_chifei/sourcecode/wsclean-2.7/wsclean/wsclean.cpp:472
+#12 0x0000000000461ff8 in CommandLine::Run (wsclean=...) at /home/sjtu_chifei/sourcecode/wsclean-2.7/wsclean/commandline.cpp:1308
+#13 0x0000000000454aac in main (argc=32, argv=0xffffc9193a08) at /home/sjtu_chifei/sourcecode/wsclean-2.7/wscleanmain.cpp:13
