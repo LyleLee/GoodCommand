@@ -3,6 +3,7 @@ git 常用命令
 
 ```
 git clone  ssh://[user@]host.xz[:port]/path/to/repo.git/
+git config --global color.ui true   #有时候git没有颜色，可以这么设置
 ```
 
 ## 文件操作
@@ -76,6 +77,7 @@ git checkout iss53
 git branch -r           #查看所有远程分支，所有分支
 git branch -a
 git branch -d hotfix    #删除分支
+git branch -m oldname newname               #重命名分支
 git ls-tree -r master --name-only	          #查看分支已经tracked的file
 git push origin serverfix:awesomebranch     #推送本地serverfix分支到远程仓库上的awesomebranch
 git push origin serverfix:serverfix         #推送本地的serverfix分支到远程的serverfix分支
@@ -120,4 +122,13 @@ git apply add_function.patch                            #以修改，未暂存�
 ```
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch docs/resources/server_start_up_log.txt' --prune-empty --tag-name-filter cat -- --all
 git push origin master --force
+```
+
+## proxy
+
+```
+ssh -f -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx
+
+git config --global http.proxy 'socks5://127.0.0.1:3128'
+git config --global https.proxy 'socks5://127.0.0.1:3128'
 ```
