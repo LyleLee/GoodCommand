@@ -66,6 +66,7 @@ nav:
     - git bash windows: git_bash_windows.md
     - git command : git_command.md
     - git two github account: git_two_github_account.md
+    - glibc : glibc.md
     - grub : grub.md
     - history: history.md
     - hostnamectl: hostnamectl.md
