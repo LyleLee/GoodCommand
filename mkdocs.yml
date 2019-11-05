@@ -116,6 +116,7 @@ nav:
     - strip: strip.md
     - sysrq: sysrq.md
     - systemd: systemd.md
+    - tool : tool.md
     - tar: tar.md
     - taskset: taskset.md
     - tcpdump: tcpdump.md
