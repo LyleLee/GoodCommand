@@ -88,6 +88,7 @@ nav:
         - container_of: container_of.md
     - kvm: kvm.md
     - linux: linux.md
+    - lustre: lustre.md
     - ls : ls.md
     - lspci: lspci.md
     - lstopo: lstopo.md
