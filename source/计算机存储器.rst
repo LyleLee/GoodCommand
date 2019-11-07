@@ -1,0 +1,30 @@
+概述
+----
+
+| 计算机存储器用于为CPU提供指令和数据。
+| 计算机的存储，整体效果是一个大的存储器池，其成本与层次结构底层最便宜的存储设备相当，但是却以接近于层次结构顶部存储设备的高速率向程序提供数据。
+
+1. 随机访问存储器（Random-Access Memory, RAM）
+
+   -  静态随机访问存储器（SRAM）
+      SRAM将没个位存储在一个双稳态的存储器单元里。SRAM具备双稳态特性，只要有电，就可以永远保持他的值，即使有干扰，当干扰消除时，电路就会恢复到稳定值。
+   -  动态随机访问存储器（DRAM）
+      DRAM将每个位存储为对一个电容的充电。DRAM单元在10~100ms时间内失去电荷，需要刷新。DRAM暴露在光线下会导致电容电压改变
+
+2. 非易失性存储器（nonvolatile memory）
+   如果断电，SRAM和DRAM都会丢失他们的信息。它们是易失的（volatile）。非易失性存储器即使是在关电后，仍然保存着它们的信息。ROM中有的存储器是可以读也可以写的，但是它们整体上都被成为只读存储器（Read-Only
+   Memory）
+
+   -  ROM只读存储器
+   -  PROM（Programmable ROM）可编程ROM。只能被编程一次。
+   -  EPROM（Erasable Programmable
+      ROM）。可擦写ROM。用紫外线清0。一般可以擦写1000次
+   -  EEPROM（Electrically Erasable PROM）电子可擦除PROM，可擦写10^5次
+      闪存基于EEPROM。
+
+3. 磁盘存储
+
+   -  HDD
+   -  SSD
+
+硬盘直通模式： 把硬盘设置为JBOD

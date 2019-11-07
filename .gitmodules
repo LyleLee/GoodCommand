@@ -1,3 +1,6 @@
 [submodule "docs/customer"]
 	path = docs/customer
 	url = https://github.com/LyleLee/customer.git
+[submodule "source/customer"]
+	path = source/customer
+	url = git@github.com:LyleLee/customer.git
