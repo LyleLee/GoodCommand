@@ -36,6 +36,37 @@ ssh target-user@localhost -p 19999          #login into target server
 scp -P 19999 target-user@localhost:/remote/file  .
 ```
 
+## proxy web
+
+```
+ssh -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx
+```
+命令会在前台执行，如果想在后台执行，使用-f参数
+```
+ssh -f -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx
+```
+浏览器设置本地代理127.0.0.1:3128即可.
+
+使用如下命令进行测试，如果能获取到网页内容，说明设置成功
+```
+curl --socks5 127.0.0.1:3128 --verbose www.baidu.com
+```
+
+## proxy yum
+
+1.　请确认您的socks5服务可以连接。
+
+telnet your_socks5_server  port
+
+2.   修改/etc/yum.conf 文件
+
+在文件的最后加入一行：
+
+proxy=socks5://your_ip:port
+
+proxy=socks5://192.168.0.47:3333
+
+
 ## 远程执行任务
 ```
 ssh nick@xxx.xxx.xxx.xxx "df -h" 						    #执行普通命令

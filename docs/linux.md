@@ -239,7 +239,10 @@ lrwxrwxrwx  1 root root 0 Apr 14  2015 lo -> ../../devices/virtual/net/lo
 ```
 export http_proxy=http://192.168.1.212:8118
 ```
-这个命令只对当前终端有效，关闭终端，或者重启机器都会失效。
+这个命令只对当前终端有效，关闭终端，或者重启机器都会失效。使用wegt 和curl时有用。yum的时无效的。
+
+yum的代理需要在/etc/yum.conf下设置
+
 
 ## 文件操作
 + 修改文件所有者和文件所在组
@@ -250,6 +253,7 @@ chown   用户名 文件名  -R
 sudo chown -R me:me .[^.]*  #更改当前目录下所有的文件，包括隐藏文件的拥有者为me，组为me
 sudo chown -R me:me /home/me/code/linux/.[^.]*  更改linux目录下所有的文件，包括隐藏文件的拥有者为me，组为me
 ```
+
 + 递归搜索当前目录下所有.h 文件中包含 linux_binfmt字符串的文件
 ```
 grep "linux_binfmt" -Ril --include=\*.h
@@ -404,6 +408,16 @@ visudo
 ## Allow root to run any commands anywhere
 root    ALL=(ALL)       ALL
 me      ALL=(ALL)       ALL
+```
+允许用户user1无密码执行sudo命令
+````
+sudo visudo
+
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+user1   ALL=(ALL)       NOPASSWD: ALL
+
 ```
 
 ## 安装linux源码,安装内核源码

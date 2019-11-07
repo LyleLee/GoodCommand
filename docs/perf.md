@@ -36,15 +36,47 @@ sudo apt install linux-tools-4.15.0-46-generic
 
 生成SVG三个步骤:
 ```
-perf record -F 99 -a -g -- sleep 60
-perf script > out.perf   
-./FlameGraph/stackcollapse-perf.pl out.perf > out.folded  
-./FlameGraph/flamegraph.pl out.folded > kernel.svg  
+sudo perf record -F 99 -a -g -p 66350 -o ClarkLoop_x86.data -- sleep 60
+
+perf script -i ClarkLoop_x86.data > ClarkLoop_x86.perf
+../FlameGraph/stackcollapse-perf.pl ClarkLoop_x86.perf > ClarkLoop_x86.folded
+../FlameGraph/flamegraph.pl ClarkLoop_x86.folded > ClarkLoop_x86.svg
 ```
+
+复制粘贴执行
+```
+flame_graph_path=../FlameGraph/
+
+perf_file="$(hostnamectl --static)-${perf_pid}-$(date +%Y-%m-%d-%H-%M-%S)"
+
+sudo perf record -F 99 -a -g -o "$perf_file".data -- sleep 60
+
+sudo perf script -i "$perf_file".data > "$perf_file".perf
+sudo ${flame_graph_path}/stackcollapse-perf.pl "$perf_file".perf > "$perf_file".folded
+sudo ${flame_graph_path}/flamegraph.pl "$perf_file".folded > "$perf_file".svg
+
+
+if [ -e "$perf_file".svg ]; then
+    sudo rm "$perf_file".perf "$perf_file".folded
+fi
+
+
+```
+
+
 如果要去除cpu_idle
 ```
 grep -v cpu_idle out.folded | ./flamegraph.pl > nonidle.svg
 ```    
+
+
+
+## 常用命令
+
+```
+perf record -o result.perf
+perf stat -ddd   -a -- sleep 2
+```
 
 ## 资料
 design.txt 描述有perf的实现

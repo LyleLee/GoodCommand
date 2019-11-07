@@ -6,7 +6,7 @@
 wget http://mirrors.ustc.edu.cn/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.gz
 tar -zxf gcc-8.3.0.tar.gz
 cd gcc-8.3.0/
-.configure
+./configure
 make
 make install
 ```
@@ -42,7 +42,15 @@ mpc-1.0.3.tar.gz: OK
 isl-0.18.tar.bz2: OK
 All prerequisites downloaded successfully.
 ```
-重新执行./configure即可
+重新执行./contrib/download_prerequisites即可
+
+手动下载的方式
+```
+wget ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
+wget ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar.bz2
+wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.0.3.tar.gz
+wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-3.1.4.tar.bz2
+```
 
 # 查看GCC编译选项：
 ```

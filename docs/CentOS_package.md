@@ -96,4 +96,9 @@ rpm -q   [package_name]     #查询软件包是否已经安装
 rpm -qi  [package_name]     #查看软件包信息
 rpm -ql  [package_name]     #列出软件包安装的文件，也就是把哪些可执行文件复制到了系统目录
 rpm -qf  [绝对路径    ]     #列出可执行文件/命令是由哪个安装包安装的
+rpm -e kernel-debuginfo-4.14.0-115.el7a.aarch64 kernel-debuginfo-common-aarch64-4.14.0-115.el7a.aarch64 kernel-4.14.0-115.el7a.aarch64 kernel-devel-4.14.0-115.el7a.aarch64 #卸载内核
 ```
+
+# 查找RPM包的网站
+
+[https://www.rpmfind.net/](https://www.rpmfind.net/)
