@@ -100,6 +100,7 @@ nav:
     - nmap : nmap.md
     - ntfs : ntfs.md
     - numactl : numactl.md
+    - pandoc : pandoc.md
     - pip: pip.md
     - pfring: pfring.md
     - pstack: pstack.md
