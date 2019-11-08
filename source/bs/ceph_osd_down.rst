@@ -1,5 +1,5 @@
 OSD down
-========
+***********************
 
 在一个ceph集群中，
 突然发现有一个节点上的所有OSD其中后不久就被标记为down。重启后显示down，但是过了一段时间之后会显示为down。
@@ -33,7 +33,7 @@ OSD down
 
 查看该节点上的osd日志：
 
-.. code:: cs
+.. code::
 
    2019-07-15 09:46:40.479 ffff91adbbd0  0 log_channel(cluster) log [WRN] : Monitor daemon marked osd.44 down, but it is still running
    2019-07-15 09:46:40.479 ffff91adbbd0  0 log_channel(cluster) log [DBG] : map e6540 wrongly marked me down at e6539

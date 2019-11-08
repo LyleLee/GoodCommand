@@ -18,7 +18,7 @@ tomcat启动成功，当时没有看到后台进程，web服务不正常。
 
 操作过程
 
-.. code:: log
+.. code::
 
    [me@hs-es1 bin]$ $CATALINA_HOME/bin/startup.sh
    Using CATALINA_BASE:   /home/me/apache-tomcat-9.0.22

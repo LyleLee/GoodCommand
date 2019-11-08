@@ -3,14 +3,46 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GoodCommand's documentation!
+GoodCommand documentation!
 =======================================
 
 .. toctree::
+   :maxdepth: 1
+   :numbered:
+   :caption: Distribution :
+   
+   os/index
+
+   
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+   :caption: Command:
+   
+   command/index
+
+ 
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+   :caption: Knowleadge:
+   
+   knowleadge/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+   :caption: customer:
+   
+   customer/index
+  
+.. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-
+   :numbered:
+   :caption: Solve Bug:
+   
+   bs/index
 
 Indices and tables
 ==================

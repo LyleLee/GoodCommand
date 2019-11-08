@@ -1,3 +1,6 @@
+ebbchar error
+===================
+
 ::
 
    [Tue Aug  6 20:51:23 2019] EBBChar: Initializing the EBBChar LKM

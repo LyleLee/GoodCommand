@@ -1,3 +1,6 @@
+ceph-volume failed
+================================================
+
 ::
 
    [root@hadoop00 ceph]# ceph-deploy osd create --data /dev/sdg ceph-node04
