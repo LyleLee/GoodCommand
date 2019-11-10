@@ -1,10 +1,9 @@
-fio 测试硬盘性能
+*******************
+fio
 *******************
 
 fio是多线程IO负载生成测试工具，是测试服务器硬盘性能的优秀工具。
 
-参数
-----
 
 命令行参数：
 
@@ -69,7 +68,7 @@ lsscsi在redhat，centOS，ubuntu都支持 ，每个操作系统的设置都不�
 
 X86
 
-::
+.. code-block:: console
 
    [root@localhost queue]# lsscsi -l
    [0:0:0:0]    enclosu 12G SAS  Expander         RevB  -
@@ -81,7 +80,7 @@ X86
 
 ARM-ubuntu
 
-::
+.. code-block:: console
 
    root@ubuntu:~/app/fio-fio-3.13# lsscsi -l
    [0:0:0:0]    disk    ATA      HUS726040ALA610  T7R4  /dev/sda
@@ -177,7 +176,8 @@ fio 调优指导
    group_reporting
    [/dev/sdc]
 
-查考参数
+参考参数
+-----------------------
 
 4k randwrite Peak IOPS
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -332,7 +332,7 @@ fio 调优指导
 除此之外，要想可以执行成功，就好是ceph节点上的/etc/ceph拷贝到当前的主机上。
 
 参考文档
-========
+------------------
 
 `【其他IO监控各工具】 <https://www.cnblogs.com/quixotic/p/3258730.html>`__
 
@@ -341,25 +341,25 @@ fio 调优指导
 `【高性能指导】 <https://support.fusionio.com/load/-media-/2fk40u/docsConfluence/ioMemory_VSL_Peak_Performance_Guide_2013-08-20.pdf>`__
 
 问题记录：
-==========
+-----------------
 
 问题1： ubuntu下缺少libaio库
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: console
+.. code-block:: console
 
    4k_read: No I/O performed by libaio, perhaps try --debug=io option for details?
 
 解决办法
 
-.. code:: console
+.. code-block:: console
 
    sudo apt-get install libaio-dev
 
 问题2：如何限制带宽和IOPS
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: console
+.. code-block:: console
 
    --rate 400k,300k
 
@@ -383,6 +383,6 @@ fio 调优指导
 
 解决办法： 安装libaio
 
-.. code:: console
+.. code-block:: console
 
    sudo apt-get install libaio-dev

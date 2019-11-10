@@ -8,7 +8,7 @@ netstat
 
 一般指的是连接已经建立的链接。包含程序PID和程序名，使用\ ``-p``\ 选项
 
-.. code:: console
+.. code-block:: console
 
    netstat -tup
 
@@ -17,7 +17,7 @@ netstat
 
 包含所有状态的链接。包含程序PID和程序名，使用\ ``-p``\ 选项
 
-.. code:: console
+.. code-block:: console
 
    netstat -atup
 
@@ -26,11 +26,11 @@ netstat
 
 使用\ ``-n``\ 选项
 
-.. code:: console
+.. code-block:: console
 
    netstat -atupn
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# netstat -atupn
    Active Internet connections (servers and established)
@@ -61,7 +61,7 @@ netstat
 注意要显示PID和程序名，可能需要有root权限，否则root用户的进程 ###
 显示所有网络接口
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# netstat -i
    Kernel Interface table
@@ -79,11 +79,11 @@ netstat
 查询指定端口上的进程
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code:: console
+.. code-block:: console
 
    netstat -anp | grep ":80"
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# netstat -anp | grep ":80"
    tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      17722/nginx
@@ -92,21 +92,21 @@ netstat
 
 只显示ipv4结果，使用\ ``-4``\ 选项
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# netstat -4anp | grep ":80"
    tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      17722/nginx
 
 lsof也可以实现类似效果
 
-.. code:: console
+.. code-block:: console
 
    lsof -i :80
 
 显示主机路由
 ~~~~~~~~~~~~
 
-.. code:: console
+.. code-block:: console
 
    netstat -r
    netstat -rn
@@ -118,7 +118,7 @@ IP地址查询主机名
 
    nslookup 139.159.243.11
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# nslookup 139.159.243.11
    Server:         8.8.8.8
@@ -131,11 +131,11 @@ IP地址查询主机名
 
 ###主机名查询IP地址
 
-.. code:: console
+.. code-block:: console
 
    ping ecs-139-159-243-11.compute.hwclouds-dns.com
 
-.. code:: console
+.. code-block:: console
 
    root@ubuntu:~# ping ecs-139-159-243-11.compute.hwclouds-dns.com
    PING ecs-139-159-243-11.compute.hwclouds-dns.com (139.159.243.11) 56(84) bytes of data.

@@ -1,4 +1,5 @@
-KVM虚拟化工具
+****************************
+KVM
 ****************************
 
 有一天需要安装ceph集群来看看分布式系统的性能，想找几台机器来测测，一看发现至少需要3台，机器不够怎么办，起一个虚拟机。
@@ -450,16 +451,14 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
    </network>
 
 参考资料
-========
+----------------------
 
 `【http://blog.programster.org/kvm-cheatsheet】 <http://blog.programster.org/kvm-cheatsheet>`__
 
 `【https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/】 <https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/>`__
 
-问题记录
-========
 
-问题1：无法连接到libvirt-sock*\*
+问题1：无法连接到libvirt-sock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -473,7 +472,7 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
 
    systemctl start libvirtd
 
-问题2：无法读取iso，权限不对*\*
+问题2：无法读取iso，权限不对
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::

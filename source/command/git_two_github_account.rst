@@ -1,5 +1,6 @@
-一台电脑两个github账号设置
-==========================
+============================
+github two account
+============================
 
 账户信息配置,取消全局账户
 
@@ -59,14 +60,14 @@ SSH的配置
 
 生成私钥公钥对
 
-.. code:: shell-scripts
+.. code::
 
    ssh-keygen -t rsa -C "one@gmail.com" -f ~/.ssh/id_rsa_one
    ssh-keygen -t rsa -C "two@gmail.com" -f ~/.ssh/id_rsa_two
 
 这个时候会得到文件
 
-.. code:: shell-scripts
+.. code::
 
    -rw-r--r-- 1 Administrator 197121 1831 2月  12 17:36 id_rsa_one
    -rw-r--r-- 1 Administrator 197121  405 2月  12 17:36 id_rsa_one.pub
@@ -124,7 +125,7 @@ SSH的配置
 
 教程提到每次重启都要执行：
 
-.. code:: console
+.. code-block:: console
 
    ssh-add ~/.ssh/id_rsa_one
    ssh-add ~/.ssh/id_rsa_two

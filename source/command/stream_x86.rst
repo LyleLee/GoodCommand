@@ -1,5 +1,6 @@
-x86 stream测试结果
-==================
+====================
+stream run on x86
+====================
 
 1. 查询\ `GNU
    compiler <https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>`__

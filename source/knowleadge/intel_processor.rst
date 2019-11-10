@@ -1,4 +1,4 @@
-英特尔CPU
+英特尔CPU天梯
 **********************
 
 `[有一个天梯排名] <https://itianti.sinaapp.com/index.php/cpu>`__

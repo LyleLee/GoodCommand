@@ -42,7 +42,7 @@ lscpu
    Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good n
    opl eagerfpu pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm fsgsbase smep erms xsaveopt
 
-.. code:: console
+.. code-block:: console
 
    CPU(s):                4 总核数4 或者 逻辑核数4  对应cpuinfo中的processor编号
    Socket(s):             1 物理核一共有1个         对应cpuinfo中的physical id

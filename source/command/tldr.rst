@@ -7,7 +7,7 @@ tldr
 哪里有那么多时间看，即使看了，一个命令参数那么多，谁记得住。所以tldr是一个更加简单的、由社区驱动的
 man pages。 用它可以直接查看命令的常用例子
 
-.. code:: console
+.. code-block:: console
 
    me@ubuntu:~$ tldr scp
    scp

@@ -1,6 +1,6 @@
 #!/bin/bash
 HOME_DIR=$(cd $(dirname $0);pwd)
-hardware_software_conf=$HOME_DIR"/out_hardware_software_conf.txt"
+hardware_software_conf=$HOME_DIR"/hardware-$(hostnamectl --static)-$(uname -r).txt"
 
 echo "export system hardware and software configuration"
 
@@ -15,7 +15,7 @@ printf "\n\n****************\n" | tee -a $hardware_software_conf
 
 
 echo "lsblk" | tee -a $hardware_software_conf
-lsblk >> $hardware_software_conf
+lsblk -o name,maj:min,rm,size,ro,type,rota,mountpoint >> $hardware_software_conf
 wait
 printf "\n\n****************\n" | tee -a $hardware_software_conf
 

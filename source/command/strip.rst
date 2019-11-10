@@ -1,5 +1,6 @@
+*****************
 strip
-=====
+*****************
 
 Discard symbols from object files. 删除目标文件得符号信息
 

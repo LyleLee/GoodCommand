@@ -1,4 +1,5 @@
-tzselect timedatectl设置系统时间
+*********************************
+timedatectl tzselect 
 *********************************
 
 ubuntu tzselect设置过程

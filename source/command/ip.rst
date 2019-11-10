@@ -1,4 +1,5 @@
-ip 命令
+*********************
+ip
 *********************
 
 ::
@@ -9,5 +10,4 @@ ip 命令
    ip link set enp3s0 down
    ip monitor
 
-ip
-命令参考\ `[https://www.cyberciti.biz/faq/linux-ip-command-examples-usage-syntax/] <https://www.cyberciti.biz/faq/linux-ip-command-examples-usage-syntax/>`__
+ip命令参考\ `[https://www.cyberciti.biz/faq/linux-ip-command-examples-usage-syntax/] <https://www.cyberciti.biz/faq/linux-ip-command-examples-usage-syntax/>`__

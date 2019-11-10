@@ -1,4 +1,5 @@
-git bash windows 中文乱码
+=========================
+git bash windows
 =========================
 
 git bash 显示中文乱码

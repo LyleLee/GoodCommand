@@ -1,8 +1,20 @@
-ls 获取文件路径全名
+===================
+ls
 ===================
 
-::
+设置一个别名rp
 
-   alias full='_full(){ ls $PWD/$1; };_full'
-   [me@centos go]$ full LICENSE
-   /home/me/go/LICENSE
+.. literalinclude:: ../script/os_init_script.sh
+   :language: shell
+   :lines: 1-2,13-15
+   :linenos:
+   
+使用方法
+
+.. code:: shell
+
+    rp file.name
+
+.. caution:: 
+
+   不能支持包含.的路径

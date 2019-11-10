@@ -6,6 +6,8 @@
 CentOS
 ======
 
+凡事都可以到这里去下载 `http://vault.centos.org/centos <http://vault.centos.org/centos>`__
+
 在/usr/src/kernels/可以看到安装好的内核源码
 
 .. code:: shell

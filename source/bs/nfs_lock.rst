@@ -280,7 +280,7 @@ flock实现
 
 结果如下
 
-.. code:: console
+.. code-block:: console
 
    fcfa447 NFS: Revert "NFS: Move the flock open mode check into nfs_flock()"
    bf4b490 NFS: various changes relating to reporting IO errors.
@@ -386,7 +386,7 @@ flock实现
 关于commit
 revert的原因，可以查看\ ``commit fcfa447``,作者写到，在NFS的实现中，会用posix的locking机制模拟flock，不
 
-.. code:: console
+.. code-block:: console
 
    commit fcfa447062b2061e11f68b846d61cbfe60d0d604
    Author: Benjamin Coddington <bcodding@redhat.com>

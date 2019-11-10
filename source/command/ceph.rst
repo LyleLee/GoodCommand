@@ -1,11 +1,10 @@
-ceph 分布式存储系统
+************************
+Ceph
 ************************
 
-| ceph 是一个高性能的分布式系统。提供三种服务：对象存储（Object
-  Storage）、块存储（BLOCK Storage）、文件系统（File System）
-| 一个ceph集群至少需要一个Ceph Monitor，Ceph Manager 和Ceph
-  OSD。如果需要使用Ceph文件系统（Ceph File
-  System），则还需要一个元数据服务器（Ceph Metadata）
+ceph 是一个高性能的分布式系统。提供三种服务：对象存储（Object  Storage）、块存储（BLOCK Storage）、文件系统（File System）
+
+一个ceph集群至少需要一个Ceph Monitor，Ceph Manager 和Ceph OSD。如果需要使用Ceph文件系统（Ceph File  System），则还需要一个元数据服务器（Ceph Metadata）
 
 下面以安装ceph 12.2.11为例
 

@@ -7,7 +7,7 @@ ShellCheck 是一个shell脚本静态分析工具
 不知道会在调试过程要反复执行多少次。
 中途还可能产生中间文件，命令不正确很多文件，所以，写完后检查一下吧
 
-.. code:: console
+.. code-block:: console
 
    me@ubuntu:~/virtual_machine$ shellcheck get_vm_ip.sh
 
