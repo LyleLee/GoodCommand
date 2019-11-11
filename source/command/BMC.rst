@@ -1,5 +1,6 @@
+***********
 BMC
-===
+***********
 
 Baseboard Management Controller
 用于管理服务器的子系统，有独立的CPU和内存，可以读取到母版上各硬件设施的状态。
@@ -10,11 +11,14 @@ Baseboard Management Controller
 
    iBMC:/->
 
-.. code::
+.. code:: shell
 
    #查询固件版本BMC、CPLD、BIOS信息
    ipmcget -d v
 
+   #查询健康事件(普通，严重，告警)
+   ipmcget -t fru0 -d healthevents
+   
    #查询iBMC管理网口的IP信息。
    ipmcget -d ipinfo 
 
@@ -57,7 +61,16 @@ Baseboard Management Controller
    ipmcset -d powerstate -v 2 #强制下电
 
 
-   #查询健康事件
-   ipmcget -t fru0 -d healthevents
 
+**查询系统健康事件**
+
+.. code-block:: console
+
+   iBMC:/->ipmcget -d healthevents
+   Event Num  | Event Time           | Alarm Level  | Event Code   | Event Description
+   1          | 2019-11-04 07:07:39  | Major        | 0x10000015   | Abnormal mainboard CPLD 3 self-check result.
+   2          | 2019-11-04 07:07:36  | Major        | 0x28000001   | The SAS or PCIe cable to front disk backplane is incorrectly connected.
+   3          | 2019-11-04 07:07:40  | Major        | 0x28000001   | The SAS or PCIe cable to front disk backplane PORTB is incorrectly connected.
+   4          | 2019-11-04 07:07:40  | Major        | 0x28000001   | The SAS or PCIe cable to front disk backplane PORTA is incorrectly connected.
+   iBMC:/->
 

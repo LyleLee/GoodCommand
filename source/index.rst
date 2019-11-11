@@ -7,41 +7,13 @@ GoodCommand documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 1
-   :numbered:
-   :caption: Distribution :
+   :maxdepth: 2
+   :caption: GoodCommand :
    
    os/index
-
-   
-.. toctree::
-   :maxdepth: 1
-   :numbered:
-   :caption: Command:
-   
    command/index
-
- 
-.. toctree::
-   :maxdepth: 1
-   :numbered:
-   :caption: Knowleadge:
-   
    knowleadge/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :numbered:
-   :caption: customer:
-   
    customer/index
-  
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: Solve Bug:
-   
    bs/index
 
 Indices and tables

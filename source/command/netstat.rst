@@ -1,5 +1,6 @@
+==========
 netstat
-=======
+==========
 
 使用netstat监控网络状态
 
@@ -63,7 +64,7 @@ netstat
 
 .. code-block:: console
 
-   root@ubuntu:~# netstat -i
+   [root@ubuntu:]~# netstat -i
    Kernel Interface table
    Iface   MTU Met   RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
    eth0       1500 0    797518      0      0 0        677533      0      0      0 BMRU
@@ -74,7 +75,7 @@ netstat
 ::
 
    netstat -ie
-   #和ifconfig命令效果相同
+   #like ifconfig
 
 查询指定端口上的进程
 ~~~~~~~~~~~~~~~~~~~~

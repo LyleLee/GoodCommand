@@ -1,6 +1,6 @@
-************************
+=======================
 Ceph
-************************
+=======================
 
 ceph 是一个高性能的分布式系统。提供三种服务：对象存储（Object  Storage）、块存储（BLOCK Storage）、文件系统（File System）
 
@@ -211,7 +211,7 @@ libgoogle-perftools4 会缺少依赖
 解决办法:下载并安装libtcmalloc-minimal4
 
 使用dpkg -i 所有的deb包
-~~~~~~~~~~~~~~~~~~~~~~~
+===========================
 
 Errors were encountered while processing:
 libcurl3_7.58.0-2ubuntu2_arm64.deb ceph-common ceph-mgr ceph

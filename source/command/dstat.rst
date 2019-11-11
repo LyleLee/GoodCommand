@@ -26,7 +26,7 @@ dstat 功能丰富，可用于替代vmstat, iostat，netstat 和ifstat。
      0   0  94   5   0|   0     0 | 340k 2799k|   0     0 |7805  5675
      0   0  95   4   0|   0     0 | 211k 1843k|   0     0 |4179  3235
 
-.. code:: comments
+.. code::
 
    usr 执行用户程序耗时
    sys 执行系统程序耗时
