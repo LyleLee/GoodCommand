@@ -137,7 +137,7 @@ fio 调优指导
 ------------
 
 1.  测试硬盘direct读写时，请使用erase命令清除硬盘数据
-2.  BIOS关闭CPU节能模式，选择performace.风扇全速。
+2.  BIOS关闭CPU节能模式，选择performance模式。同事设置风扇全速。
 3.  硬盘测试请如果有raid卡，请设置硬盘为JBOD模式
 4.  关闭SMMU可以提升随机读和随机写，顺序写性能
 5.  fio 指定–ioengine=libaio时，应当指定 –direct=1。
