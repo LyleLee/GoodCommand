@@ -1,11 +1,9 @@
 *************************
 Ceph operate
 *************************
+目标是新建如下集群：
 
-
-#新建集群目标：
-
-::
+.. code-block:: console
 
    [root@192e168e100e118 ~]# ceph -s
      cluster:
@@ -25,13 +23,14 @@ Ceph operate
        usage:   491 TiB used, 230 TiB / 721 TiB avail
        pgs:     4096 active+clean
 
-HDD 重测
-========
+
+HDD集群重测
+======================
 
 删除pool
 --------
 
-::
+.. code-block:: shell
 
    ceph osd pool delete images images --yes-i-really-really-mean-it
    ceph osd pool delete volumes volumes --yes-i-really-really-mean-it
@@ -41,13 +40,13 @@ HDD 重测
 
 在每个节点上执行，停止OSD进程
 
-::
+.. code-block:: shell
 
    systemctl stop ceph-osd.target
 
 在可以对集群进行管理的节点上执行删除
 
-::
+.. code-block:: shell
 
    for i in {0..95}; do
        ceph osd down osd.$i
@@ -59,7 +58,7 @@ HDD 重测
 
 在每台ceph节点上取消挂载
 
-::
+.. code-block:: shell
 
    umount /var/lib/ceph/osd/ceph-*
    rm -rf /var/lib/ceph/osd/ceph-*
@@ -68,27 +67,27 @@ HDD 重测
 
 方法一
 
-::
+.. code-block:: shell
 
    lsblk | grep ceph |awk '{print substr($1,3)}'                           #列出所有的lvm分区
    lsblk | grep ceph |awk '{print substr($1,3)}' | xargs dmsetup remove    #列出所有的lvm分区，并删除
 
 也可以指定删除某一个
 
-::
+.. code-block:: shell
 
    dmsetup remove ceph--7c7c2721--5dfc--45e4--9946--5316e21087df-osd--block--92276738--1bbe--4229--a094--761ceda16812
 
 方法二：
 
-::
+.. code-block:: shell
 
    lvs | grep osd | awk '{print $2}' | xargs lvremove -y       #先删除lvm
    vgs | grep ceph | awk '{print $1}' | xargs vgremove -y      #再删除lvm group
 
 可以在单台设备上执行上述命令，
 
-::
+.. code-block:: console
 
    root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'lvs | grep osd | awk \'{print $2}\' | xargs lvremove -y'
    root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'vgs | grep ceph | awk \'{print $1}\' | xargs vgremove -y '
@@ -97,14 +96,14 @@ HDD 重测
 
 在每台设备上格式化HDD,SSD（如果有）
 
-::
+.. code-block:: shell
 
    for disk in {a..l}
        do parted -s /dev/sd${disk} mklabel gpt
        ceph-volume lvm zap /dev/sd${disk} --destroy 
    done
 
-::
+.. code-block:: shell
 
    for ssd_disk in nvme0n1 nvme1n1
        do parted -s /dev/$ssd_disk mklabel gpt
@@ -114,11 +113,11 @@ HDD 重测
 在deploy节点上收集key
 ---------------------
 
-::
+.. code-block:: shell
 
    ceph-deploy gatherkeys ceph-node00
 
-::
+.. code-block:: shell
 
    for node in {00..07}; do
        ceph-deploy gatherkeys ceph-node${node}
@@ -129,7 +128,7 @@ HDD 重测
 
 正常情况下在ceph-deploy节点上执行创建
 
-::
+.. code-block:: shell
 
    for node in {00..07}; do
        for disk in {a..l};do
@@ -140,15 +139,18 @@ HDD 重测
 
 如果需要设置SSD作为wal和db在每个节点上执行
 
-::
+.. code-block:: shell
 
    vgcreate ceph-db /dev/nvme0n1
    vgcreate ceph-wal /dev/nvme1n1
-   for index in {a..l};do lvcreate -n ceph-db-$index -L 240G ceph-db;lvcreate -n ceph-wal-$index -L 240G ceph-wal;  done
+   for index in {a..l};do 
+       lvcreate -n ceph-db-$index -L 240G ceph-db;
+       lvcreate -n ceph-wal-$index -L 240G ceph-wal;
+   done
 
 正常情况下在deploy节点上执行
 
-::
+.. code-block:: shell
 
    for node in {00..07}; do
        for disk in {a..l};do
@@ -158,13 +160,15 @@ HDD 重测
 
 如果需要设置SSD作为wal和db在每个节点上执行
 
-::
+.. code-block:: shell
 
    vgcreate ceph-db /dev/nvme0n1
    vgcreate ceph-wal /dev/nvme1n1
    for node in {00..07}; do
        for disk in {a..l};do
-           ceph-deploy --overwrite-conf osd create --data /dev/sd${disk} --block-db ceph-db/ceph-db-$disk --block-wal ceph-wal/ceph-wal-$disk ceph-node${node}
+           ceph-deploy --overwrite-conf osd create --data /dev/sd${disk} \
+           --block-db ceph-db/ceph-db-$disk \
+           --block-wal ceph-wal/ceph-wal-$disk ceph-node${node}
        done
    done
 
@@ -173,14 +177,14 @@ HDD 重测
 
 正常情况下创建pool
 
-::
+.. code-block:: shell
 
    ceph osd pool create volumes 4096 4096
    ceph osd pool application enable volumes rbd
 
 如果需要创建EC pool
 
-::
+.. code-block:: shell
 
    ceph osd erasure-code-profile set testprofile k=4 m=2   #创建名字为testprofile的profile。 k+m为4+2。允许2个OSD出错。还有其他参数请查询其他文档
    ceph osd erasure-code-profile get testprofile   #查看创建好的profile
@@ -204,13 +208,13 @@ HDD 重测
 
 一共创建400个rbd
 
-::
+.. code-block:: shell
 
    for i in {000..399};do rbd create size3/test-$i --size 400G; done
 
 约2分钟 如果是EC池
 
-::
+.. code-block:: shell
 
    for i in {000..399};do
        rbd create volumes_repli_metadata/test-$i --size 400G --data-pool volumes;
@@ -219,7 +223,7 @@ HDD 重测
 写入数据
 --------
 
-::
+.. code-block:: shell
 
    pdcp -w ^dell.txt fill_hdd_data.sh /root/rbd_test/
    pdsh -w ^dell.txt 'cd /root/rbd_test; . fill_hdd_data.sh'
@@ -227,39 +231,39 @@ HDD 重测
 查看rbd容量
 -----------
 
-::
+.. code-block:: shell
 
    for index in {000..399};do
        rbd du volumes/test-$index
    done
 
-SSD 重测
-========
+SSD 集群重测
+=============
 
 格式化SSD
-=========
+-------------
 
-::
+.. code-block:: shell
 
    parted /dev/nvme1n1 -s mklabel gpt
    parted /dev/nvme0n1 -s mklabel gpt
 
 收集key
-=======
+-----------
 
-::
+.. code-block:: shell
 
    ceph-deploy gatherkeys
 
-::
+.. code-block:: shell
 
    ceph-deploy osd create --data /dev/nvme0n1 ceph-node00
    ceph-deploy osd create --data /dev/nvme1n1 ceph-node00
 
 创建 pool
-=========
+-------------
 
-::
+.. code-block:: console
 
    [root@ceph-node00 ~]# ceph osd pool create volumes 4096 4096
    Error ERANGE:  pg_num 4096 size 3 would mean 12288 total pgs, which exceeds max 4000 (mon_max_pg_per_osd 250 * num_in_osds 16)
@@ -268,57 +272,75 @@ SSD 重测
 .. _创建rbd-1:
 
 创建rbd
-=======
+-------------
 
 一共创建50个rbd
 
-::
+.. code-block:: shell
 
    for i in {01..50};do
        rbd create --size 100G volumes/test-$i
    done
 
 写满rbd数据
-===========
+-------------
 
-::
+.. code-block:: shell
 
    pdsh -w ^dell.txt "cd /root/rbd_test;. fill_nvm2_data.sh"
 
-查看rbd的容量
 
-::
+
+查看rbd的容量
+----------------
+
+.. code-block:: shell
 
    for index in {01..50};do
        rbd du volumes/test-$index
    done
 
-收集数据
-========
 
-for host in ``cat ../dell.txt``; do scp -r
-root@${host}:/root/rbd_test/192\* ./;done
+其它常用操作
+===============
+
+收集数据
+-----------
+
+.. code-block:: shell
+
+   for host in `cat ../dell.txt`; do 
+       scp -r root@${host}:/root/rbd_test/192/* ./;
+   done
 
 分发脚本
-========
+---------------
 
-for host in ``cat dell.txt``; do scp do_fio.sh
-root@\ :math:`{host}:/root/rbd_test/; done for host in `cat dell.txt`; do scp rmhostname.sh root@`\ {host}:/root/rbd_test/;
-done
+.. code-block:: shell
+
+   for host in `cat dell.txt`; do
+       scp do_fio.sh root@${host}:/root/rbd_test/; 
+   done 
+   for host in `cat dell.txt`; do 
+       scp rmhostname.sh root@${host}:/root/rbd_test/;
+   done
+
 
 重启进入bios
-============
+----------------
 
-for host in ``cat BMC_arm.txt``; do ipmitool -I lanplus -H ${host} -U
-Administrator -P Admin@9000 chassis bootdev bios; wait ;done
+.. code-block:: shell
 
-仅仅测试读
-==========
+   for host in ``cat BMC_arm.txt``; do
+       ipmitool -I lanplus -H ${host} -U Administrator -P Admin@9000 chassis bootdev bios;
+       wait ;
+   done
+
 
 执行单个测试
-============
+------------------
 
-::
+.. code-block:: shell
 
    fio315 -runtime=120     \
            -size=100%  \
@@ -337,33 +359,40 @@ Administrator -P Admin@9000 chassis bootdev bios; wait ;done
            
 
 统计json文件
-============
+------------------
 
-py /home/monitor/test_script/parase_fio.py ./
+.. code-block:: shell
+
+   py /home/monitor/test_script/parase_fio.py ./
+
 
 禁用 osd
-========
+-------------
+.. code-block:: shell
 
-| systemctl \| grep ceph-osd \| grep fail \| awk ‘{print $2}’
-| systemctl \| grep ceph-osd \| grep fail \| awk ‘{print $2}’ \| xargs
-  systemctl disable systemctl \| grep ceph-osd \| grep fail \| awk
-  ‘{print $2}’ \| xargs systemctl status
+   systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’
+   systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’ | xargs systemctl disable 
+   systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’ | xargs systemctl status
+
 
 ceph绑核
-========
+--------------
 
-可以先用taskset -acp 0-23 {osd-pid}
+可以先用`taskset -acp 0-23 {osd-pid}`
 看看对性能帮助有多大。如果有帮助，再调整ceph参数配置
 
-绑定node2 for osd_pid in $(pgrep ceph-osd); do taskset -acp 48-71
-$osd_pid ;done
+绑定node2 
 
-for osd_pid in $(pgrep ceph-osd); do ps -o thcount $osd_pid ;done
+.. code-block:: shell
+
+   for osd_pid in $(pgrep ceph-osd); do taskset -acp 48-71 $osd_pid ;done
+   for osd_pid in $(pgrep ceph-osd); do ps -o thcount $osd_pid ;done
+
 
 daemon命令查看集群状态
-======================
+-----------------------
 
-::
+.. code-block:: shell
 
    ceph daemon mon.cu-pve04 help       #显示monitor的命令帮助     
    ceph daemon mon.cu-pve04 sessions   #
@@ -372,16 +401,17 @@ daemon命令查看集群状态
    ceph daemon osd.0 "dump_historic_ops_by_duration" #显示被ops的时间
 
 noscrub 设置
-============
+----------------------
 
-::
+.. code-block:: shell
 
    ceph used set noscrub       #停止scrub
    ceph osd unset noscrub      #启动scrub
 
 删除lvm分区效果
+----------------------
 
-::
+.. code-block:: console
 
    sdk                                                                                                     8:160  0   7.3T  0 disk
    sdi                                                                                                     8:128  0   7.3T  0 disk
