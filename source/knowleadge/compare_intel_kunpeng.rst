@@ -1,17 +1,13 @@
-******************************
-简单对比Intel CPU 和 鲲鹏CPU
-******************************
+**********************************
+理解NUMA架构，简单对比Intel和鲲鹏
+**********************************
 
-| cpu有很多需要信息需要了解，numa是其中之一。
-| NUMA架构，非统一内存访问架构（英语：Non-uniform memory
-  access，简称NUMA）。
-| 在numa出现之前， cpu通过内存控制器访问内存，
-  显然，当cpu核数逐渐增多的今天，内存控制器会成为瓶颈。这个时候就考虑内存控制器进行拆分，内存平均分配到各个die上，
-  cpu访问本地的内存时速度快，跨片访问慢。类似与这个图：
-| |numa示意|
-| 在做性能优化时，针对numa结构的绑核可以让数据访问更快。
-  有时候也经常会被问硬盘是在哪个numa节点上的，
-  网卡是在哪个numa节点上的，中断怎么绑定效率最高，有必要了解一下。
+cpu有很多需要信息需要了解，numa是其中之一。NUMA架构，非统一内存访问架构（英语：Non-uniform memory access，简称NUMA）。
+
+在numa出现之前， cpu通过内存控制器访问内存，显然，当cpu核数逐渐增多的今天，内存控制器会成为瓶颈。这个时候就考虑内存控制器进行拆分，内存平均分配到各个die上，cpu访问本地的内存时速度快，跨片访问慢。类似与这个图：
+|numa示意|
+
+在做性能优化时，针对numa结构的绑核可以让数据访问更快。有时候也经常会被问硬盘是在哪个numa节点上的，网卡是在哪个numa节点上的，中断怎么绑定效率最高，有必要了解一下。
 
 主要设备信息
 ============
@@ -26,9 +22,12 @@
 cpu 信息
 ========
 
-这里以lspci的输出做对比 ### 泰山 鲲鹏 920-4826
+这里以lspci的输出做对比 
 
-.. code:: json
+泰山 鲲鹏 920-4826
+----------------------------
+
+.. code:: console
 
    Architecture:          aarch64          #ARM64架构
    Byte Order:            Little Endian    #小端
@@ -51,9 +50,9 @@ cpu 信息
    Flags:                 fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop
 
 戴尔 PowerEdge R730 Intel(R) Xeon(R) CPU E5-2630
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------------------
 
-.. code:: json
+.. code-block:: console 
 
    Architecture:          x86_64           #X86架构
    CPU op-mode(s):        32-bit, 64-bit   #同时支持32位和64位运行模式
@@ -88,9 +87,9 @@ numa 拓扑
 这里以lstopo的输出作为对比
 
 泰山 鲲鹏 920-4826
-~~~~~~~~~~~~~~~~~~
+--------------------------
 
-.. code:: json
+.. code-block:: console
 
    Machine (188GB total):
      Package L#0
@@ -302,7 +301,7 @@ numa 拓扑
      Misc(MemoryModule)
    [root@ARM server home]#
 
-| 拓扑图是：
+拓扑图是：
 | |lstopo|
 
 解读一下：
@@ -337,7 +336,7 @@ numa 拓扑
 | ``Net L#25 "enp143s0`` 这个是1822网卡，可以根据pci地址查询：lspci -nn
   \| grep 19e5:1822,如下文 ``Misc(MemoryModule)`` 内存插槽数量
 
-.. code:: json
+.. code-block:: console
 
    [root@ARM server home]# lspci -nn | grep 19e5:1822
    83:00.0 Ethernet controller [0200]: Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE) [19e5:1822] (rev 45)
@@ -354,7 +353,7 @@ numa 拓扑
 戴尔 PowerEdge R730 Intel(R) Xeon(R) CPU E5-2630
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: json
+.. code-block:: console
 
    Machine (128GB total):
      NUMANode L#0 (P#0 64GB)
@@ -469,23 +468,22 @@ numa 拓扑
 
 | 这里也解读一下：
 | kunpeng 920 和 intel
-  2630都是两个物理核，也就是服务器上经常能看到两个非常大的散热器。
-  区别是，intel CPU有超线程， 也就是说一个核心可以跑两个线程，
-  也就相当于一核等于2核。
+  2630都是两个物理核，也就是服务器上经常能看到两个非常大的散热器。区别是，intel CPU有超线程， 也就是说一个核心可以跑两个线程，也就相当于一核等于2核。
 
-.. code:: json
+.. code-block:: console
 
          L2 L#0 (256KB) + L1d L#0 (32KB) + L1i L#0 (32KB) + Core L#0
            PU L#0 (P#0)
            PU L#1 (P#20)
 
-网卡、内存在哪个numa节点上。
-============================
+
+如何检查网卡、内存在哪个numa节点上。
+======================================
 
 从lstopo来看， ARM的板载网卡插在了node0上，
 1822两个都是插在node2上。在pci设备下查询结果一致。
 
-::
+.. code-block:: console
 
    for pcia in $(lspci -nn | grep 1822 | awk -F "[ ,:]" '{print $1}');do
    >     cat /sys/bus/pci/devices/0000\:${pcia}\:00.0/numa_node
@@ -509,15 +507,12 @@ numa 拓扑
    2
    2
 
-内存从这里好像看不出来，
-但是可以知道每个node的内存时相等的，只要按照服务器添加内存条的方式添加即可。
+内存从这里好像看不出来，但是可以知道每个node的内存时相等的，只要按照服务器添加内存条的方式添加即可。
 
 总结
-====
+======
 
-这里不是做性能上的对比，
-可以看到两款服务是不一样规格的，也很鲲鹏难具有可比性。再没有授权的情况下，
-也不敢下结论性的言论。如果想要了解更多的泰山或者鲲鹏处理器，可以访问华为官网。
+这里不是做性能上的对比，可以看到两款服务是不一样规格的，不具备具可比性。
 
 .. |numa示意| image:: ../images/numa.png
 .. |lstopo| image:: ../images/taishan.png
