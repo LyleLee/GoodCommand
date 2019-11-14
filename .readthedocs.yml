@@ -7,7 +7,7 @@ sphinx:
 formats: all
 
 submodules:
-  include: ./source/src/arm_neon_example
+  include: all
   recursive: true
   
 python:
