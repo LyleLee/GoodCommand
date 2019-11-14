@@ -3,30 +3,25 @@ CentOS软件包管理，设置软件源
 ******************************
 
 设置CentOS软件源
+=================
 
-本地软件源设置和redhat相同
-------------------------------
+本地软件源
+--------------
 
-请参考：\ `[redhat 软件源设置] <redhat_package.md>`__
+设置和redhat相同请参考：:doc:`redhat_package`
 
 在线源
 -------------------------
-
-直接下载到本地即可
 
 ::
 
    wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/repository/conf/CentOS-7-anon.repo
 
-直接下载CentOS源配置文件到本地
---------------------------------
 
-前面的下载方式下载到的不是alt-aarch64这里提供一份下载\ `[CentOS7.6repo] <resources/CentOS7.6repo/CentOS-Base.repo>`__
-
-配置epel源
+epel源
 -------------------------------
 
-方法1：参考\ `Redhat的配置 <redhat_package.md>`__
+方法1：
 
 ::
 
@@ -65,21 +60,23 @@ CentOS软件包管理，设置软件源
 baseurl中的baseurl=https://mirrors.huaweicloud.com/centos/
 修改为baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/updates/
 
+
+CentOS 常见依赖包
+------------------
+
+.. code-block:: shell
+
+   yum install ncurses-devel zlib-devel texinfo gtk+-devel gtk2-devel
+   qt-devel tcl-devel tk-devel libX11-devel kernel-headers kernel-devel 
+   yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
+   rpm –import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
+
+CentOS 软件包常用命令
+----------------------
+
 ::
 
-
-   # CentOS 常见依赖包
-
-yum install ncurses-devel zlib-devel texinfo gtk+-devel gtk2-devel
-qt-devel tcl-devel tk-devel libX11-devel kernel-headers kernel-devel yum
-install
-https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
-rpm –import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
-
-::
-
-
-   # CentOS 常用命令
+   
    yum install iperf3
    yum -y install firefox
    yum remove firefox
