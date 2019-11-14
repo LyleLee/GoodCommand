@@ -8,7 +8,7 @@ formats: all
 
 submodules:
   include:
-     - source/src/arm_neon_example
+     - src/arm_neon_example
   recursive: true
   
 python:
