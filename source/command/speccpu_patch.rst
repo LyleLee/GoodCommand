@@ -9,9 +9,9 @@ speccpu patch
 
 **方法1：** 切换到cpu2006 ISO文件解压的根目录执行
 
-::
+.. code-block::
 
-   patch -R -p1 all_in_one.patch
+   git apply -p1 all_in_one.patch
 
 有可能提示需要对应文件或这目录的写入权限。
 
@@ -36,7 +36,7 @@ patch下载地址 :download:`../resources/0001-modify-to-make-compile-success.pa
 
 执行编译前，可能需要修改某些目录和文件的权限
 
-::
+.. code-block:: shell
 
    sudo chmod +w tools/src -R
    sudo chmod +w tools
@@ -48,4 +48,4 @@ patch下载地址 :download:`../resources/0001-modify-to-make-compile-success.pa
 ::
 
    cd tools/src/
-   /buildtools
+   ./buildtools
