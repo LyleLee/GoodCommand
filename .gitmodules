@@ -3,4 +3,4 @@
 	url = git@github.com:LyleLee/customer.git
 [submodule "source/src/arm_neon_example"]
 	path = source/src/arm_neon_example
-	url = https://github.com/LyleLee/GoodCommand.git
+	url = https://github.com/LyleLee/arm_neon_example.git
