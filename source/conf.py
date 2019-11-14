@@ -63,6 +63,8 @@ html_style = 'css/my_theme.css'
 html_static_path = ['_static']
 
 master_doc = 'index'
+
 submodules:
-  include:
-     - source/src/arm_neon_example
+   include: 
+      - source/src/arm_neon_example
+
