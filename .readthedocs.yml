@@ -7,7 +7,9 @@ sphinx:
 formats: all
 
 submodules:
-  exclude: all
+  include:
+     - source/src/arm_neon_example
+  recursive: true
   
 python:
   version: 3.7
