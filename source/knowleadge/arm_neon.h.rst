@@ -4,6 +4,7 @@ arm_neon.h
 
 arm neon 寄存器介绍
 ====================
+在aarch64的设备上，每个CPU有32个neon寄存器。根据比特位大小，分别叫Bn, Hn, Sn, Dn, Qn, n={1..32}。 
 
 .. code::
 
@@ -23,7 +24,8 @@ arm neon 寄存器介绍
    |                                                                                  |
    +-----------------------------------Qn---------------------------------------------+
 
-在aarch64的设备上，每个CPU有32个neon寄存器。根据比特位大小，分别叫Bn, Hn, Sn, Dn, Qn, n={1..32}。 在一些资料中提到128位的neon寄存器是16个，根据最新的Arm® Architecture Reference Manual [#arm_architecture]_ C1-175页，实际上在ARMv8中是32个。
+
+在一些资料中提到128位的neon寄存器是16个，根据最新的Arm® Architecture Reference Manual [#arm_architecture]_ C1-175页，实际上在ARMv8中是32个。
 
 Table C1-3 shows the qualified names for accessing scalar SIMD and floating-point registers. The letter n denotes
 a register number between 0 and 31.
