@@ -23,7 +23,7 @@ arm neon 寄存器介绍
    |                                                                                  |
    +-----------------------------------Qn---------------------------------------------+
 
-在aarch64的设备上，每个CPU有32个neon寄存器。根据比特位大小，分别叫Bn, Hn, Sn, Dn, Qn, n={1..32}。 在一些资料中提到128位的neon寄存器是16个，根据最新的 `Arm® Architecture Reference Manual`_ C1-175页，实际上在ARMv8中是32个。
+在aarch64的设备上，每个CPU有32个neon寄存器。根据比特位大小，分别叫Bn, Hn, Sn, Dn, Qn, n={1..32}。 在一些资料中提到128位的neon寄存器是16个，根据最新的Arm® Architecture Reference Manual [#arm_architecture]_ C1-175页，实际上在ARMv8中是32个。
 
 Table C1-3 shows the qualified names for accessing scalar SIMD and floating-point registers. The letter n denotes
 a register number between 0 and 31.
@@ -55,7 +55,7 @@ Shape          Name
 
 他们的功能如下表，D0-D7是参数寄存器， D8-D15是被调用者寄存器， D16-D31是调用者寄存器
 
-`neon_programmers_guide`_ 
+NEON Programmers Guide [#neon_program]_
 
 --D0-D7             Argument registers and return register. If the subroutine does not have arguments or return values, then the value in these registers might be uninitialized.
 --D8-D15            callee-saved registers.
@@ -63,17 +63,11 @@ Shape          Name
 
 
 
-这里通过一些代码来了解neon寄存器的使用方法，主要是调用GCC的内置实现。 `GCC：ARM NEON Intrinsics`_  `ARM: Neon Intrinsics Reference`
+这里通过一些代码来了解neon寄存器的使用方法，主要是调用GCC的内置实现。
 
-立即复制到neon寄存器
-=============================
+立即数复制到neon寄存器 vmovq_n_u8
+===================================
 
-gcc内置的接口是
-
-.. code:: 
-
-   uint8x16_t vmovq_n_u8 (uint8_t)
-   Form of expected instruction(s): vdup.8 q0, r0
 
 这个接口，把通用寄存器r0的低8位（uint8）的值复制到neon寄存器的第0个寄存器q0，q0包含了16个uint8。
 
@@ -112,22 +106,103 @@ gcc内置的接口是
 + 第8行，dup把寄存器3w的值复制到第0号neon寄存器, 占用16位，所以一共右8个数。
 + 第9行，stl把寄存器的值存到内存
 
-.. note:: ST1指令可以查看 `Arm® Architecture Reference Manual`_ C7 2084页
+.. note:: ST1指令可以查看 Arm® Architecture Reference Manual [#arm_architecture]_ C7 2084页
 
    ST1 (single structure) Store a single-element structure from one lane of one register. 
    This instruction stores the specified element of a SIMD&FP register to memory.
 
+内存数据加载到neon寄存器vld1q_u8
+==================================
 
-实现两个矩阵相加
-====================
+ARM: Neon Intrinsics Reference [#arm_neon_intrinsics]_ 中的定义
 
-gcc中的接口之一：vaddq_u8
+.. code:: c
+
+    uint8x16_t vld1q_u8 (uint8_t const * ptr)      
+        Load multiple single-element structures to one, two, three, or four registers
+
+===============    =====================   ===============
+A64 Instruction     Argument Preparation    Results 
+===============    =====================   ===============
+DUP Vd.16B, rn       value → rn              Vd.16B → result
+===============    =====================   ===============
+
+
+GCC-4.4.1：ARM NEON Intrinsics [#arm_neon_intrinsics_gcc]_ 中的定的
 
 .. code::
 
-    uint8x16_t vaddq_u8 (uint8x16_t, uint8x16_t)
-    Form of expected instruction(s): vadd.i8 q0, q0, q0
+    uint8x16_t vld1q_u8 (const uint8_t *)
+    Form of expected instruction(s): vld1.8 {d0, d1}, [r0]
 
+.. note::
+    
+    可以看到两个的定义不一样的， 值得注意的是在比较新的GCC版本中，GCC的手册已经把NEON内置实现的定义指向了ARM的文档， 所以可以直接参考
+    ARM: Neon Intrinsics Reference [#arm_neon_intrinsics]_
+
+
+有如下代码：
+
+.. literalinclude:: ../src/arm_neon_example/vld1q_u8.c
+    :linenos:
+
+反汇编是：
+
+.. code-block:: objdump
+
+    0000000000400850 <main>:
+      400850:       a9bd7bfd        stp     x29, x30, [sp,#-48]!
+      400854:       910003fd        mov     x29, sp
+      400858:       100001c0        adr     x0, 400890 <main+0x40>
+      40085c:       910083a2        add     x2, x29, #0x20
+      400860:       4c407000        ld1     {v0.16b}, [x0]
+      400864:       910043a3        add     x3, x29, #0x10
+      400868:       aa0203e0        mov     x0, x2
+      40086c:       52800201        mov     w1, #0x10                       // #16
+      400870:       4c007060        st1     {v0.16b}, [x3]
+      400874:       4c007040        st1     {v0.16b}, [x2]
+      400878:       94000062        bl      400a00 <print_uint8x16>
+      40087c:       a8c37bfd        ldp     x29, x30, [sp],#48
+      400880:       d65f03c0        ret
+      400884:       d503201f        nop
+      400888:       d503201f        nop
+      40088c:       d503201f        nop
+      400890:       04030201        .word   0x04030201
+      400894:       08070605        .word   0x08070605
+      400898:       0c0b0a09        .word   0x0c0b0a09
+      40089c:       100f0e0d        .word   0x100f0e0d
+
++ 从内存读取数据到neon寄存器 v0, ld1     {v0.16b}, [x0]
+
+如果不使用-O3选项的话， 这里进包含前20行，完整版请查看 :download:`vld1q_u8汇编<../resources/arm_neon.h_vld1q_u8.asm>`
+
+.. literalinclude::  ../resources/arm_neon.h_vld1q_u8.asm
+   :linenos:
+   :language: objdump
+   :lines: 1-20
+
+两者的区别是ld1     {v0.16b}, [x0]可以单挑指令完成数据的加载, 而这里需要16次操作，每次复制一个uint8
+
+实现两个矩阵相加vaddq_u8
+==========================
+
+ARM: Neon Intrinsics Reference [#arm_neon_intrinsics]_ 中的定义vaddq_u8
+
+.. code:: c
+
+    uint8x16_t vaddq_u8 (uint8x16_t a, uint8x16_t b)
+
+
+=========================   ====================        ==================
+A64 Instruction             Argument Preparation        Results
+=========================   ====================        ==================
+ADD Vd.16B,Vn.16B,Vm.16B    a → Vn.16B                  Vd.16B → result
+                            b → Vm.16B
+=========================   ====================        ==================
+
+
+
+有如下代码，参考 NEON Hello world [#neon_hello_world]_ 修改而来，实现矩阵A和B相加，得到C
 
 .. literalinclude:: ../src/arm_neon_example/matrix_add_number.c
    :language: c
@@ -185,30 +260,28 @@ gcc中的接口之一：vaddq_u8
    4008c8:       0c0b0a09        .word   0x0c0b0a09
    4008cc:       100f0e0d        .word   0x100f0e0d
 
-+ 矩阵A在neon寄存器v0中 `ld1     {v0.16b}, [x0]`
-+ 矩阵B在neon寄存器v1中 `dup     v1.16b, w3`
-+ 矩阵C在neon寄存器v2中 `add     v2.16b, v0.16b, v1.16b`
++ 矩阵A在neon寄存器v0中 ld1     {v0.16b}, [x0]
++ 矩阵B在neon寄存器v1中 dup     v1.16b, w3
++ 矩阵C在neon寄存器v2中 add     v2.16b, v0.16b, v1.16b
 
 .. note:: 
     
-    针对neon寄存器的add指令可以查看 `Arm® Architecture Reference Manual`_ C7.2.2 1377页
+    neon add指令可以查看 Arm® Architecture Reference Manual [#arm_architecture]_ C7.2.2 1377页
 
+下载代码
+=============
+以上代码可以使用如下方式下载编译
 
+.. code-block:: console
 
-.. _`ARM: Neon Intrinsics Reference` : 
-    https://developer.arm.com/architectures/instruction-sets/simd-isas/neon/intrinsics
-.. _`GCC：ARM NEON Intrinsics` : 
-    https://gcc.gnu.org/onlinedocs/gcc-4.4.1/gcc/ARM-NEON-Intrinsics.html
-.. _`Arm® Architecture Reference Manual` : 
-    https://developer.arm.com/docs/ddi0487/latest/arm-architecture-reference-manual-armv8-for-armv8-a-architecture-profile
-.. _`neon_programmers_guide` : 
-    https://static.docs.arm.com/den0018/a/DEN0018A_neon_programmers_guide_en.pdf
+    git clone https://github.com/LyleLee/arm_neon_example.git
+    mkdir build && cd build
+    cmake ..
+    make
 
-
-其它参考资料：
-
-http://www.add.ece.ufl.edu/4924/docs/arm/ARM%20NEON%20Development.pdf
-https://www.uio.no/studier/emner/matnat/ifi/IN5050/h18/undervisningsmaterialet/ihi0073a_arm_neon_intrinsics_ref.pdf
-http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dht0002a/ch01s03s02.html
-https://community.arm.com/developer/tools-software/oss-platforms/b/android-blog/posts/arm-neon-programming-quick-reference
-http://www.armadeus.org/wiki/index.php?title=NEON_HelloWorld
+.. [#arm_architecture] Arm® Architecture Reference Manual https://developer.arm.com/architectures/instruction-sets/simd-isas/neon/intrinsics
+.. [#neon_program] NEON Programmers Guide https://static.docs.arm.com/den0018/a/DEN0018A_neon_programmers_guide_en.pdf
+.. [#arm_neon_intrinsics] ARM NEON Intrinsics https://developer.arm.com/architectures/instruction-sets/simd-isas/neon/intrinsics
+.. [#arm_neon_intrinsics_gcc] GCC-4.4.1：ARM NEON Intrinsics https://gcc.gnu.org/onlinedocs/gcc-4.4.1/gcc/ARM-NEON-Intrinsics.html
+.. [#neon_hello_world] NEON Hello World http://www.armadeus.org/wiki/index.php?title=NEON_HelloWorld
+.. [#arm_neon_programming_quick_reference] ARM NEON Programming Quick Reference  https://community.arm.com/developer/tools-software/oss-platforms/b/android-blog/posts/arm-neon-programming-quick-reference
