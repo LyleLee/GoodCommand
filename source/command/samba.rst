@@ -1,5 +1,18 @@
 samba
-=====
+========
+
+在linux下挂载samba共享
+
+.. code:: shell
+
+    sudo mount -t cifs //192.168.2.1/sda /mnt/disk
+
+其中sda是共享命名，window访问samba共享
+
+.. code:: shell
+
+    \\192.168.1.1\sda
+
 
 win10无法发现samba参考
 
