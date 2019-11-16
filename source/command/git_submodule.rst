@@ -32,10 +32,9 @@ git submodule
    remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
    Receiving objects: 100% (5/5), 1.64 KiB | 0 bytes/s, done.
 
-修改已经设置好的子模块的git url。
 
-.. code-block:: bash
+修改.gitmodule后需要执行sync来同步url
 
-   git config --file=.gitmodules submodule.Submod.url git@lixianfa.github.com:LyleLee/arm_neon_example.git
-   git submodule sync
-
+.. code:: shell
+    
+    git submodule sync
