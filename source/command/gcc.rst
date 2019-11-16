@@ -16,7 +16,7 @@ GCC
 
 .configure 出现问题：
 
-.. code:: shell-session
+.. code-block:: console
 
    checking for gnatbind... no
    checking for gnatmake... no
@@ -37,7 +37,7 @@ GCC
 
 原因是缺少依赖库。有一个安装脚本可以解决以来执行
 
-.. code:: shell-session
+.. code-block:: console
 
    root@ubuntu:~/1620-mount-point/gcc/gcc-8.3.0# ./contrib/download_prerequisites
    2019-02-25 20:33:24 URL: ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar.bz2 [2383840] -> "./gmp-6.1.0.tar.bz2" [2]
@@ -85,3 +85,4 @@ GCC 编译选项
 option <https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Using_the_GNU_Compiler_Collection/invoking-gcc.html>`__
 
 https://cloud.tencent.com/developer/article/1433457
+.. [#gcc-document] https://gcc.gnu.org/onlinedocs/
