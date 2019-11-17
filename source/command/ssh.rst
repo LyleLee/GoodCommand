@@ -151,6 +151,8 @@ https://www.cnblogs.com/panblack/p/secure_ssh_auto_block.html
     # Change to no to disable s/key passwords
     #ChallengeResponseAuthentication yes
 
+
+
 禁止后效果
 
 ::
@@ -164,6 +166,15 @@ https://www.cnblogs.com/panblack/p/secure_ssh_auto_block.html
        - Press S to save terminal output to file
 
    Disconnected: No supported authentication methods available (server sent: publickey,gssapi-keyex,gssapi-with-mic)
+
+设置多都端口
+--------------
+在/etc/ssh/sshd_config中添加多个port选项
+
+::
+    Port 22
+    Port 2222
+
 
 知识介绍
 --------
