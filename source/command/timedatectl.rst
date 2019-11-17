@@ -71,9 +71,11 @@ ubuntu tzselect设置过程
    can use the /usr/bin/tzselect command in shell scripts:
    Asia/Hong_Kong
 
-| 并没有起效果，系统提示，要想永久修改，在~/.profile后面追加一行
-| ``TZ='Asia/Hong_Kong'; export TZ``
-| 追加之后，退出重新登录
+并没有起效果，系统提示，要想永久修改，在~/.profile后面追加一行 ``TZ='Asia/Hong_Kong'; export TZ`` 追加之后，退出重新登录或者执行：
+
+.. code-block:: shell
+    
+    source .profile
 
 ::
 
