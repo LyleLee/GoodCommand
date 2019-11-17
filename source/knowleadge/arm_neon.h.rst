@@ -174,7 +174,7 @@ GCC-4.4.1：ARM NEON Intrinsics [#arm_neon_intrinsics_gcc]_ 中的定的
       400898:       0c0b0a09        .word   0x0c0b0a09
       40089c:       100f0e0d        .word   0x100f0e0d
 
-+ 从内存读取数据到neon寄存器 v0, ld1     {v0.16b}, [x0]
++ 从内存读取数据到neon寄存器 ``v0, ld1     {v0.16b}, [x0]``
 
 如果不使用-O3选项的话， 这里进包含前20行，完整版请查看 :download:`vld1q_u8汇编<../resources/arm_neon.h_vld1q_u8.asm>`
 
@@ -183,7 +183,7 @@ GCC-4.4.1：ARM NEON Intrinsics [#arm_neon_intrinsics_gcc]_ 中的定的
    :language: objdump
    :lines: 1-20
 
-两者的区别是ld1     {v0.16b}, [x0]可以单挑指令完成数据的加载, 而这里需要16次操作，每次复制一个uint8
+两者的区别是 ``ld1     {v0.16b}, [x0]`` 可以单条指令完成数据的加载, 而这里需要16次操作，每次复制一个uint8
 
 实现两个矩阵相加vaddq_u8
 ==========================
