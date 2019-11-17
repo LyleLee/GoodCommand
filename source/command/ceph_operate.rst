@@ -87,10 +87,11 @@ HDD集群重测
 
 可以在单台设备上执行上述命令，
 
-.. code-block:: console
+.. code-block:: shell
 
-   root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'lvs | grep osd | awk \'{print $2}\' | xargs lvremove -y'
-   root@hadoop00 /h/m/test_script# pdsh -w '^arm.txt' 'vgs | grep ceph | awk \'{print $1}\' | xargs vgremove -y '
+   pdsh -w '^arm.txt' 'lvs | grep osd | awk {print $2} | xargs lvremove -y'
+   pdsh -w '^arm.txt' 'vgs | grep ceph | awk {print $1} | xargs vgremove -y '
+
 
 传递的命令带有单引号，所以这里加了转义符号。
 
