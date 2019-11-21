@@ -18,9 +18,9 @@ Baseboard Management Controller
 
    #查询健康事件(普通，严重，告警)
    ipmcget -t fru0 -d healthevents
-   
+
    #查询iBMC管理网口的IP信息。
-   ipmcget -d ipinfo 
+   ipmcget -d ipinfo
 
    #ipaddr命令用于设置iBMC网口的IPv4地址和掩码。
    ipmcset -d ipaddr -v <ipaddr> <mask>
@@ -34,7 +34,7 @@ Baseboard Management Controller
    ipmcset -d gateway -v 192.168.0.1
 
    #reset命令用来重启iBMC管理系统。
-   ipmcset -d reset 
+   ipmcset -d reset
 
    #查询和设置BMC服务状态
    ipmcget -t service -d list
@@ -44,7 +44,7 @@ Baseboard Management Controller
    #查询和设置启动设备
    ipmcget -d bootdevice
    ipmcset -d bootdevice -v <option>
-   ipmcset -d bootdevice -v 0 #取消强制启动 
+   ipmcset -d bootdevice -v 0 #取消强制启动
    ipmcset -d bootdevice -v 1 #从PXE启动
    ipmcset -d bootdevice -v 2 #从默认硬盘启动
    ipmcset -d bootdevice -v 5 #从默认CD/DVD启动
@@ -74,3 +74,146 @@ Baseboard Management Controller
    4          | 2019-11-04 07:07:40  | Major        | 0x28000001   | The SAS or PCIe cable to front disk backplane PORTA is incorrectly connected.
    iBMC:/->
 
+
+命令行升级BMC
+========================
+上传文件到BMC
+
+.. code-block:: console
+
+    scp TaiShan_2280_V2_5280_V2-BIOS_V105.hpm Administrator@192.168.2.53:/tmp/
+    scp TS200-2280-iBMC-V366.hpm Administrator@192.168.2.53:/tmp/
+
+升级命令
+
+.. code-block:: console
+
+    iBMC:/->
+    iBMC:/->ipmcset -d upgrade -v /tmp/TS200-2280-iBMC-V366.hpm
+    Please make sure the iBMC is working while upgrading.
+    Updating...
+    100%
+    Upgrade successfully.
+    iBMC:/->
+
+升级成功，可以看到 ``Active iBMC    Version:           (U68)3.66``
+
+.. code-block:: console
+
+    iBMC:/->ipmcget -d v
+    ------------------- iBMC INFO -------------------
+    IPMC               CPU:           Hi1710
+    IPMI           Version:           2.0
+    CPLD           Version:           (U6076)1.00
+    Active iBMC    Version:           (U68)3.66
+    Active iBMC      Build:           003
+    Active iBMC      Built:           18:21:27 Nov  2 2019
+    Backup iBMC    Version:           3.55
+    SDK            Version:           3.33
+    SDK              Built:           20:39:29 Jul 18 2019
+    Active Uboot   Version:           2.1.13 (Dec 24 2018 - 20:23:20)
+    Backup Uboot   Version:           2.1.13 (Dec 24 2018 - 20:23:20)
+    ----------------- Product INFO -----------------
+    Product             ID:           0x0001
+    Product           Name:           TaiShan 2280 V2
+    BIOS           Version:           (U75)0.88
+    -------------- Mother Board INFO ---------------
+    Mainboard      BoardID:           0x00b9
+    Mainboard          PCB:           .A
+    ------------------- NIC INFO -------------------
+    NIC 1 (TM280)  BoardID:           0x0067
+    NIC 1 (TM280)      PCB:           .A
+    NIC 2 (TM210)  BoardID:           0x0068
+    NIC 2 (TM210)      PCB:           .A
+    --------------- Riser Card INFO ----------------
+    Riser1       BoardName:           BC82PRNE
+    Riser1         BoardID:           0x0032
+    Riser1             PCB:           .A
+    Riser2       BoardName:           BC82PRUA
+    Riser2         BoardID:           0x0094
+    Riser2             PCB:           .A
+    -------------- HDD Backplane INFO --------------
+    Disk BP1      BoardName:          BC11THBQ
+    Disk BP1       BoardID:           0x0073
+    Disk BP1           PCB:           .A
+    Disk BP1     CPLD Version:        (U3)1.11
+    -------------------- PS INFO -------------------
+    PS1            Version:           DC:107 PFC:107
+    iBMC:/->
+
+
+命令行升级BIOS
+==================================================
+复制文件到BMC的/tmp/目录下，下电，使用命令升级
+
+.. code-block:: console
+
+    iBMC:/->ipmcset -t maintenance -d upgradebios -v /tmp/TaiShan_2280_V2_5280_V2-BIOS_V105.hpm
+    Please power off OS first, and then upgrade BIOS again.
+    iBMC:/->ipmcset -d powerstate -v 0
+    WARNING: The operation may have many adverse effects.
+    Do you want to continue?[Y/N]:Y
+    Control fru0 normal power off successfully.
+    iBMC:/->ipmcset -t maintenance -d upgradebios -v /tmp/TaiShan_2280_V2_5280_V2-BIOS_V105.hpm
+    Please make sure the iBMC is working while upgrading.
+    Updating...
+    100%
+    Upgrade successfully.
+    iBMC:/->
+
+重新开机
+
+.. code-block:: console
+
+    iBMC:/->ipmcget -d powerstate
+    Power state   : Off
+    Hotswap state : M1
+    iBMC:/->ipmcset -d powerstate -v 1
+    WARNING: The operation may have many adverse effects.
+    Do you want to continue?[Y/N]:Y
+    Control fru0 power on successfully.
+    iBMC:/->
+
+这个时候可以看到成功了 ``BIOS           Version:           (U75)1.05``
+
+.. code-block:: console
+
+    iBMC:/->ipmcget -d v
+    ------------------- iBMC INFO -------------------
+    IPMC               CPU:           Hi1710
+    IPMI           Version:           2.0
+    CPLD           Version:           (U6076)1.00
+    Active iBMC    Version:           (U68)3.66
+    Active iBMC      Build:           003
+    Active iBMC      Built:           18:21:27 Nov  2 2019
+    Backup iBMC    Version:           3.55
+    SDK            Version:           3.33
+    SDK              Built:           20:39:29 Jul 18 2019
+    Active Uboot   Version:           2.1.13 (Dec 24 2018 - 20:23:20)
+    Backup Uboot   Version:           2.1.13 (Dec 24 2018 - 20:23:20)
+    ----------------- Product INFO -----------------
+    Product             ID:           0x0001
+    Product           Name:           TaiShan 2280 V2
+    BIOS           Version:           (U75)1.05
+    -------------- Mother Board INFO ---------------
+    Mainboard      BoardID:           0x00b9
+    Mainboard          PCB:           .A
+    ------------------- NIC INFO -------------------
+    NIC 1 (TM280)  BoardID:           0x0067
+    NIC 1 (TM280)      PCB:           .A
+    NIC 2 (TM210)  BoardID:           0x0068
+    NIC 2 (TM210)      PCB:           .A
+    --------------- Riser Card INFO ----------------
+    Riser1       BoardName:           BC82PRNE
+    Riser1         BoardID:           0x0032
+    Riser1             PCB:           .A
+    Riser2       BoardName:           BC82PRUA
+    Riser2         BoardID:           0x0094
+    Riser2             PCB:           .A
+    -------------- HDD Backplane INFO --------------
+    Disk BP1      BoardName:          BC11THBQ
+    Disk BP1       BoardID:           0x0073
+    Disk BP1           PCB:           .A
+    Disk BP1     CPLD Version:        (U3)1.11
+    -------------------- PS INFO -------------------
+    PS1            Version:           DC:107 PFC:107
