@@ -5,23 +5,32 @@ autotool GNU
 GNU软件标准Makefile 目标
 --------------------------
 
-``make all`` 编译程序，库，文档等。 和make表现一样
+make all
+  编译程序，库，文档等。 和make表现一样
 
-``make install`` 安装需要被安装的程序
+make install
+  安装需要被安装的程序
 
-``make install-strip`` 和make install 一样，但是要strip debugging symbol
+make install-strip
+  和make install 一样，但是要strip debugging symbol
 
-``make uninstall`` 和make install 相反的目的
+make uninstall
+  和make install 相反的目的
 
-``make clean`` 和make all相反的目的，删除编译好的目标
+make clean
+  和make all相反的目的，删除编译好的目标
 
-``make distclean`` 同事删除./configure产生的文件
+make distclean
+  同事删除./configure产生的文件
 
-``make check`` 如果有测试套件，执行测试套件
+make check
+  如果有测试套件，执行测试套件
 
-``make installcheck`` 检查已经安装的程序和库
+make installcheck
+  检查已经安装的程序和库
 
-``make dist`` 生成 name-version.tag.gz
+make dist
+  生成 name-version.tag.gz
 
 GNU软件项目标准文件组织
 ------------------------
