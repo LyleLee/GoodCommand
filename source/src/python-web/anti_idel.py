@@ -1,8 +1,12 @@
 # coding = utf-8
 # !/usr/bin/python3
-import http
+
 import urllib.request
 import sys
+import bs4
+import random
+from time import sleep
+
 print(sys.getdefaultencoding())
 
 urlPool = {
@@ -28,8 +32,11 @@ for key, value in urlPool.items():
         res = urllib.request.urlopen(req)
         httpCode = res.getcode()
         charset = res.headers.get_content_charset()
-
         charset = charset if charset is not None else 'utf-8'
         html = res.read().decode(charset)
+        # soup = bs4.BeautifulSoup(html, 'html.parser')
+        # for link in soup.findAll('img'):
+        #    print("IMAGE LINKS:", link.get('src'))
         pageFile.write(html)
         print(f'visit:{key} {httpCode} {charset} url:{value} write successful')
+        sleep(random.randint(0, 15))
