@@ -217,3 +217,28 @@ Baseboard Management Controller
     Disk BP1     CPLD Version:        (U3)1.11
     -------------------- PS INFO -------------------
     PS1            Version:           DC:107 PFC:107
+
+在OS内获取BMC IP地址
+========================
+
+.. code-block:: console
+
+    [root@localhost ~]# ipmitool lan print 1
+    Set in Progress         : Set Complete
+    IP Address Source       : Static Address
+    IP Address              : 192.168.2.63
+    Subnet Mask             : 255.255.255.0
+    MAC Address             : e0:00:84:2b:44:dd
+    SNMP Community String   : TrapAdmin12#$
+    IP Header               : TTL=0x40 Flags=0x40 Precedence=0x00 TOS=0x10
+    Default Gateway IP      : 192.168.2.1
+    802.1q VLAN ID          : Disabled
+    RMCP+ Cipher Suites     : 0,1,2,3,17
+    Cipher Suite Priv Max   : XuuaXXXXXXXXXXX
+                            :     X=Cipher Suite Unused
+                            :     c=CALLBACK
+                            :     u=USER
+                            :     o=OPERATOR
+                            :     a=ADMIN
+                            :     O=OEM
+    Bad Password Threshold  : Not Available
