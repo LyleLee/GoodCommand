@@ -53,6 +53,15 @@ update版本内核源码包获取路径
    cd ~/rpmbuild/BUILD/kernel-alt-4.14.0-115.7.1.el7a/linux-4.14.0-115.7.1.el7a.aarch64
    git am 0001.patch
 
+安装必要依赖
+----------------------
+
+.. code::shell
+
+    yum groupinstall "Development Tools"
+    yum install ncurses-devel zlib-devel texinfo gtk+-devel gtk2-devel qt-devel tcl-devel tk-devel libX11-devel kernel-headers kernel-devel openssl-devel
+
+
 编译内核rpm包。
 -----------------
 
@@ -80,11 +89,11 @@ update版本内核源码包获取路径
 
 执行编译, 下载编译脚本：
 
-::
+.. code:: shell
 
-   https://raw.githubusercontent.com/xin3liang/home-bin/master/build-kernel-natively.sh
+   wget https://raw.githubusercontent.com/xin3liang/home-bin/master/build-kernel-natively.sh
 
-或者从这里下载\ `build-kernel-natively <script/build-kernel-natively.sh>`__
+或者从这里下载\ `build-kernel-natively <../script/build-kernel-natively.sh>`__
 在源码目录执行
 
 ::
