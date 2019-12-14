@@ -67,3 +67,9 @@ https://www.w3cschool.cn/fwiris/e2dy8ozt.html
 使用教材： Computer Systems: A Programmer’s Perspective, 3/E (CS:APP3e)
 
 教材代码： http://csapp.cs.cmu.edu/3e/code.html
+
+
+华盛顿大学 计算机课程
+-------------------------------
+
+https://courses.cs.washington.edu/courses/cse451/12au/lectures.html
