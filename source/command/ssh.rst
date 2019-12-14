@@ -46,8 +46,8 @@ ssh 是非常普遍的登录方式
 
 端口转发
 --------------------
-http://www.lining0806.com/ssh%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e5%ae%9e%e7%8e%b0%e5%86%85%e7%bd%91%e7%a9%bf%e9%80%8f/
 
+http://www.lining0806.com/
 
 proxy web
 ------------------
