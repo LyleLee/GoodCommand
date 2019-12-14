@@ -264,6 +264,20 @@ bonad的配置结果
     9c52-f892-4d23 1/-                               Eth-Trunk14         dynamic
 
 
+删除Eth-Trunk
+
+.. code-block:: console
+    
+    <HUAWEI> system-view
+    [~HUAWEI] interface eth-trunk 8
+    [~HUAWEI-Eth-Trunk8] undo trunkport  XGigabitEthernet0/0/1
+    [*HUAWEI-Eth-Trunk8] undo trunkport  XGigabitEthernet0/0/3
+    [~HUAWEI-Eth-Trunk8] quit
+    [~HUAWEI] undo interface eth-trunk 8
+    [*HUAWEI] save
+
+
+
 其它知识
 ===================
 
