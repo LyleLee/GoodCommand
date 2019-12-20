@@ -7,6 +7,7 @@ pssh
 .. code-block:: shell
 
     pssh -i -h client_hosts.txt "cat /sys/class/net/bond0/mtu"
+    pssh -h client_hosts.txt -i -P "iostat | grep sd* "
     pssh -h hosts.txt -A -l ben -P -I<./uptime.sh
 
 
