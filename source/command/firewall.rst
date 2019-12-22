@@ -68,17 +68,30 @@ CentOS和redhat使用firewall作为防火墙
    me@ubuntu:~$ curl -X GET http://192.168.1.112/
    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-           <head>
-                   <title>Test Page for the Apache HTTP Server on Red Hat Enterprise Linux</title>
-                   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                   <style type="text/css">
-                           /*<![CDATA[*/
-                           body {
-                                   background-color: #fff;
-                                   color: #000;
-                                   font-size: 0.9em;
-                                   font-family: sans-serif,helvetica;
-                                   margin: 0;
-                                   padding: 0;
 
+防火墙设置NAT
+====================
+
+第一种方法：
+
+.. code-block:: shell
+
+    firewall-cmd --permanent --zone=public --add-masquerade   #开启NAT转发
+    firewall-cmd --zone=public --add-port=53/tcp --permanent  #开放DNS使用的53端口，否则可能导致内网服务器虽然设置正确的DNS，但是依然无法进行域名解析。
+    systemctl restart firewalld.service   #重启防火墙
+    firewall-cmd --query-masquerade  #检查是否允许NAT转发
+    firewall-cmd --remove-masquerade #关闭NAT转发
+
+第二种方法：
+
+.. code-block:: shell
+
+    net.ipv4.ip_forward=1 #开启ip_forward转发 在/etc/sysctl.conf配置文件尾部添加
+    sysctl -p #然后让其生效
+    firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o enoxxxxxx -j MASQUERADE -s 192.168.1.0/24 #执行firewalld命令进行转发：
+                                                                                                                            #注意enoxxxxxx对应外网网口名称
+    systemctl restart firewalld.service  #重启防火墙
+
+
+.. [#f1] firewall-cmd基础用法 https://havee.me/linux/2015-01/using-firewalls-on-centos-7.html
+.. [#f2] firewall-cmd防火墙命令2 https://wangchujiang.com/linux-command/c/firewall-cmd.html
