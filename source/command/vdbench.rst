@@ -10,6 +10,9 @@ Oracle维护的一个磁盘IO性能工具，用于产生磁盘IO
 
 下载解压即可使用。一般不需要编译，如果运行环境存在，可以直接运行。当在ARM服务器上执行时会遇到一些问题，这里介绍如何解决。
 
+下载地址: |vebench_download|
+
+
 测试运行环境：
 
 .. code:: shell-session
@@ -180,37 +183,55 @@ ARM版本的aarch64.so编译
    cd Jni/
    vim make.linux
 
-修改前：
+参考如下修改方法
 
-::
+.. code-block:: diff
 
-   vdb=$mine/vdbench504
-   java=/net/sbm-240a.us.oracle.com/export/swat/swat_java/linux/jdk1.5.0_22/
-   jni=$vdb/Jni
-
-   INCLUDES32="-w -m32 -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
-   INCLUDES64="-w -m64 -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
-
-   gcc  -o   $vdb/linux/linux32.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared  -m32 -lrt
-
-   gcc  -o   $vdb/linux/linux64.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -m64 -lrt
-
-修改后：
-
-::
+    diff --git a/Jni/make.linux b/Jni/make.linux
+    index 45ed232..024a153 100755
+    --- a/Jni/make.linux
+    +++ b/Jni/make.linux
+    @@ -34,16 +34,16 @@
 
 
-   vdb=/home/me/vdbench50407src/src/
-   java=/usr/lib/jvm/java-11-openjdk-arm64/
-   jni=$vdb/Jni
 
-   INCLUDES32="-w -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
-   INCLUDES64="-w -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
+    -vdb=$mine/vdbench504
+    -java=/net/sbm-240a.us.oracle.com/export/swat/swat_java/linux/jdk1.5.0_22/
+    +vdb=/home/user1/open_software/vdbench/src
+    +java=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.aarch64/
+     jni=$vdb/Jni
+
+     echo target directory: $vdb
 
 
-   gcc  -o   $vdb/linux/linux32.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -lrt
 
-   gcc  -o   $vdb/linux/linux64.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -lrt
+    -INCLUDES32="-w -m32 -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
+    -INCLUDES64="-w -m64 -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
+    +INCLUDES32="-w -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
+    +INCLUDES64="-w -DLINUX -I$java/include -I/$java/include/linux -I/usr/include/ -fPIC"
+
+
+     cd /tmp
+    @@ -62,7 +62,7 @@ gcc ${INCLUDES32} -c $jni/chmod.c
+     echo Linking 32 bit
+     echo
+
+    -gcc  -o   $vdb/linux/linux32.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared  -m32 -lrt
+    +gcc  -o   $vdb/linux/linux32.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -lrt
+
+     chmod 777 $vdb/linux/linux32.so
+
+    @@ -82,7 +82,7 @@ gcc ${INCLUDES64} -c $jni/chmod.c
+     echo Linking 64 bit
+     echo
+
+    -gcc  -o   $vdb/linux/linux64.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -m64 -lrt
+    +gcc  -o   $vdb/linux/linux64.so vdbjni.o vdblinux.o vdb_dv.o vdb.o chmod.o -lm -shared -lrt
+
+     chmod 777 $vdb/linux/linux64.so 2>/dev/null
+        
+
+
 
 执行make.linux，会在src/linux/下生成linux32.so和linux64.so文件，这里我们只需要使用到64位的文件。重命名linux64.so并复制到二进制包（注意不是源码包）的linux/目录下即可。
 
@@ -224,8 +245,8 @@ ARM版本的aarch64.so编译
    Compiling 64 bit
    Linking 64 bit
 
-   mv linux64.so aarch64.so
-   cp linux64.so ~/vdbench50407/linux/
+   cp linux64.so aarch64.so
+   cp aarch64.so ~/vdbench50407/linux/
 
 执行测试
 ~~~~~~~~
@@ -273,3 +294,8 @@ Vdbench以一个或者多个JVM运行。由用户运行的JVM是master，负责�
 
 裸机单盘性能
 ~~~~~~~~~~~~
+
+
+.. |vebench_download| replace:: https://www.oracle.com/downloads/server-storage/vdbench-source-downloads.html
+.. _vebench_download: https://www.oracle.com/downloads/server-storage/vdbench-source-downloads.html
+.. _link: `vebench_download`_
