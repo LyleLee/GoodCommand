@@ -13,3 +13,5 @@ https://tech.silverrainz.me/2017/03/29/use-sphinx-and-rst-to-manage-your-notes.h
 
 中文分词 https://docs.huihoo.com/scipy/scipy-zh-cn/pydoc_write_tools.html#html
 选项列表 http://docutils.sourceforge.net/docs/user/rst/quickref.html
+如何添加 链接到最末尾 https://docutils-zh-cn.readthedocs.io/zh_CN/latest/ref/rst/restructuredtext.html#rst-hyperlink-references
+url 如何统一在末尾管理 :doc: `vdbench`
