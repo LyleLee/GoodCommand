@@ -510,12 +510,15 @@ yum的代理需要在/etc/yum.conf下设置
    root    ALL=(ALL)       ALL
    me      ALL=(ALL)       ALL
 
-允许用户user1无密码执行sudo命令 \```\` sudo visudo
+允许用户user1无密码执行sudo命令
 
-Allows people in group wheel to run all commands
-------------------------------------------------
+::
 
-%wheel ALL=(ALL) ALL user1 ALL=(ALL) NOPASSWD: ALL
+    sudo visudo
+
+    ## Same thing without a password
+    # %wheel        ALL=(ALL)       NOPASSWD: ALL
+    user1   ALL=(ALL)   NOPASSWD: ALL
 
 ::
 
