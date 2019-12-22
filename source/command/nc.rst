@@ -11,6 +11,8 @@ nc
 
 .. code-block:: console
 
+    # nc -v  192.168.10.12 5000     #输入文字可以再服务端看到
+
     Example of successful connection:
     # nc -z -v 192.168.10.12 22
     Connection to 192.118.20.95 22 port [tcp/ssh] succeeded!
