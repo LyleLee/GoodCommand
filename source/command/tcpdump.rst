@@ -2,6 +2,17 @@
 tcpdump
 *******************
 
+.. code-block:: shell
+
+    tcpdump
+    tcpdump -i en0  #指定网卡
+    tcpdump host 182.254.38.55 #本机和主机之间的所有包
+    tcpdump src host hostname #指定来源
+    tcpdump dst host hostname #指定目的
+    tcpdump port 3000   #指定端口
+    tcpdump ip host 210.27.48.1 and 210.27.48.2 #两个主机之间
+
+
 tcpdump是linux下著名的抓包手段。是定位网络，协议问题的杀手锏。
 
 ::
@@ -20,3 +31,6 @@ tcpdump是linux下著名的抓包手段。是定位网络，协议问题的杀�
    (7)src net 192.168.1.0/24 : 数据包的源网络地址为192.168.1.0/24
    (8)-w ./target.cap : 保存成cap文件，方便用ethereal(即wireshark)分析
    (9)sudo tcpdump -i virbr0 -ent arp. -ent arp
+
+
+.. [#example] 英语，流量匹配。  https://danielmiessler.com/study/tcpdump/
