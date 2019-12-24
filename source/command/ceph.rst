@@ -8,19 +8,16 @@ ceph 是一个高性能的分布式系统。提供三种服务：对象存储（
 
 下面以安装ceph 12.2.11为例
 
-x86 Debian 版本的ceph依赖的安装包
 
-::
+安装ceph， 卸载ceph
 
-   libaio1
-   libsnappy1
-   libcurl3
-   curl
-   libgoogle-perftools4
-   google-perftools
-   libleveldb1
+.. code-block:: shell
 
-::
+    yum install -y ceph
+    yum uninstall -y ceph
+
+
+:: code-block:: shell
 
    ceph -s
    ceph -w

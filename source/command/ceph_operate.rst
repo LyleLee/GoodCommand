@@ -24,25 +24,140 @@ Ceph operate
        pgs:     4096 active+clean
 
 
-HDD集群重测
+卸载过程
 ======================
+
+文件存储卸载过程
+
+在客户端取消挂载点
+---------------------
+
+这里的挂载点点是/mnt/cephfs.
+
+.. code-block:: console
+
+    ceph1,ceph2,ceph3,ceph4:/ on /mnt/cephfs type ceph (rw,relatime,sync,name=admin,secret=<hidden>,acl,wsize=16777216)
+
+.. code-block:: console
+
+    [root@client1 vdbench]# pssh -h client_hosts.txt -i -P "umount /mnt/cephfs"
+    [1] 16:11:37 [SUCCESS] root@client1:22
+    [2] 16:11:37 [SUCCESS] root@client3:22
+    [3] 16:11:37 [SUCCESS] root@client4:22
+    [4] 16:11:37 [SUCCESS] root@client2:22
+    [root@client1 vdbench]#
+    [root@client1 vdbench]#
+
+确认客户端为 0
+
+.. code-block:: console
+
+    [root@ceph1 ~]# ceph fs status
+    cephfs - 0 clients
+    ======
+    +------+--------+-------+---------------+-------+-------+
+    | Rank | State  |  MDS  |    Activity   |  dns  |  inos |
+    +------+--------+-------+---------------+-------+-------+
+    |  0   | active | ceph4 | Reqs:    0 /s | 5111  | 5113  |
+    +------+--------+-------+---------------+-------+-------+
+    +-----------------+----------+-------+-------+
+    |       Pool      |   type   |  used | avail |
+    +-----------------+----------+-------+-------+
+    | cephfs_metadata | metadata |  156M |  183T |
+    |   cephfs_data   |   data   |  976G |  183T |
+    +-----------------+----------+-------+-------+
+
+    +-------------+
+    | Standby MDS |
+    +-------------+
+    |    ceph2    |
+    |    ceph3    |
+    |    ceph1    |
+    +-------------+
+    MDS version: ceph version 12.2.5 (cad919881333ac92274171586c827e01f554a70a) luminous (stable)
+    [root@ceph1 ~]#
+
+停止MDS进程
+---------------------
+
+.. code-block:: console
+
+    [root@client1 vdbench]# pssh -h backend_hosts.txt -i -P "systemctl stop ceph-mds.target"
+    [1] 16:17:27 [SUCCESS] root@ceph2:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [2] 16:17:27 [SUCCESS] root@ceph4:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [3] 16:17:27 [SUCCESS] root@ceph1:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [4] 16:17:27 [SUCCESS] root@ceph3:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [root@client1 vdbench]#
+
+删除后端文件存储
+-----------------------
+
+    [root@ceph1 ~]# ceph osd pool delete cephfs_metadata cephfs_metadata --yes-i-really-really-mean-it
+    pool 'cephfs_metadata' removed
+    [root@ceph1 ~]# ceph osd pool delete cephfs_data cephfs_data --yes-i-really-really-mean-it
+    pool 'cephfs_data' removed
+    [root@ceph1 ~]#
+
+
+如果报错提示需要设置MON允许删除pool
+
+在 ``/etc/ceph/ceph.conf`` 中需要包含:
+
+.. code-block:: ini
+
+    [mon]
+    mon_allow_pool_delete = true
+
+
 
 删除pool
 --------
 
 .. code-block:: shell
 
+   # 文件存储池删除
+   ceph osd pool delete cephfs_metadata cephfs_metadata --yes-i-really-really-mean-it
+   ceph osd pool delete cephfs_data cephfs_data --yes-i-really-really-mean-it
+   
+   # 块存储池删除
    ceph osd pool delete images images --yes-i-really-really-mean-it
    ceph osd pool delete volumes volumes --yes-i-really-really-mean-it
+   
+   
+
+停止OSD进程
+---------------------
+
+在每一个ceph节点上执行 ``systemctl stop ceph-osd.target``
+
+.. code-block:: console
+
+    [root@client1 bin]# pssh -h backend_hosts.txt -i -P "systemctl stop ceph-osd.target"
+    [1] 16:43:35 [SUCCESS] root@ceph2:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [2] 16:43:35 [SUCCESS] root@ceph3:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [3] 16:43:35 [SUCCESS] root@ceph4:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+    [4] 16:43:35 [SUCCESS] root@ceph1:22
+    Stderr:
+    Authorized users only. All activities may be monitored and reported.
+
+
 
 删除HDD OSD
 -----------
-
-在每个节点上执行，停止OSD进程
-
-.. code-block:: shell
-
-   systemctl stop ceph-osd.target
 
 在可以对集群进行管理的节点上执行删除
 
@@ -56,16 +171,49 @@ HDD集群重测
        ceph osd rm osd.$i
    done
 
-在每台ceph节点上取消挂载
+查看删除情况
+
+.. code-block:: console
+
+    [root@ceph1 bin]# ceph osd tree
+    ID CLASS WEIGHT TYPE NAME      STATUS REWEIGHT PRI-AFF
+    -1            0 root default
+    -3            0     host ceph1
+    -5            0     host ceph2
+    -7            0     host ceph3
+    -9            0     host ceph4
+
+
+取消每台ceph节点上OSD挂载
 
 .. code-block:: shell
 
    umount /var/lib/ceph/osd/ceph-*
    rm -rf /var/lib/ceph/osd/ceph-*
 
-在每台设备上删除ceph上的lvm分区：
 
-方法一
+删除每台ceph节点上的上的lvm分区
+----------------------------------
+
+方法一：
+
+.. code-block:: shell
+
+   lvs | grep osd | awk '{print $2}' | xargs lvremove -y       #先删除lvm
+   vgs | grep ceph | awk '{print $1}' | xargs vgremove -y      #再删除lvm group， 有时候可以直接执行这一条
+
+可以在单台设备上执行上述命令，
+
+.. code-block:: shell
+
+   pdsh -w '^arm.txt' 'lvs | grep osd | awk {print $2} | xargs lvremove -y'
+   pdsh -w '^arm.txt' 'vgs | grep ceph | awk {print $1} | xargs vgremove -y '
+
+
+传递的命令带有单引号，所以这里加了转义符号。
+
+
+方法二：
 
 .. code-block:: shell
 
@@ -78,24 +226,113 @@ HDD集群重测
 
    dmsetup remove ceph--7c7c2721--5dfc--45e4--9946--5316e21087df-osd--block--92276738--1bbe--4229--a094--761ceda16812
 
-方法二：
+
+
+删除前
+
+.. code-block:: console
+
+    [root@ceph1 bin]# lsblk
+    NAME                                                                                                      MAJ:MIN  RM   SIZE RO TYPE MOUNTPOINT
+    loop0                                                                                                       7:0     0   4.2G  0 loop /mnt/euler
+    sda                                                                                                         8:0     0   7.3T  0 disk
+    └─bcache0                                                                                                 251:0     0   7.3T  0 disk
+      └─ceph--1f0cdb93--553b--4ae9--a70d--44d1f330d564-osd--block--ace0eccc--eba3--4216--a66a--b9725ec56cdf   250:0     0   7.3T  0 lvm
+    sdb                                                                                                         8:16    0   7.3T  0 disk
+    └─bcache1                                                                                                 251:128   0   7.3T  0 disk
+      └─ceph--d1c3ee5c--41a7--4662--be22--c5bc3e78ad69-osd--block--8a9951cf--33ac--4246--a6a7--36048e5852bf   250:1     0   7.3T  0 lvm
+    sdc                                                                                                         8:32    0   7.3T  0 disk
+    └─bcache2                                                                                                 251:256   0   7.3T  0 disk
+      └─ceph--0bea6159--6d83--4cd5--be49--d1b4a74c4007-osd--block--476506ce--64a3--461e--8ffc--78de4f29a0ed   250:2     0   7.3T  0 lvm
+    sdd                                                                                                         8:48    0   7.3T  0 disk
+    └─bcache3                                                                                                 251:384   0   7.3T  0 disk
+      └─ceph--8efa3be6--8448--47ff--9653--4f9d52439f80-osd--block--a4659aeb--bbc5--4ca0--8e4f--656b3ca47aad   250:3     0   7.3T  0 lvm
+    sde                                                                                                    
+删除后
+
+.. code-block:: console
+
+    [root@ceph1 bin]# lsblk
+    NAME         MAJ:MIN  RM   SIZE RO TYPE MOUNTPOINT
+    loop0          7:0     0   4.2G  0 loop /mnt/euler
+    sda            8:0     0   7.3T  0 disk
+    └─bcache0    251:0     0   7.3T  0 disk
+    sdb            8:16    0   7.3T  0 disk
+    └─bcache1    251:128   0   7.3T  0 disk
+    sdc            8:32    0   7.3T  0 disk
+    └─bcache2    251:256   0   7.3T  0 disk
+    sdd            8:48    0   7.3T  0 disk
+
+
+删除bcache(未使用请跳过)
+--------------------------
 
 .. code-block:: shell
 
-   lvs | grep osd | awk '{print $2}' | xargs lvremove -y       #先删除lvm
-   vgs | grep ceph | awk '{print $1}' | xargs vgremove -y      #再删除lvm group
+    pssh -h backend_hosts.txt -i -P -I < resetbcache.sh
 
-可以在单台设备上执行上述命令，
+
+删除前
+
+.. code-block:: console
+
+    [root@ceph1 bin]# lsblk
+    NAME         MAJ:MIN  RM   SIZE RO TYPE MOUNTPOINT
+    loop0          7:0     0   4.2G  0 loop /mnt/euler
+    sda            8:0     0   7.3T  0 disk
+    └─bcache0    251:0     0   7.3T  0 disk
+    sdb            8:16    0   7.3T  0 disk
+    └─bcache1    251:128   0   7.3T  0 disk
+    sdc            8:32    0   7.3T  0 disk
+    └─bcache2    251:256   0   7.3T  0 disk
+    sdd            8:48    0   7.3T  0 disk
+    └─bcache3    251:384   0   7.3T  0 disk
+    sde            8:64    0   7.3T  0 disk
+    └─bcache4    251:512   0   7.3T  0 disk
+    sdf            8:80    0   7.3T  0 disk
+
+删除后
+
+.. code-block:: console
+
+    [root@ceph1 dzw]# lsblk
+    NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+    loop0     7:0    0   4.2G  0 loop /mnt/euler
+    sda       8:0    0   7.3T  0 disk
+    sdb       8:16   0   7.3T  0 disk
+    sdc       8:32   0   7.3T  0 disk
+    sdd       8:48   0   7.3T  0 disk
+    sde       8:64   0   7.3T  0 disk
+    sdf       8:80   0   7.3T  0 disk
+    sdg       8:96   0   7.3T  0 disk
+    sdh       8:112  0   7.3T  0 disk
+    sdi       8:128  0   7.3T  0 disk
+    sdj       8:144  0   7.3T  0 disk
+    sdk       8:160  0   7.3T  0 disk
+    sdl       8:176  0   7.3T  0 disk
+
+
+最好dd一遍所有HDD和SSD分区
 
 .. code-block:: shell
 
-   pdsh -w '^arm.txt' 'lvs | grep osd | awk {print $2} | xargs lvremove -y'
-   pdsh -w '^arm.txt' 'vgs | grep ceph | awk {print $1} | xargs vgremove -y '
+    for ssd in v w x y;
+    do
+            for i in {1..15};
+            do
+                    echo sd$ssd$i
+                    dd if=/dev/zero of=/dev/sd"$ssd""$i" bs=1M count=1
+            done
+    done
 
 
-传递的命令带有单引号，所以这里加了转义符号。
+.. warn::
 
-在每台设备上格式化HDD,SSD（如果有）
+    到这里就完成了卸载，可以重新添加OSD了,再往下的过程是格式化所有硬盘，重新分区
+
+
+格式化每台设备上的HDD,SSD（如果有）
+-------------------------------------
 
 .. code-block:: shell
 
@@ -458,3 +695,28 @@ noscrub 设置
    sdj               8:144  0   7.3T  0 disk
    nvme0n1         259:1    0   2.9T  0 disk
    sdh               8:112  0   7.3T  0 disk
+
+
+
+问题记录
+===============
+
+问题记录：
+
+1. inform the kernel of the change
+
+.. code-block:: console
+
+    [root@ceph2 ~]# parted /dev/sdy mklabel gpt
+    Warning: The existing disk label on /dev/sdy will be destroyed and all data on this disk will be lost. Do you want to continue?
+    Yes/No? yes
+    Error: Partition(s) 11, 12, 13, 14, 15 on /dev/sdy have been written, but we have been unable to inform the kernel of the change, probably because it/they are in use.  As a result, the old partition(s) will
+    remain in use.  You should reboot now before making further changes.
+    Ignore/Cancel? yes^C
+    [root@ceph2 ~]#
+
+解决办法，bcache没有删除干净使用find命令查找没有删除的bcache分区
+
+.. code-block:: shell
+
+    find / -name bcahce
