@@ -30,3 +30,77 @@ sar
     Average:     enp137s0  33851.24  20236.65   3281.31 725558.67      0.00      0.00      0.00     59.44
     Average:     enp133s0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
     Average:     enp132s0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+
+查看缺页中断
+========================
+
+.. code-block:: shell
+    
+    sar -B 1
+
+.. code-block:: console
+
+    12:44:19 AM  pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s pgscand/s pgsteal/s    %vmeff
+    12:44:21 AM      0.00      0.00   1567.50      0.00  10067.50      0.00      0.00      0.00      0.00
+    12:44:23 AM      0.00      0.00    308.00      0.00  57089.50      0.00      0.00      0.00      0.00
+    12:44:25 AM      0.00      0.00   1854.00      0.00  58106.00      0.00      0.00      0.00      0.00
+    12:44:27 AM      0.00      0.00    681.50      0.00 136089.50      0.00      0.00      0.00      0.00
+    12:44:29 AM      0.00      0.00    395.00      0.00  84721.00      0.00      0.00      0.00      0.00
+    12:44:31 AM      0.00      0.00   1826.00      0.00  92157.00      0.00      0.00      0.00      0.00
+    12:44:33 AM      0.00      0.00    307.00      0.00   9526.50      0.00      0.00      0.00      0.00
+    12:44:35 AM      0.00      0.00   1136.50      0.00   9094.00      0.00      0.00      0.00      0.00
+    12:44:37 AM      0.00     12.00    684.50      0.00   7098.00      0.00      0.00      0.00      0.00
+    12:44:39 AM      0.00      0.00   1980.50      0.00  59208.00      0.00      0.00      0.00      0.00
+
+
+Where,
+
+3 = interval
+10 = count
+
+To view process creation statistics, enter:
+# sar -c 3 10
+
+To view I/O and transfer rate statistics, enter:
+# sar -b 3 10
+
+To view paging statistics, enter:
+# sar -B 3 10
+
+To view block device statistics, enter:
+# sar -d 3 10
+
+To view statistics for all interrupt statistics, enter:
+# sar -I XALL 3 10
+
+To view device specific network statistics, enter:
+# sar -n DEV 3 10
+# sar -n EDEV 3 10
+
+To view CPU specific statistics, enter:
+# sar -P ALL
+# Only 1st CPU stats
+# sar -P 1 3 10
+
+To view queue length and load averages statistics, enter:
+# sar -q 3 10
+
+To view memory and swap space utilization statistics, enter:
+# sar -r 3 10
+# sar -R 3 10
+
+To view status of inode, file and other kernel tables statistics, enter:
+# sar -v 3 10
+
+To view system switching activity statistics, enter:
+# sar -w 3 10
+
+To view swapping statistics, enter:
+# sar -W 3 10
+
+To view statistics for a given process called Apache with PID # 3256, enter:
+# sar -x 3256 3 10
+
+
+.. [#sar_ksar] https://www.cyberciti.biz/tips/identifying-linux-bottlenecks-sar-graphs-with-ksar.html
