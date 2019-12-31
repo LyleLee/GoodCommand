@@ -4,7 +4,7 @@ KVM
 
 有一天需要安装ceph集群来看看分布式系统的性能，想找几台机器来测测，一看发现至少需要3台，机器不够怎么办，起一个虚拟机。
 
-有一天需要整点危险的事情，如果在服务器上搞，容易导致设备数据损坏，导致其他认受影响。
+有一天需要整点危险的事情，如果在服务器上搞，容易导致设备数据损坏，导致其他任务影响。
 
 有一天需要装个操作系统看看redhat好还是ubuntu好，
 在物理机上装实在太久了，用虚拟机好一些。
@@ -558,6 +558,13 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
    Domain vm1 has been undefined
    Volume 'sda'(/home/me/.local/share/libvirt/images/CentOS7.6.qcow2) removed.
 
+
+qemu 命令行参数和 libvirt xml转换
+----------------------------------
+
+|transfer_url|
+
+
 待确认问题
 ----------
 
@@ -579,4 +586,7 @@ kvm可以跑X86的linux？
    Kernel 3.10.0-862.el7.x86_64 on an x86_64
 
    ceshi-03 login:
+
+
+.. |transfer_url| :replace: https://blog.csdn.net/beckdon/article/details/50883754
 
