@@ -43,7 +43,8 @@ git command
    git log -p -2                       #展开显示每次提交差异， -2 只显示最近两次更新git    
 
    git reset HEAD CONTRIBUTING.md      #从暂存区测出被误staged的文件
-   git reset --hard HEAD^              #回退最近一次提交
+   git reset HEAD^                     #回退最近一次提交, 这个提交的修改会保留，git status 显示待添加
+   git reset --hard HEAD^              #回退最近一次提交，这个提交不会被保留， git status 显示clean
 
 你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作。最后，提交只有一个。
 
