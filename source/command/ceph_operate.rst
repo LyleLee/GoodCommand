@@ -1,6 +1,15 @@
 *************************
 Ceph operate
 *************************
+
+.. code-block:: shell
+
+    ceph daemon osd.2 show config       #查看OSD的参数
+    ceph daemon osd.2 perf restet       #重置OSD的性能参数统计
+    ceph daemon osd.2 perf dump > a.txt #到处配置
+    ceph pg dump                        #查看pg分布
+    for i in {40..59};do ceph daemon osd.$i config set osd_max_backfills 10;done
+
 目标是新建如下集群：
 
 .. code-block:: console
@@ -100,6 +109,8 @@ Ceph operate
 删除后端文件存储
 -----------------------
 
+.. code-block:: console
+
     [root@ceph1 ~]# ceph osd pool delete cephfs_metadata cephfs_metadata --yes-i-really-really-mean-it
     pool 'cephfs_metadata' removed
     [root@ceph1 ~]# ceph osd pool delete cephfs_data cephfs_data --yes-i-really-really-mean-it
@@ -126,12 +137,12 @@ Ceph operate
    # 文件存储池删除
    ceph osd pool delete cephfs_metadata cephfs_metadata --yes-i-really-really-mean-it
    ceph osd pool delete cephfs_data cephfs_data --yes-i-really-really-mean-it
-   
+
    # 块存储池删除
    ceph osd pool delete images images --yes-i-really-really-mean-it
    ceph osd pool delete volumes volumes --yes-i-really-really-mean-it
-   
-   
+
+
 
 停止OSD进程
 ---------------------
@@ -247,7 +258,7 @@ Ceph operate
     sdd                                                                                                         8:48    0   7.3T  0 disk
     └─bcache3                                                                                                 251:384   0   7.3T  0 disk
       └─ceph--8efa3be6--8448--47ff--9653--4f9d52439f80-osd--block--a4659aeb--bbc5--4ca0--8e4f--656b3ca47aad   250:3     0   7.3T  0 lvm
-    sde                                                                                                    
+    sde
 删除后
 
 .. code-block:: console
@@ -338,14 +349,14 @@ Ceph operate
 
    for disk in {a..l}
        do parted -s /dev/sd${disk} mklabel gpt
-       ceph-volume lvm zap /dev/sd${disk} --destroy 
+       ceph-volume lvm zap /dev/sd${disk} --destroy
    done
 
 .. code-block:: shell
 
    for ssd_disk in nvme0n1 nvme1n1
        do parted -s /dev/$ssd_disk mklabel gpt
-       ceph-volume lvm zap /dev/$ssd_disk --destroy 
+       ceph-volume lvm zap /dev/$ssd_disk --destroy
    done
 
 在deploy节点上收集key
@@ -381,7 +392,7 @@ Ceph operate
 
    vgcreate ceph-db /dev/nvme0n1
    vgcreate ceph-wal /dev/nvme1n1
-   for index in {a..l};do 
+   for index in {a..l};do
        lvcreate -n ceph-db-$index -L 240G ceph-db;
        lvcreate -n ceph-wal-$index -L 240G ceph-wal;
    done
@@ -547,7 +558,7 @@ SSD 集群重测
 
 .. code-block:: shell
 
-   for host in `cat ../dell.txt`; do 
+   for host in `cat ../dell.txt`; do
        scp -r root@${host}:/root/rbd_test/192/* ./;
    done
 
@@ -557,9 +568,9 @@ SSD 集群重测
 .. code-block:: shell
 
    for host in `cat dell.txt`; do
-       scp do_fio.sh root@${host}:/root/rbd_test/; 
-   done 
-   for host in `cat dell.txt`; do 
+       scp do_fio.sh root@${host}:/root/rbd_test/;
+   done
+   for host in `cat dell.txt`; do
        scp rmhostname.sh root@${host}:/root/rbd_test/;
    done
 
@@ -594,7 +605,7 @@ SSD 集群重测
            -rbdname=test-13 \
            --output="$(date "+%Y-%m-%d-%H%M")".json \
            -name="$(date "+%Y-%m-%d-%H%M")".json
-           
+
 
 统计json文件
 ------------------
@@ -609,7 +620,7 @@ SSD 集群重测
 .. code-block:: shell
 
    systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’
-   systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’ | xargs systemctl disable 
+   systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’ | xargs systemctl disable
    systemctl | grep ceph-osd | grep fail | awk ‘{print $2}’ | xargs systemctl status
 
 
@@ -619,7 +630,7 @@ ceph绑核
 可以先用`taskset -acp 0-23 {osd-pid}`
 看看对性能帮助有多大。如果有帮助，再调整ceph参数配置
 
-绑定node2 
+绑定node2
 
 .. code-block:: shell
 
@@ -632,7 +643,7 @@ daemon命令查看集群状态
 
 .. code-block:: shell
 
-   ceph daemon mon.cu-pve04 help       #显示monitor的命令帮助     
+   ceph daemon mon.cu-pve04 help       #显示monitor的命令帮助
    ceph daemon mon.cu-pve04 sessions   #
    ceph daemon osd.0 config show
    ceph daemon osd.0 help              #显示命令帮助
