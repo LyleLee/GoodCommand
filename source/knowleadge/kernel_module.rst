@@ -250,3 +250,7 @@ ubuntu 18.04
 ::
 
    make -C /lib/modules/4.15.0-29-generic/build SUBDIRS=$PWD modules
+
+
+
+设备驱动模块编写，可以参考 :doc:`linux_driver`

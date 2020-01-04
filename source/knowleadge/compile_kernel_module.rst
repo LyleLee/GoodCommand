@@ -57,8 +57,12 @@
     make -C ../../linux/ M=$(pwd) clean
 
 
+问题记录
+================
+
+
 问题：asm/errno.h: No such file or directory
-==============================================
+-------------------------------------------------------------
 
 .. code-block:: console
 
@@ -85,7 +89,7 @@
     make olddefconfig && make prepare
 
 问题: ERROR: Kernel configuration is invalid
-===============================================
+-------------------------------------------------------------=
 
 .. code-block:: console
 
@@ -106,3 +110,22 @@
 .. code-block:: shell
 
     make olddefconfig && make prepare
+
+问题：scripts/genksyms/genksyms: No such file or directory
+-------------------------------------------------------------
+
+.. code-block:: console
+
+    [user1@centos linux-4.18.0-80.7.2.el8_0]$ make -C . M=drivers/scsi/hisi_sas modules
+    make: Entering directory '/home/user1/open_software/kernel-src-4.18/linux-4.18.0-80.7.2.el8_0'
+      CC [M]  drivers/scsi/hisi_sas/hisi_sas_main.o
+    /bin/sh: scripts/genksyms/genksyms: No such file or directory
+    make[1]: *** [scripts/Makefile.build:322: drivers/scsi/hisi_sas/hisi_sas_main.o] Error 1
+    make: *** [Makefile:1528: _module_drivers/scsi/hisi_sas] Error 2
+    make: Leaving directory '/home/user1/open_software/kernel-src-4.18/linux-4.18.0-80.7.2.el8_0'
+
+解决办法
+
+.. code-block:: shell
+
+    make olddefconfig && make prepare scripts
