@@ -73,18 +73,23 @@ ufw的设置会转变为iptables规则， iptables的规则ufw并不会管理。
     2222 (v6)                  ALLOW       Anywhere (v6)
 
 
-
-
 执行成功，
 
-.. Nat 设置 https://www.cnblogs.com/Cherry-Linux/p/9369012.html
-.. iptables 四表五链 https://liqiang.io/post/dive-in-iptables
+
 
 iptables -A ufw-user-input -p tcp -m tcp --dport 3333 -j ACCEPT
 
 
 
-NAT转换
+NAT转换, 注意，这两条规则在CentOS上，``firewall-cmd --reload`` 的 时候会失效
 
-iptables -t nat -A PREROUTING -p tcp --dport 3212 -j DNAT --to-destination 10.1.1.1:312
-iptables -t nat -A POSTROUTING -p tcp -d 10.1.1.1 -j SNAT --to-source 10.1.1.5
+.. code-block:: console
+
+    iptables -t nat -A PREROUTING -p tcp --dport 3212 -j DNAT --to-destination 10.1.1.1:312
+    iptables -t nat -A POSTROUTING -p tcp -d 10.1.1.1 -j SNAT --to-source 10.1.1.5
+
+    firewall-cmd --zone=public --add-masquerade --permanent #目前需要添加这条才能工作，原因未知。
+
+.. Nat 设置 https://www.cnblogs.com/Cherry-Linux/p/9369012.html
+.. iptables 四表五链 https://liqiang.io/post/dive-in-iptables
+.. 如何重置iptables https://kerneltalks.com/virtualization/how-to-reset-iptables-to-default-settings/

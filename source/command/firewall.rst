@@ -2,7 +2,7 @@
 firewall
 ***********************
 
-CentOS和redhat使用firewall作为防火墙
+CentOS和redhat使用firewall [#f1]_ [#f2]_ 作为防火墙
 
 .. code::
 
@@ -91,6 +91,80 @@ CentOS和redhat使用firewall作为防火墙
     firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o enoxxxxxx -j MASQUERADE -s 192.168.1.0/24 #执行firewalld命令进行转发：
                                                                                                                             #注意enoxxxxxx对应外网网口名称
     systemctl restart firewalld.service  #重启防火墙
+
+
+问题记录：
+====================
+
+问题：ERROR: '/usr/sbin/iptables-restore -w -n' failed: Bad argument 53333
+------------------------------------------------------------------------------
+
+执行以下命令导致防火墙工作不正常, 表现为 ``firewall-cmd --reload`` 提示failed
+
+.. code-block:: console
+
+    firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I PREROUTING -dport 53333 -j DNAT --to 10.10.10.1:53333
+    firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -d 10.10.10.1 -j SNAT --to 10.10.10.5
+
+可以看到防火墙日志有报错
+
+.. code-block:: console
+
+    [root@vm_centos ~]# systemctl status firewalld
+    ● firewalld.service - firewalld - dynamic firewall daemon
+       Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+       Active: active (running) since Sat 2020-01-04 02:47:03 CST; 1s ago
+         Docs: man:firewalld(1)
+     Main PID: 5729 (firewalld)
+       CGroup: /system.slice/firewalld.service
+               └─5729 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+
+    Jan 04 02:47:03 vm_centos systemd[1]: Stopped firewalld - dynamic firewall daemon.
+    Jan 04 02:47:03 vm_centos systemd[1]: Starting firewalld - dynamic firewall daemon...
+    Jan 04 02:47:03 vm_centos systemd[1]: Started firewalld - dynamic firewall daemon.
+    Jan 04 02:47:04 vm_centos firewalld[5729]: ERROR: '/usr/sbin/iptables-restore -w -n' failed: Bad argument `53333'
+                                                    Error occurred at line: 2
+                                                    Try `iptables-restore -h' or 'iptables-restore --help' for more information....
+    Jan 04 02:47:04 vm_centos firewalld[5729]: ERROR: COMMAND_FAILED: Direct: '/usr/sbin/iptables-restore -w -n' failed: Bad argument `53333'
+                                                    Error occurred at line: 2
+                                                    Try `iptables-restore -h' or 'iptables-restore --help' for more information....
+    Hint: Some lines were ellipsized, use -l to show in full.
+
+解决办法： 删掉新添加的规则。
+
+进入/etc/firewalld/可以看到firewalld的配置文件
+
+.. code-block:: console
+
+    [root@vm_centos firewalld]# tree .
+    .
+    |-- direct.xml
+    |-- direct.xml.old
+    |-- firewalld.conf
+    |-- firewalld.conf.old
+    |-- helpers
+    |-- icmptypes
+    |-- ipsets
+    |-- lockdown-whitelist.xml
+    |-- services
+    `-- zones
+        |-- public.xml
+        |-- public.xml.old
+        `-- trusted.xml
+
+查找和53333相关的文件并删除
+
+.. code-block:: console
+
+    5 directories, 8 files
+    [root@vm_centos firewalld]# grep 53333 -rn .
+    ./direct.xml:3:  <passthrough ipv="ipv4">-t nat -I PREROUTING -dport 53333 -j DNAT --to 10.1.1.1:53333</passthrough>
+    ./zones/public.xml:10:  <port protocol="tcp" port="53333"/>
+    ./zones/public.xml:11:  <port protocol="udp" port="53333"/>
+    ./zones/public.xml.old:10:  <port protocol="tcp" port="53333"/>
+    ./zones/public.xml.old:11:  <port protocol="udp" port="53333"/>
+    ./direct.xml.old:3:  <passthrough ipv="ipv4">-t nat -I PREROUTING -dport 53333 -j DNAT --to 10.1.1.1:53333</passthrough>
+    [root@vm_centos firewalld]# rm direct.xml
 
 
 .. [#f1] firewall-cmd基础用法 https://havee.me/linux/2015-01/using-firewalls-on-centos-7.html
