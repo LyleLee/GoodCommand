@@ -1,8 +1,9 @@
-=========================
+*************************
 git bash windows
-=========================
+*************************
 
 git bash 显示中文乱码
+=======================
 
 ::
 
@@ -31,10 +32,27 @@ git bash 显示中文乱码
 
    git bash 界面右键→option→Text→local设置为zh_CN,Character Set设置为UTF-8
 
-2. git bash option 设置中文支持
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+git bash option 设置中文支持
+==============================
 
 ::
 
    git config --global i18n.commitencoding utf-8
    git config --global core.quotepath false
+
+设置windows unix文件格式
+==============================
+
+Checkout Windows-style, commit Unix-style [#commit_unix_style]_
+
+Git will convert LF to CRLF when checking out text files. When committing text files, CRLF will be converted to LF. For cross-platform projects, this is the recommended setting on Windows ("core.autocrlf" is set to "true")
+
+Checkout as-is, commit Unix-style
+
+Git will not perform any conversion when checking out text files. When committing text files, CRLF will be converted to LF. For cross-platform projects this is the recommended setting on Unix ("core.autocrlf" is set to "input").
+
+Checkout as-is, commit as-is
+
+Git will not perform any conversions when checking out or committing text files. Choosing this option is not recommended for cross-platform projects ("core.autocrlf" is set to "false")
+
+.. [#commit_unix_style] https://stackoverflow.com/questions/10418975/how-to-change-line-ending-settings
