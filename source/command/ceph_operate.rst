@@ -10,6 +10,8 @@ Ceph operate
     ceph pg dump                        #查看pg分布
     for i in {40..59};do ceph daemon osd.$i config set osd_max_backfills 10;done
 
+
+
 目标是新建如下集群：
 
 .. code-block:: console
@@ -40,6 +42,12 @@ Ceph operate
 
 在客户端取消挂载点
 ---------------------
+
+在所有的客户端执行取消挂载ceph文件系统
+
+.. code-block:: shell
+
+    pssh -h client_hosts.txt -i -P "umount /mnt/cephfs"
 
 这里的挂载点点是/mnt/cephfs.
 
@@ -89,6 +97,12 @@ Ceph operate
 停止MDS进程
 ---------------------
 
+在ceph节点停止mds进程
+
+.. code-block:: shell
+
+    pssh -h backend_hosts.txt -i -P "systemctl stop ceph-mds.target"
+
 .. code-block:: console
 
     [root@client1 vdbench]# pssh -h backend_hosts.txt -i -P "systemctl stop ceph-mds.target"
@@ -105,6 +119,16 @@ Ceph operate
     Stderr:
     Authorized users only. All activities may be monitored and reported.
     [root@client1 vdbench]#
+
+有时候会出现如下报错
+
+.. code-block:: console
+
+    [root@ceph2 ~]# ceph fs rm cephfs
+    Error EINVAL: all MDS daemons must be inactive before removing filesystem
+
+请参考问题记录解决
+
 
 删除后端文件存储
 -----------------------
@@ -259,6 +283,7 @@ Ceph operate
     └─bcache3                                                                                                 251:384   0   7.3T  0 disk
       └─ceph--8efa3be6--8448--47ff--9653--4f9d52439f80-osd--block--a4659aeb--bbc5--4ca0--8e4f--656b3ca47aad   250:3     0   7.3T  0 lvm
     sde
+
 删除后
 
 .. code-block:: console
@@ -337,9 +362,35 @@ Ceph operate
     done
 
 
-.. warn::
+.. warning::
 
     到这里就完成了卸载，可以重新添加OSD了,再往下的过程是格式化所有硬盘，重新分区
+
+卸载ceph
+---------------------------
+
+.. code-block:: shell
+
+    yum remove -y ceph
+
+
+创建文件存储集群过程
+-------------------------------------
+
+SSD分区
+cache配置
+安装ceph
+
+.. code-block:: shell
+
+    yum install -y ceph
+
+    ceph osd pool create cephfs_data 2048
+    ceph osd pool create cephfs_metadata 2048
+    ceph fs new cephfs cephfs_metadata cephfs_data
+    cat ceph.client.admin.keyring
+
+
 
 
 格式化每台设备上的HDD,SSD（如果有）
@@ -712,9 +763,9 @@ noscrub 设置
 问题记录
 ===============
 
-问题记录：
 
-1. inform the kernel of the change
+问题：inform the kernel of the change
+-------------------------------------
 
 .. code-block:: console
 
@@ -731,3 +782,57 @@ noscrub 设置
 .. code-block:: shell
 
     find / -name bcahce
+
+问题： Error EINVAL: all MDS daemons must be inactive before removing filesystem
+-----------------------------------------------------------------------------------
+
+.. code-block:: console
+
+    [root@ceph2 ~]# ceph fs ls
+    name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]
+    [root@ceph2 ~]# ceph fs rm cephfs
+    Error EINVAL: all MDS daemons must be inactive before removing filesystem
+
+这个时候需要手动fail最后一个mds [#fail_mds]_
+
+.. code-block:: console
+
+    ceph mds fail ceph1 ceph2 ceph3 ceph4
+
+.. [#fail_mds] 手动fail mds https://www.spinics.net/lists/ceph-users/msg17960.html
+
+
+问题： stderr: Failed to find PV /dev/bcache1
+-----------------------------------------------
+
+添加OSD时的实际操作是：
+
+.. code-block:: shell
+
+    ceph-deploy osd create ceph1 --data /dev/bcache0 --block-db /dev/sdv6 --block-wal /dev/sdv1
+
+.. code-block:: console
+
+    [ceph1][INFO  ] Running command: /usr/sbin/ceph-volume --cluster ceph lvm create --bluestore --data /dev/bcache1 --block.wal /dev/sdv2 --block.db /dev/sdv7
+    [ceph1][WARNIN] -->  RuntimeError: command returned non-zero exit status: 5
+    [ceph1][DEBUG ] Running command: /bin/ceph-authtool --gen-print-key
+    [ceph1][DEBUG ] Running command: /bin/ceph --cluster ceph --name client.bootstrap-osd --keyring /var/lib/ceph/bootstrap-osd/ceph.keyring -i - osd new 726db1da-7d82-4071-8818-f74323cd068d
+    [ceph1][DEBUG ] Running command: vgcreate --force --yes ceph-974225f2-04dc-49cb-805f-f1b36a4ea98b /dev/bcache1
+    [ceph1][DEBUG ]  stderr: Failed to find PV /dev/bcache1
+    [ceph1][DEBUG ] --> Was unable to complete a new OSD, will rollback changes
+    [ceph1][DEBUG ] --> OSD will be fully purged from the cluster, because the ID was generated
+    [ceph1][DEBUG ] Running command: ceph osd purge osd.0 --yes-i-really-mean-it
+    [ceph1][DEBUG ]  stderr: purged osd.0
+    [ceph1][ERROR ] RuntimeError: command returned non-zero exit status: 1
+    [ceph_deploy.osd][ERROR ] Failed to execute command: /usr/sbin/ceph-volume --cluster ceph lvm create --bluestore --data /dev/bcache1 --block.wal /dev/sdv2 --block.db /dev/sdv7
+    [ceph_deploy][ERROR ] GenericError: Failed to create 1 OSDs
+
+
+解决办法：
+
+有一台设备的 /etc/lvm/lvm.conf注释了下面的设置, 取消注释
+
+.. code-block:: ini
+
+        global_filter = [ "a|/dev/bcache0|", "a|/dev/bcache1|", "a|/dev/bcache2|", "a|/dev/bcache3|", "a|/dev/bcache4|", "a|/dev/bcache5|", "a|/dev/bcache6|", "a|/dev/bcache7|", "a|/dev/bcache8|", "a|/dev/bcache9|", "a|/dev/bcache10|", "a|/dev/bcache11|", "a|/dev/bcache12|", "a|/dev/bcache13|", "a|/dev/bcache14|", "a|/dev/bcache15|", "a|/dev/bcache16|", "a|/dev/bcache17|", "a|/dev/bcache18|", "a|/dev/bcache19|" ]
+
