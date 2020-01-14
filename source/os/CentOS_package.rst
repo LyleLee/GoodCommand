@@ -91,6 +91,8 @@ CentOS 软件包常用命令
    yum update
    yum repolist        #查询已经启用的软件源
    yum repolist all    #查询所有软件源
+   yum config-manager --disable ovirt-4.1   #禁用软件源
+   dnf config-manager --disable ovirt-4.1   #禁用软件源
    yum grouplist
    yum groupinstall "Development Tools"
 
@@ -102,6 +104,8 @@ CentOS 软件包常用命令
    yum list <package_name> --showduplicates    #显示所有版本软件
    yum install <package_name>-<version_info>   #安装指定版本软件包
    yum downgrade <package_name>-<version_info> #强制降级软件包
+   sudo dnf config-manager --add-repo https://mirrors.huaweicloud.com/ceph/rpm-luminous/el7/aarch64/
+   sudo yum config-manager --add-repo https://mirrors.huaweicloud.com/ceph/rpm-luminous/el7/aarch64/
 
    yumdownloader --urls nload  #获取nload的url下载地址
 
