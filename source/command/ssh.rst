@@ -129,8 +129,11 @@ all.txt保存主机IP列表
 
 https://www.cnblogs.com/panblack/p/secure_ssh_auto_block.html
 
+
+.. _ssh_password_less:
+
 设置免密登录
-------------
+-------------
 
 ::
 
