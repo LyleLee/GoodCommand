@@ -11,3 +11,9 @@ hinicadm
     hinicadm reset -i hinic0 -p 0
 
 
+1822驱动自动加载
+
+.. code-block:: shell
+
+    cp hinic.ko /lib/modules/`uname -r`/updates
+    depmod `uname -r`
