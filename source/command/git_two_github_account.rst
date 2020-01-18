@@ -179,6 +179,16 @@ SSH的配置
 
 https://blog.csdn.net/SCHOLAR_II/article/details/72191042
 
+
+设置代理
+-------------
+
+..code-block:: shell
+
+    git config --global http.proxy "http://username:password@proxy.server.name:8080"
+    git config --global https.proxy "http://username:password@proxy.server.name:8080"
+
+
 待确认问题
 ----------
 
@@ -218,3 +228,5 @@ https://blog.csdn.net/SCHOLAR_II/article/details/72191042
    -rw-------   1 me me   88 Aug 29 11:38 config
 
 这个问题第一次遇到，权限多了还不行
+
+

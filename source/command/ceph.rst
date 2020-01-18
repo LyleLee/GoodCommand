@@ -22,6 +22,7 @@ ceph 是一个高性能的分布式系统。提供三种服务：对象存储（
    ceph -s
    ceph -w
    ceph df
+   osdmaptool osd1.map --upmap out1.txt --upmap-pool cephfs_data --upmap-max 300
 
 查看集群的pool，下面可以看出来有一个pool，ID是1， 名字是volumes
 

@@ -297,5 +297,3 @@ Vdbench以一个或者多个JVM运行。由用户运行的JVM是master，负责�
 
 
 .. |vebench_download| replace:: https://www.oracle.com/downloads/server-storage/vdbench-source-downloads.html
-.. _vebench_download: https://www.oracle.com/downloads/server-storage/vdbench-source-downloads.html
-.. _link: `vebench_download`_

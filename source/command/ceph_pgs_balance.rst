@@ -5,7 +5,7 @@ ceph pg balance
 ceph 均衡PG [#url1]_ [#url2]_ ， 使每个OSD的pg数量相等
 
 
-开启均衡 
+开启均衡
 =======================
 
 .. code-block:: shell
@@ -19,6 +19,9 @@ ceph 均衡PG [#url1]_ [#url2]_ ， 使每个OSD的pg数量相等
     less /var/log/ceph/ceph.audit.log                # 查看调整日志
     ceph osd df                                      # 查看调整结果
 
+    ceph osd getmap -o osd1.map
+    osdmaptool osd.map --upmap out.txt --upmap-pool cephfs_data
+    osdmaptool osd1.map --upmap out1.txt --upmap-pool cephfs_data --upmap-max 300
 
 均衡之前
 ====================

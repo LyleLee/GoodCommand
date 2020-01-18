@@ -11,6 +11,9 @@ fio是多线程IO负载生成测试工具，是测试服务器硬盘性能的优
 
    fio --ramp_time=5 --runtime=60 --size=100% --ioengine=libaio --filename=/dev/sdb --name=4k_read --numjobs=1 --iodepth=64 --rw=read --bs=4k --direct=1
 
+   #测试硬盘读带宽，读io不会影响ceph的文件系统
+   taskset -c 1 fio --ioengine=libaio --direct=1 --rw=read --bs=4096k --iodepth=32 --name=test --numjobs=1 --filename=/dev/sdv --runtime=60
+
 配置文件参数：
 
 .. code::
@@ -118,7 +121,7 @@ fio编译
    /usr/local/bin/fio
    [root@localhost ~]# /usr/local/bin/fio -v
    fio-3.13
-   [root@localhost ~]# 
+   [root@localhost ~]#
 
 ::
 
@@ -172,7 +175,7 @@ fio 调优指导
    bs=4k
    thread
    numjobs=1
-   runtime=100 
+   runtime=100
    group_reporting
    [/dev/sdc]
 
@@ -312,9 +315,9 @@ fio 调优指导
 
 ::
 
-   [2019-07-20 20:59:26]  [root@192e168e100e111 ~]# unzip fio-3.15.zip 
+   [2019-07-20 20:59:26]  [root@192e168e100e111 ~]# unzip fio-3.15.zip
    [2019-07-20 22:19:37]  [root@192e168e100e111 ~]# yum install librbd1-devel
-   [2019-07-20 22:20:15]  [root@192e168e100e111 fio-fio-3.15]# ./configure 
+   [2019-07-20 22:20:15]  [root@192e168e100e111 fio-fio-3.15]# ./configure
    [2019-07-20 22:20:21]  Rados engine                  yes
    [2019-07-20 22:20:21]  Rados Block Device engine     yes # 有这几个代表安装librbd成功
    [2019-07-20 22:20:21]  rbd_poll                      yes

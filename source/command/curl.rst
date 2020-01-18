@@ -13,6 +13,7 @@ url访问工具
 .. code-block:: shell
 
     curl -x http://128.5.65.193:8080 -v www.baidu.com
+    curll -x http://proxyUsername:proxyPassword@proxy.server.com:8080 -v www.baidu.com
 
 通过ssh tunnel代理访问
 
