@@ -69,6 +69,7 @@ proxy web
 ::
 
    curl --socks5 127.0.0.1:3128 --verbose www.baidu.com
+   curl -x socks5://127.0.0.1:3128 cip.cc
 
 proxy yum
 ---------
