@@ -28,6 +28,7 @@ CPU性能测试工具
 -  stream
 -  lmbench
 -  stress-ng
+-  Intel® Memory Latency Checker v3.7 [#intel_memory]_
 
 IO性能测试工具
 ==============
@@ -42,3 +43,6 @@ IO性能测试工具
 -  iperf
 -  netperf
 -  Qperf
+
+
+.. [#intel_memory] https://software.intel.com/en-us/articles/intelr-memory-latency-checker
