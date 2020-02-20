@@ -1,5 +1,5 @@
 *******************
-perf 
+perf
 *******************
 
 在内核源码当中散落有一些hook，
@@ -15,29 +15,21 @@ ubuntu
    sudo apt install linux-tools-common
    sudo apt install linux-tools-4.15.0-46-generic
 
-| 列出所有能触发perf采样点的事件
-| perf list
+常用命令
 
-| 查看程序运行时各种统计时间的大概情况
-| perf stat ./c
 
-| 查看针对指定事件的统计
-| perf stat -e syscalls:sys_enter_fchmod ./c
+.. code
 
-| 查看哪些可能出问题的程序在占用资源
-| perf top
-
-| 查看具体是哪一个函数占用程序运行时间最多
-| perf record –e cpu-clock ./t1
-| perf report
-
-| 更具体的查看调用关系
-| perf record –e cpu-clock –g ./t1
-| perf -g report
-
-| 录制所有程序的调用栈:每秒采样99次，-a记录所有CPU的调用栈， 60秒，-g
-  采用graph call
-| perf record -F 99 -a -g – sleep 60
+    perf list                                   # 列出所有能触发perf采样点的事件
+    perf stat ./c                               # 查看程序运行时各种统计时间的大概情况
+    perf stat -e syscalls:sys_enter_fchmod ./c  # 查看针对指定事件的统计
+    perf top                                    #查看哪些可能出问题的程序在占用资源
+    perf record –e cpu-clock ./t1               #
+    perf report
+    perf record –e cpu-clock –g ./t1            #更具体的查看调用关系
+    perf -g report
+    perf record -F 99 -a -g – sleep 60          # 录制所有程序的调用栈:每秒采样99次，-a记录所有CPU的调用栈， 60秒，-g
+    perf stat -e L1-icache-load-misses -e L1-icache-loads
 
 生成火焰图步骤
 --------------
@@ -112,52 +104,52 @@ report可以打印出保存的数据。 perf report 可以打印堆栈，
 ::
 
    Samples: 81  of event 'block:block_rq_issue', Event count (approx.): 81
-     Children      Self  Trace output                                                    
-   -    2.47%     2.47%  8,0 FF 0 () 18446744073709551615 + 0 [jbd2/sda2-8]              
-        ret_from_fork                                                                    
-        kthread                                                                          
-        kjournald2                                                                       
-        jbd2_journal_commit_transaction                                                  
-        journal_submit_commit_record                                                     
-        submit_bh                                                                        
-        submit_bh_wbc                                                                    
-        submit_bio                                                                       
-        generic_make_request                                                             
-        blk_queue_bio                                                                    
-        __blk_run_queue                                                                  
-        scsi_request_fn                                                                  
-        blk_peek_request                                                                 
-        blk_peek_request                                                                 
-   +    1.23%     1.23%  8,0 FF 0 () 18446744073709551615 + 0 [swapper/0]                
-   +    1.23%     1.23%  8,0 FF 0 () 18446744073709551615 + 0 [swapper/37]               
-   +    1.23%     1.23%  8,0 W 4096 () 1050624 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 5327136 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 12288 () 1287264 + 24 [kworker/u129:1]                    
-   +    1.23%     1.23%  8,0 W 12288 () 5334608 + 24 [kworker/u129:1]                    
-   +    1.23%     1.23%  8,0 W 4096 () 1280136 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1282984 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1285440 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1287392 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1287448 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1287480 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1287912 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1291360 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1291456 + 8 [kworker/u129:1]                      
-   +    1.23%     1.23%  8,0 W 4096 () 1291560 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1291656 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1291760 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1292360 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1292456 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1292568 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1294896 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295416 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295536 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295568 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295616 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295808 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 1295848 + 8 [swapper/0]                           
-   +    1.23%     1.23%  8,0 W 4096 () 15747672 + 8 [swapper/0]                          
-   +    1.23%     1.23%  8,0 WM 4096 () 1050640 + 8 [kworker/u129:1]                     
+     Children      Self  Trace output
+   -    2.47%     2.47%  8,0 FF 0 () 18446744073709551615 + 0 [jbd2/sda2-8]
+        ret_from_fork
+        kthread
+        kjournald2
+        jbd2_journal_commit_transaction
+        journal_submit_commit_record
+        submit_bh
+        submit_bh_wbc
+        submit_bio
+        generic_make_request
+        blk_queue_bio
+        __blk_run_queue
+        scsi_request_fn
+        blk_peek_request
+        blk_peek_request
+   +    1.23%     1.23%  8,0 FF 0 () 18446744073709551615 + 0 [swapper/0]
+   +    1.23%     1.23%  8,0 FF 0 () 18446744073709551615 + 0 [swapper/37]
+   +    1.23%     1.23%  8,0 W 4096 () 1050624 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 5327136 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 12288 () 1287264 + 24 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 12288 () 5334608 + 24 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1280136 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1282984 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1285440 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1287392 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1287448 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1287480 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1287912 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1291360 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1291456 + 8 [kworker/u129:1]
+   +    1.23%     1.23%  8,0 W 4096 () 1291560 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1291656 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1291760 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1292360 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1292456 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1292568 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1294896 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295416 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295536 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295568 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295616 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295808 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 1295848 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 W 4096 () 15747672 + 8 [swapper/0]
+   +    1.23%     1.23%  8,0 WM 4096 () 1050640 + 8 [kworker/u129:1]
 
 perf list
 ---------
@@ -283,8 +275,8 @@ perf 支持下面cache相关的事件：
 
 ::
 
-   cache-misses            [Hardware event]        cache失效。指内存访问不由cache提供服务的事件。 
-   cache-references        [Hardware event]        cache命中。 
+   cache-misses            [Hardware event]        cache失效。指内存访问不由cache提供服务的事件。
+   cache-references        [Hardware event]        cache命中。
    L1-dcache-load-misses   [Hardware cache event]  L1 数据取miss
    L1-dcache-loads         [Hardware cache event]  L1 数据取命中
    L1-dcache-store-misses  [Hardware cache event]  L1 数据存miss
