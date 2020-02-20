@@ -60,3 +60,28 @@ Beaver)为例介绍软件源的配置。配置国内软件源，可以在安装/
    Get:7 https://mirrors.huaweicloud.com/ubuntu-ports bionic/restricted arm64 Packages [664 B]
    Get:8 https://mirrors.huaweicloud.com/ubuntu-ports bionic/restricted Translation-en [3,584 B]
    Get:9 https://mirrors.huaweicloud.com/ubuntu-ports bionic/universe arm64 Packages [8,316 kB]
+
+问题记录
+=============
+
+Certificate verification failed
+------------------------------------
+
+.. code-block:: console
+
+    root@d54cd5b61fde:/host# apt update
+    Ign:1 https://mirrors.huaweicloud.com/ubuntu-ports bionic InRelease
+    Ign:2 https://mirrors.huaweicloud.com/ubuntu-ports bionic-security InRelease
+    Ign:3 https://mirrors.huaweicloud.com/ubuntu-ports bionic-updates InRelease
+    Ign:4 https://mirrors.huaweicloud.com/ubuntu-ports bionic-backports InRelease
+    Get:5 http://ports.ubuntu.com/ubuntu-ports bionic InRelease [242 kB]
+    Err:6 https://mirrors.huaweicloud.com/ubuntu-ports bionic Release
+      Certificate verification failed: The certificate is NOT trusted. The certificate issuer is unknown.  Could not handshake: Error in the certificate verification. [IP: 117.78.24.32 443]
+    Err:7 https://mirrors.huaweicloud.com/ubuntu-ports bionic-security Release
+      Certificate verification failed: The certificate is NOT trusted. The certificate issuer is unknown.  Could not handshake: Error in the certificate verification. [IP: 117.78.24.32 443]
+    Err:8 https://mirrors.huaweicloud.com/ubuntu-ports bionic-updates Release
+  Certificate verification failed: The certificate is NOT trusted. The certificate issuer is unknown.  Could not handshake: Error in the certificate verification. [IP: 117.78.24.32 443]
+
+解决办法：
+
+把https替换成http. 或者apt
