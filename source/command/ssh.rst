@@ -54,13 +54,13 @@ proxy web
 
 ::
 
-   ssh -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx
+   ssh -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx -p 23231
 
 命令会在前台执行，如果想在后台执行，使用-f参数
 
 ::
 
-   ssh -f -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx
+   ssh -f -N -D 127.0.0.1:3128 xxx@xx.x.xx.xx -p 23231
 
 浏览器设置本地代理127.0.0.1:3128即可.
 
@@ -70,6 +70,13 @@ proxy web
 
    curl --socks5 127.0.0.1:3128 --verbose www.baidu.com
    curl -x socks5://127.0.0.1:3128 cip.cc
+
+终端代理设置：
+
+::
+
+    export http_proxy=socks5://127.0.0.1:7777
+    export https_proxy=socks5://127.0.0.1:7777
 
 proxy yum
 ---------
