@@ -36,4 +36,81 @@ url 如何统一在末尾管理 :doc: `vdbench`
 .. [#cross_reference] https://www.sphinx-doc.org/en/1.5/markup/inline.html
 
 
+分栏，或者所示边栏例子
 
+Simple tables
+-------------
+.. sidebar:: Code for the examples
+
+   ::
+
+      ==  ==
+      aA  bB
+      cC  dD
+      ==  ==
+
+      =====  ======
+      Vokal  Umlaut
+      =====  ======
+      aA     äÄ
+      oO     öÖ
+      =====  ======
+
+      =====  =====  ======
+      Inputs        Output
+      ------------  ------
+        A      B    A or B
+      =====  =====  ======
+      False         False
+      ------------  ------
+      True   False  True
+      False  True   True
+      True          True
+      ============  ======
+
+      ===========  ================
+      1. Hallo     | blah blah blah
+                     blah blah blah
+                     blah
+                   | blah blah
+      2. Here      We can wrap the
+                   text in source
+      32. There    **aha**
+      ===========  ================
+
+Simple tables (:restref:`ref <restructuredtext.html#simple-tables>`)
+are preceded and ended with a sequence of "``=``" to indicate the
+columns, e.g:
+
+==  ==
+aA  bB
+cC  dD
+==  ==
+
+Headers are indicated by another sequence of "``=``", e.g:
+
+=====  ======
+Vokal  Umlaut
+=====  ======
+aA     äÄ
+oO     öÖ
+=====  ======
+
+Column spans are followed by a sequence of "``-``" (except for the last header
+or last row of the table where we must have "``=``"), e.g:
+
+=====  =====  ======
+Inputs        Output
+------------  ------
+  A      B    A or B
+=====  =====  ======
+False         False
+------------  ------
+True   False  True
+False  True   True
+True          True
+============  ======
+
+
+
+https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html#epigraph-and-highlights
