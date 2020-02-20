@@ -1,4 +1,5 @@
-C skill
+*********************
+c skill
 *********************
 
 在leetcode上提交代码经常会出现一下错误
@@ -99,9 +100,23 @@ C skill
 
    https://beginnersbook.com/2014/01/c-strings-string-functions/
 
+C 变量类型和最大限制
+======================
+
+在 :ref:`glibc` 的limit.h [#limits.h]_ 中定义有C语言类型的各种最大限制。
+
+.. literalinclude:: ../src/no_catalog/char_limits.c
+   :language: c
+
+.. code-block:: console
+    
+    minmun char:0 maximun char:255
+
 todo:
 =====
 
 eval 函数库
 
 后缀表达式 https://juejin.im/post/5d3e55ade51d457761476238
+
+.. [#limits.h] limits.h https://sourceware.org/git/?p=glibc.git;a=blob;f=include/limits.h;h=8195da78a4a6074d737ec45ba27b8fec6005543e;hb=HEAD

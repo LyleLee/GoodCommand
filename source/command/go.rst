@@ -5,7 +5,7 @@ go
 
 ::
 
-   yum install golang
+   yum install golang       #安装软件源默认的golang，用于编译新版本的golang
    git clone https://github.com/golang/go
    cd src
    ./all.bash
@@ -43,6 +43,20 @@ go
    [me@centos src]$ go version
    go version go1.12.7 linux/arm64
    [me@centos src]$
+
+
+go proxy
+================
+
+go 有时候需要使用代理才能访问
+
+可以参考使用ssh tunnel，然后在终端
+
+.. code-block:: shell
+
+    export http_proxy=socks5://127.0.0.1:7777
+    export https_proxy=socks5://127.0.0.1:7777
+
 
 问题记录
 ========

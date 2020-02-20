@@ -1,23 +1,24 @@
 ARM生态，存储相关软件
 =====================
 
-==== ======== ========== ======= =======================================================================================================================================
-编号 软件     状态       版本    获取方式
-==== ======== ========== ======= =======================================================================================================================================
-1    Ceph     已使能     12.2.8  `[github] <https://github.com/ceph/ceph/releases>`__ `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/main/c/ceph>`__
-2    NFS      已使能     1.3.4   `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/main/n/nfs-utils>`__
-3    HDFS     已使能     java    `[官网] <https://hadoop.apache.org/releases.html>`__
-4    fio      已使能     3.11    `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/universe/f/fio/>`__
-5    vdbench  已使能     5.04.07 `[官网] <https://www.oracle.com/technetwork/server-storage/vdbench-source-download-2104625.html>`__
-6    GridFS   已使能     MongoDB `[官网] <https://docs.mongodb.com/manual/core/gridfs/>`__
-7    MooseFS  未使能     3.0.103 `[github] <https://github.com/moosefs/moosefs>`__ `[官方软件源] <http://ppa.moosefs.com/moosefs-3/apt/ubuntu/bionic>`__
-8    LizardFS 未使能     3.13.0  `[官网] <https://lizardfs.com/>`__ `[github] <https://github.com/lizardfs/lizardfs>`__ `[官方软件源] <http://packages.lizardfs.com/>`__
-9    fastDFS  已使能     5.11    `[github] <https://github.com/happyfish100/fastdfs>`__
-10   lustre   未使能     2.12.0  `[官网] <http://lustre.org/download/>`__
-11   TFS      未使能     2.2.13  `[官网] <http://tfs.taobao.org/>`__ `[github] <https://github.com/alibaba/tfs>`__
-12   MogileFS 未使能     2.73    `[github] <https://github.com/mogilefs>`__
-13   GFS      未使能闭源 -      
-==== ======== ========== ======= =======================================================================================================================================
+==== =========  ========== ======= =======================================================================================================================================
+编号 软件       状态       版本    获取方式
+==== =========  ========== ======= =======================================================================================================================================
+1    Ceph       已使能     12.2.8  `[github] <https://github.com/ceph/ceph/releases>`__ `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/main/c/ceph>`__
+2    NFS        已使能     1.3.4   `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/main/n/nfs-utils>`__
+3    HDFS       已使能     java    `[官网] <https://hadoop.apache.org/releases.html>`__
+4    fio        已使能     3.11    `[发行版软件源] <https://mirrors.huaweicloud.com/ubuntu-ports/pool/universe/f/fio/>`__
+5    vdbench    已使能     5.04.07 `[官网] <https://www.oracle.com/technetwork/server-storage/vdbench-source-download-2104625.html>`__
+6    GridFS     已使能     MongoDB `[官网] <https://docs.mongodb.com/manual/core/gridfs/>`__
+7    MooseFS    未使能     3.0.103 `[github] <https://github.com/moosefs/moosefs>`__ `[官方软件源] <http://ppa.moosefs.com/moosefs-3/apt/ubuntu/bionic>`__
+8    LizardFS   未使能     3.13.0  `[官网] <https://lizardfs.com/>`__ `[github] <https://github.com/lizardfs/lizardfs>`__ `[官方软件源] <http://packages.lizardfs.com/>`__
+9    fastDFS    已使能     5.11    `[github] <https://github.com/happyfish100/fastdfs>`__
+10   lustre     未使能     2.12.0  `[官网] <http://lustre.org/download/>`__
+11   TFS        未使能     2.2.13  `[官网] <http://tfs.taobao.org/>`__ `[github] <https://github.com/alibaba/tfs>`__
+12   MogileFS   未使能     2.73    `[github] <https://github.com/mogilefs>`__
+13   GFS        未使能闭源 -
+14   glusterfs  已使能     -        `[软件源]`
+==== =========  ========== ======= =======================================================================================================================================
 
 amazon Dynamo key/value 分布式存储系统
 
@@ -76,9 +77,9 @@ MooseFS
 ::
 
    [ICO]   Name    Last modified   Size    Description
-   [DIR]   Parent Directory        -    
-   [DIR]   binary-amd64/   24-Nov-2018 03:41   -    
-   [DIR]   binary-i386/    24-Nov-2018 03:41   -    
+   [DIR]   Parent Directory        -
+   [DIR]   binary-amd64/   24-Nov-2018 03:41   -
+   [DIR]   binary-i386/    24-Nov-2018 03:41   -
 
 LizardFS
 --------
