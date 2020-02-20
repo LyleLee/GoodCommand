@@ -1,12 +1,9 @@
 	.arch armv8-a
-	.file	"main.c"
 	.text
 	.section	.rodata
-	.align	3
 .LC0:
 	.string	"hello world %d\n"
 	.text
-	.align	2
 	.global	main
 	.type	main, %function
 main:
@@ -22,6 +19,4 @@ main:
 	ldp	x29, x30, [sp], 32
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04) 7.4.0"
-	.section	.note.GNU-stack,"",@progbits
 
