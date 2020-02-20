@@ -1,3 +1,5 @@
+.. _numactl:
+
 *********************
 numactl
 *********************
@@ -110,6 +112,11 @@ numactl
      1:  16  10  25  32
      2:  32  25  10  16
      3:  33  32  16  10
+
+
+NUMA架构的内存分配， 调度策略，查看numa miss，有一篇文章 [#numa_acm]_ 写得非常好。 使用 :ref:`taskset` :ref:`numactl` 用于绑定指定线程到核心。
+
+.. [#numa_acm] https://queue.acm.org/detail.cfm?id=2513149
 
 .. |image0| image:: ../images/1616_NUMA_NODE.png
 .. |image1| image:: ../images/1620_NUMA_NODE.png
