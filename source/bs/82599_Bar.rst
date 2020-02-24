@@ -1,12 +1,13 @@
+*****************************
 82599 Bar空间访问问题
-=====================
+*****************************
 
 Lab1 192.168.1.71 实验 同一台1620ES，CentOS上不能访问82599 bar空间，
 ubuntu上可以。
 
 CentOS 不能访问
 
-::
+.. code-block:: console
 
    [lixianfa@localhost ~]$ sudo lspci -s 09:00.0 -v
    09:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)
@@ -34,7 +35,7 @@ CentOS 不能访问
 
 ubuntu 可以访问
 
-::
+.. code-block:: console
 
    root@ubuntu:/etc/apt/sources.list.d# devmem2 0x80000000000
    /dev/mem opened.
