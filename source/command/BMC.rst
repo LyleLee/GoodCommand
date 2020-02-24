@@ -242,3 +242,11 @@ Baseboard Management Controller
                             :     a=ADMIN
                             :     O=OEM
     Bad Password Threshold  : Not Available
+
+
+BMC一键收集信息格式说明
+==========================
+
+.. raw:: html
+   :file: ../resources/dump_info.html
+
