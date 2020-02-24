@@ -6,11 +6,20 @@ iptables 是管理防火墙规则的工具，由iptables管理的规则会下发
 
 .. code-block:: shell
 
+    iptables -L INPUT           #查看INPUT链的规则
+    iptables -L FORWARD
+    iptables -L OUTPUT
+    iptables -L
+    iptables -t filter -L
+    iptables -t raw -L
+    iptables -t security -L
+    iptables -t mangle -L
+    iptables -t nat -L -n -v    #查看nat表的规则， -v带数据包统计
+
     iptables -S                 #查看添加的iptables规则
     ufw status                  #查看防火墙规则
     iptables -S                 #To list all IPv4 rules
     ip6tables -S                #To list all IPv6 rules
-    iptables -L -v -n | more    #To list all tables rules
     iptables -L INPUT -v -n     #To list all rules for INPUT tables
     iptables -S INPUT           #To list all rules for INPUT tables
 
