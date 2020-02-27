@@ -247,6 +247,10 @@ Baseboard Management Controller
 BMC一键收集信息格式说明
 ==========================
 
+主要关注 OSDump/systemcom.tar 串口日志
+
+SOL串口信息
+
 .. raw:: html
    :file: ../resources/dump_info.html
 
