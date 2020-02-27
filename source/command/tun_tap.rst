@@ -24,7 +24,7 @@ tun/tap
     #创建veth pair
     sudo ip link add type veth
 
-    #分别加入到两个naspace当中
+    #分别加入到两个namespace当中
     sudo ip link set veth0 netns net0
     sudo ip link set veth1 netns net1
 
@@ -76,7 +76,44 @@ tun/tap
 
 测试： 在net0中ping net1
 
+.. code-block:: shell
+
     ip netns exec net0 ping -c 3 10.0.1.2
+
+
+
+实验： 创建tuntap设备 [#tuntap]_
+
+.. code-block:: shell
+
+    ip link add br0 type bridge
+    ip tuntap add dev tap0 mod tap # 创建 tap
+    ip tuntap add dev tun0 mod tun # 创建 tun
+    ip tuntap del dev tap0 mod tap # 删除 tap
+    ip tuntap del dev tun0 mod tun # 删除 tun
+
+
+
+    ip link add br0 type bridge
+    ip netns add netns1
+    ip link add type veth
+
+    ip link set eth0 master br0
+    ip link set veth1 master br0
+    ip link set veth0 netns netns1
+
+
+.. code-block:: xml
+
+    <interface type='bridge'>
+      <mac address='52:54:00:38:06:f9'/>
+      <source bridge='br0'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+
+
+
 
 参考资料
 ==================
@@ -104,5 +141,17 @@ tun、tap、macvlan、mactap的作用
 
 tun tap 和交换机的配置
 
-https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/
+.. [#tuntap] https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/
+
+问题记录
+================
+
+centos没有tunctl rpm包
+-----------------------
+解决办法：从fedoras的源进行安装。 实际上可以使用ip tuntap命令替代
+
+.. code-block:: shell
+
+     sudo dnf install https://rpmfind.net/linux/fedora/linux/releases/30/Everything/aarch64/os/Packages/t/tunctl-1.5-20.fc30.aarch64.rpm
+
 
