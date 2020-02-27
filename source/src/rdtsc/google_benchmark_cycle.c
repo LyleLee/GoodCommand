@@ -31,7 +31,7 @@ int main()
 	sleep(1);
 	int64_t t2 = Now();
 	
-	printf("t1:%ld, t2:%ld, t2-t1:%ld\n",t1,t2,(t2-t1)/1000000);
+	printf("t1:%ld, t2:%ld, every second has t2-t1:%ld Mhz ticks \n",t1,t2,(t2-t1)/1000000);
 	
 	return 0;
 }

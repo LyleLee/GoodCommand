@@ -22,11 +22,11 @@ int tun_alloc(char *dev)
 
     memset(&ifr, 0, sizeof(ifr));
 
-    /* Flags: IFF_TUN   - TUN device (no Ethernet headers)
-    * IFF_TAP   		- TAP device
-    * IFF_NO_PI 		- Do not provide packet information
+    /* Flags: IFF_TUN   - TUN device (no Ethernet headers) 
+    * IFF_TAP   		- TAP device  
+    * IFF_NO_PI 		- Do not provide packet information  
     */
-    ifr.ifr_flags = IFF_TUN;
+    ifr.ifr_flags = IFF_TAP;
 
     if (*dev)
     strncpy(ifr.ifr_name, dev, IFNAMSIZ);
@@ -44,7 +44,7 @@ int main()
 {
     int nread;
     char buffer[1500];
-    char dev[100] = "tun-default";
+    char dev[100] = "tap-default";
     int tun_fd = tun_alloc(dev);
 
     if (tun_fd == -1)
@@ -60,7 +60,7 @@ int main()
             close(tun_fd);
             exit(1);
         }
-        printf("Read %d bytes from tun device\n", nread);
+        printf("Read %d bytes from tap device\n", nread);
     }
     return 0;
 }
