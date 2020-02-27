@@ -352,6 +352,14 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
    virsh net-info default
    virsh net-dhcp-leases default
 
+动态添加网卡
+----------------
+
+.. code-block:: shell
+
+    virsh attach-interface vm3 --type bridge --source br0
+    virsh detach-interface --domain vm3 --type bridge --mac 52:54:00:f8:bd:31
+
 添加或者卸载硬盘
 ----------------
 
@@ -458,7 +466,7 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
 `【https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/】 <https://www.sysgeek.cn/install-configure-kvm-ubuntu-18-04/>`__
 
 
-问题1：无法连接到libvirt-sock
+问题：无法连接到libvirt-sock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -472,7 +480,7 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
 
    systemctl start libvirtd
 
-问题2：无法读取iso，权限不对
+问题：无法读取iso，权限不对
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -506,7 +514,7 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
 
    systemctl restart libvirtd
 
-问题3：unsupported configuration: ACPI requires UEFI on this architecture
+问题：unsupported configuration: ACPI requires UEFI on this architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -537,7 +545,7 @@ Automatic。先不关tap0，这个后面我们设置VM的网络时会自己添�
 
    AAVMF.noarch : UEFI firmware for aarch64 virtual machines
 
-问题4：error: Refusing to undefine while domain managed save image exists
+问题：error: Refusing to undefine while domain managed save image exists
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
@@ -565,6 +573,67 @@ qemu 命令行参数和 libvirt xml转换
 |transfer_url|
 
 
+问题: virsh exit xml 和dump处的xml不一样
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+virsh edit 的结果：
+
+.. code-block:: xml
+
+    <interface type='bridge'>
+      <mac address='52:54:00:38:06:f9'/>
+      <source bridge='br0'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+
+virsh dumpxml 的结果
+
+.. code-block:: console
+
+    [user1@centos ~]$ virsh dumpxml vm1 | grep interface -A 10
+        <interface type='user'>
+          <mac address='52:54:00:38:06:f9'/>
+          <model type='virtio'/>
+          <alias name='net0'/>
+          <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+        </interface>
+
+
+解决办法：
+
+Soft-reboot isn't good enough because it doesn't restart the qemu process and doesn't use new XML.  You need to shutdown and start the VM again in order to load the new XML. [#virsh_edit]_
+
+.. code-block:: shell
+
+    virsh shutdown vm1
+    virsh start vm1
+
+
+问题: virsh exit xml 和dump处的xml不一样
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+    [user1@centos ~]$
+    [user1@centos ~]$ virsh start vm1
+    error: Failed to start domain vm1
+    error: internal error: /usr/libexec/qemu-bridge-helper --use-vnet --br=br0 --fd=27: failed to communicate with bridge helper: Transport endpoint is not connected
+    stderr=access denied by acl file
+
+
+解决办法：
+
+在host上，编辑 vim /etc/qemu-kvm/bridge.conf, 其他设备可能是：vim /etc/qemu/bridge.conf [#allow_br0]_
+
+.. code-block:: console
+
+    [user1@centos ~]$ sudo cat /etc/qemu-kvm/bridge.conf
+    allow virbr0
+    allow br0
+
+
+
 待确认问题
 ----------
 
@@ -589,4 +658,5 @@ kvm可以跑X86的linux？
 
 
 .. |transfer_url| :replace: https://blog.csdn.net/beckdon/article/details/50883754
-
+.. [#virsh_edit] https://bugzilla.redhat.com/show_bug.cgi?id=1347219
+.. [#allow_br0] https://mike42.me/blog/2019-08-how-to-use-the-qemu-bridge-helper-on-debian-10
