@@ -92,8 +92,6 @@ tun/tap
     ip tuntap del dev tap0 mod tap # 删除 tap
     ip tuntap del dev tun0 mod tun # 删除 tun
 
-
-
     ip link add br0 type bridge
     ip netns add netns1
     ip link add type veth
@@ -153,5 +151,3 @@ centos没有tunctl rpm包
 .. code-block:: shell
 
      sudo dnf install https://rpmfind.net/linux/fedora/linux/releases/30/Everything/aarch64/os/Packages/t/tunctl-1.5-20.fc30.aarch64.rpm
-
-

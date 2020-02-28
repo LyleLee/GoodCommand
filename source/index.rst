@@ -9,7 +9,7 @@ GoodCommand documentation!
 .. toctree::
    :maxdepth: 2
    :caption: GoodCommand :
-   
+
    os/index
    command/index
    knowleadge/index
