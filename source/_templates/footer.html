@@ -1,4 +1,5 @@
 <footer>
+
   {% if (theme_prev_next_buttons_location == 'bottom' or theme_prev_next_buttons_location == 'both') and (next or prev) %}
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       {% if next %}
@@ -11,7 +12,14 @@
   {% endif %}
 
   <hr/>
-
+  <script src="https://utteranc.es/client.js"
+          repo="LyleLee/GoodCommand"
+          issue-term="pathname"
+          label="from-utteranc"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+</script>
   <div role="contentinfo">
     <p>
     {%- if show_copyright %}
@@ -21,7 +29,7 @@
         {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}{% endtrans %},
       {%- endif %}
     {%- endif %}
-    
+
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
     {%- if build_id and build_url %}
       {% trans build_url=build_url, build_id=build_id %}
@@ -46,6 +54,14 @@
   {%- if show_sphinx %}
   {% trans %}Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>{% endtrans %}.
   {%- endif %}
+
+<div>
+<br />
+        <center>
+          <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=RMmczKdk2uzno-HdQGtAkGbvDuZVz9j1sdNAepWjuHE&cl=ffffff&w=a"></script>
+        </center>
+
+</div>
 
   {%- block extrafooter %} {% endblock %}
 

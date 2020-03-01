@@ -1,2 +1,5 @@
 @import url("theme.css");
 
+footer p {
+    margin-bottom: 0px
+}
