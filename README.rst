@@ -7,5 +7,5 @@ GoodCommand
   we use
 | Could be some bugfix of something nosense
 
-| read documents:
+| Read the documents at:
 | https://goodcommand.readthedocs.io/zh_CN/latest/
