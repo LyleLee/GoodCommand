@@ -27,7 +27,7 @@ ipmitool
    #开源版本
    BIOS -> Device Manager -> Console Preference Selection -> Preferred console Serial
    #产品版本
-   BIOS -> Advanced -> MISC Config -> Support SPCR  <Enabled> 
+   BIOS -> Advanced -> MISC Config -> Support SPCR  <Enabled>
 
 ::
 
@@ -120,7 +120,7 @@ ubuntu
    chassis bootdev pxe     #网络引导
    chassis bootdev disk    #硬盘引导
    chassis bootdev cdrom   #光驱引导
-   chassis bootdev bios    #重启后停在BIOS菜单 
+   chassis bootdev bios    #重启后停在BIOS菜单
    chassis bootdev pxe　    #重启后从PXE启动
 
 chassis bootdev 在1620有. 在1620 CS上可以。 要再OS里面systemctl reboot
@@ -133,7 +133,7 @@ chassis bootdev 在1620有. 在1620 CS上可以。 要再OS里面systemctl reboo
 
    sensor list   #显示系统所有传感器列表
    fru list　　　#显示系统所有现场可替代器件的列表
-   sdr list　　　#显示系统所有SDRRepository设备列表　
+   sdr list　　　#显示系统所有SDRRepository设备列表
    pef list      #显示系统平台时间过滤的列表
 
 #系统日志类
@@ -223,11 +223,31 @@ chassis bootdev 在1620有. 在1620 CS上可以。 要再OS里面systemctl reboo
 
    ipmitool hpm upgrade <xxxxx.hpm> -z 25000 forces
 
-Board_connect
-=============
+报错处理
 
-其他命令请参考：
+.. code-block:: console
 
-::
+   [user1@localhost network-scripts]$ ipmitool
+   Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
 
-   https://blog.51cto.com/bovin/2128475
+首先确保已经加载ipmitool模块
+
+.. code-block:: console
+
+   [user1@localhost ~]$ lsmod | grep ipmi
+   ipmi_poweroff         262144  0
+   ipmi_watchdog         262144  0
+   ipmi_si               262144  0
+   ipmi_devintf          262144  0
+   ipmi_msghandler       262144  4 ipmi_devintf,ipmi_si,ipmi_watchdog,ipmi_poweroff
+
+如果没有使用modprobe命令加载模块,如：
+
+.. code-block:: console
+
+   modprobe ipmi_poweroff
+
+
+更多命令亲参考 [#ipmitool]_
+
+.. [#ipmitool] https://blog.51cto.com/bovin/2128475
