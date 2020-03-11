@@ -61,6 +61,13 @@ Beaver)为例介绍软件源的配置。配置国内软件源，可以在安装/
    Get:8 https://mirrors.huaweicloud.com/ubuntu-ports bionic/restricted Translation-en [3,584 B]
    Get:9 https://mirrors.huaweicloud.com/ubuntu-ports bionic/universe arm64 Packages [8,316 kB]
 
+
+设置apt命令行代理prxoy [#apt_prxy]_
+
+.. code-block:: shell
+
+   sudo apt-get -o Acquire::socks::proxy="socks://127.0.0.1:1080/" update
+
 问题记录
 =============
 
@@ -85,3 +92,6 @@ Certificate verification failed
 解决办法：
 
 把https替换成http. 或者apt
+
+
+.. [#apt_prxy] https://www.jianshu.com/p/bc4d7b758503
