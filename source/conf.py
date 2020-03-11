@@ -64,3 +64,4 @@ html_favicon = 'favicon.ico'
 html_static_path = ['_static']
 
 master_doc = 'index'
+todo_include_todos = True
