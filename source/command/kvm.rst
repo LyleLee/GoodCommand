@@ -127,7 +127,8 @@ redhat8.0 CentOS7.6 arm验证通过
 
 ubuntu18.04网络配置文件：\ ``/etc/netplan/01-netcfg.yaml``
 
-CentOS7、redhat7.5、redhat8.0网络配置文件：\ ``/etc/sysconfig/network-scripts/ifcfg-enp1s0``,参考\ `linux网络操作 <linux.md#_5>`__
+CentOS7、redhat7.5、redhat8.0网络配置文件：
+``/etc/sysconfig/network-scripts/ifcfg-enp1s0``,参考\ `linux网络操作 <linux.md#_5>`__
 
 这里给出两个例子：
 
@@ -164,7 +165,9 @@ host机Bridge模式ubuntu 8.0
                            addresses: [127.0.0.53]
    me@ubuntu:/etc/netplan$
 
-本人主机上有4个网口，网卡enahisic2i0上有内网IP，安装好kvm工具后会自动生成网桥virbr0，使用\ ``ip a``\ 可以查到，这里是把enahisic2i0加到了网桥上，这样后面加入的虚拟机也会自己挂到这个网桥上，即可和外部网络接通，这里的网关，和nameservers保持和原来主机上的一致即可。
+本人主机上有4个网口，网卡enahisic2i0上有内网IP，安装好kvm工具后会自动生成网桥virbr0，
+使用\ ``ip a``\ 可以查到，这里是把enahisic2i0加到了网桥上，这样后面加入的虚拟机也会自己挂到这个网桥上，
+即可和外部网络接通，这里的网关，和nameservers保持和原来主机上的一致即可。
 
 host机Bridge模式 CentOS 7.6
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -429,7 +432,7 @@ Host一样的由DHCP服务器分配的地址：
 
 
 问题：无法连接到libvirt-sock
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 ::
 
@@ -443,7 +446,7 @@ Host一样的由DHCP服务器分配的地址：
    systemctl start libvirtd
 
 问题：无法读取iso，权限不对
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 ::
 
@@ -477,7 +480,7 @@ Host一样的由DHCP服务器分配的地址：
    systemctl restart libvirtd
 
 问题：unsupported configuration: ACPI requires UEFI on this architecture
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------------------------------------
 
 ::
 
@@ -508,7 +511,7 @@ Host一样的由DHCP服务器分配的地址：
    AAVMF.noarch : UEFI firmware for aarch64 virtual machines
 
 问题：error: Refusing to undefine while domain managed save image exists
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------------------------------------------
 
 ::
 
@@ -536,7 +539,7 @@ qemu 命令行参数和 libvirt xml转换
 
 
 问题: virsh exit xml 和dump处的xml不一样
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 virsh edit 的结果：
 
@@ -564,7 +567,8 @@ virsh dumpxml 的结果
 
 解决办法：
 
-Soft-reboot isn't good enough because it doesn't restart the qemu process and doesn't use new XML.  You need to shutdown and start the VM again in order to load the new XML. [#virsh_edit]_
+Soft-reboot isn't good enough because it doesn't restart the qemu process and
+doesn't use new XML. You need to shutdown and start the VM again in order to load the new XML. [#virsh_edit]_
 
 .. code-block:: shell
 
@@ -573,7 +577,8 @@ Soft-reboot isn't good enough because it doesn't restart the qemu process and do
 
 
 问题: virsh exit xml 和dump处的xml不一样
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
+
 
 .. code-block:: console
 
@@ -586,7 +591,8 @@ Soft-reboot isn't good enough because it doesn't restart the qemu process and do
 
 解决办法：
 
-在host上，编辑 vim /etc/qemu-kvm/bridge.conf, 其他设备可能是：vim /etc/qemu/bridge.conf [#allow_br0]_
+在host上，编辑 vim /etc/qemu-kvm/bridge.conf, 其他设备可能是：
+vim /etc/qemu/bridge.conf [#allow_br0]_
 
 .. code-block:: console
 
@@ -619,6 +625,6 @@ kvm可以跑X86的linux？
    ceshi-03 login:
 
 
-.. |transfer_url| :replace: https://blog.csdn.net/beckdon/article/details/50883754
+.. [#transfer_url] https://blog.csdn.net/beckdon/article/details/50883754
 .. [#virsh_edit] https://bugzilla.redhat.com/show_bug.cgi?id=1347219
 .. [#allow_br0] https://mike42.me/blog/2019-08-how-to-use-the-qemu-bridge-helper-on-debian-10
