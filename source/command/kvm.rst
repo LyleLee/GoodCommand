@@ -1,5 +1,5 @@
 ****************************
-KVM
+kvm
 ****************************
 
 有一天需要安装ceph集群来看看分布式系统的性能，想找几台机器来测测，一看发现至少需要3台，机器不够怎么办，起一个虚拟机。
@@ -535,7 +535,7 @@ Host一样的由DHCP服务器分配的地址：
 qemu 命令行参数和 libvirt xml转换
 ----------------------------------
 
-|transfer_url|
+参考 [#transfer_url]_
 
 
 问题: virsh exit xml 和dump处的xml不一样
@@ -576,7 +576,7 @@ doesn't use new XML. You need to shutdown and start the VM again in order to loa
     virsh start vm1
 
 
-问题: virsh exit xml 和dump处的xml不一样
+问题: failed to communicate with bridge
 ----------------------------------------
 
 
