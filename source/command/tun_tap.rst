@@ -121,13 +121,90 @@ veth
 veth是虚拟网卡， 成对出现，从其中一个网卡发出的数据包， 会直接出现在另一张网卡上， 即使这两张网卡在不同的
 Network namespace当中。
 
-使用veth的常见的有： :doc:`kvm`,:doc:`docker`
+使用veth的常用技术有： :doc:`kvm`,:doc:`docker`
+
+
+现在按照下图进行验证
+
+.. code-block:: console
+
+    +----------------------------------------------------------+
+    | +---------------------+     +--------------------+       |
+    | |  ubuntu1 namespace  |     | ubuntu2 namespace  |       |
+    | |                     |     |                    |       |
+    | |                     |     |                    |       |
+    | |     172.17.0.2/16   |     |   172.17.0.3/16    |       |
+    | |      +---------+    |     |   +---------+      |       |
+    | |      |  eth0   |    |     |   |  eth0   |      |       |
+    | +------+----+----+----+     +---+----+----+------+       |
+    |             |                        |                   |
+    |    +-+------+-------+---------+------+-------+-+         |
+    |    | | .vethd52f2b1 |         | .vethbb7c5c5 | |         |
+    |    | +--------------+         +--------------+ |         |
+    |    |           docker0 172.17.0.1/16           |         |
+    |    +-------------------+-----------------------+         |
+    |                        | NAT                             |
+    |                   +----+------+        host namespace    |
+    |    192.168.1.231  |   eth0    |                          |
+    +-------------------+-----------+--------------------------+
+
+
+
+
+在host上运行一个ubuntu容器。
+
+.. code-block:: console
+    :caption: 运行中的ubuntu容器
+
+    [user1@centos86 ~]$ docker run -it ubuntu /bin/bash
+    [user1@centos86 ~]$ docker ps
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+    54f923fd141c        ubuntu              "/bin/bash"         17 hours ago        Up 25 minutes                           vigilant_banach
+
+.. code-block:: console
+    :caption: docker-host-veth
+    :name: docker网桥下的veth：vethd52f2b1
+
+    [user1@centos86 ~]$ brctl show
+    bridge name     bridge id               STP enabled     interfaces
+    docker0         8000.02428a77c48c       no              vethd52f2b1
+
+
+.. code-block:: console
+    :caption: ubuntu容器内的veth：eth0if20
+    :name: docker-container-veth
+
+    root@54f923fd141c:/# ip a
+    19: eth0@if20: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+        valid_lft forever preferred_lft forever
+
+
+再运行一个ubuntu容器， 可以看到docker0网桥下又添加了一个veth接口vethd52f2b1
+
+.. code-block:: console
+    :caption: docker网桥下的两个veth接口
+
+    [user1@centos86 ~]$ brctl show
+    bridge name     bridge id               STP enabled     interfaces
+    docker0         8000.02428a77c48c       no              vethbb7c5c5
+                                                            vethd52f2b1
+
+但是又一个问题，网桥docker0和host的物理网口怎么通信呢，答案是NAT， 查看主机的iptables
+`iptables -t nat -L`。 从172.17.0.0/16出来的所有数据包，都进行地址伪装。所以出去的时候是主机192.168.1.231的网址。
+
+.. code-block:: console
+
+    Chain POSTROUTING (policy ACCEPT)
+    target     prot opt source               destination
+    MASQUERADE  all  --  172.17.0.0/16        anywhere
 
 
 参考资料
 ==================
 
-tun tap 解释出处
+tun tap veth 解释出处
     https://www.fir3net.com/Networking/Terms-and-Concepts/virtual-networking-devices-tun-tap-and-veth-pairs-explained.html
 
 tun、tap、macvlan、mactap的作用
