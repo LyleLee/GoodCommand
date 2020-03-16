@@ -121,7 +121,7 @@ veth
 veth是虚拟网卡， 成对出现，从其中一个网卡发出的数据包， 会直接出现在另一张网卡上， 即使这两张网卡在不同的
 Network namespace当中。
 
-使用veth的常用技术有： :doc:`kvm`,:doc:`docker`
+使用veth的常用技术有： :doc:`kvm`, :doc:`docker`
 
 
 现在按照下图进行验证
