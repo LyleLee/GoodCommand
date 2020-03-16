@@ -314,7 +314,7 @@ yum的代理需要在/etc/yum.conf下设置
 
 ::
 
-   chgrp   用户名 文件名  -R  
+   chgrp   用户名 文件名  -R
    chown   用户名 文件名  -R
 
    sudo chown -R me:me .[^.]*  #更改当前目录下所有的文件，包括隐藏文件的拥有者为me，组为me
