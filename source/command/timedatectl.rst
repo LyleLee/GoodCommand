@@ -1,5 +1,5 @@
 *********************************
-timedatectl tzselect 
+timedatectl tzselect
 *********************************
 
 ubuntu tzselect设置过程
@@ -74,7 +74,7 @@ ubuntu tzselect设置过程
 并没有起效果，系统提示，要想永久修改，在~/.profile后面追加一行 ``TZ='Asia/Hong_Kong'; export TZ`` 追加之后，退出重新登录或者执行：
 
 .. code-block:: shell
-    
+
     source .profile
 
 ::
@@ -94,15 +94,10 @@ RedHat timedatectl 设置过程
 .. code:: shell
 
    timedatectl list-timezones
-   set-timezone Asia/Shanghai
+   timedatectl set-timezone Asia/Shanghai
 
-   #redhat 8.0 chrony作为NTP客户端使用如下命令查看ntp同步状态
-   systemctl status chronyd    #查看服务
-   systemctl enable chronyd    #开机启动
-   systemctl start chronyd     #启动服务
-   chronyc sourcestats     #查看同步状态
 
-::
+.. code-block:: console
 
    [root@localhost linux]# timedatectl
          Local time: Thu 2019-04-11 16:33:46 CST
@@ -115,9 +110,34 @@ RedHat timedatectl 设置过程
          DST active: n/a
    [root@localhost linux]#
 
-RTC时间写如后，可以保证/var/log/message和/var/log/dmesg的时间在每次重启后对的。
+时间同步chrony。redhat 8.0使用chrony作为NTP客户端使用如下命令查看ntp同步状态
 
-local时间写入RTC
+.. code:: shell
+
+   yum install chrony
+
+   systemctl status chronyd    #查看服务
+   systemctl enable chronyd    #开机启动
+   systemctl start chronyd     #启动服务
+   chronyc sourcestats     #查看同步状态
+
+
+.. code-block:: console
+
+   [root@centos ~]# chronyc sourcestats
+   210 Number of sources = 4
+   Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
+   ==============================================================================
+   tock.ntp.infomaniak.ch      1   0     0     +0.000   2000.000     +0ns  4000ms
+   120.25.115.20               2   0     2     +0.000   2000.000  -10012h  4000ms
+   ntp5.flashdance.cx          1   0     0     +0.000   2000.000     +0ns  4000ms
+   stratum2-1.ntp.led01.ru.>   1   0     0     +0.000   2000.000     +0ns  4000ms
+
+
+
+local时间写入RTC。
+
+RTC时间写如后，可以保证/var/log/message和/var/log/dmesg的时间在每次重启后对的。
 
 ::
 
@@ -137,9 +157,9 @@ https://www.maketecheasier.com/timedatectl-control-system-time-date-linux/
    13:13:59
    [root@root ~]# date "+%Y-%m-%d %H:%M:%S"
    2013-02-19 13:14:19
-   [root@root ~]# date "+%Y_%m_%d %H:%M:%S"  
+   [root@root ~]# date "+%Y_%m_%d %H:%M:%S"
    2013_02_19 13:14:58
-   [root@root ~]# date -d today 
+   [root@root ~]# date -d today
    Tue Feb 19 13:10:38 CST 2013
    [root@root ~]# date -d now
    Tue Feb 19 13:10:43 CST 2013
