@@ -66,8 +66,10 @@ CentOS 常见依赖包
 
 .. code-block:: shell
 
+   yum install bash-completion bash-completion-extras # 命令行补全
+
    yum install ncurses-devel zlib-devel texinfo gtk+-devel gtk2-devel
-   qt-devel tcl-devel tk-devel libX11-devel kernel-headers kernel-devel 
+   qt-devel tcl-devel tk-devel libX11-devel kernel-headers kernel-devel
    yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
    rpm –import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
 
@@ -76,7 +78,6 @@ CentOS 软件包常用命令
 
 ::
 
-   
    yum install iperf3
    yum -y install firefox
    yum remove firefox
