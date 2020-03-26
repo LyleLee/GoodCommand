@@ -129,7 +129,7 @@ ceph preflight log
 
 ::
 
-   wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
+   wget -q -O - 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
 
 如果添加成功，可以查看到添加好的key
 
