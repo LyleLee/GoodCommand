@@ -29,3 +29,45 @@ ping报错，dns无法解析
    nameserver 192.168.2.1
 
 搭建dns服务器请参考 :doc:`dnsmasq`
+
+
+/etc/resolv.conf 可能会被NetworkManager重写 [#overwrite]_
+
+原因是， NetworkManager好像是定期从dhcp服务器获取dns并且更新到/etc/resolv.conf上，可以通过过查看日志确认：
+
+.. code-block:: console
+
+   [user1@kunpeng920 ~]$ journalctl -f -u NetworkManager
+   -- Logs begin at Mon 2020-03-09 14:34:39 HKT. --
+   Mar 25 14:09:10 kunpeng920 dhclient[3617]: DHCPREQUEST on enp189s0f0 to 192.168.1.107 port 67 (xid=0x53549a3d)
+   Mar 25 14:09:10 kunpeng920 dhclient[3617]: DHCPACK from 192.168.1.107 (xid=0x53549a3d)
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7118] dhcp4 (enp189s0f0):   address 192.168.1.180
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7118] dhcp4 (enp189s0f0):   plen 24 (255.255.255.0)
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7118] dhcp4 (enp189s0f0):   gateway 192.168.1.2
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7118] dhcp4 (enp189s0f0):   lease time 3200
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7118] dhcp4 (enp189s0f0):   nameserver '114.114.114.114'
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7119] dhcp4 (enp189s0f0):   nameserver '192.168.1.107'
+   Mar 25 14:09:10 kunpeng920 NetworkManager[2730]: <info>  [1585116550.7119] dhcp4 (enp189s0f0): state changed bound -> bound
+   Mar 25 14:09:10 kunpeng920 dhclient[3617]: bound to 192.168.1.180 -- renewal in 1508 seconds.
+
+
+解决办法是：添加 `dns=none` 到 /etc/NetworkManager/NetworkManager.conf [#overwrite]_ [#NetworkManager]_
+
+.. code-block:: diff
+
+   [user1@kunpeng920 NetworkManager]$ git diff --color NetworkManager.conf.backup NetworkManager.conf
+   diff --git a/NetworkManager.conf.backup b/NetworkManager.conf
+   index 1979ea6..2d23845 100644
+   --- a/NetworkManager.conf.backup
+   +++ b/NetworkManager.conf
+   @@ -22,6 +22,7 @@
+   # the previous one.
+
+   [main]
+   +dns=none
+   #plugins=ifcfg-rh,ibft
+
+
+
+.. [#overwrite] https://wiseindy.com/blog/linux/how-to-set-dns-in-centos-rhel-7-prevent-network-manager-from-overwriting-etc-resolv-conf/
+.. [#NetworkManager] https://forums.centos.org/viewtopic.php?t=8647
