@@ -30,3 +30,8 @@ wget是一个linux系统普遍提供的一个下载工具。常用于在命令�
 
    | 户密码带有特殊字符时，需要使用百分号编码替代，例如密码是tom@7642，应该写成tom%407642,更多字符替换请参考\ `维基百科 <https://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81>`__
    | 代理服务器可以是一个域名。例如：proxy.tunnel.com。
+
+
+.. tip::
+
+   wget不支持socks5代理, 考虑使用tsocks
