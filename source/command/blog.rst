@@ -17,3 +17,5 @@ https://blog.sean1989.net/
 自由工作者，算法视频付费。http://hawstein.com/
 
 网络，SDN研究 https://tonydeng.github.io/sdn-handbook/
+
+linux性能分析 http://linuxperf.com
