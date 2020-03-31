@@ -66,7 +66,18 @@ Beaver)为例介绍软件源的配置。配置国内软件源，可以在安装/
 
 .. code-block:: shell
 
-   sudo apt-get -o Acquire::socks::proxy="socks://127.0.0.1:1080/" update
+   apt -o Acquire::https::proxy="socks5h://127.0.0.1:1080" \
+      -o Acquire::http::proxy="socks5h://127.0.0.1:1080"  \
+      update
+
+或者创建并写到/etc/apt/apt.conf.d/12proxy
+
+.. code-block:: ini
+
+   Acquire::http::proxy="socks5h:127.0.0.1:1080";
+   Acquire::https::proxy="socks5h:127.0.0.1:1080";
+
+
 
 问题记录
 =============
