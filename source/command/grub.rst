@@ -1,44 +1,84 @@
+**********************
 grub
 **********************
 
 如何设置启动选项
+=================
 
-RedHat设置以选择的启动项作为下次的默认启动项. 需要设置这两项
+RedHat保存本次设置，作为下次的默认启动项. 需要设置这两项。 选中什么下次启动仍然是这个启动项
 
 ::
 
    GRUB_DEFAULT=saved
    GRUB_SAVEDEFAULT=true
 
-完整的grub配置为
 
-::
+RedHat
+=================
 
-   GRUB_TIMEOUT=5
-   GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
-   GRUB_DEFAULT=saved
-   GRUB_SAVEDEFAULT=true
-   GRUB_DISABLE_SUBMENU=true
-   GRUB_TERMINAL_OUTPUT="console"
-   GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgg
-   b quiet"
-   GRUB_DISABLE_RECOVERY="true"
+grub模板位置
 
-grub2-mkconfig
-使用/etc/grub.d下的模板和/etc/default/grub配置创建/boot/efi/EFI/redhat/grub.cfg，所以设置完之后执行命令，
-使用生成的grub.cfg替换掉原来的grub.cfg
+.. code-block:: console
 
-::
+   /etc/default/grub
+
+grub.cfg位置
+
+.. code-block:: console
+
+   /boot/efi/EFI/redhat/grub.cfg
+
+修改/etc/default/grub后更新命令
+
+.. code-block:: console
 
    grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
-ubuntu 18.04 LTS的修改方法为：
 
-编辑/etc/default/grub，然后更新/boot/grub/grub.cfg
+CentOS 7 1810
+=================
+grub模板位置
 
-::
+.. code-block:: console
+
+   /etc/default/grub
+
+grub.cfg位置
+
+.. code-block:: console
+
+   /boot/grub2/grub.cfg
+
+修改/etc/default/grub后更新命令
+
+.. code-block:: console
+
+   grub2-mkconfig -o /boot/grub2/grub.cfg
+
+
+
+
+ubuntu 18.04 LTS
+==================
+
+grub模板位置
+
+.. code-block:: console
+
+   /etc/default/grub
+
+grub.cfg位置
+
+.. code-block:: console
+
+   /boot/grub/grub.cfg
+
+修改/etc/default/grub后更新命令
+
+.. code-block:: console
 
    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 
 查看系统已有的开机启动项：
 
@@ -53,5 +93,5 @@ ubuntu 18.04 LTS的修改方法为：
    $ sudo grub-reboot 0
    将下次选择的启动项设为默认
 
-grub官方文档：
-https://www.gnu.org/software/grub/manual/grub/grub.html#Introduction
+
+grub官方文档：https://www.gnu.org/software/grub/manual/grub/grub.html#Introduction

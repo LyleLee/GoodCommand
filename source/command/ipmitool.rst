@@ -1,6 +1,6 @@
-========
+************
 ipmitool
-========
+************
 
 好像是一种管理工具。可以连接到服务器的串口输出
 
@@ -52,42 +52,65 @@ ipmitool
    |                                                        |MRC statement        |
    |                                                        |                     |
 
-| 方法二：修改OS的/etc/default/grub，在quiet后面添加console=ttyAMA0,115200
-| CentOS、RetHat：
 
-::
+方法二：修改OS的/etc/default/grub，设置串口重定向， 鲲鹏设备在quiet后面添加 `console=ttyAMA0,115200` ，
+intel设备添加 `console=ttyS0,115200`
 
-   GRUB_TIMEOUT=5
-   GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
-   GRUB_DEFAULT=saved
-   GRUB_SAVEDEFAULT=true
-   GRUB_DISABLE_SUBMENU=true
-   GRUB_TERMINAL_OUTPUT="console"
-   GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgg
-   b quiet console=ttyAMA0,115200"
-   GRUB_DISABLE_RECOVERY="true"
+CentOS、RetHat：Kunpeng
+
+.. code-block:: cfg
+
+   GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap
+         rhggb quiet console=ttyAMA0,115200"
+
+CentOS、RetHat：Intel
+
+.. code-block:: cfg
+
+   GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=centos00/root rd.lvm.lv=centos00/swap
+         rhgb quiet console=ttyS0,115200"
+
 
 ubuntu
 
-::
+.. code-block:: cfg
 
-   GRUB_DEFAULT=saved
-   GRUB_TIMEOUT_STYLE=hidden
-   GRUB_TIMEOUT=2
-   GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
-   GRUB_CMDLINE_LINUX_DEFAULT=""
    GRUB_CMDLINE_LINUX="console=ttyAMA0,115200"
 
-更新grub.cfg文件：
+更新grub.cfg文件。
 
 .. code::
 
-   #CentOS、RedHat
+   #RedHat
    grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+   #CentOS
+   grub2-mkconfig -o /boot/grub2/grub.cfg
    #ubuntu
    sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-请注意不同的OS有不同的更新方式，请参考\ `[grub] <grub.md>`__
+设置结果, 可以查看grub.cfg
+
+.. code-block:: cfg
+
+   ### BEGIN /etc/grub.d/10_linux ###
+   menuentry 'CentOS Linux (3.10.0-957.el7.x86_64) 7 (Core)' --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-957.el7.x86_64-advanced-bdd56b03-059d-4192-af2e-e70610dcd3d5' {
+         load_video
+         set gfxpayload=keep
+         insmod gzio
+         insmod part_msdos
+         insmod xfs
+         set root='hd0,msdos1'
+         if [ x$feature_platform_search_hint = xy ]; then
+            search --no-floppy --fs-uuid --set=root --hint-bios=hd0,msdos1 --hint-efi=hd0,msdos1 --hint-baremetal=ahci0,msdos1 --hint='hd0,msdos1'  934e58ff-667e-49df-9779-f6a32a7a98a5
+         else
+            search --no-floppy --fs-uuid --set=root 934e58ff-667e-49df-9779-f6a32a7a98a5
+         fi
+         linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/centos00-root ro crashkernel=auto rd.lvm.lv=centos00/root rd.lvm.lv=centos00/swap rhgb quiet console=ttyAMA0,115200
+         initrd16 /initramfs-3.10.0-957.el7.x86_64.img
+   }
+
+
+.. caution:: 这里主要注意更新grub.cfg的方式，grub更多内容请参考 :doc:`grub`
 
 以下所有命令需要先执行：
 
@@ -248,6 +271,6 @@ chassis bootdev 在1620有. 在1620 CS上可以。 要再OS里面systemctl reboo
    modprobe ipmi_poweroff
 
 
-更多命令亲参考 [#ipmitool]_
+更多命令亲参考 [#ipmitool_blog]_
 
-.. [#ipmitool] https://blog.51cto.com/bovin/2128475
+.. [#ipmitool_blog] https://blog.51cto.com/bovin/2128475
