@@ -12,4 +12,4 @@ VOLUME /data
 VOLUME /var/www/html
 WORKDIR /data
 
-ENTRYPOINT [ "jekyll", "build", "--destination=/var/www/html" ]
+ENTRYPOINT [ "/bin/bash" ]
