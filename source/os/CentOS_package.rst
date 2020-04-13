@@ -61,6 +61,20 @@ baseurl中的baseurl=https://mirrors.huaweicloud.com/centos/
 修改为baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/updates/
 
 
+
+.. code-block:: console
+
+   [user1@kunpeng920 ~]$ sudo dnf config-manager
+   No such command: config-manager. Please use /bin/dnf --help
+   It could be a DNF plugin command, try: "dnf install 'dnf-command(config-manager)'"
+
+解决办法：
+
+.. code-block:: shell
+
+   sudo dnf install -y dnf-plugins-core
+
+
 CentOS 常见依赖包
 ------------------
 

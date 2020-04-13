@@ -7,10 +7,11 @@
 
 下载以下文件到任意目录
 
-| `Makefile <src/static_lib/Makefile>`__
-| `driver.c <src/static_lib/driver.c>`__
-| `lib_mylib.c <src/static_lib/lib_mylib.c>`__
-| `lib_mylib.h <src/static_lib/lib_mylib.h>`__
++ :download:`Makefile<../src/static_lib/Makefile>`
++ :download:`driver.c<../src/static_lib/driver.c>`
++ :download:`lib_mylib.c<../src/static_lib/lib_mylib.c>`
++ :download:`lib_mylib.h<../src/static_lib/lib_mylib.h>`
+
 
 ::
 
@@ -45,9 +46,9 @@ lib_mylib.h即可使用fun函数 如driver.c:
 
 下载以下文件到任意目录
 
-| `makefile <src/share_lib/Makefile>`__
-| `application <src/share_lib/application.c>`__
-| `lowcase <src/share_lib/lowcase.c>`__
++ :download:`makefile <../src/share_lib/Makefile>`
++ :download:`application <../src/share_lib/application.c>`
++ :download:`lowcase.c<../src/share_lib/lowcase.c>`
 
 ::
 
@@ -87,19 +88,21 @@ gcc 指定库文件和头文件
 
    gcc -o hello hello.c -I /home/hello/include -L /home/hello/lib -lworld
 
-上面这句表示在编译hello.c时：
+-I          /home/hello/include表示将/home/hello/include目录作为第一个寻找头文件的目录，
 
--I
-/home/hello/include表示将/home/hello/include目录作为第一个寻找头文件的目录，寻找的顺序是：/home/hello/include–>/usr/include–>/usr/local/includ
+            寻找的顺序是：/home/hello/include–>/usr/include–>/usr/local/include
 
--L
-/home/hello/lib表示将/home/hello/lib目录作为第一个寻找库文件的目录，寻找的顺序是：/home/hello/lib–>/lib–>/usr/lib–>/usr/local/lib
+-L          /home/hello/lib表示将/home/hello/lib目录作为第一个寻找库文件的目录，
 
--lworld表示在上面的lib的路径中寻找libworld.so动态库文件（如果gcc编译选项中加入了“-static”表示寻找libworld.a静态库文件）
+            寻找的顺序是：/home/hello/lib–>/lib–>/usr/lib–>/usr/local/lib
+-lworld     表示在上面的lib的路径中寻找libworld.so动态库文件
+
+            （如果gcc编译选项中加入了“-static”表示寻找libworld.a静态库文件）
 
 gcc -l参数和-L参数
 
--l参数就是用来指定程序要链接的库，-l参数紧接着就是库名，那么库名跟真正的库文件名有什么关系呢？就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的头lib和尾.so去掉就是库名了。
+-l参数就是用来指定程序要链接的库，-l参数紧接着就是库名，那么库名跟真正的库文件名有什么关系呢？
+就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的头lib和尾.so去掉就是库名了。
 
 如何让gcc在生成动态链接库的时候静态链接glibc
 ============================================
