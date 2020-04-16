@@ -2,12 +2,12 @@
 GCC
 ************************
 
-| 在\ http://mirrors.ustc.edu.cn/gnu/gcc/ 找到对应版本源码
-| 安装步骤为：
+在 https://mirrors.huaweicloud.com/gnu/gcc/ 找到对应版本源码
+安装步骤为：
 
 .. code:: shell
 
-   wget http://mirrors.ustc.edu.cn/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.gz
+   wget -c https://mirrors.huaweicloud.com/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
    tar -zxf gcc-8.3.0.tar.gz
    cd gcc-8.3.0/
    ./configure
