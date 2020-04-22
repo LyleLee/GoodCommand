@@ -30,8 +30,8 @@ void handler(int signo)
 
 int main(void)
 {
-	signal(SIGALRM, handler);
-	t1 = currentcycles();
+	signal(SIGALRM, handler); //注册一个函数
+	t1 = currentcycles(); //获取当前时间
 	alarm(1);
 	while(1)
 		pause();
