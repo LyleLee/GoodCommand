@@ -54,7 +54,7 @@ git command
    git commit --amend
    git add *
 
-远程仓库远程分支
+远程仓库远程
 ----------------
 
 ::
@@ -78,12 +78,14 @@ git command
 
 ::
 
+   git branch -a                                       #显示多有本地和远程分支
    git checkout -b iss53                               #创建分支并切换
    git branch iss53
    git checkout iss53
    git branch -r                                       #查看所有远程分支，所有分支
    git branch -a
-   git branch -d hotfix                                #删除分支
+   git branch -d hotfix                                #删本地分支
+   git branch push origin --delete me-linux-comments   #删除远程仓库origin的me-linux-comments分支
    git branch -m oldname newname                       #重命名分支
    git ls-tree -r master --name-only                   #查看分支已经tracked的file
    git push origin serverfix:awesomebranch             #推送本地serverfix分支到远程仓库上的awesomebranch
