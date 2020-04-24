@@ -1,7 +1,12 @@
 restructuredtext
 ================
 
-语法学习资料：`learn-rst.readthedocs.io <https://learn-rst.readthedocs.io/zh_CN/latest/rst%E6%8C%87%E4%BB%A4.html>`_
+.. [#learn] 语法学习资料：https://learn-rst.readthedocs.io/zh_CN/latest/rst%E6%8C%87%E4%BB%A4.html
+
+.. [#cross_reference] https://www.sphinx-doc.org/en/1.5/markup/inline.html
+.. [#hawkmoth] https://hawkmoth.readthedocs.io/en/latest/syntax.html#syntax
+
+
 英文版： https://runawayhorse001.github.io/SphinxGithub/rtxt.html
 支持的高亮类型： `pygments.org <https://pygments.org/docs/lexers.html#lexers-for-diff-patch-formats>`_
 
@@ -34,8 +39,6 @@ url 如何统一在末尾管理 :doc: `vdbench`
 
     It refers to the section itself, see :ref:`my-reference-label`.
 
-
-.. [#cross_reference] https://www.sphinx-doc.org/en/1.5/markup/inline.html
 
 
 分栏，或者所示边栏例子
@@ -80,7 +83,7 @@ Simple tables
       32. There    **aha**
       ===========  ================
 
-Simple tables (:restref:`ref <restructuredtext.html#simple-tables>`)
+Simple tables
 are preceded and ended with a sequence of "``=``" to indicate the
 columns, e.g:
 
@@ -118,7 +121,7 @@ True          True
 https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html#epigraph-and-highlights
 
 
-Field lists:
+Field lists: [#option_lists]_
 
 :what: Field lists map field names to field bodies, like
        database records.  They are often part of an extension
@@ -129,3 +132,16 @@ Field lists:
 
       The field body may contain one or more body elements,
       indented relative to the field marker.
+
+
+kernel svg
+
+  .. kernel-figure:: path.svg
+
+
+如何编写C语言文档 [#hawkmoth]_
+
+
+使用kerneldoc： https://return42.github.io/linuxdoc/
+
+.. [#option_lists] https://sphinx-rtd-theme.readthedocs.io/en/stable/demo/lists_tables.html
