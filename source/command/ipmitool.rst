@@ -169,7 +169,7 @@ chassis bootdev 在1620有. 在1620 CS上可以。 要再OS里面systemctl reboo
    sel time get    #显示当前BMC的时间
    sel time set    #设置当前BMC的时间
 
-#系统相关的命令
+#BMC系统相关的命令
 
 ::
 
