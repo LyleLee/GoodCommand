@@ -385,43 +385,47 @@ Host一样的由DHCP服务器分配的地址：
 
 前面的网桥模式一般来说可以满足比较普遍的需求。
 如果不希望外部网络知道虚机的网络结构，可以选中NAT模式。
-这里涉及两个配置文件,内容差不多，2019年3月1日17:26:03还不知道主要用途。
 
-::
+默认情况下有一个default网络在运行
 
-   1. /usr/share/libvirt/networks/default.xml
-   <network>
-     <name>default</name>
-     <bridge name="virbr0"/>
-     <forward/>
-     <ip address="192.168.122.1" netmask="255.255.255.0">
-       <dhcp>
-         <range start="192.168.122.2" end="192.168.122.254"/>
-       </dhcp>
-     </ip>
-   </network>
+.. code-block:: console
+
+   [user1@kunpeng920 ~]$ sudo virsh net-list --all
+   [sudo] password for user1:
+   Name                 State      Autostart     Persistent
+   ----------------------------------------------------------
+   default              active     yes           yes
 
 
-   2. /etc/libvirt/qemu/networks/default.xml
-   <!--
-   WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
-   OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
-     virsh net-edit default
-   or other application using the libvirt API.
-   -->
+sudo virsh net-edit default 可以看到配置的网络内容， 有一个virbr0的网桥
+
+.. code-block:: xml
 
    <network>
-     <name>default</name>
-     <uuid>5b8f9cf9-cbd2-4461-83e6-2ac31ad8f9e6</uuid>
-     <forward mode='nat'/>
-     <bridge name='virbr0' stp='on' delay='0'/>
-     <mac address='52:54:00:fe:91:35'/>
-     <ip address='192.168.122.1' netmask='255.255.255.0'>
-       <dhcp>
+   <name>default</name>
+   <uuid>17642016-bbbc-48e0-9404-bbd0b5d3f74b</uuid>
+   <forward mode='nat'/>
+   <bridge name='virbr0' stp='on' delay='0'/>
+   <mac address='52:54:00:31:10:e8'/>
+   <ip address='192.168.122.1' netmask='255.255.255.0'>
+      <dhcp>
          <range start='192.168.122.2' end='192.168.122.254'/>
-       </dhcp>
-     </ip>
+      </dhcp>
+   </ip>
    </network>
+
+这个时候只需要修改vm1的配置文件 virsh edit vm1。 type指定为xml， 指定source bridge为virbr0后启动vm就可以
+
+.. code-block:: xml
+
+    <interface type='bridge'>
+      <mac address='52:54:00:c0:29:14'/>
+      <source bridge='virbr0'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+
+
 
 参考资料
 ----------------------
