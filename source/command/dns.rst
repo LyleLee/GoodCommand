@@ -1,5 +1,5 @@
 *******************
-DNS
+dns
 *******************
 
 DNS是域名解析系统， 控制服务器对域名的解析
@@ -20,6 +20,7 @@ ping报错，dns无法解析
 
    root@ubuntu:/etc/apt# ping www.baidu.com
    ping: www.baidu.com: Temporary failure in name resolution
+
 
 配置文件路径是/etc/resolv.conf
 
@@ -67,6 +68,53 @@ ping报错，dns无法解析
    +dns=none
    #plugins=ifcfg-rh,ibft
 
+
+无法链接的ipv6地址
+----------------------
+
+.. code-block:: console
+
+   The downloaded packages were saved in cache until the next successful transaction.
+   You can remove cached packages by executing 'dnf clean packages'.
+   Error: Error downloading packages:
+   Curl error (7): Couldn't connect to server for
+   https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=aarch64&infra=$infra&content=$contentdir
+   [Failed to connect to 2620:52:3:1:dead:beef:cafe:fed7: Network is unreachable]
+
+
+解决办法：思路是不要查询url的ipv6地址， 如何禁止ipv6 dns查询， 还不知道， 但是把本机的网卡IPv6功能关了是可信的办法之一。
+
+
+.. code-block:: shell
+   :caption: disable_ipv6 of enp189s0f0
+
+   echo 1 > /proc/sys/net/ipv6/conf/enp189s0f0/disable_ipv6
+
+
+.. code-block:: shell
+   :caption: disable_ipv6 of all interfaces
+
+   echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+
+
+.. code-block:: console
+   :caption: 禁止IPv6之前
+
+   6: enp189s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+      link/ether 00:18:2d:04:00:5c brd ff:ff:ff:ff:ff:ff
+      inet 192.168.1.180/24 brd 192.168.1.255 scope global noprefixroute enp189s0f0
+         valid_lft forever preferred_lft forever
+      inet6 fe80::6d73:6430:e089:b1c7/64 scope link noprefixroute
+         valid_lft forever preferred_lft forever
+
+
+.. code-block:: console
+   :caption: 禁止IPv6后
+
+   6: enp189s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+      link/ether 00:18:2d:04:00:5c brd ff:ff:ff:ff:ff:ff
+      inet 192.168.1.180/24 brd 192.168.1.255 scope global noprefixroute enp189s0f0
+         valid_lft forever preferred_lft forever
 
 
 .. [#overwrite] https://wiseindy.com/blog/linux/how-to-set-dns-in-centos-rhel-7-prevent-network-manager-from-overwriting-etc-resolv-conf/
