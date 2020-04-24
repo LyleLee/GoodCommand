@@ -53,6 +53,9 @@ docker常用命令
    docker history e5c51ef702d4         #查看docker 镜像的构建历史
    docker port 774b2f613874            #显示容器端口->主机端口
 
+   docker save -o /home/my/myfile.tar centos:16 #保存镜像到文件
+   docker load -i myfile.tar                    #导入镜像
+
 删除停止的容器
 
 ::
@@ -63,6 +66,15 @@ docker常用命令
 .. caution:: 容器无法联网怎么办，考虑添加NAT， 参考理解 :ref:`the_veth`
 
    iptables -t nat -A POSTROUTING -o eno3 -s 172.17.0.0/16 -j MASQUERADE
+
+docker的主要内容：
+=======================
+
+1. :doc:`容器网络<docker_network>`
+2. 容器网络10GE
+3. 容器io
+4. Kubernates
+
 
 问题记录
 =============
@@ -106,7 +118,42 @@ CentOS 8 none of the providers can be installed
    yum install -y https://download.docker.com/linux/centos/7/aarch64/stable/Packages/containerd.io-1.2.6-3.3.el7.aarch64.rpm
 
 
+standard_init_linux.go:190: exec user process caused "exec format error"
+---------------------------------------------------------------------------
+
+似乎时一个普遍问题 [#go-190]_
+
+.. code-block:: console
+
+   Removing intermediate container fe1c9196349d
+   ---> e18ce876e1c4
+   Step 25/38 : FROM builderbase AS current
+   ---> 8883f7dfe759
+   Step 26/38 : COPY . .
+   ---> 6acefabe075e
+   Step 27/38 : COPY --from=upstream-resources /usr/src/app/md_source/. ./
+   ---> bfcebabe01f5
+   Step 28/38 : RUN ./_scripts/update-api-toc.sh
+   ---> Running in d5f322b580ed
+   standard_init_linux.go:190: exec user process caused "exec format error"
+   The command '/bin/sh -c ./_scripts/update-api-toc.sh' returned a non-zero code: 1
+   Traceback (most recent call last):
+   File "/home/me/.local/bin/docker-compose", line 11, in <module>
+      sys.exit(main())
+   File "/home/me/.local/lib/python2.7/site-packages/compose/cli/main.py", line 72, in main
+      command()
+   File "/home/me/.local/lib/python2.7/site-packages/compose/cli/main.py", line 128, in perform_command
+      handler(command, command_options)
+   File "/home/me/.local/lib/python2.7/site-packages/compose/cli/main.py", line 1077, in up
+      to_attach = up(False)
+   File "/home/me/.local/lib/python2.7/site-packages/compose/cli/main.py", line 1073, in up
+      cli=native_builder,
+   File "/home/me/.local/lib/python2.7/site-packages/compose/project.py", line 548, in up
+      svc.ensure_image_exists(do_build=do_build, silent=silent, cli=cli)
+
+
 
 .. [#docker_install] 安装docker https://docs.docker.com/install/linux/docker-ce/centos/
 .. [#docker_run_reference] docker run 参数。 https://docs.docker.com/engine/reference/run/
 .. [#docker-doc] 一个docker教程参考 https://yeasy.gitbooks.io/docker_practice/image/list.html
+.. [#go-190] https://forums.docker.com/t/standard-init-linux-go-190-exec-user-process-caused-exec-format-error/49368

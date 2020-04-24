@@ -52,5 +52,5 @@ docker swarm 常用命令
     k7cndxruwpyjcauxxdlc83b3t     kunpeng920          Ready               Active                                  19.03.8
 
 
-创建一个工作人物
+创建一个工作任务
 

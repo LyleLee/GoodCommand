@@ -10,15 +10,21 @@ docker network
 
     同一主机,   Docker bridge,  35Gbis/s,  25Gbit/s
     同一主机,   Open vSwitch,   51Gbitls,  32Gbit/s
+    跨主机,     Docker overlay, 900Mbit/s, 876Mbit/s
     跨主机,     OVS overlay,    904Mbit/s, 880Mbit/s
+
 
 Docker bridge
     安装Docker时，会创建一个网络接口，名字是docker0。docker0是一个虚拟以太网桥，用于连接容器和本地宿主网络。
-    Docker会为每一个容器创建一对 :ref:`the_veth` 网络接口。
+    Docker会为每一个容器创建一对 veth 网络接口。
 Open vSwitch
-    开源虚拟交换机 :doc:`ovs`。虚拟交换机解决方案，同时提供内核态和用户态实现
+    开源虚拟交换机 ovs。虚拟交换机解决方案，同时提供内核态和用户态实现
+Docker overlay
+    使用Docker Swarm创建overlay网络。Docker自带的多容器跨主机通信方案。
 OVS overlay
-    基于OVS创建overlay网络
+    基于OVS创建overlay网络。 多台主机上的虚拟交换机组成二层交换网络。
+
+
 
 硬件配置 Kunpeng 920 vs Intel 6248
 ===================================
@@ -53,7 +59,7 @@ Intel 6248
     Net Speed      : 1000Mb/s
 
 
-docker bridge
+Docker bridge
 ==========================
 
 组网模型是：
@@ -86,8 +92,8 @@ docker bridge
     apt update
     apt install -y iproute2 iputils-ping iperf3
 
-Kunpeng 13~35Gbit/s
-----------------------------------------
+Docker bridge Kunpeng 920 TCP：13~35Gbit/s
+---------------------------------------------
 
 Kunpeng 测试结果在13~35Gbit/s之间浮动，表现稳定
 
@@ -121,7 +127,7 @@ Kunpeng 测试结果在13~35Gbit/s之间浮动，表现稳定
    [  4]  21.00-22.00  sec  4.15 GBytes  35.7 Gbits/sec    0   1.19 MBytes
 
 
-Intel 25Gbit/s
+Docker bridge Intel 6248 25Gbit/s
 ------------------------------------
 
 Intel的测试结果稳定在25Gbit/s左右
@@ -295,8 +301,8 @@ ovs的安装运行查看 :doc:`ovs` 。
     iperf3 -s                       #在服务端 173.16.1.2
     iperf3 -c 173.16.1.3 -t 30000   #在客户端
 
-Kunpeng 51Gbit/s
---------------------------
+OVS brige Kunpeng TCP：51Gbit/s
+---------------------------------
 
 未绑核的情况带宽是比较低的， 绑核后获得大幅度提升。 同时可以看到ovs的性能要比linux的vswitch好。
 
@@ -322,8 +328,8 @@ Kunpeng 51Gbit/s
     [  4] 130.00-131.00 sec  5.96 GBytes  51.2 Gbits/sec  136   1.89 MBytes
 
 
-Intel 32Gbit/s
---------------------------
+OVS bridge Intel TCP：32Gbit/s
+--------------------------------
 
 .. code-block:: console
 
@@ -343,10 +349,162 @@ Intel 32Gbit/s
     [  4]  33.00-34.00  sec  3.53 GBytes  30.3 Gbits/sec    0    465 KBytes
 
 
+
+Docker overlay
+=======================
+
+Docker overlay的组网模型是：
+
+|docker_overlay|
+
+
+使用docker swarm创建manager和worker关系， 创建一个net0的overlay网络，三台主机上分别运行ubuntu容器，
+需要指定容器运行的网络为net0.
+
+创建docker自带的overlay网络，中间可能会遇到问题，如果涉及firewalld和dockerd的重启话，最好重启一下设备。
+
+向overlay网络添加容器，并进行测试。
+
+
+host1的操作
+
+.. code-block:: shell
+
+    docker network create --driver overlay --attachable net0
+    docker run -itd --name ubuntu1 --network net0 ubuntux86
+    docker exec -it ubuntu1 bash
+    iperf3 -s
+
+host2的操作
+
+.. code-block:: shell
+
+    docker run -itd --name ubuntu2 --network net0 ubuntux86
+    docker exec -it ubuntu2 bash
+    iperf3 -c 10.0.2.4
+    iperf3 -u -c 10.0.2.4 -b 920M
+
+
+Docker overlay Kunpeng 920 TCP: 900Mbit/s UDP:920Mbit/s
+-----------------------------------------------------------
+
+Docker overlay Kunpeng 920 TCP测试结果：900Mbit/s
+
+.. code-block:: console
+
+    root@47bc82102ad2:/# iperf3 -s
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+    Accepted connection from 10.0.2.4, port 34312
+    [  5] local 10.0.2.8 port 5201 connected to 10.0.2.4 port 34314
+    [ ID] Interval           Transfer     Bandwidth
+    [  5]   0.00-1.00   sec   104 MBytes   875 Mbits/sec
+    [  5]   1.00-2.00   sec   108 MBytes   909 Mbits/sec
+    [  5]   2.00-3.00   sec   108 MBytes   909 Mbits/sec
+    [  5]   3.00-4.00   sec   108 MBytes   909 Mbits/sec
+    [  5]   4.00-5.00   sec   108 MBytes   908 Mbits/sec
+    [  5]   5.00-6.00   sec   106 MBytes   885 Mbits/sec
+    [  5]   6.00-7.00   sec   107 MBytes   899 Mbits/sec
+    [  5]   7.00-8.00   sec   108 MBytes   909 Mbits/sec
+    [  5]   8.00-9.00   sec   106 MBytes   888 Mbits/sec
+    [  5]   9.00-10.00  sec   108 MBytes   909 Mbits/sec
+    [  5]  10.00-10.05  sec  5.32 MBytes   908 Mbits/sec
+    - - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval           Transfer     Bandwidth
+    [  5]   0.00-10.05  sec  0.00 Bytes  0.00 bits/sec                  sender
+    [  5]   0.00-10.05  sec  1.05 GBytes   900 Mbits/sec                  receiver
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+
+
+Docker overlay Kunpeng 920 UDP测试结果：910Mbit/s
+
+.. code-block:: console
+
+    Accepted connection from 10.0.2.4, port 34444
+    [  5] local 10.0.2.8 port 5201 connected to 10.0.2.4 port 49708
+    [ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+    [  5]   0.00-1.00   sec  93.6 MBytes   785 Mbits/sec  0.056 ms  383/12364 (3.1%)
+    [  5]   1.00-2.00   sec   109 MBytes   912 Mbits/sec  0.056 ms  0/13921 (0%)
+    [  5]   2.00-3.00   sec   109 MBytes   910 Mbits/sec  0.059 ms  0/13890 (0%)
+    [  5]   3.00-4.00   sec   108 MBytes   910 Mbits/sec  0.058 ms  0/13881 (0%)
+    [  5]   4.00-5.00   sec   108 MBytes   910 Mbits/sec  0.058 ms  0/13886 (0%)
+    [  5]   5.00-6.00   sec   108 MBytes   910 Mbits/sec  0.057 ms  0/13885 (0%)
+    [  5]   6.00-7.00   sec   108 MBytes   910 Mbits/sec  0.057 ms  0/13886 (0%)
+    [  5]   7.00-8.00   sec   107 MBytes   900 Mbits/sec  0.055 ms  0/13736 (0%)
+    [  5]   8.00-9.00   sec   109 MBytes   914 Mbits/sec  0.056 ms  95/14038 (0.68%)
+    [  5]   9.00-10.00  sec   108 MBytes   910 Mbits/sec  0.056 ms  0/13886 (0%)
+    [  5]  10.00-10.04  sec  4.12 MBytes   884 Mbits/sec  4.247 ms  0/527 (0%)
+    - - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+    [  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec  4.247 ms  478/137900 (0.35%)
+
+
+Docker overlay Intel 6248 TCP: 876Mbit/s UDP: 920Mbit/s
+---------------------------------------------------------------
+
+Docker overlay Intel 6248 TCP测试结果：870Mbit/s
+
+.. code-block:: console
+
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+    Accepted connection from 10.0.2.6, port 35886
+    [  5] local 10.0.2.4 port 5201 connected to 10.0.2.6 port 35888
+    [ ID] Interval           Transfer     Bandwidth
+    [  5]   0.00-1.00   sec   103 MBytes   861 Mbits/sec
+    [  5]   1.00-2.00   sec   106 MBytes   889 Mbits/sec
+    [  5]   2.00-3.00   sec   105 MBytes   879 Mbits/sec
+    [  5]   3.00-4.00   sec   106 MBytes   887 Mbits/sec
+    [  5]   4.00-5.00   sec   105 MBytes   878 Mbits/sec
+    [  5]   5.00-6.00   sec   104 MBytes   871 Mbits/sec
+    [  5]   6.00-7.00   sec   105 MBytes   881 Mbits/sec
+    [  5]   7.00-8.00   sec   104 MBytes   873 Mbits/sec
+    [  5]   8.00-9.00   sec   104 MBytes   876 Mbits/sec
+    [  5]   9.00-10.00  sec   103 MBytes   866 Mbits/sec
+    [  5]  10.00-10.04  sec  3.74 MBytes   850 Mbits/sec
+    - - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval           Transfer     Bandwidth
+    [  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+    [  5]   0.00-10.04  sec  1.02 GBytes   876 Mbits/sec                  receiver
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+
+Docker overlay Intel 6248 UDP测试结果：920Mbit/s
+
+.. code-block:: console
+
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+    Accepted connection from 10.0.2.6, port 35926
+    [  5] local 10.0.2.4 port 5201 connected to 10.0.2.6 port 41926
+    [ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+    [  5]   0.00-1.00   sec  94.8 MBytes   795 Mbits/sec  0.068 ms  61/12189 (0.5%)
+    [  5]   1.00-2.00   sec   110 MBytes   926 Mbits/sec  0.069 ms  8/14136 (0.057%)
+    [  5]   2.00-3.00   sec   110 MBytes   920 Mbits/sec  0.070 ms  0/14031 (0%)
+    [  5]   3.00-4.00   sec   110 MBytes   921 Mbits/sec  0.069 ms  0/14047 (0%)
+    [  5]   4.00-5.00   sec   110 MBytes   921 Mbits/sec  0.069 ms  0/14046 (0%)
+    [  5]   5.00-6.00   sec   110 MBytes   919 Mbits/sec  0.067 ms  6/14029 (0.043%)
+    [  5]   6.00-7.00   sec   110 MBytes   920 Mbits/sec  0.069 ms  0/14039 (0%)
+    [  5]   7.00-8.00   sec   110 MBytes   919 Mbits/sec  0.068 ms  0/14026 (0%)
+    [  5]   8.00-9.00   sec   110 MBytes   920 Mbits/sec  0.068 ms  0/14042 (0%)
+    [  5]   9.00-10.00  sec   110 MBytes   920 Mbits/sec  0.070 ms  0/14045 (0%)
+    [  5]  10.00-10.04  sec  4.27 MBytes   925 Mbits/sec  0.067 ms  0/547 (0%)
+    - - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+    [  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec  0.067 ms  75/139177 (0.054%)
+
+
+
 OVS overlay
 ==========================
 
-组网模型是：
+overlay组网模型是：
 
 |ovs_overlay|
 
@@ -372,11 +530,12 @@ OVS overlay
     iperf3 -u -c 10.10.10.203 -p 3333 -b 800M -t 3000
 
 
-Kunpeng TCP: 904Mbit/s UDP: 800Mbit/s
-----------------------------------------
+
+OVS overlay Kunpeng 920 TCP：904Mbit/s UDP：800Mbit/s
+-------------------------------------------------------------
 
 
-TCP测试结果
+OVS overlay Kunpeng 920 TCP测试结果：904Mbit/s
 
 .. code-block:: console
 
@@ -404,8 +563,7 @@ TCP测试结果
     [  5]   0.00-10.04  sec  1.06 GBytes   904 Mbits/sec                  receiver
     -----------------------------------------------------------
 
-
-UDP测试结果
+OVS overlay Kunpeng 920 UDP测试结果：800Mbit/s
 
 .. code-block:: console
 
@@ -430,8 +588,8 @@ UDP测试结果
 
 
 
-Intel TCP: 880Mbit/s UDP: 730Mbit/s
-------------------------------------
+OVS overlay Intel 6248 TCP: 880Mbit/s UDP: 730Mbit/s
+----------------------------------------------------------
 
 测试命令
 
@@ -442,7 +600,7 @@ Intel TCP: 880Mbit/s UDP: 730Mbit/s
     iperf3 -u -c 10.10.10.203 -p 3333 -b 750M -t 3000
 
 
-TCP测试结果
+OVS overlay Intel 6248 TCP测试结果:
 
 .. code-block:: console
 
@@ -465,7 +623,7 @@ TCP测试结果
     [  5]   0.00-10.03  sec  0.00 Bytes  0.00 bits/sec                  sender
     [  5]   0.00-10.03  sec  1.03 GBytes   881 Mbits/sec                  receiver
 
-UDP测试结果
+OVS overlay Kunpeng 920 UDP测试结果
 
 .. code-block:: console
 
@@ -490,6 +648,8 @@ UDP测试结果
     [  5]  15.00-16.00  sec  87.7 MBytes   735 Mbits/sec  0.066 ms  222/11443 (1.9%)
     [  5]  16.00-17.00  sec  88.0 MBytes   738 Mbits/sec  0.067 ms  180/11443 (1.6%)
     [  5]  17.00-18.00  sec  89.0 MBytes   747 Mbits/sec  0.068 ms  66/11463 (0.58%)
+
+
 
 
 问题记录
@@ -584,9 +744,56 @@ iperf3 TCP测速是0， UDP测试服务端无法收到数据包
 解决办法： 可能是MTU的问题。 [#ovs_mtu]_
 
 
+docker: Error response from daemon
+----------------------------------------
+
+.. code-block:: console
+
+    [root@intel6248 user1]# docker run -d --net=my-attachable-overlay-network --name=c1 busybox top
+    c5ba0656fedd9e05acf296c61fcffc9ad978f442e70da5b8315760ffe8386eca
+    docker: Error response from daemon: attaching to network failed, make sure your
+    network options are correct and check manager logs: context deadline exceeded.
+
+.. code-block:: console
+
+    Mar 31 15:11:27 intel6248 dockerd[22177]: level=info msg="worker 0x22armc3kg844zqkiickl4nx was successfully registered" method="(*Dispatcher).register"
+    Mar 31 15:11:27 intel6248 dockerd[22177]: level=info msg="Node 576c35de7a81/192.168.1.202, joined gossip cluster"
+    Mar 31 15:11:27 intel6248 dockerd[22177]: level=info msg="Node 576c35de7a81/192.168.1.202, added to nodes list"
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=info msg="initialized VXLAN UDP port to 4789 "
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=error msg="error reading the kernel parameter net.ipv4.vs.expire_nodest_conn" error="open /proc/sys/net/ipv4/vs/expire_no
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=error msg="error reading the kernel parameter net.ipv4.vs.expire_nodest_conn" error="open /proc/sys/net/ipv4/vs/expire_no
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=error msg="moving interface ov-001000-ti2f2 to host ns failed, invalid argument, after config error error setting interfa
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=error msg="failed removing container name resolution for a8fb2e8227966d0e749225b1c2feddd188832e60614b1d579d55c33f0a555f9e
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count ti2f2pgpth0my5q3as
+    Mar 31 15:12:47 intel6248 dockerd[22177]: level=error msg="Failed creating ingress network: network sandbox join failed: subnet sandbox join failed for \"10.0.0.0/24\":
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count nvkcpo8njn4se8osy6
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=error msg="fatal task error" error="network sandbox join failed: subnet sandbox join failed for \"10.0.1.0/24\": error cr
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=warning msg="Peer operation failed:Unable to find the peerDB for nid:nvkcpo8njn4se8osy6h25p017 op:&{3 nvkcpo8njn4se8osy6h
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=info msg="initialized VXLAN UDP port to 4789 "
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=error msg="error reading the kernel parameter net.ipv4.vs.expire_nodest_conn" error="open /proc/sys/net/ipv4/vs/expire_no
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=error msg="moving interface ov-001000-ti2f2 to host ns failed, invalid argument, after config error error setting interfa
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count ti2f2pgpth0my5q3as
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=error msg="failed removing container name resolution for a8fb2e8227966d0e749225b1c2feddd188832e60614b1d579d55c33f0a555f9e
+    Mar 31 15:12:48 intel6248 dockerd[22177]: level=error msg="Failed creating ingress network: network sandbox join failed: subnet sandbox join failed for \"10.0.0.0/24\":
+    Mar 31 15:13:07 intel6248 dockerd[22177]: level=error msg="438df95d9494edfe68b7078928d8c59554f43586eaa915306937c80386c041a8 cleanup: failed to delete container from cont
+    Mar 31 15:13:07 intel6248 dockerd[22177]: level=error msg="Handler for POST /v1.40/containers/438df95d9494edfe68b7078928d8c59554f43586eaa915306937c80386c041a8/start retu
+    Mar 31 15:16:17 intel6248 dockerd[22177]: level=info msg="NetworkDB stats intel6248(1b3c4eec767b) - netID:nvkcpo8njn4se8osy6h25p017 leaving:true netPeers:0 entries:0 Que
+    Mar 31 15:16:17 intel6248 dockerd[22177]: level=info msg="NetworkDB stats intel6248(1b3c4eec767b) - netID:ti2f2pgpth0my5q3asb2vc83w leaving:true netPeers:1 entries:0 Que
+    ~
+
+
+解决办法：
+
+排查多次， 操作并没有什么错误。论坛里面可能原因是中途涉及到重启docker daemon [#network_sandbox]_ ，重启设备问题消失。
+
+
+.. todo:: io, k8s, 10G net
+
 .. |docker_bridge| image:: ../images/docker_network_docker_bridge.png
 .. |ovs_bridge| image:: ../images/docker_network_ovs_bridge.png
+.. |docker_overlay| image:: ../images/docker_network_docker_overlay.png
 .. |ovs_overlay| image:: ../images/docker_network_ovs_overlay.png
+
 
 .. [#sdnlab]  https://www.sdnlab.com/23191.html
 .. [#ovs_docker] http://containertutorials.com/network/ovs_docker.html
@@ -595,3 +802,4 @@ iperf3 TCP测速是0， UDP测试服务端无法收到数据包
 .. [#docker_ovs_overlay] https://hustcat.github.io/overlay-network-base-ovs/
 .. [#wait_to_] https://stackoverflow.com/questions/56260123/how-vxlan0-of-containers-overlay-network-goes-outside-the-real-world
 .. [#ovs_mtu] http://dockone.io/article/228
+.. [#network_sandbox] https://success.docker.com/article/error-network-sandbox-join-failed-during-service-restarts
