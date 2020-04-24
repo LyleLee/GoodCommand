@@ -1,5 +1,5 @@
 ******************************
-cmake 
+cmake
 ******************************
 cmake to build a project
 
@@ -40,6 +40,14 @@ cmake 设置make的时候显示具体编译命令,可以看到CC命令
 ::
 
    set(CMAKE_VERBOSE_MAKEFILE on)
+
+
+编译安装cmake， 遇到很多undefined reference to  OPENSSL_sk_num
+---------------------------------------------------------------
+
+1. bootstrap --help查看并使用系统库，比如cmcurl出错时。 ./bootstrap --system-curl
+2. 或者参考这个博客 https://blog.csdn.net/weixin_45617478/article/details/104121691
+
 
 cmake中变量遇到的坑 https://cslam.cn/archives/c9f565b5.html
 https://murphypei.github.io/blog/2018/10/cmake-variable.html
