@@ -89,7 +89,6 @@ gcc 指定库文件和头文件
    gcc -o hello hello.c -I /home/hello/include -L /home/hello/lib -lworld
 
 -I          /home/hello/include表示将/home/hello/include目录作为第一个寻找头文件的目录，
-
             寻找的顺序是：/home/hello/include–>/usr/include–>/usr/local/include
 
 -L          /home/hello/lib表示将/home/hello/lib目录作为第一个寻找库文件的目录，
@@ -99,10 +98,20 @@ gcc 指定库文件和头文件
 
             （如果gcc编译选项中加入了“-static”表示寻找libworld.a静态库文件）
 
+
+LD_PRELOAD
+            用法LD_PRELOAD=/usr/local/zlib/lib/libz.so.1.2.7 ./lzbench -ezlib silesia.tar
+            在加载系统的libz之前先加载自定义的so
+LD_LIBRARY_PATH
+            添加程序执行时的搜索路径。 用法export LD_LIBRARY_PATH=/usr/local/zlib/lib/ 程序执行时从这里搜索动态库
+
+
 gcc -l参数和-L参数
 
 -l参数就是用来指定程序要链接的库，-l参数紧接着就是库名，那么库名跟真正的库文件名有什么关系呢？
 就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的头lib和尾.so去掉就是库名了。
+
+
 
 如何让gcc在生成动态链接库的时候静态链接glibc
 ============================================
