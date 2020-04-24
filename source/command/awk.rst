@@ -18,10 +18,10 @@ awk
 
 ::
 
-   5 bs-rw-numjob-iodepth 4k-read-1-64  100k   411MB/s   638.26   usr=7.77% sys=39.01%  
-   6 bs-rw-numjob-iodepth 4k-read-1-128  98.4k   403MB/s   1300.35   usr=8.04% sys=39.84%  
-   7 bs-rw-numjob-iodepth 4k-read-1-265  98.1k   402MB/s   2699.93   usr=8.65% sys=40.14%  
-   8 bs-rw-numjob-iodepth 4k-read-8-1  73.2k   300MB/s   108.57   usr=2.24% sys=14.11%  
+   5 bs-rw-numjob-iodepth 4k-read-1-64  100k   411MB/s   638.26   usr=7.77% sys=39.01%
+   6 bs-rw-numjob-iodepth 4k-read-1-128  98.4k   403MB/s   1300.35   usr=8.04% sys=39.84%
+   7 bs-rw-numjob-iodepth 4k-read-1-265  98.1k   402MB/s   2699.93   usr=8.65% sys=40.14%
+   8 bs-rw-numjob-iodepth 4k-read-8-1  73.2k   300MB/s   108.57   usr=2.24% sys=14.11%
    9 bs-rw-numjob-iodepth 4k-read-8-4  98.5k   403MB/s   323.68   usr=1.96% sys=38.91
 
 处理之后excel_86.txt
