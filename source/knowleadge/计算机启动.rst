@@ -31,7 +31,7 @@ BIOS启动进行设备自检。自检完成后会递交控制权给boot loader.
       UEFI PXEv4 (MAC:001886040006)
       UEFI PXEv4 (MAC:001886050006)
       UEFI Shell
-                                                          
+
    /------------------------------------------------------------------------------\
    |                                                                              |
    | ^v=Move Highlight       <Enter>=Select Entry      Esc=Exit                   |
@@ -103,3 +103,5 @@ EBR。EBR也包含64字节的分区表，但是只有两项。也就是两个逻
 -----------
 
 `[完整的设备启动log] <resources/server_start_up_log.txt>`__
+
+从UEFI启动后， CPU都运行在EL2上， Guest OS在 EL1， 用户态El0
