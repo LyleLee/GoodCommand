@@ -1,0 +1,43 @@
+# CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the 
+# remarked out baseurl= line instead.
+#
+#
+ 
+[base]
+name=CentOS-$releasever - Base - mirrors.huaweicloud.com
+baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/os/$basearch/
+#mirrorlist=https://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+gpgcheck=0
+gpgkey=https://mirrors.huaweicloud.com/centos-altarch/7/os/$basearch/RPM-GPG-KEY-CentOS-7-$basearch
+ 
+#released updates 
+[updates]
+name=CentOS-$releasever - Updates - mirrors.huaweicloud.com
+baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/updates/$basearch/
+#mirrorlist=https://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+gpgcheck=0
+gpgkey=https://mirrors.huaweicloud.com/centos-altarch/7/os/$basearch/RPM-GPG-KEY-CentOS-7-$basearch
+ 
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras - mirrors.huaweicloud.com
+baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/extras/$basearch/
+#mirrorlist=https://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
+gpgcheck=0
+gpgkey=https://mirrors.huaweicloud.com/centos-altarch/7/os/$basearch/RPM-GPG-KEY-CentOS-7-$basearch
+ 
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus - mirrors.huaweicloud.com
+baseurl=https://mirrors.huaweicloud.com/centos-altarch/7/centosplus/$basearch/
+#mirrorlist=https://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus
+gpgcheck=0
+enabled=0
+gpgkey=https://mirrors.huaweicloud.com/centos-altarch/7/os/$basearch/RPM-GPG-KEY-CentOS-7-$basearch
