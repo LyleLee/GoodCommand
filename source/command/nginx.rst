@@ -16,7 +16,7 @@ nginx
     upstream cutomed_http{
         server 127.0.0.1:1234;
     }
-    
+
     # another virtual host using mix of IP-, name-, and port-based configuration
     #
     server {
@@ -29,7 +29,7 @@ nginx
             proxy_pass http://cutomed_http;
 
             auth_basic             "admin";
-            auth_basic_user_file    htpasswd; 
+            auth_basic_user_file    htpasswd;
         }
     }
 
@@ -48,7 +48,7 @@ nginx
         #charset koi8-r;
 
         #access_log  logs/host.access.log  main;
-        
+
         location / {
             root   "D:\doc\GoodCommand\build\html";
             index  index.html index.htm;
@@ -56,7 +56,7 @@ nginx
             autoindex_localtime on;
             charset utf-8;
             auth_basic             "admin";
-            auth_basic_user_file    htpasswd; 
+            auth_basic_user_file    htpasswd;
         }
  server {
     listen       8088;
@@ -67,6 +67,6 @@ nginx
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_pass http://moba_http;
         auth_basic             "admin";
-        auth_basic_user_file    htpasswd; 
+        auth_basic_user_file    htpasswd;
     }
 }
