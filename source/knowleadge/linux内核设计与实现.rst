@@ -3,6 +3,8 @@ linux内核设计与实现
 
 在X86上，struct thread_info在文件<asm/thread_info.h>中定义.
 
+struct task_struct 在include/linux/sched.h中定义。
+
 .. code:: c
 
    struct task_struct {
@@ -13,7 +15,7 @@ linux内核设计与实现
            unsigned int ptrace;
 
            int lock_depth;         /* BKL lock depth */
-           
+
            struct task_struct *real_parent; /* real parent process */
            struct task_struct *parent; /* recipient of SIGCHLD, wait4() reports */
            /*
@@ -150,7 +152,7 @@ include/asm-generic/param.h
 ============= ====== ======= ===================== ============ ================ ===================================
 名称          架构   OS      内核版本              时钟中断频率 用户接口时钟频率 log
 ============= ====== ======= ===================== ============ ================ ===================================
-RH2288 V3     x86_64 RHEL7.6 3.10.0-957.el7.x86_64 1000HZ       100HZ 10ms      
+RH2288 V3     x86_64 RHEL7.6 3.10.0-957.el7.x86_64 1000HZ       100HZ 10ms
 Taishan2280v2 ARM    RHEL7.6 4.18.0-74.el8.aarch64 100HZ        100HZ 10ms       `[log] <resources/x86_log.md#HZ>`__
 Red Hat kvm   x86_64 ubuntu  4.15.0-20-generic     250HZ        100HZ 10ms       `[log] <resources/vps_log.md#HZ>`__
 ============= ====== ======= ===================== ============ ================ ===================================
