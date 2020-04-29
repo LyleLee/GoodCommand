@@ -7,5 +7,9 @@
     "editor.rulers": [80,120],
     "workbench.colorCustomizations": {
         "editorRuler.foreground": "#3d3a38"
+    },
+    "files.associations": {
+        "stdlib.h": "c",
+        "string.h": "c"
     }
 }
