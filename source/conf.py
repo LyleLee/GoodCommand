@@ -31,6 +31,13 @@ release = '2.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.viewcode',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -65,3 +72,10 @@ html_static_path = ['_static']
 
 master_doc = 'index'
 todo_include_todos = True
+
+doctest_gobal_setup = '''
+try:
+    import pandas as pd
+except ImportError:
+    pd = None
+'''
