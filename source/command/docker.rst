@@ -75,6 +75,17 @@ docker的主要内容：
 3. 容器io
 4. Kubernates
 
+Dockerfile proxy config
+=======================
+
+dockerfile 中一些安装软件包的命令有可能需要使用proxy ::
+
+   ENV HTTP_PROXY "socks5://192.168.1.201:2044"
+   ENV HTTPS_PROXY "socks5://192.168.1.201:2044"
+   ENV FTP_PROXY "socks5://192.168.1.201:2044"
+   ENV NO_PROXY "localhost,127.0.0.0/8,172.17.0.2/8"
+
+
 
 问题记录
 =============
@@ -157,3 +168,4 @@ standard_init_linux.go:190: exec user process caused "exec format error"
 .. [#docker_run_reference] docker run 参数。 https://docs.docker.com/engine/reference/run/
 .. [#docker-doc] 一个docker教程参考 https://yeasy.gitbooks.io/docker_practice/image/list.html
 .. [#go-190] https://forums.docker.com/t/standard-init-linux-go-190-exec-user-process-caused-exec-format-error/49368
+.. [#dockerfile_proxy] https://docs.docker.com/network/proxy/
