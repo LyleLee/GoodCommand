@@ -23,6 +23,9 @@ iptables 是管理防火墙规则的工具，由iptables管理的规则会下发
     iptables -L INPUT -v -n     #To list all rules for INPUT tables
     iptables -S INPUT           #To list all rules for INPUT tables
 
+    sudo iptables -t nat -S     # 列出nat规则
+    sudo iptables -t nat -D ..  # 删除某条规则
+
 iptables和ufw的关系
 =================================
 
