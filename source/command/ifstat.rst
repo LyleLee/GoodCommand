@@ -60,6 +60,7 @@ ifstat 可以观察所有接口或者指定接口的带宽 ::
       0.00      0.00      0.00      0.00      0.00      0.00      0.66      0.20
 
 
+ifstat 目前在iproute2项目维护 [#ifstat_code]_
 
 nload 也用于观察接口的带宽 ::
 
@@ -143,3 +144,4 @@ nethogs 有同样的功能，但是有时候经常无法刷新 ::
 
 
 .. [#monitor-network] https://www.binarytides.com/linux-commands-monitor-network
+.. [#ifstat_code] https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/tree/misc/ifstat.c
