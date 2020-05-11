@@ -109,7 +109,7 @@ NEON Programmers Guide [#neon_program]_
    40087c:       00000000        .inst   0x00000000 ; undefined
 
 + 第6行，mov把立即数3放到32位寄存器w3。
-+ 第8行，dup把寄存器3w的值复制到第0号neon寄存器, 占用16位，所以一共右8个数。
++ 第8行，dup把寄存器w3的值复制到第0号neon寄存器, 占用16位，所以一共有8个数。
 + 第9行，stl把寄存器的值存到内存
 
 .. note:: ST1指令可以查看 Arm® Architecture Reference Manual [#arm_architecture]_ C7 2084页
