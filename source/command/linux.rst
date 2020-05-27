@@ -506,6 +506,7 @@ yum的代理需要在/etc/yum.conf下设置
 ::
 
    visudo
+   sudo update-alternatives --config editor     # visudo默认使用nano， 改变默认编辑器
    ## Allow root to run any commands anywhere
    root    ALL=(ALL)       ALL
    me      ALL=(ALL)       ALL
@@ -522,8 +523,16 @@ yum的代理需要在/etc/yum.conf下设置
 
 ::
 
+修改用户主目录， 并且移动内容 -m ::
 
-   ## 安装linux源码,安装内核源码
+   usermod -m -s /bin/bash -d /newhome/username username
+
+修改用户名 ::
+
+   usermod -l new_name old_name
+
+
+## 安装linux源码,安装内核源码
 
 | sudo apt-get install linux-4.4-source-4.4
 | xz -d linux-4.4-source-4.4.tar.xz
