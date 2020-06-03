@@ -6,5 +6,5 @@ solve bugs
    :maxdepth: 2
    :numbered:
    :glob:
-   
+
    *
