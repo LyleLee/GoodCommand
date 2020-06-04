@@ -241,6 +241,16 @@ redhat7.5 redhat8.0
    [me@localhost ~]$
 
 主要修改\ ``BOOTPROTO=dhcp``\ 和\ ``ONBOOT=yes``\ 这两个选项 ###
+
+添加网关 ::
+
+   GATEWAY=10.6.1.1
+
+修改配置文件后， 要使设置的ip生效 ::
+
+   ip addr flush dev eno1
+   systemctl restart NetworkManager
+
 重启网络
 
 ubuntu18.04
