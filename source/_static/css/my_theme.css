@@ -3,3 +3,7 @@
 footer p {
     margin-bottom: 0px
 }
+
+.wy-nav-content {
+    max-width: 90%;
+}
