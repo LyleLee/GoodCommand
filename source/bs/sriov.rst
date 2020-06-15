@@ -14,7 +14,7 @@ Taishan2280 V1      其它网卡        不支持
 Taishan2280 V2      板载网卡        支持
 Taishan2280 V2      其它网卡        由网卡决定
 ================   ==============  ============
-                   
+
 
 
 在Taishan 2280v2上，确认是否支持sr-iov
@@ -47,7 +47,7 @@ Taishan2280 V2      其它网卡        由网卡决定
     |--------------------------------------------------------+---------------------|
     | F1  Help     ^v  Select Item    -/+   Change Value     | F9  Setup Defaults  |
     | Esc Exit     <>  Select Menu    Enter Select>Sub-Menu  | F10 Save & Exit     |
-    |etUniqueQuestionId(), QuestionId :0x32FE.    
+    |etUniqueQuestionId(), QuestionId :0x32FE.
 
 
 .. code-block:: console
