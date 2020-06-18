@@ -57,6 +57,16 @@ go 有时候需要使用代理才能访问
     export http_proxy=socks5://127.0.0.1:7777
     export https_proxy=socks5://127.0.0.1:7777
 
+go build static
+==================
+
+::
+
+   go build -a -ldflags '-extldflags "-static"'
+
+
+怎么让go静态编译出目标文件 [#go_build]_
+
 
 问题记录
 ========
@@ -66,7 +76,7 @@ go 有时候需要使用代理才能访问
 
 ::
 
-   [2019-08-13 17:18:11]  [me@centos src]$ ./all.bash 
+   [2019-08-13 17:18:11]  [me@centos src]$ ./all.bash
    [2019-08-13 17:18:16]  Building Go cmd/dist using /home/me/go1.4.
    [2019-08-13 17:18:16]  ERROR: Cannot find /home/me/go1.4/bin/go.
    [2019-08-13 17:18:16]  Set $GOROOT_BOOTSTRAP to a working Go tree >= Go 1.4.
@@ -78,3 +88,7 @@ go 有时候需要使用代理才能访问
 ::
 
    yum install golang
+
+
+
+.. [#go_build] http://blog.wrouesnel.com/articles/Totally%20static%20Go%20builds/
