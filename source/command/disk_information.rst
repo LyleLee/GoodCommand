@@ -108,3 +108,13 @@ ARM
 ---------------------
 
 .. include:: lsblk.rst
+
+
+或者 ::
+
+    me@arm64server-1:~$ cat /sys/block/sdc/queue/rotational
+    0
+    me@arm64server-1:~$ cat /sys/block/sdb/queue/rotational
+    1
+
+1是机械硬盘， 0是固态硬盘
