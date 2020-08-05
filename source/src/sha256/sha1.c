@@ -11,7 +11,7 @@ int main()
 
     int i;
     for (i = 0; i < 20; i++) {
-        printf("%02x ", obuf[i]);
+        printf("%02x", obuf[i]);
     }
     printf("\n");
 
