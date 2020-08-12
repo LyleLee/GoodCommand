@@ -18,10 +18,10 @@ filecoin 目前没有ARM64版本。
 
 filecoin的编译需要下载很多go模块， 被屏蔽。
 
-.. code-block:shell
+.. code-block:: shell
 
     [user1@centos go-filecoin]$
-    [user1@centos go-filecoin]$ FILECOIN_USE_PRECOMPILED_RUST_PROOFS=true go run ./b                                                                                                                      uild deps
+    [user1@centos go-filecoin]$ FILECOIN_USE_PRECOMPILED_RUST_PROOFS=true go run ./build                                                                                                                     uild deps
     pkg-config --version
     0.27.1
     Installing dependencies...
@@ -56,6 +56,21 @@ filecoin的编译需要下载很多go模块， 被屏蔽。
     + echo 'successfully installed prebuilt libfilecoin'
     successfully installed prebuilt libfilecoin
 
+
+filecoine工程分析
+========================
+
+::
+
+    lotus---------------------------------主工程 https://github.com/filecoin-project/lotus.git
+    |-- extern
+    |   |-- filecoin-ffi------------------向量化 https://github.com/filecoin-project/filecoin-ffi.git
+    |   |                                 filcrypto.h filcrypto.pc libfilcrypto.a
+    |   |
+    |   `-- serialization-vectors---------rust库 https://github.com/filecoin-project/serialization-vectors
+
+
+
 问题记录
 ======================
 
@@ -82,10 +97,13 @@ filecoin的编译需要下载很多go模块， 被屏蔽。
 
     lecoin.a(futures_cpupool-1f3bf26aa9279af0.futures_cpupool.ahnnhqyk-cgu.3.rcgu.o)' is incompatible with aarch64 output
     /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(futures_cpupool-1f3bf26aa9279af0.futures_cpupool.ahnnhqyk-cgu.4.rcgu.o)' is incompatible with aarch64 output
-    /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(qutex-8dfbe8197b98ccc5.qutex.8mzkyvtz-cgu.0.rcgu.o)' is incompatible with aarch64 output
+    /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file \`/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(qutex-8dfbe8197b98ccc5.qutex.8mzkyvtz-cgu.0.rcgu.o)' is incompatible with aarch64 output
     /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(qutex-8dfbe8197b98ccc5.qutex.8mzkyvtz-cgu.1.rcgu.o)' is incompatible with aarch64 output
     /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(blake2s_simd-e06fbb96181f173a.blake2s_simd.cqrh7vav-cgu.11.rcgu.o)' is incompatible with aarch64 output
     /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(crossbeam_utils-e8dfdc01aecf4d4c.crossbeam_utils.av4hkwzx-cgu.0.rcgu.o)' is incompatible with aarch64 output
     /opt/rh/devtoolset-8/root/usr/libexec/gcc/aarch64-redhat-linux/8/ld: i386:x86-64 architecture of input file `/home/user1/open_software/gopath/src/github.com/filecoin-project/go-filecoin/vendors/filecoin-ffi/libfilecoin.a(blake2b_simd-8e21006b644a8dcd.blake2b_simd.du1wdeab-cgu.11.rcgu.o)' is incompatible with aarch64 o
 
 未解决。可能是go编译工程没有成功
+
+
+

@@ -250,6 +250,7 @@ redhat7.5 redhat8.0
 
    ip addr flush dev eno1
    systemctl restart NetworkManager
+   # 或者使用
 
 重启网络
 

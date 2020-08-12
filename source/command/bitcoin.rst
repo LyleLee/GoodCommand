@@ -8,7 +8,7 @@ bitcoin
 有钱包即可使用比特币
 ==================================
 
-目前钱包应用很多，有手机版，桌面版，专用硬件版，网页版[#bitcoin_client]_ 。可以根据情况到官网网址进行选择。
+目前钱包应用很多，有手机版，桌面版，专用硬件版，网页版 [#bitcoin_client]_ 。可以根据情况到官网网址进行选择。
 
 这里主要看下桌面版能否支持ARM，在上面的网址下载的安装包是bitcoin-0.19.0.1-arm-linux-gnueabihf.tar.gz。查看里面的二进制文件目前不支持ARM64的。
 
@@ -20,24 +20,37 @@ bitcoin
 
 不过我们在 bitcoin-core的网站上找到了ARM64版本bitcoin-0.19.0.1-aarch64-linux-gnu.tar.gz [#bitcoin_arm64]_
 
-完整的钱包节点， 会下载所有的区块
+
+下载比特币软件。
 
 .. code-block:: console
 
     wget https://bitcoincore.org/bin/bitcoin-core-0.19.0.1/bitcoin-0.19.0.1-aarch64-linux-gnu.tar.gz
     tar xf bitcoin-0.19.0.1-aarch64-linux-gnu.tar.gz
     cd bitcoin-0.19.0.1/bin
-    ./btcoind
 
-    2020-01-14T07:48:47Z UpdateTip: new best=00000000000000b13a8a169ef1a1250863c51839ecb72d465d36604c885b9ae8 height=199421 version=0x00000001 log2_work=68.720938 tx=7203671 date='2012-09-18T18:38:26Z' progress=0.014558 cache=349.9MiB(2601800txo)
-    2020-01-14T07:48:47Z UpdateTip: new best=00000000000004b2fcafa911440c1316d39845266e6d92419e8c974133d5cb0c height=199422 version=0x00000001 log2_work=68.720973 tx=7203691 date='2012-09-18T18:48:39Z' progress=0.014558 cache=349.9MiB(2601796txo)
-    2020-01-14T07:48:47Z UpdateTip: new best=0000000000000352997b2b2d470229ec466a29840c66db0bcfe22d00a9a3ba37 height=199423 version=0x00000001 log2_work=68.721007 tx=7203853 date='2012-09-18T18:48:00Z' progress=0.014558 cache=349.9MiB(2601638txo)
-    2020-01-14T07:48:47Z UpdateTip: new best=000000000000021044e6f434018d66fda995c7827b06097fa87cac71ed14a1ee height=199424 version=0x00000001 log2_work=68.721041 tx=7204193 date='2012-09-18T19:05:10Z' progress=0.014559 cache=349.9MiB(2601851txo)
-    2020-01-14T07:48:47Z UpdateTip: new best=000000000000014aeff9663da57c8bcc8a42fc9ad9b9fc33e0d249138f5bdfad height=199425 version=0x00000002 log2_work=68.721075 tx=7204705 date='2012-09-18T19:28:45Z' progress=0.014560 cache=349.9MiB(2601821txo)
+启动服务，会自动同步区块 ::
+
+   ./btcoind
+
+    2020-07-16T01:53:17Z dnsseed thread exit
+    2020-07-16T01:53:19Z Synchronizing blockheaders, height: 4000 (~0.66%)
+    2020-07-16T01:53:21Z New outbound peer connected: version: 70015, blocks=639437, peer=5 (full-relay)
+    2020-07-16T01:53:22Z New outbound peer connected: version: 70015, blocks=639437, peer=6 (full-relay)
+    2020-07-16T01:53:23Z New outbound peer connected: version: 70015, blocks=639437, peer=7 (full-relay)
+    2020-07-16T01:53:25Z New outbound peer connected: version: 70015, blocks=639437, peer=8 (full-relay)
+    2020-07-16T01:53:33Z Synchronizing blockheaders, height: 6000 (~0.99%)
+    2020-07-16T01:53:37Z Synchronizing blockheaders, height: 8000 (~1.33%)
+    2020-07-16T01:53:43Z Synchronizing blockheaders, height: 10000 (~1.66%)
+    2020-07-16T01:53:50Z Synchronizing blockheaders, height: 12000 (~1.99%)
+    2020-07-16T01:53:53Z Synchronizing blockheaders, height: 14000 (~2.33%)
+    2020-07-16T01:53:57Z Synchronizing blockheaders, height: 16000 (~2.66%)
+    2020-07-16T01:54:06Z Synchronizing blockheaders, height: 18000 (~3.00%)
+    2020-07-16T01:54:14Z Synchronizing blockheaders, height: 20000 (~3.35%)
 
 同步数据可能需要很长时间，少则一两个小时，多则10多个小时，取决于和服务器的链接速度。
 
-获取钱包信息：
+获取钱包地址: 3a0f7a2e3ba2e1d4810db537959421be866c1f6c :：
 
 .. code-block:: console
 
@@ -58,6 +71,15 @@ bitcoin
       "avoid_reuse": false,
       "scanning": false
     }
+
+再创建一个钱包 ::
+
+    root@40ab90fdd8df:~/bitcoin-0.19.0.1/bin# ./bitcoin-cli createwallet redwallet
+    {
+    "name": "redwallet",
+    "warning": ""
+    }
+
 
 
 常用命令

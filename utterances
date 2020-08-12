@@ -1,0 +1,829 @@
+[33m40c215f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m theme: width of document
+[33md9b7cfa[m linux network: flush ip and restart NetworkManager
+[33mc1a72fd[m[33m ([m[1;31morigin/master[m[33m)[m typo
+[33mf0f44ef[m reposync is very convenient
+[33m5637de9[m useradd -m -s -d
+[33m4278f3b[m arm neon: fix grammer
+[33m3991b0e[m gdb: gdb can work with python
+[33m7b6a486[m cgroup: docker user cgroup to control resources
+[33m1a588f2[m docker: batch update
+[33m110f59f[m iptables: DNAT and SNAT
+[33md707cd2[m ifstat: source code
+[33m8cbc83e[m nc: tcp and udp case
+[33mb81c2ff[m docker buildx: build multi arch images
+[33m89930fa[m docker : proxy config to pull images
+[33mc8e21f2[m kernel comunicate to user space
+[33ma820feb[m ofstat pktstat is more usefull
+[33ma281033[m accelerator: benchmak accelerator
+[33m897e8df[m vscode: config change
+[33m0d9f200[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m1baa223[m cgroup: memory test
+[33m316a0a0[m cgroup: memory test
+[33m5378cb8[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m8f4fbe9[m cgroup: test mem-limit.c
+[33m6f2cd7a[m cgroup: test script
+[33m3989396[m task_struct is implement in include/linux/sched.h
+[33mae8abf0[m iso: download CentOS and ubuntu iso
+[33mb0822d1[m alpine: light weight distibution
+[33mfb7b4bf[m customer update
+[33m75f43f2[m CPU: run at EL2
+[33m313fa8f[m leetcode: window
+[33m4cc2e3f[m LD_PRELOAD LD_LIBARAY_PATH
+[33mfd85942[m tun_tap update
+[33m77a2ffd[m specpu format update
+[33m0cc7eec[m D:/Program Files/Git/docker_network_ovs_overlay.png
+[33mf56d3c1[m ldd: file operation implemet
+[33mdd6c913[m rst:
+[33m63a22e3[m nginx: format
+[33m0ae8c86[m mem: theory memory bandwidth
+[33m1700556[m kvm: udpate, understand better to config a vm
+[33ma883c8b[m BMC: bmc command is helpful
+[33m010f8a9[m git: delete a remote branch
+[33m02b23a5[m docker: really greate improvement
+[33m3a48702[m dns: disable ipv6, don't query AAAAA result
+[33mf9f9591[m cmake: openssl
+[33maf093c4[m awk: format intention
+[33ma31dd27[m opencl: kunpeng works with icd + pocl
+[33m1f5763b[m gcc: get gcc from mirrors.huaweicloud.com
+[33m3056679[m CentOS: install config-manager
+[33mf419e18[m centos: build images
+[33mdcd7e32[m monkey patch
+[33m98f26b3[m pocl: add OpenCL helloworld
+[33mfcb0cbf[m rdtsc: update
+[33m5988259[m Dockerfile: pocl image build and test
+[33mf4086ad[m Dockerfile: ubuntu development enviroment
+[33m582ec6b[m rename jekyll enviroment
+[33md9b9086[m pocl:Dockerfile
+[33m391afce[m ubuntu: ubuntu 18.04 sources.list
+[33me14614c[m docker: ubuntu dockerfile
+[33mb422897[m docker: ubuntu dockerfile
+[33m2af7878[m update
+[33m18106c5[m ubuntu 1804: sources.list
+[33mf3aebae[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m5482cc5[m ipmitool: RH2288 os serial port redirection. SOL redirection
+[33ma28b928[m jekyll Dockerfile update
+[33m57f7ef8[m ceph: optimizae at forum
+[33m34aa0f4[m jekyll: Dockerfile build jekyll images
+[33mbc650b0[m ovs: open vswitch is powerfull
+[33m4dbbe59[m docker: docker swarm
+[33md453bb6[m journalctl: view systemd' log
+[33mad25785[m docker: docker network explore
+[33mbddc9a0[m docker: docker tutorial
+[33m8e4b563[m dns: prevent NetworkManager overwrite /etc/resolv.conf
+[33mf16c2b2[m spell check
+[33md54a5c8[m blog: linux perf
+[33mba28351[m wget: dose not support socks5 proxy
+[33m350b81d[m bash: command line complement
+[33m8ba6778[m netstat: netstat only display ipv6 port
+[33m6e5fe82[m timedatectl: update, chrony is good to work
+[33mcc5effa[m blog: add networking blog
+[33md7bd4e5[m linux: update
+[33m906fe30[m tun/tap: link to docker
+[33m34428ed[m docker: network
+[33m7009543[m docker: docker's veth
+[33m7864a63[m docker: update
+[33m1e52217[m dns: setting dnsmasq
+[33m3a3447c[m ovs: update
+[33m405ee5c[m tun_tap: update
+[33m52999b1[m kvm: update
+[33m8026d54[m apt: proxy setting
+[33mad64ba0[m kvm: update
+[33m663fc19[m add hawstein
+[33m5a996f7[m update
+[33md33f3cd[m conf.py: add ..todo:: directives
+[33m01441b8[m monbox: it is the name
+[33mb4c5989[m overlay: term explain
+[33m8d59840[m lwn: translate plan
+[33mf24d582[m ipmitool: /dev/ipmidev/0: No such file or directory
+[33mca4cd02[m email: how to give some one your email
+[33m89a7158[m kvm: command line config bridge is better
+[33m5b54bdb[m compare: move to another project
+[33ma8e9cd8[m update readme
+[33me241ebd[m sphinx: make single html
+[33m8e16484[m add utterance
+[33m994c4a5[m vscode: using vscode to write this document. run code . under GoodCommand/
+[33mb2cf98d[m disk: hardware infomation
+[33maac4aa0[m ceph: optimize steps
+[33m8c4c2c5[m porting_advisor: should find out if it work
+[33m3f7c4e4[m lm-sensor: is not support yet
+[33m39b38c2[m glusterfs: one of glusterfs
+[33m30eb09f[m ldd: linux device driver
+[33mc119b9c[m xmrig: someone is running a mining program
+[33me6d56bd[m travis: the ci
+[33mb698cb2[m update
+[33m1a79914[m update
+[33md5a09cd[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33ma4faf17[m tun/tap: update
+[33m6687299[m kvm: new finding
+[33mcf8daf7[m BMC: sol log in dump_info
+[33mb48c2b9[m update code delete
+[33mc48517f[m customer: update
+[33me801193[m tun/tap: update
+[33m3f2109b[m update
+[33m7c04938[m dump_info: bmc dump_info imformation format
+[33mea81d07[m iptables: list 4 table and 5 chains
+[33m45eb5b9[m rtd: creative commons license footer
+[33m26b10e6[m bmc: bmc dump_info fortmat
+[33m1c5e51b[m tun/tap: add tun tap code. tun to catch ip layer packet. tap to catch ethernet frame.
+[33m2d778e0[m rtdsc: ways to get ticks counts on different platform
+[33m1640e77[m add creative commons license
+[33m5b07711[m customer: update
+[33m3ac3ea3[m customer: update
+[33maffb389[m ubuntu source lists: Certificate verification failed
+[33mb512c72[m benchmark tool: add reference
+[33mde5287d[m cskill: address checking
+[33mf634a04[m arm doc: update
+[33mbb1b190[m taskset: update
+[33m18a7ead[m ssh: ssh tunnel proxy used by terminal
+[33m4eeceb6[m restructuretext: table is a good things
+[33m54e17a1[m python: python official documents
+[33m7d68eed[m perf: command arrange in one line
+[33m409f25f[m numactl: add reference numa node caches miss
+[33m6093ffd[m docker: run docker as we did before
+[33m70b6bb3[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m2be7949[m go: some go program
+[33m279a72c[m tun: create tun using C language
+[33m8458768[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m1238c3b[m asm hello world
+[33md263b15[m opencl: opencl the library
+[33m3612b2d[m brctl: user to manage bridges
+[33mc427f43[m blockchain: ipfs work on arm, but filecoin not
+[33m4516d96[m ssh: test proxy ip
+[33m24ef600[m asm: add some assambly code
+[33m1a8b816[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33ma9f9fbc[m leetcode: 451
+[33m9c214d2[m 1822: auto load kernel module auto at boot up
+[33m6f4caf3[m git: git tag --contains which-commits
+[33m56b38d9[m arm: statorage stack add glusterfs
+[33m1517280[m cskill: max char limits, cross reference glibc
+[33m6c23e4c[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m9a069c8[m c: limits on c type
+[33mfca732f[m glibc: git source code repositry
+[33m792fdc1[m bitcoin: bitcion run on arm
+[33maf4d633[m UOS: add sources.list
+[33md395c04[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33mcdf66e4[m yum: yum config-manager --disable repo
+[33mee2b732[m fio: trim tail space.
+[33m394538d[m kernel module: compile hns3 kernel module
+[33mb193bc6[m pdsh: cross reference ssh password less setting
+[33m7d19a88[m git: config update
+[33mdc23d32[m ceph: update
+[33mfd97a76[m curl: add proxy
+[33mf283403[m kernel module: update
+[33m8d05dc8[m restructuredtext: add cross reference case
+[33m7c7509d[m html: make html editables on browser
+[33m095a840[m hns: hns dependencies
+[33m272eb25[m firewall,iptables: setup NAT
+[33m5d78096[m fishing: add fishing files
+[33mdbd4b09[m pip: pip use speed up proxy in China
+[33mffda810[m libvert: AAVMF not found and vnc no display
+[33m68265b3[m modeprobe: load ko into kernel
+[33m9b638d4[m kvm: qemu config and libvert config
+[33m1829b3a[m git: git reset HEAD to unstage
+[33m9971eb9[m ceph: command to query config
+[33me318e13[m autobuild script to make html when file change
+[33m4c61829[m compile a kernel module
+[33m0b07971[m rpmbuild: build binary packages from source
+[33m62de097[m ceph: ceph file layout, ceph operate update
+[33mbfbc08e[m sar: cand see page fault and network utility
+[33maab491c[m bcache: update
+[33m6bc0565[m socat: port forward
+[33m0dc2b0d[m iptables: to manager firewall
+[33m66bb938[m bcache: bcache use ssd as cache
+[33m49adf40[m linux: user sudo previlage
+[33m295fd43[m firewall: setting up NAT
+[33mb46b412[m vntouch: load file into memory
+[33m47a0d8c[m sar: see network interface traffic
+[33m0b7744e[m vdbench: update
+[33m876e300[m restructuredtext: add all link to tail
+[33md09ec97[m blkdiscard: trim SSD
+[33mefc9c50[m vmtouch: load file into memory
+[33m51e3141[m tcpdump: more command
+[33m49b6862[m nginx: web server
+[33m6ebf427[m ceph: balance pgs
+[33m79b6680[m nc: test port is open or not
+[33m43d2726[m pssh: send command with escape symbol
+[33m4c4ec0c[m blog link update
+[33m34c3561[m  bug solve: nic name
+[33m7a89306[m bug solve: nic name
+[33mce0bee6[m Good blog collections
+[33m10d0ce7[m nmon: monitor system performance
+[33m2207cc0[m linux kernel: add washionton unversity cs course
+[33m9ee7423[m grep: filter unwanted line
+[33mf7ac64c[m nc: test port open or close
+[33mc680d77[m ssh: how to build tunnel
+[33md1654b5[m bond: bond interface
+[33m35301db[m curl: using proxy to visit a url
+[33m06a3901[m bug solve: some arm server do not support sriov
+[33m529d9f5[m bug solve: rmmod_device_or_resource_busy
+[33mdc1e663[m euler: add euler os url
+[33m2310715[m pssh: add pssh, which is simple than pdsh
+[33m75e9bb5[m curl: curl to get a url
+[33mbad5a20[m add hinicadm ntp pdsh reposync valgrind
+[33meb34be1[m arping: send out arp request to network, very useful
+[33mddae7dd[m bond: swtich LACP and ethernet aggregation
+[33mca0647e[m CentOS: build kernel rpm
+[33m92662c7[m ssh login fail on one machie on public internet
+[33m8f0fead[m add bcache lastb parted wipefs
+[33mc21a4b9[m ssh: update
+[33me10c476[m ipmitool: get ip address of BMC inside os
+[33m02c6951[m slurm: add slurm
+[33m9058530[m rsync: add rsync
+[33m34df739[m chmod
+[33me6f2c23[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m471f0c2[m anti_idel.py add exception
+[33m9f3ae5d[m anti_idel.py update
+[33mf0b3b8f[m anti_idel.py
+[33me401ba4[m vim: remove unwanted whitespace
+[33m3355b64[m arm register
+[33me2c35c2[m ufw: easy firewalld
+[33m7c5e53b[m pv: tool display how fast is a fled copied
+[33m10020f2[m copy binary with daynamic shared library is about to run independent
+[33mc5ab786[m centos to know what a rpm contain
+[33m39aa913[m restructure text
+[33mf571f56[m arm neon update
+[33mda27ca5[m autotool: update
+[33m2f7a331[m BMC upgrade BMC and bios
+[33m755994d[m benchmark tool: add sysbench smallpt
+[33m7386497[m sphinx: add favicon.ico
+[33me1263e4[m python: monitor a url
+[33m6bc878a[m update
+[33m263e512[m arm_neon: inline code
+[33me9573fa[m ssh: multi port
+[33m197e438[m search int chinese
+[33m1a5ca39[m ceph operrate: remove warning
+[33macfb59f[m source .profile
+[33m772ad92[m better to make theme default
+[33m4cf8942[m git submodule: modify .gitmodyle and run git submodule sync
+[33md983cfe[m gcc: gcc online document
+[33md58e075[m samba: linux mount samba shared disk
+[33m03f9e85[m update again
+[33m5396956[m update
+[33ma33e052[m arm_neon_example update stable version 1
+[33m6d4be46[m arm_neon update: add matrix add number code
+[33m6525de6[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33mb5eedac[m Update .gitmodules
+[33mac20e2d[m  readthedocs.yml user https and include submodule 9
+[33m088783b[m readthedocs.yml user https and include submodule 8
+[33mf120973[m readthedocs.yml include submodule 6
+[33md3ae457[m readthedocs.yml include submodule 5
+[33m05d0683[m readthedocs.yml include submodule 4
+[33m140b926[m readthedocs.yml include submodule 3
+[33mb50d0f8[m readthedocs.yml include submodule 2
+[33m88a8217[m readthedocs.yml include submodule
+[33m4e92960[m Revert "readthedocs: include submodule"
+[33mcc02406[m Revert "readthedocs: include submodule"
+[33mdb4545b[m readthedocs: include submodule
+[33m420d65c[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m1b5450a[m readthedocs: include submodule
+[33m9a9c376[m update arm_neon_example
+[33m170b977[m maxtrix add number intend
+[33mb2a0b38[m centos: package update
+[33mef0398a[m specpu patch: fix download dead link and update
+[33medcb617[m specpc_patch: fix dead link
+[33mae33ce8[m numa: undestand numa architecture
+[33meb332f7[m fio: update
+[33md765c55[m fio: update fio test result on hdd and ssd
+[33mbbf1e0a[m ceph: update ceph operate document
+[33m13c03b2[m cmake: add special compile options to target; git submodule: git submodule command
+[33mff62497[m add submodule arm_neon_example; dos2unix some windows files
+[33m793c8f4[m arm: arm neon add example code
+[33mc78cbc4[m fix sphinx doc more error
+[33m072838e[m fix sphinx doc more error
+[33m9dc7d05[m fix sphix doc
+[33m28e1551[m update customer
+[33m88936c4[m update customer
+[33m9d6a890[m remove submodules
+[33m29a0368[m readthedocs
+[33m3136f5a[m migrate to rst, modify .wqreadthedocs.yml
+[33mdd971bc[m migrate to rst
+[33m4872f14[m neon hello
+[33m6a68b91[m pandoc
+[33m22319b1[m add some other thing
+[33md20dfb7[m update
+[33m58935cf[m lustre: add lustre
+[33m95df1cb[m bs: add installing_centos_cannot_find_disk.md
+[33m192615d[m JBOD:JBOD
+[33mfa86252[m tool: add tool
+[33md110a69[m glibc: compile glibc
+[33ma8a18f4[m git: rename branch
+[33mee4f926[m Merge remote-tracking branch 'origin/master'
+[33mc19dbc5[m trust: add code
+[33m224a326[m openMP: add openMP
+[33m7dba159[m update dead link
+[33m5302553[m update customer
+[33m93409a4[m add arm_c_program_transplant.md
+[33m21ab7fd[m pstack: linux command print a process's stack
+[33m0e3eed1[m time: giving timing statistics about program run
+[33m58605fc[m vim: replace string with special symbol using #
+[33mc0fb8b8[m update customer
+[33m66c8bcd[m gcc -print-search-dirs
+[33m93b24ed[m cannot find a way to work in gcc 4.8.5
+[33m40dfc68[m cfd: fix link confidential
+[33m15928b8[m remove confidential
+[33m23a2bed[m add customer
+[33m0275d4f[m gcc static link update
+[33me251911[m readthedocs: add configuration
+[33mb582442[m readthedocs: add configuration
+[33m9f874ae[m readthedocs: add configuration
+[33m88f09d9[m readthedocs: add configuration
+[33m5fc23c7[m submodule: add submodule
+[33m074b05d[m samba: win10 cannot find samba
+[33m15d97d3[m cfd: update
+[33mff18bf8[m doc add slu course
+[33m858df0d[m ssh: update ssh gate diagram
+[33mb4f43b4[m python: add python skill
+[33m12c1f61[m bs: static link segment fault
+[33m63e4648[m pip: add pip
+[33md9570b4[m cfd: update
+[33mf49a996[m add cskill
+[33m5f058b2[m cfd: update
+[33m38475b6[m gcc: add static compile option
+[33m63330e1[m add cmu' computer science course
+[33mcc16a53[m bs: static link cause segmentation fault
+[33m9c5f52b[m mpstat: add mpstat show cpu statics
+[33m76d12b4[m update code
+[33m3b5dddf[m leetcode: update code. cmake enable make output
+[33mc54170b[m snprintf usage
+[33m7e75453[m leetcode: 151-reverse-words-in-a-string.c
+[33mdafbaa0[m letcode 224 pass
+[33m59f030a[m 224 add support of double number
+[33m5edd09e[m leetcode: add 224
+[33m86757fe[m rename explore
+[33m55f2b92[m os init: add tmux config
+[33mf986088[m rdtsc: update
+[33mce81450[m centos: show download urls
+[33m283f932[m gcc: get compile option
+[33me8de658[m taskset: update
+[33m8821619[m update
+[33m2e2f23e[m rdtsc: update
+[33mb62a88a[m cmake：verbose makefile see cc command
+[33m7b5acdb[m leetcode: update
+[33mcd27ae6[m git command: update
+[33m4d701b2[m rdtsc: transplant to arm64
+[33m3b84207[m arm doc: update
+[33me291497[m devtoolset: update
+[33md94a010[m vim: add block edit
+[33mb6bb821[m update git command
+[33m037d2b5[m arm document
+[33m85789ce[m leetcode update
+[33m01bd0d7[m add code: cmake to detect architecture add code:get cpu cycle using rdtsc or cntvct_el0
+[33mff74ab9[m cmake: add c flags c++ flags
+[33m844397c[m cloud office solution
+[33mad45455[m update
+[33m064118f[m add spacy
+[33m86edd22[m yum provides search packages according to header files
+[33m8fe0c8b[m add 1616 reference
+[33m7e42615[m ceph solution of replace rdtsc
+[33m90a231e[m replace rdtsc
+[33mee8b455[m leetcode 3
+[33m7e1ab13[m os init script
+[33mc7079ed[m dpdk: add images
+[33m76537f3[m config.guess: guess system type
+[33m3641eaf[m ps: loock at process's thread
+[33m5c40f7b[m leetcode: add leetcode pusszle
+[33m6841d5a[m update
+[33mefd1540[m centos redhat packages update
+[33m300fdf6[m emqx: add documents
+[33md5b7da2[m ffmpeg: verfied after modify code
+[33ma8aeadb[m cmake: update, add docs
+[33m1fdc0ec[m cmake: add cmake variable demo
+[33m87a031d[m puzzle 25: 25-reverse-nodes-in-k-group.c, it works
+[33ma13e084[m puzzle 25: this version of code statement a k array is wrong
+[33mf21e2fb[m puzzle 25: malloc memory to do he algrithem would not work
+[33mbe3e257[m puzzle 25: add code
+[33m9a2b8ee[m limit process resource getrlimit and setrlimit
+[33mca009b7[m cmake to build static lib
+[33m2fbb4cb[m add benchmark tool
+[33m2d79a99[m add benchmark tool
+[33m1ca7855[m vim: copy and paste
+[33mb5f2c9f[m chip information
+[33m2b7a317[m CentOS comand
+[33mf70c09a[m git: clean untracked files
+[33me25751a[m chip information
+[33m5f261b6[m add code
+[33m4026f78[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33mcffa3d1[m add container of offsetof code
+[33m24220d3[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33mdf3a3b7[m container_of offsetof
+[33m4855788[m explaination of offset
+[33ma74792f[m Merge remote-tracking branch 'origin/master'
+[33mb48194c[m add more code
+[33mb8fd762[m use static and dynamic lib .a .so
+[33md8c77fd[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m1a4e857[m create a so
+[33m0a5b496[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m6a4b65e[m how to compile static lib
+[33ma287c57[m scp: copy a file through a gate
+[33mfacc6f7[m float_mul without fp instruct
+[33m4e5a09d[m fix: Bad owner or permissions on /home/me/.ssh/config
+[33m6981ba7[m lstopo: output structure of CPU
+[33m7b8d335[m ssh: update
+[33m6cb2339[m add autotool usages
+[33m4fa0a7b[m tcpdump: capture arp packet
+[33md9e88b8[m dpdk: update run hello world
+[33m04f5a59[m vim: noh disbale highlight for search word
+[33mf5000fb[m qemu_max_socket_is_4095: update , virsh nodeinfo showing the same error
+[33m140d755[m ssh: add ssh login explaination
+[33mf896378[m fio stream update
+[33m47718af[m add cmake
+[33m254ad03[m add lstopo mathjax strip
+[33m28f7fa8[m fio benchmark on hdd and ssd and nvme
+[33m7a93e14[m fio: add more tool about io
+[33m908944b[m ffmpeg: update
+[33ma4f5a4c[m cfd: update
+[33m8e4f0fe[m development packages
+[33md8a79e3[m emqx
+[33m2a6d18a[m dpdk pfring update
+[33md815c05[m raid: a single disk can be JBOD
+[33m9cef08b[m ceph operate update
+[33me189173[m awk: get ip address
+[33mbe6bf13[m kvm: update
+[33m9e34fc7[m no_child_processes: ulimit -u 65535
+[33m52f7389[m ffmpeg:add script
+[33m0919fc6[m ffmpeg:update
+[33m7ea928e[m ffmpeg: update
+[33m7a85f08[m ffmpeg: Error while opening encoder for output stream
+[33m5dd264d[m parase_fio: simple
+[33m1d8484b[m add disk fio test script
+[33ma4fee73[m ls: alias ls to full get a full path of a file or dir
+[33m41e4fa0[m devtoolset to make gcc version change as our expect in 4,5,6,7,8
+[33m3993286[m history: change history seting to make all terminal append command to history file. remember command
+[33m95c6a44[m yum install specific version of package
+[33mbfd60ce[m 1620 fio_1620_TOSHIBA_HDD_8T
+[33me4a35bf[m erlang: compile erlang runtime
+[33m9307b5e[m storcli: do raid configure inside an os
+[33mbbea7b3[m fix dead link
+[33mf418d82[m go: build golang from source
+[33m55edb3f[m ntfs-3g: to support ntfs usb drive
+[33m8d354bc[m kernel leanning
+[33m4d9fbbd[m tomcat: tomcat start fail
+[33m3cb8d7f[m ceph: test script
+[33m0444b75[m install epel dierectly from http url
+[33m3682306[m tomcat: start but don't have daemon process
+[33m8e4a813[m change kernel learning documents
+[33m5afaf2e[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33mdae2a72[m devtoolset: choose gcc verison to install
+[33m5d28b26[m netplan apply
+[33mb53c050[m update bs
+[33m09360dc[m Amazon
+[33mcf2e5cc[m change language to english
+[33mfa9d329[m add confidential files
+[33m3b5677e[m ceph: update operation
+[33m2c16c0d[m hostnamectl: you can write a name to a file to make hostsname change
+[33mb230e9c[m systemd: tourial
+[33m20623b8[m firewall: add firewall rule
+[33ma954678[m awk: to get ip
+[33m9005a10[m ceph-operate update
+[33meb32736[m upnpc: ask router to open port
+[33m055c7ee[m ssh: add someone to black list if login failed to many times
+[33m60f77d7[m ceph_create_osd_lvm ceph_max_lat_over_1sec qemu_max_socket_is_4095
+[33md3f530f[m awk: using substr
+[33m557d129[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m6c5d5bd[m ceph operation at project
+[33m86890c8[m lstopo. conpare intel and kunpeng processor
+[33mb3c4b1d[m update
+[33m63724ae[m tmux: diseable auto rename
+[33med99046[m tmux configuration files
+[33m709f849[m bug sovle on ceph test
+[33mdf76c87[m compile fio to support ceph rbd
+[33m25172e9[m update
+[33m329bfbc[m format date output
+[33maf51d2e[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m5841198[m compare intel and kunpeng
+[33m34e6ec7[m log out virsh console; can kvm run x86 vm on a arm server?
+[33m92860e0[m mv customer's question to bug solve
+[33m070317b[m rpm --import epel key
+[33mdf78e1c[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m5127dd0[m change CentOS repo
+[33m1fba58c[m top to see process running cpu
+[33m55775f2[m update
+[33mbee65e7[m update ip command
+[33m61b6a70[m CentOS repo
+[33m2820e9d[m download CentOS and ubuntu ISO
+[33m0b54422[m ceph ntp
+[33m8df7daf[m update vnc
+[33mc3d489d[m add dstat nload nethogs iftop to monitor network traffic. add DELL server BMC reboot commmand
+[33m719c142[m CentOS 7.6 repo file
+[33m7674861[m update CentOS package
+[33m4733ef7[m CentOS 7.6 yum repo files
+[33m14ab71b[m update ssh
+[33m830f31b[m update CentOS_build_kernel
+[33m796ef14[m CentOS build kernel
+[33mbda701c[m update get_kernel_source ipmitool redhat_build_kernel, add build-kernel-natively.sh
+[33m573d316[m intel processor
+[33m41c91f9[m ARM opensource software
+[33mf241fdd[m 82599 bar region
+[33m4772b93[m CentOS: config packet source
+[33m25914b0[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m57b07ff[m compile kernel outside kernel source
+[33m46304fc[m ip, ssh, dpdk, devmem, tcpdump
+[33m17ef915[m vim: search word short cut
+[33md546c9a[m Temporary failure in name resolution
+[33m461b771[m add src
+[33m2e460ff[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m39eb498[m add get_kernel_source
+[33m6b40071[m board tranfer to me
+[33m79ef1c7[m nmap: update
+[33m2056757[m update dpdk test. 10G is ok
+[33m0e54531[m build kernel module
+[33m0a53755[m compile a kernel module
+[33mc2597fd[m chown chgrp include hidden files recursively
+[33m4c9b734[m Merge branch 'master' of github.com:LyleLee/GoodCommand
+[33m4e84bfd[m remove plan
+[33m0b038fc[m iperf: test network performance
+[33m37db623[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m9ced4aa[m dpdk so on
+[33mfd2f031[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33md22f2e3[m add ntfs
+[33m3bf19cd[m sftp, devmem compile
+[33me885de4[m update: vim replace string
+[33m1f4fe57[m numactl: update full detail about cpu
+[33mfea8069[m get hardware information
+[33m7111d0d[m solve unfind path
+[33ma0d059d[m SELinux: update
+[33m4a5b684[m systemd: update
+[33mf2d7afe[m spinlock and readwrite lock and memory barrier
+[33m575d369[m firewall: firewalld config at redhat and CentOS
+[33m2c7d71d[m SELinux: which block httpd and nginx, casued 403 permission denied
+[33m36749d8[m set network interface corresponding pci id
+[33ma50540e[m ipmitool: enter shell interactive mode
+[33m28400c9[m memtester is benchmark tool
+[33me57d20b[m performace
+[33mb29715a[m memtester: memory pressure test
+[33m07f4aad[m taskset: bind processs to cpu
+[33m5668c4a[m numactl: am example
+[33m827442e[m sshfs: mount ssh distination host diretory to local file system
+[33m7563a00[m mount ntfs drive using ntfs-3g
+[33m40c2105[m add download link of repo file
+[33mc8837ab[m BIOS settup sol
+[33mb9a7bb8[m ubuntu redhat install source code
+[33m72bc5b2[m HZ: what is HZ
+[33mccdc77d[m coremark: cpu benchmarking tool
+[33m6a77466[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33mcd4f026[m linux kernel develop
+[33m3f0b53e[m spec cpu error
+[33m6386cc5[m install linux source code
+[33m0b738ee[m git diff, git apply, git format-patch to generate patch
+[33m5691ff8[m BMC: ipmcget -d v to get BMC,BIOS,CPLD version
+[33m3e0ae73[m alias： alias command to easy use
+[33m3c76713[m fix dead link
+[33m6ba3853[m compile speccpu using patch
+[33ma1068ea[m ipmitool: lan command to display management lan setting
+[33m2e0cc33[m change dir name
+[33maae21e4[m add more spec cpu error
+[33mfca8822[m update grub to support board_connect
+[33m2381b39[m tar: example to create archive
+[33m94090ab[m ignore .tar .tar.gz
+[33m1e43b8c[m speccpu benchmark result
+[33mf9bb754[m diff: it is possible that have mutiple files patch merge in one file
+[33mbd66867[m script: log every shell output
+[33ma790a64[m delete some information
+[33m6ebfe3f[m diff: compare file, create patch and apply patch
+[33mc326a79[m find files's type and add user to sudo
+[33m465ad7c[m Hardware error, from memory
+[33m412e27c[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m10dc910[m printable format
+[33mcca9ed0[m regret to push password onto github
+[33me30444d[m add server starp up log
+[33m4c86c5b[m how server start up
+[33m8b4527e[m edac-util: to test memory if there is error
+[33m2b00ed2[m grub-mkconfig: update grub.cfg
+[33me4b6f9c[m ipmitool serial console not output
+[33m9e11919[m after setting BIOS console preference selection, don't need console=ttyAMA0,115200
+[33m6dd1860[m add more specific grub config. more ipmitool command. and try to run speccpu
+[33mfc5afcd[m shell_program collection
+[33mb4ddba6[m fio: script to run fio on both arm and x86
+[33m3ea2673[m Merge branch 'master' of goodcommand.github.com:LyleLee/GoodCommand
+[33m0fa4e92[m add BMC and Grub usage
+[33mcf669d0[m move io script to docs/scirpt/
+[33m1f9e8d7[m ipmitool: print CPU degrees
+[33me4eadc6[m tar: extract file from compressed files
+[33m7ba2f70[m DNS: dns config file at server
+[33mc7b3d76[m 193 sended to cadence
+[33m3c377c5[m NIC name not correct
+[33m9cd606f[m config redhat ios as local repo
+[33m1cb94fc[m tar: list top level of tar contents
+[33m4049fca[m timedatctl: write time to RTC
+[33mc10fd4b[m Board'hardware configuration
+[33mc1f4ab1[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m538a151[m Merge branch 'master' of goodcommand.github.com:LyleLee/GoodCommand
+[33me6390e6[m read cpu register
+[33m4d54326[m fix grammar
+[33m6deaa31[m what is it look like, hdd broken drive
+[33mf64cb60[m read register
+[33m0049ffd[m read register
+[33m1d6801f[m read cpu register
+[33m21b162c[m ipmitool: add index to mkdocs.yml
+[33m8d8a706[m mmodify navigation
+[33m9567cf3[m fix reference to resources
+[33m292da3c[m using smartctl to check harddisk error
+[33m42b3fa4[m install ceph
+[33m71f578c[m get hardware information of two board need to be shiped
+[33m825d484[m add more command to install RHEL packages
+[33m029394d[m lshw: lshw -short show hardware information in a straight way
+[33mf960024[m timedatectl can write time to RTC to make sure system time is correct after reboot
+[33m63e79e8[m clear way to reproduce 8BD issue
+[33m5cae488[m sysrq: use unix file type
+[33mcdc10cb[m git config --global core.autocrlf false
+[33m6a66bda[m empty file when file exist
+[33mdf3c093[m tmux config file
+[33m95473f9[m fio: hdd fio result
+[33m5ab50ee[m nmap: scan network
+[33m4d50664[m get hardware and software info
+[33m154ef26[m mv src/ to docs/script so that md file cound refered .sh file
+[33m896ee8a[m sysrq: use sysrq to dump cpu and task info
+[33me175d45[m 8BD nfs-not-response call stack
+[33mfc63959[m ethtool -L config netwrok queue
+[33mc7a1d2e[m git log find modified files in a commit
+[33me1272db[m compile a kernel module using Kconfig
+[33m700546c[m fix grammar
+[33mbc8b966[m fix readthedocs error: Config value: 'markdown_extensions'
+[33m1234ee7[m compile a kernel module
+[33m141990a[m ipmitool: a ssh tool to connect iBMC and get console output
+[33m8ee8f3f[m git log --pretty=oneline pb/master
+[33m6a7acdb[m need to add key to github when using a new computer
+[33mf7bc183[m compile redhat kernel solve lacking openssl lib
+[33m87949c1[m undefined reference to '__alloca' , no match for 'operator==' Individual benchmark selection --noreport
+[33m645bdde[m undestanding interrupts
+[33m158cf4f[m rpm: install query local packges
+[33mba72385[m hostnamectl: change host name
+[33m6384bed[m grep: ignore file and dir
+[33med62231[m git: account config
+[33m8e7f36d[m tmux: add session managements
+[33m442b70f[m DHCP: type dhclient to auto obtain ip
+[33m0255b16[m ingnore irrelevant imformation
+[33m24159d1[m download all ceph packages deb and rpm, install ceph
+[33m1da4a87[m start to use tmux
+[33m3e54249[m add http_proxy to git fetch code
+[33m322b1cd[m shell program reference and git command added
+[33m4f21620[m add epel offical document
+[33m6cbed59[m nothing add some case and fix content
+[33m23b6c0e[m install redhat packages from ISO and epel
+[33m13e287c[m nfs: arrange content order
+[33m07b4604[m nfs lock and 8BD issues are fixed
+[33m6385e24[m nfs lock and 8BD issues are fixed
+[33m7350cc2[m reproduced nfs lock and 8BD problem and try find out why system hang
+[33m37f2aa3[m shell programming skill and awk skill improve when running fio
+[33m7ae982a[m fio: third result
+[33mdf2be3e[m config time
+[33m2dc94b9[m fio: change runtime 15 to 60, output good format
+[33mfaa8bab[m fio: first test result, could have problem
+[33m56f223b[m remove ceph from ubuntu_packages.md to make search more accurate
+[33m939c3ea[m add question raised at training
+[33m996a81f[m nfs: disable nfsv2 nfsv3, enable nfsv4
+[33m6010ddd[m stream: memory restric on static array size
+[33m2038b52[m update software avability on ARM
+[33ma78c522[m perf: install perf, add two more question about perf
+[33m2888c9a[m usesing perf
+[33m5cdd5a4[m update code
+[33me2fa1a2[m compile fio fix liabio not loadable
+[33mec9dde7[m disk fio stream update-alternatives
+[33mcb68a74[m FS needed to check if arm support; add ceph to plan
+[33m3fc38ec[m improve benchmark skill
+[33me09b5c5[m perf: stat to use perf
+[33m804751f[m script to acqure system info
+[33mc7fdf0a[m nfs: client need install nfs-comment and umount dir when error occur
+[33m97ee900[m many fs remain to check ARM statification
+[33m3929c4d[m fdisk: format disk to remove muti os
+[33mf78f4cc[m arrange navigation, add benchmark tool
+[33m9795d54[m remove mem_benchmark because benchmark has been split into many file
+[33m1123df9[m stream: add more test result, make compare label
+[33mcd6c597[m nothing
+[33mbe8ff3c[m stream: x86 server performance
+[33m706c229[m update lscpu data after firmware upgrade
+[33m1bae1e1[m wget to download
+[33m0954081[m arm server update firmware
+[33mce9f750[m more memory benchmakr result
+[33m207bfb0[m software list which can be used on arm64
+[33m3343b5e[m add arm sotfware stack of storage and docker documents
+[33m44d89aa[m apt download --print-uris to get url
+[33mb4680fd[m ways to install os onto a machine
+[33m3613411[m tcpdump: start to use tcpdump
+[33mf3da18d[m kvm: fix grammer
+[33m3fe41e3[m systemd: reboot system case
+[33ma630e2d[m kvm: add redhat installation and update install vm scripts
+[33mfd8b914[m fix grammer at systemd.md
+[33med9af8f[m systemd: delay service using ExecStartPre sleep
+[33m8c7f883[m suse: config local software repo
+[33maf9ebe1[m kvm: edit vm xml, where is log gile
+[33m9312869[m suse 15 restart network
+[33md6bb139[m Update ubuntu_packages.md
+[33m3b09bea[m Update ubuntu_packages.md
+[33mb3a5efd[m ubuntu: install desktop gui
+[33m19d8faa[m nethogs: monitor realtime network traffic
+[33m3e9a747[m download and compile
+[33m8e49572[m kvm: NAT network config
+[33mbb22805[m kvm: redhat Fail to connect error
+[33mcb813f1[m ubuntu package index
+[33mca76b52[m ubuntu packags search, install, remove
+[33m76d4b1f[m config sources list
+[33mcb54aff[m ethtool: explain output
+[33me55e1ae[m use ethtool to config network interface card
+[33m07b136d[m permmit root user login
+[33m7063dae[m english and chinese lable
+[33m990c0a7[m fix table
+[33m36ad93d[m nothing
+[33mbaba55d[m vdbench compile
+[33ma0eebb3[m dstat is a versatile replacement of xxstat
+[33m757d909[m calculate memory size
+[33m9c7c042[m nfs install and config
+[33m5e0fff2[m redhat buildkernal in chinese
+[33m786b79b[m install dependence
+[33mac50425[m redhat : build kernel from source code
+[33m13d071b[m compile gcc and solve dependcies
+[33ma91bd99[m dstat argument explain
+[33madda4e2[m start vnc
+[33mffbdf30[m start dstat
+[33m4beb09b[m start vim
+[33m6d05da5[m start vdbench
+[33m362f945[m highlight
+[33mcc23591[m tree reproduce problem
+[33mc766c4b[m how to install nfs
+[33m557995f[m edit yum.repo.d to add sources list
+[33m2c79115[m highlighjs class console
+[33m8f3506d[m bug: nfs_not_respond
+[33mfe5f47f[m comment on the documents should go github
+[33m7f99222[m Network config file path is right but could have different name
+[33m13aa55b[m add redhat network configuration file location
+[33mdcfe0dd[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m6002799[m add raid level documents
+[33m0c3a5c7[m config repo url
+[33m6596ab2[m nfs static port
+[33m6afe43d[m nfs nat setting tourial
+[33mda41e3a[m everhing fine but vim error Chinese format
+[33m2fd5e67[m configure bash history
+[33maea9970[m add raid introduction with images dirtory init
+[33m5bdc137[m add empty ubuntu.md
+[33m95bb6c5[m Merge branch 'master' of lixianfa.github.com:LyleLee/GoodCommand
+[33m768cbe2[m add nfs
+[33mbc9062e[m show copy .pub to github account
+[33m9ae5e4a[m nothing
+[33m43f8ce2[m add link to readthedocs in README.md
+[33m917e171[m add fenced code class shell-session
+[33mdbea699[m raspberrypi cpu infomation
+[33m57e6609[m query cpu information using lscpu /proc/cpuinfo dmidecode
+[33m4a25a81[m change time zone
+[33m6e60018[m add shell scripts check command
+[33me162fda[m add netstat usage
+[33m2e79179[m add repo config
+[33m4fcd1a0[m config two account on one computer
+[33m00a48fa[m how to config two github account in one computer
+[33med2bf02[m add tldr
+[33macd6a6f[m add command line tool shellcheck and tldr.
+[33m9c8a412[m add flock implement analyze
+[33mf71b393[m add flock implement analyze
+[33m69d300b[m add flock implement analyze
+[33m6b1d4ca[m code change about flock act like test result, success at 7.4 and 8.0 but fail at 7.5 and 7.6
+[33m21fa8a6[m add grep keywork to find NFS flock()
+[33mfb3ddf6[m add bug fix case: NFS flock() fail
+[33m407c5cc[m add user to sudo sudoers file
+[33mf1fac6b[m add md5 checksum
+[33m2f92bdb[m how to config kvm --os-variant option
+[33mb978315[m method of limit io bandwith
+[33m3f93274[m add kernel info
+[33m6a64db8[m add kernel info
+[33m1e69018[m add memory benchmark
+[33m7ad5152[m remove old kylin test files
+[33m77ea408[m fix grammer
+[33m8db5696[m add raspberrypi config
+[33m837d26d[m add NeoKylin yum repo config
+[33m90a349f[m add cpu benchmark
+[33ma013850[m add redhat
+[33m725bae8[m add vdbench
+[33mf3d86db[m add vdbench
+[33m513fceb[m add vdbench
+[33ma52f5b2[m add memory description
+[33mdac01a8[m add redhat repo
+[33m8974961[m add network configuration phase
+[33m2c4a5bb[m edit yum comand format
+[33ma53c908[m 1.change kvm pages nav 2.add linux command about how to install software
+[33mce66e9c[m add linux comand: how to change keyboard layout
+[33m09daf18[m add linux comand: how to change keyboard layout
+[33m178c19f[m add linux comand: how to change keyboard layout
+[33m1034bcf[m add markdown requirements
+[33m0d20cf8[m config git into file name Case sensitive
+[33m9bcf836[m add bach nav file
+[33ma23f3e8[m fix rtd using mkdocs 0.7.5
+[33m8dda7ec[m fix RTD using mkdoc=0.7.5
+[33med418f3[m add requirements.txt to fix nav not reconigze problems
+[33m400bc95[m add requirements.txt to fix nav not reconigze problems
+[33m4a2b795[m want to force readthedoc change nav order
+[33m2f1a50a[m rm ceph documents
+[33m60bb4fe[m remove content have been replaced by linux.md
+[33mf003d83[m add linux command
+[33m6fb95ce[m knowing fenced code is not supported in list and change list to head section
+[33mb6f16ba[m mkdocs dose not support fenced code inside list item. order iterm lost increasing number
+[33m25abaf2[m modify nav
+[33mde1b226[m change to mkdocs
+[33m8c046f1[m change to mkdocs
+[33mdf8709f[m add mem test result
+[33m9fd91bb[m kylin io test result
+[33mb5e7350[m update kvm tutorial
+[33m063704c[m change github_doc_root from dirtory docs/ to source/
+[33m0ef643f[m ADD recommonmark support
+[33m709c546[m add some md
+[33m2569c9a[m Update README.md
+[33m1eb3906[m Update README.md
+[33m4150b27[m Update README.md
+[33md6fc124[m Initial commit

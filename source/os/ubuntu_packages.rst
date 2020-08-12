@@ -216,3 +216,14 @@ linux下安装软件不像windows那么傻瓜。软件包装上来之后，一�
    Version: 1:7.6p1-4
    Replaces: ssh, ssh-krb5
    Provides: rsh-client, ssh-client
+
+
+更新内核
+-------------------
+下载deb包 https://kernel.ubuntu.com/~kernel-ppa/mainline/
+
+安装 ::
+
+   sudo dpkg -i linux-*.deb
+   sudo update-grub
+   sudo reboot now

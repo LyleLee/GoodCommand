@@ -14,6 +14,8 @@ https://toutyrater.github.io/
 
 https://blog.sean1989.net/
 
+携程网技术专家 http://arthurchiao.art/
+
 自由工作者，算法视频付费。http://hawstein.com/
 
 网络，SDN研究 https://tonydeng.github.io/sdn-handbook/

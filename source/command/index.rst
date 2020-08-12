@@ -6,5 +6,5 @@ command
    :maxdepth: 2
    :numbered:
    :glob:
-   
+
    *

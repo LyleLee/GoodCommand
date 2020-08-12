@@ -247,7 +247,14 @@ Baseboard Management Controller
 BMC一键收集信息格式说明
 ==========================
 
-主要关注 OSDump/systemcom.tar 串口日志
+主要关注 ::
+
+    AppDump/card_manage/card_info 设备上的PCIE卡，硬盘，Raid卡，Riser卡，主板信息
+    AppDump/cooling_app/fan_info.txt 风扇的数量，转速
+    AppDump/cooling_app/sensor_alarm/current_event.txt 传感器告警
+    AppDump/StorageMgnt/RAID_Controller_Info.txt  Raid卡信息和Raid卡上的硬盘
+    LogDump/linux_kern_log BMC linux kernel内核日志
+    OSDump/systemcom.tar 串口日志
 
 SOL串口信息
 

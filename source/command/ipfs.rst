@@ -30,7 +30,7 @@ go 包管理器下载安装
 .. code-block:: shell
 
     go get github.com/jbenet/go-ipfs/cmd/ipfs
-    
+
 
 运行效果：
 

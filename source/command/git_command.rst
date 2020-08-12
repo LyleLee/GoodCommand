@@ -38,7 +38,10 @@ git command
    git log --name-only                     #仅仅显示修改的文件
    git log --name-status                   #仅仅显示修改的文件，和文件状态
    git log --oneline --decorate            #显示HEAD指针和分支指向的提交对象
-   git log --oneline origin/master..master #显示本地master和远程仓库的commit差异
+   git log --oneline master..origin/master #显示本地master和远程仓库的commit差异, 只显示远程仓库有，而本地master没有的部分
+   git log --oneline master...origin/master #显示，除了两个分支都有的部分之外的差异。 远程仓库有本地没有 + 远程仓库没有本地有
+   git log --oneline --decorate --left-right --graph master...origin/master #带<表示属于master， 带>表示属于远程仓库
+
    git tag --contains <commit>             #查看包含commit的tag
    git log -p -2                           #展开显示每次提交差异， -2 只显示最近两次更新git
    git reset HEAD CONTRIBUTING.md          #从暂存区测出被误staged的文件
@@ -72,6 +75,16 @@ git command
 
    git log --oneline origin/master..master              #查看本地master比远程仓库多多少个commit
    一般情况下
+
+
+PR 拉取与测试
+------------------
+
+::
+
+   git fetch origin pull/124/head:fauxrep2
+
+只需要跟还数字124和分支名fauxrep2即可
 
 分支创建管理
 ------------

@@ -201,7 +201,7 @@ GCC-4.4.1：ARM NEON Intrinsics [#arm_neon_intrinsics_gcc]_ 中的定的
 
 + 从内存读取数据到neon寄存器 v0, ``ld1     {v0.16b}, [x0]``
 
-如果不使用-O3选项的话， 这里进包含前20行，完整版请查看 :download:`vld1q_u8汇编<../resources/arm_neon.h_vld1q_u8.asm>`
+如果不使用-O3选项的话， 这里只包含前20行，完整版请查看 :download:`vld1q_u8汇编<../resources/arm_neon.h_vld1q_u8.asm>`
 
 .. literalinclude::  ../resources/arm_neon.h_vld1q_u8.asm
    :linenos:

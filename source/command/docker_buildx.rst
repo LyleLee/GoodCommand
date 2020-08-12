@@ -103,6 +103,26 @@ build多平台image
     Hello, my architecture is Linux buildkitsandbox 4.15.0-99-generic #100-Ubuntu SMP Wed Apr 22 20:32:56 UTC 2020 aarch64 Linux
 
 
+使用build farm
+===========================
+
+在单台设备上使用build farm的问题是，用模拟指令的方式， 会非常慢。
+
+::
+
+    # 创建一个上下文环境
+    docker context create --docker "host=ssh://user1@192.168.1.203" intel6248
+
+    # assuming contexts node-amd64 and node-arm64 exist in "docker context ls"
+    $ docker buildx create --use --name mybuild node-amd64
+    mybuild
+    $ docker buildx create --append --name mybuild node-arm64
+    $ docker buildx build --platform linux/amd64,linux/arm64 .
+
+创建
+
+
+
 .. [#blog_multi_arch] https://jite.eu/2019/10/3/multi-arch-docker/
 .. [#arm_multi_arch] https://community.arm.com/developer/tools-software/tools/b/tools-software-ides-blog/posts/getting-started-with-docker-for-arm-on-linux
 .. [#gitbuh_buildx] https://github.com/docker/buildx/releases

@@ -9,7 +9,7 @@ glusterfs
 
 .. code-block:: shell
 
-    gluster volume set [VOLUME] [OPTION] [PARAMETER]  
+    gluster volume set [VOLUME] [OPTION] [PARAMETER]
     gluster volume get performance.io-thread-count
     vi /etc/glusterfs/glusterfs.vol                     #或者在文件中配置。
 

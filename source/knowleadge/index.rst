@@ -6,5 +6,5 @@ knowleadge
    :maxdepth: 2
    :numbered:
    :glob:
-   
+
    *

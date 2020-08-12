@@ -504,15 +504,18 @@ sudo virsh net-edit default 可以看到配置的网络内容， 有一个virbr0
      virsh --connect qemu:///session start CentOS7.6
    otherwise, please restart your installation.
 
-解决办法
-
-::
+CentOS解决办法 ::
 
    yum install AAVMF
 
 ::
 
    AAVMF.noarch : UEFI firmware for aarch64 virtual machines
+
+ubuntu 解决办法 ::
+
+   sudo apt install qemu-efi-aarch64/bionic-updates
+
 
 问题：error: Refusing to undefine while domain managed save image exists
 --------------------------------------------------------------------------

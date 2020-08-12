@@ -1,0 +1,369 @@
+     ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+     ©¦                        ? MobaXterm 10.2 ?                          ©¦
+     ©¦            (SSH client, X-server and networking tools)             ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? SSH session to user1@192.168.1.180                               ©¦
+     ©¦   ? SSH gateway     : ?  (lixianfa@114.119.4.74)                   ©¦
+     ©¦   ? SSH compression : ?                                            ©¦
+     ©¦   ? SSH-browser     : ?                                            ©¦
+     ©¦   ? X11-forwarding  : ?  (disabled or not supported by server)     ©¦
+     ©¦   ? DISPLAY         : 192.168.1.204:0.0                            ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? For more info, ctrl+click on help or visit our website           ©¦
+     ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+
+Last login: Wed Mar 25 14:51:29 2020 from 192.168.1.107
+[user1@kunpeng920 ~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+1726251481ee        ubuntu              "/bin/bash"         8 days ago          Up 45 minutes                           container1
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$ docker run -it --rm busybox ping baidu.com
+PING baidu.com (220.181.38.148): 56 data bytes
+64 bytes from 220.181.38.148: seq=0 ttl=47 time=38.983 ms
+64 bytes from 220.181.38.148: seq=1 ttl=47 time=38.944 ms
+^C
+--- baidu.com ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 38.944/38.963/38.983 ms
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+65e567b1f3bc        busybox:latest      "ping baidu.com"    42 seconds ago       Up 41 seconds                           pingthem.4.vf3jif2f3gu7za30sp68353fd
+4a41c338d144        busybox:latest      "ping baidu.com"    About a minute ago   Up About a minute                       pingthem.1.f04cq34zderpjd3hh9rl0hr6p
+1726251481ee        ubuntu              "/bin/bash"         8 days ago           Up 50 minutes                           container1
+[user1@kunpeng920 ~]$ docker run --rm --name some-redis -d redis
+Unable to find image 'redis:latest' locally
+docker: Error response from daemon: Get https://registry-1.docker.io/v2/library/redis/manifests/latest: Get https://auth.docker.io/token?scope=repository%3Alibrary%2Fredis%3Apull&service=registry.docker.io: dial tcp: lookup auth.docker.io on 192.168.1.107:53: read udp 192.168.1.180:42742->192.168.1.107:53: read: connection refused.
+See 'docker run --help'.
+[user1@kunpeng920 ~]$ vim /etc/resolv.conf
+[user1@kunpeng920 ~]$ sudo vim /etc/resolv.conf
+[sudo] password for user1:
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$ docker run --rm --name some-redis -d redis
+Unable to find image 'redis:latest' locally
+latest: Pulling from library/redis
+f338bc35613f: Downloading [===========>                                       ]  6.081MB/25.85MB
+f338bc35613f: Pull complete
+d49f96b203f9: Pull complete
+4ac978a3fb28: Pull complete
+07d487edf7fc: Pull complete
+66575c80ac23: Pull complete
+881a753b8037: Pull complete
+Digest: sha256:ddf831632db1a51716aa9c2e9b6a52f5035fc6fa98a8a6708f6e83033a49508d
+Status: Downloaded newer image for redis:latest
+a5a89f96da62b489dcd4c4764a4407ca15e4a56955317b6b0161447c6218f14d
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$ docker run --rm --name yunda-redis --sysctl net.core.somaxconn=1024 -p 6666:6379 redis:5.0.5 --protected-mode no --save "" --appendonly no --bind 0.0.0.0
+Unable to find image 'redis:5.0.5' locally
+5.0.5: Pulling from library/redis
+0c79eb62c57d: Pull complete
+06d25a93ad69: Pull complete
+dcabaeceffad: Pull complete
+54c6bac742dd: Pull complete
+8a2f418789e6: Pull complete
+6c5609a5e242: Pull complete
+Digest: sha256:5dcccb533dc0deacce4a02fe9035134576368452db0b4323b98a4b2ba2d3b302
+Status: Downloaded newer image for redis:5.0.5
+<jemalloc>: Unsupported system page size
+<jemalloc>: Unsupported system page size
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$
+[user1@kunpeng920 ~]$ docker run --rm --name yunda-redis --sysctl net.core.somaxconn=1024 -p 6666:6379 aarch64/redis:5.0.5 --protected-mode no --save "" --appendonly no --bind 0.0.0.0
+Unable to find image 'aarch64/redis:5.0.5' locally
+docker: Error response from daemon: manifest for aarch64/redis:5.0.5 not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
+[user1@kunpeng920 ~]$ docker run --rm --name yunda-redis --sysctl net.core.somaxconn=1024 -p 6666:6379 aarch64/redis --protected-mode no --save "" --appendonly no --bind 0.0.0.0
+Unable to find image 'aarch64/redis:latest' locally
+latest: Pulling from aarch64/redis
+f58e811c82fe: Pull complete
+19f3ab47093f: Pull complete
+4980581b4108: Pull complete
+ca19bcb06c81: Pull complete
+44b84833ec7d: Pull complete
+53444cda897b: Pull complete
+03c1b0fd5822: Pull complete
+Digest: sha256:4c3f049fcb2da9885ed15ef2b56518bf2151edc74043ed3f7a5ff625f2e7fc81
+Status: Downloaded newer image for aarch64/redis:latest
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 3.2.0 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+1:M 25 Mar 09:25:01.367 # Server started, Redis version 3.2.0
+1:M 25 Mar 09:25:01.367 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:M 25 Mar 09:25:01.367 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 25 Mar 09:25:01.367 * The server is now ready to accept connections on port 6379
+
+
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+1:M 25 Mar 09:32:40.973 # Redis 3.2.0 crashed by signal: 11
+1:M 25 Mar 09:32:40.973 # Accessing address: 0xffffffffffffffff
+1:M 25 Mar 09:32:40.973 # Failed assertion: <no assertion failed> (<no file>:0)
+
+------ STACK TRACE ------
+redis-server 0.0.0.0:6379(logStackTrace+0x2c)[0x45df58]
+
+------ INFO OUTPUT ------
+# Server
+redis_version:3.2.0
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:9556315f8fb3ffd1
+redis_mode:standalone
+os:Linux 4.18.0-80.7.2.el7.aarch64 aarch64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.9.2
+process_id:1
+run_id:bb1d5ac5acd008cd4c987e4c15aac83c3ef4b79d
+tcp_port:6379
+uptime_in_seconds:459
+uptime_in_days:0
+hz:10
+lru_clock:8070456
+executable:/data/redis-server
+config_file:
+
+# Clients
+connected_clients:100
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:4105528
+used_memory_human:3.92M
+used_memory_rss:13893632
+used_memory_rss_human:13.25M
+used_memory_peak:7178560
+used_memory_peak_human:6.85M
+total_system_memory:548198875136
+total_system_memory_human:510.55G
+used_memory_lua:37888
+used_memory_lua_human:37.00K
+maxmemory:0
+maxmemory_human:0B
+maxmemory_policy:noeviction
+mem_fragmentation_ratio:3.38
+mem_allocator:jemalloc-4.0.3
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:100000
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1585128301
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:400
+total_commands_processed:300024
+instantaneous_ops_per_sec:67861
+total_net_input_bytes:16400900
+total_net_output_bytes:1901518
+instantaneous_input_kbps:8862.37
+instantaneous_output_kbps:341.84
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:24
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+migrate_cached_sockets:0
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:3.54
+used_cpu_user:0.57
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+cmdstat_get:calls=24,usec=21,usec_per_call=0.88
+cmdstat_set:calls=100000,usec=70149,usec_per_call=0.70
+cmdstat_ping:calls=200000,usec=23111,usec_per_call=0.12
+
+# Cluster
+cluster_enabled:0
+
+# Keyspace
+db0:keys=1000,expires=0,avg_ttl=0
+hash_init_value: 1585361585
+
+------ CLIENT LIST OUTPUT ------
+id=342 addr=172.17.0.1:34352 fd=45 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=343 addr=172.17.0.1:34356 fd=46 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=344 addr=172.17.0.1:34360 fd=47 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=345 addr=172.17.0.1:34364 fd=48 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=346 addr=172.17.0.1:34368 fd=49 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=302 addr=172.17.0.1:34198 fd=5 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=303 addr=172.17.0.1:34200 fd=6 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=304 addr=172.17.0.1:34204 fd=7 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=305 addr=172.17.0.1:34206 fd=8 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=306 addr=172.17.0.1:34208 fd=9 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=307 addr=172.17.0.1:34214 fd=10 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=308 addr=172.17.0.1:34218 fd=11 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=309 addr=172.17.0.1:34222 fd=12 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=310 addr=172.17.0.1:34226 fd=13 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=311 addr=172.17.0.1:34232 fd=14 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=312 addr=172.17.0.1:34230 fd=15 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=313 addr=172.17.0.1:34236 fd=16 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=314 addr=172.17.0.1:34240 fd=17 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=315 addr=172.17.0.1:34244 fd=18 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=316 addr=172.17.0.1:34248 fd=19 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=317 addr=172.17.0.1:34252 fd=20 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=6 oll=0 omem=0 events=r cmd=get
+id=318 addr=172.17.0.1:34256 fd=21 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=319 addr=172.17.0.1:34260 fd=22 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=6 oll=0 omem=0 events=r cmd=get
+id=320 addr=172.17.0.1:34264 fd=23 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=321 addr=172.17.0.1:34268 fd=24 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=322 addr=172.17.0.1:34272 fd=25 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=323 addr=172.17.0.1:34276 fd=26 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=324 addr=172.17.0.1:34280 fd=27 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=6 oll=0 omem=0 events=r cmd=get
+id=325 addr=172.17.0.1:34284 fd=28 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+id=326 addr=172.17.0.1:34288 fd=29 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=108 oll=0 omem=0 events=r cmd=get
+id=327 addr=172.17.0.1:34292 fd=30 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=328 addr=172.17.0.1:34296 fd=31 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=329 addr=172.17.0.1:34302 fd=32 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=330 addr=172.17.0.1:34304 fd=33 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=331 addr=172.17.0.1:34308 fd=34 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=332 addr=172.17.0.1:34312 fd=35 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=333 addr=172.17.0.1:34316 fd=36 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=334 addr=172.17.0.1:34320 fd=37 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=335 addr=172.17.0.1:34324 fd=38 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=336 addr=172.17.0.1:34328 fd=39 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=337 addr=172.17.0.1:34332 fd=40 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=338 addr=172.17.0.1:34338 fd=41 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=339 addr=172.17.0.1:34340 fd=42 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=340 addr=172.17.0.1:34344 fd=43 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=341 addr=172.17.0.1:34348 fd=44 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=347 addr=172.17.0.1:34372 fd=50 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=348 addr=172.17.0.1:34376 fd=51 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=349 addr=172.17.0.1:34380 fd=52 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=350 addr=172.17.0.1:34384 fd=53 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=351 addr=172.17.0.1:34388 fd=54 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=352 addr=172.17.0.1:34392 fd=55 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=353 addr=172.17.0.1:34396 fd=56 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=354 addr=172.17.0.1:34400 fd=57 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=355 addr=172.17.0.1:34404 fd=58 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=356 addr=172.17.0.1:34408 fd=59 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=357 addr=172.17.0.1:34412 fd=60 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=358 addr=172.17.0.1:34416 fd=61 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=359 addr=172.17.0.1:34420 fd=62 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=360 addr=172.17.0.1:34424 fd=63 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=361 addr=172.17.0.1:34428 fd=64 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=362 addr=172.17.0.1:34432 fd=65 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=363 addr=172.17.0.1:34436 fd=66 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=364 addr=172.17.0.1:34440 fd=67 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=365 addr=172.17.0.1:34444 fd=68 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=366 addr=172.17.0.1:34448 fd=69 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=367 addr=172.17.0.1:34452 fd=70 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=368 addr=172.17.0.1:34456 fd=71 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=369 addr=172.17.0.1:34460 fd=72 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=370 addr=172.17.0.1:34464 fd=73 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=371 addr=172.17.0.1:34468 fd=74 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=372 addr=172.17.0.1:34472 fd=75 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=373 addr=172.17.0.1:34476 fd=76 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=374 addr=172.17.0.1:34480 fd=77 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=375 addr=172.17.0.1:34484 fd=78 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=376 addr=172.17.0.1:34488 fd=79 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=377 addr=172.17.0.1:34492 fd=80 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=378 addr=172.17.0.1:34496 fd=81 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=379 addr=172.17.0.1:34500 fd=82 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=380 addr=172.17.0.1:34504 fd=83 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=381 addr=172.17.0.1:34508 fd=84 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=382 addr=172.17.0.1:34512 fd=85 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=383 addr=172.17.0.1:34516 fd=86 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=384 addr=172.17.0.1:34520 fd=87 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=385 addr=172.17.0.1:34524 fd=88 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=386 addr=172.17.0.1:34528 fd=89 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=387 addr=172.17.0.1:34532 fd=90 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=388 addr=172.17.0.1:34536 fd=91 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=389 addr=172.17.0.1:34540 fd=92 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=390 addr=172.17.0.1:34544 fd=93 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=391 addr=172.17.0.1:34548 fd=94 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=392 addr=172.17.0.1:34552 fd=95 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=393 addr=172.17.0.1:34556 fd=96 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=394 addr=172.17.0.1:34560 fd=97 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=395 addr=172.17.0.1:34564 fd=98 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=396 addr=172.17.0.1:34568 fd=99 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=397 addr=172.17.0.1:34572 fd=100 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=398 addr=172.17.0.1:34576 fd=101 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=399 addr=172.17.0.1:34580 fd=102 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=400 addr=172.17.0.1:34584 fd=103 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=401 addr=172.17.0.1:34588 fd=104 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+
+------ CURRENT CLIENT INFO ------
+id=325 addr=172.17.0.1:34284 fd=28 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+argv[0]: 'GET'
+argv[1]: 'key:000000000122'
+[user1@kunpeng920 ~]$ docker run --rm --name yunda-redis --sysctl net.core.somaxconn=1024 -p 6666:6379 aarch64/redis --protected-mode no --save "" --appendonly no --bind 0.0.0.0
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 3.2.0 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+1:M 25 Mar 09:34:42.705 # Server started, Redis version 3.2.0
+1:M 25 Mar 09:34:42.705 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:M 25 Mar 09:34:42.705 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 25 Mar 09:34:42.706 * The server is now ready to accept connections on port 6379
+
+
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+1:M 25 Mar 09:34:51.440 # Redis 3.2.0 crashed by signal: 11
+1:M 25 Mar 09:34:51.440 # Accessing address: 0xffffffffffffffff
+1:M 25 Mar 09:34:51.440 # Failed assertion: <no assertion failed> (<no file>:0)
+
+------ STACK TRACE ------
+redis-server 0.0.0.0:6379(logStackTrace+0x2c)[0x45df58]
+
+------ INFO OUTPUT ------
+[user1@kunpeng920 ~]$

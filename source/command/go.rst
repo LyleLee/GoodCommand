@@ -1,3 +1,4 @@
+***********************
 go
 ***********************
 
@@ -66,6 +67,12 @@ go build static
 
 
 怎么让go静态编译出目标文件 [#go_build]_
+
+
+how to write Go code [必读]
+=============================
+
+https://golang.org/doc/code.html
 
 
 问题记录

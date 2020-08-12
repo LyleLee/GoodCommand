@@ -34,6 +34,33 @@ epel源
 
    yum install epel-release
 
+
+CentOS8
+-----------------------
+
+CentOS-Base.repo 文件中，启用baseurl并且替换网址为https://mirrors.huaweicloud.com， Centos8 alt软件源合一了 ::
+
+   [BaseOS]
+   name=CentOS-$releasever - Base huawei
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=BaseOS&infra=$infra
+   baseurl=https://mirrors.huaweicloud.com/$contentdir/$releasever/BaseOS/$basearch/os/
+   gpgcheck=1
+   enabled=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+
+
+Key的问题
+----------------------
+
+一般一个repo有两个key。 repo key 和 package key
+
+我们通过yum-config-manager添加repo， 通过 repm import引入key, 以kubernetes为例 ::
+
+   yum-config-manager --add-repo
+   curl -OL https://packages.cloud.google.com/yum/doc/yum-key.gpg
+
+
+
 问题解决
 ----------------------
 
