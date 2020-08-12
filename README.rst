@@ -6,6 +6,3 @@ GoodCommand
 | Could be some linux command very helpful but have to learn everytime
   we use
 | Could be some bugfix of something nosense
-
-| Read the documents at:
-| https://goodcommand.readthedocs.io/zh_CN/latest/
