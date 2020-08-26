@@ -61,6 +61,12 @@ grub.cfg位置
 ubuntu 18.04 LTS
 ==================
 
+选择指定启动项启动 ::
+
+   root@intel6248:~# sudo grub-reboot Ubuntu\,\ with\ Linux\ 4.15.0-112-generic
+   root@intel6248:~# systemctl reboot -i
+
+
 grub模板位置
 
 .. code-block:: console
