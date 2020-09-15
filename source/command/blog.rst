@@ -21,3 +21,5 @@ https://blog.sean1989.net/
 网络，SDN研究 https://tonydeng.github.io/sdn-handbook/
 
 linux性能分析 http://linuxperf.com
+
+澳大利亚 AWS https://blog.xiaket.org/

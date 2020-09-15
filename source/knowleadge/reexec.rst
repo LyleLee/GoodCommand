@@ -127,6 +127,7 @@ reexec and namespace
             2020/08/28 17:14:46 ns_process.go:50: /proc/self/exe    将要执行的命令是自己，也就是当前进程 ns-process ?
             2020/08/28 17:14:46 ns_process.go:51: nsInitialisation  将要执行进程的参数
         cmd.run()
+            /proc/self/exec nsInitialisation 执行命令
             func init()     在main参数执行前会执行软件包中的init()函数
                     2020/08/28 17:14:46 ns_process.go:16: run func init()
                 reexec.Register("nsInitialisation", nsInitialisation)   进程中也是需要register的

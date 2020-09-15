@@ -74,6 +74,11 @@ how to write Go code [必读]
 
 https://golang.org/doc/code.html
 
+package 必须在一个文件夹内，且一个文件夹内也只能有一个package，但是一个文件夹可以有多个文件 [#golang_package]_
+文件名跟包名没有直接关系。如果只有一个文件，通常可以写成包名。但是导入的时候，必须导入包所在的文件夹的路径。其实可以这样理解，import 的是 path（路径） [#golang_package]_
+
+
+怎么样组织golang工程文件  https://eli.thegreenplace.net/2019/simple-go-project-layout-with-modules/
 
 问题记录
 ========
@@ -99,3 +104,4 @@ https://golang.org/doc/code.html
 
 
 .. [#go_build] http://blog.wrouesnel.com/articles/Totally%20static%20Go%20builds/
+.. [#golang_package] https://www.jianshu.com/p/07ffc5827b26
