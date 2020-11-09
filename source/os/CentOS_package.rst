@@ -114,6 +114,14 @@ CentOS 常见依赖包
    yum install https://mirrors.huaweicloud.com/epel/epel-release-latest-7.noarch.rpm
    rpm –import https://mirrors.huaweicloud.com/epel/RPM-GPG-KEY-EPEL-7
 
+CentOS 软件包http手动下载
+--------------------------
+
+CentOS8 OS基础软件包: http://mirror.centos.org/centos/8/BaseOS/x86_64/kickstart/Packages/
+
+CentOS8 APP软件包: http://mirror.centos.org/centos/8/AppStream/x86_64/kickstart/Packages/
+
+
 CentOS 软件包常用命令
 ----------------------
 
