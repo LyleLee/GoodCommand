@@ -40,6 +40,29 @@ git bash option 设置中文支持
    git config --global i18n.commitencoding utf-8
    git config --global core.quotepath false
 
+出现编码不对
+=============================
+
+::
+
+   user@DESKTOP MINGW64 /d/code/code2 (me-devel)
+   $ git status
+   On branch me-devel
+   Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+           source/.vscode/
+           source/categories/rst鍏抽敭.rst
+           source/categories/鍩虹姒傚康_鍑哄彛_鍘熶骇_鐩存帴浜у搧_寰噺.rst
+           source/categories/绠℃帶鍘熷洜鍜岃鍙緥澶?rst
+
+
+解决办法 ::
+
+   chcp.com 65001
+
+
+
+
 设置windows unix文件格式
 ==============================
 
