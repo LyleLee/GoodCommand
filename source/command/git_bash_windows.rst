@@ -58,7 +58,7 @@ git bash option 设置中文支持
 
 解决办法 ::
 
-   chcp.com 65001
+   chcp 65001
 
 
 
