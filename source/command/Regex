@@ -35,9 +35,10 @@ Regex
 
   #### Sample Regexs ####
 
-  [a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
+  [a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]
   
-  from https://raw.githubusercontent.com/CoreyMSchafer/code_snippets/master/Regular-Expressions/snippets.txt
   
-  youtube: https://www.youtube.com/watch?v=sa-TUpSx1JA&list=WL&index=2&ab_channel=CoreySchafer
+from https://raw.githubusercontent.com/CoreyMSchafer/code_snippets/master/Regular-Expressions/snippets.txt
+  
+youtube: https://www.youtube.com/watch?v=sa-TUpSx1JA&list=WL&index=2&ab_channel=CoreySchafer
   
