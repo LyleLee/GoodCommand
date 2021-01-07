@@ -70,3 +70,22 @@ nginx
         auth_basic_user_file    htpasswd;
     }
 }
+
+添加密码
+=======================
+
+.. code:: bash
+
+     htpasswd -bc publishpdf a pdf
+
+在nginx.conf中指明文件
+
+.. code:: conf
+
+    	server {
+            listen		80;
+            server_name  your.domain.com;
+            auth_basic "Please input password"; #这里是验证时的提示信息 
+            auth_basic_user_file publishpdf; # 指定文件
+            # ...
+        }
