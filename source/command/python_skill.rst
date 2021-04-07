@@ -17,6 +17,7 @@ pdb使用 https://www.cnblogs.com/xiaohai2003ly/p/8529472.html
 安装工具包::
 
   sudo apt install python3-vitualenv
+  sudo apt install python3-venv
  
 `创建虚拟环境 <https://docs.python.org/3/tutorial/venv.html>`_ ::
 
