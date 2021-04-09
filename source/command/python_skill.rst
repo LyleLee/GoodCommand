@@ -32,3 +32,10 @@ pdb使用 https://www.cnblogs.com/xiaohai2003ly/p/8529472.html
 退出虚拟环境::
 
   deactivate
+
+使用国内软件源代理安装软件包
+--------------------------------
+
+::
+   pip install --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple -r common/dockerfiles/requirements.txt
+   pip install --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple wheel
