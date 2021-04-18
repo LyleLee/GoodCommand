@@ -2,7 +2,7 @@
 dns
 *******************
 
-DNS是域名解析系统， 控制服务器对域名的解析
+DNS（Domain Name System）是域名解析系统，解析域名得到IP地址。 
 
 常用命令
 
@@ -10,6 +10,13 @@ DNS是域名解析系统， 控制服务器对域名的解析
 .. code-block:: shell
 
    dig @114.114.114.114 registry-1.docker.io       #使用114.114.114.114查询域名registry-1.docker.io的IP
+
+rDNS（Reverse DNS）反向域名解析，由IP地址反查域名服务，得到域名。
+
+.. code:: shell
+
+   host 123.125.66.120
+
 
 问题记录
 
