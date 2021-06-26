@@ -41,4 +41,6 @@ Regex
 from https://raw.githubusercontent.com/CoreyMSchafer/code_snippets/master/Regular-Expressions/snippets.txt
   
 youtube: https://www.youtube.com/watch?v=sa-TUpSx1JA&list=WL&index=2&ab_channel=CoreySchafer
-  
+ 
+use in notepad++ http://shouce.jb51.net/notepad_book/npp_func_regex_replace.html
+
