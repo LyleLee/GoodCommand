@@ -5,13 +5,13 @@ Excel
 转换日期的函数：
 
 
-.. code:: excel
+.. code:: text
 
   =DATE(RIGHT(A2,4),LEFT(A2,2),MID(A2,4,2))
 
 DATE的输入是：
 
-.. code:: excel
+.. code:: text
   
   =DATE(年,月,日)
 
