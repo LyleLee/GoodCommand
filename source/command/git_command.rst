@@ -154,8 +154,8 @@ PR 拉取与测试
    git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch docs/resources/server_start_up_log.txt' --prune-empty --tag-name-filter cat -- --all
    git push origin master --force
 
-proxy
------
+use git over a SSH proxy
+---------------------------
 
 ::
 
@@ -163,3 +163,17 @@ proxy
 
    git config --global http.proxy 'socks5://127.0.0.1:3128'
    git config --global https.proxy 'socks5://127.0.0.1:3128'
+
+use git over socks5 proxy
+--------------------------
+
+如果使用window git bash, 在`~/.ssh/config`中：
+
+::
+
+   Host github.com
+      User git
+      ProxyCommand connect -S localhost:xxxx %h %p
+
+
+https://gist.github.com/coin8086/7228b177221f6db913933021ac33bb92#:~:text=SSH%20Protocol&text=This%20is%20to%20make%20all,the%20proxy%20at%20localhost%3A1080%20.&text=This%20uses%20a%20proxy%20only,nc%20and%20ssh%20config%20ProxyCommand%20.
