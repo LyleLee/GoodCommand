@@ -9,7 +9,7 @@ CentOS 不能访问
 
 .. code-block:: console
 
-   [lixianfa@localhost ~]$ sudo lspci -s 09:00.0 -v
+   [XX@localhost ~]$ sudo lspci -s 09:00.0 -v
    09:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)
            Subsystem: Huawei Technologies Co., Ltd. Device d111
            Flags: bus master, fast devsel, latency 0, IRQ 23, NUMA node 0
@@ -29,9 +29,9 @@ CentOS 不能访问
            Kernel driver in use: ixgbe
            Kernel modules: ixgbe
 
-   [lixianfa@localhost ~]$ devmem2 0x80000000000 w
+   [XX@localhost ~]$ devmem2 0x80000000000 w
    Error at line 69, file devmem2.c (13) [Permission denied]
-   [lixianfa@localhost ~]$
+   [XX@localhost ~]$
 
 ubuntu 可以访问
 
